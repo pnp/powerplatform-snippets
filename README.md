@@ -1,2 +1,2 @@
-# powerplatform-snippets
-Repository with snippets that can easily be used in some of the Power Platform products
+# Power Platform Snippets
+This repository contains community snippets that demonstrate different usage patterns for the Microsoft Power Platform.
