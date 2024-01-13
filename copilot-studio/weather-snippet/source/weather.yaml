@@ -14,7 +14,7 @@ outputs:
 
 action:
   kind: InvokeConnectorTaskAction
-  connectionReference: cr84c_copilot2.cr.KDPqIMch
+  connectionReference: { REPLACE-WITH-CONNECTION-REFERENCE-NAME }
   operationId: CurrentWeather
 
 response:
@@ -50,7 +50,7 @@ response:
                     items: [
                       {
                         type: "Image",
-                        url: "Concatenate(https://github.com/Laskewitz/powerplatform-snippets/raw/main/copilot-studio/weather-snippet/resources/", Topic.Output.responses.weather.current.cap, ".png"),
+                        url: Concatenate("https://github.com/Laskewitz/powerplatform-snippets/raw/main/copilot-studio/weather-snippet/resources/", Topic.Output.responses.weather.current.cap, ".png"),
                         size: "small"
                       }
                     ]
@@ -61,7 +61,7 @@ response:
                     items: [
                       {
                         type: "TextBlock",
-                        text: Concatenate(Topic.Output.responses.weather.current.temp, " ", Topic.Output.units.temperature, "( ", Topic.Output.responses.weather.current.cap, ")"),
+                        text: Concatenate(Topic.Output.responses.weather.current.temp, " ", Topic.Output.units.temperature),
                         size: "extraLarge",
                         spacing: "none",
                         wrap: true
