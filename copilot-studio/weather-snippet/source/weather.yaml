@@ -50,7 +50,7 @@ response:
                     items: [
                       {
                         type: "Image",
-                        url: Concatenate("https://github.com/Laskewitz/powerplatform-snippets/raw/main/copilot-studio/weather-snippet/resources/", Topic.Output.responses.weather.current.cap, ".png"),
+                        url: Concatenate("https://github.com/pnp/powerplatform-snippets/raw/main/copilot-studio/weather-snippet/resources/weather-icons/", Topic.Output.responses.weather.current.cap, ".png"),
                         size: "small"
                       }
                     ]
