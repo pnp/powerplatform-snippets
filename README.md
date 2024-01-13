@@ -8,3 +8,7 @@ The snippets for Copilot Studio can be found [here](copilot-studio/README.md).
 ## Power Automate Desktop
 ![](./assets/PowerAutomate_scalable.svg)  
 The snippets for Power Automate Desktop can be found [here](power-automate-desktop/README.md).
+
+## Power Pages
+![](./assets/PowerPages_scalable.svg)  
+The snippets for Power Pages can be found [here](power-pages/README.md).
