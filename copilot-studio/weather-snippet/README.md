@@ -2,6 +2,8 @@
 
 This is a snippet that demonstrates how to use the MSN Weather - Get current weather action in a plugin action.
 
+![A view of examples of the get current weather action where the user asks for the weather in Ottawa, Miami and La Palma](./resources/plugin-action-examples.png)
+
 ## Minimal path to awesome
 
 1. Open a copilot in **Copilot Studio**
