@@ -1,0 +1,76 @@
+kind: TaskDialog
+outputs:
+  - propertyName: responses.weather.current.temp
+    name: Temperature
+    description: The current temperature.
+
+  - propertyName: units.temperature
+    name: Temperature Units
+    description: Units used for temperature measurements.
+
+  - propertyName: responses.weather.current.cap
+    name: Conditions
+    description: A caption of weather conditions such as rainy, sunny, etc.
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: cr84c_copilot2.cr.KDPqIMch
+  operationId: CurrentWeather
+
+response:
+  activity:
+    attachments:
+      - kind: AdaptiveCardTemplate
+        cardContent: |-
+          ={
+            '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+            type: "AdaptiveCard",
+            version: "1.5",
+            body: [
+              {
+                type: "TextBlock",
+                text: Topic.Output.responses.source.location,
+                size: "large",
+                isSubtle: true,
+                wrap: true,
+                style: "heading"
+              },
+              {
+                type: "TextBlock",
+                text: Today(),
+                spacing: "none",
+                wrap: true
+              },
+              {
+                type: "ColumnSet",
+                columns: [
+                  {
+                    type: "Column",
+                    width: "auto",
+                    items: [
+                      {
+                        type: "Image",
+                        url: "",
+                        size: "small"
+                      }
+                    ]
+                  },
+                  {
+                    type: "Column",
+                    width: "auto",
+                    items: [
+                      {
+                        type: "TextBlock",
+                        text: Concatenate(Topic.Output.responses.weather.current.temp, " ", Topic.Output.units.temperature, "( ", Topic.Output.responses.weather.current.cap, ")"),
+                        size: "extraLarge",
+                        spacing: "none",
+                        wrap: true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+
+  mode: Strict
