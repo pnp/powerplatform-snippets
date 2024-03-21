@@ -3,11 +3,14 @@ beginDialog:
   kind: OnInactivity
   id: main
   condition: =System.Bot.Name = { REPLACE-WITH-COPILOT-NAME }
-  durationInSeconds: 120
+  durationInSeconds: 600
   actions:
     - kind: SendActivity
       id: sendActivity_UuggBl
       activity: I haven't heard back from you so our session has timed out at {Text(Now(),"hh:mmAM/PM")} on {Text(Now(),"dddd, mmmm d")}. To start a new conversation, please say "hello"
+
+    - kind: EndConversation
+      id: DAyrPz
 
     - kind: CancelAllDialogs
       id: 4rpU5s
