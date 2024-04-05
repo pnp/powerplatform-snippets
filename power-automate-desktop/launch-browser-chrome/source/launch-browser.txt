@@ -1,0 +1,7 @@
+SET URL TO $'''https://www.someurl.com'''
+System.RunApplication.RunApplication ApplicationPath: $'''chrome''' CommandLineArguments: $'''www.google.com''' WorkingDirectory: '' WindowStyle: System.ProcessWindowStyle.Maximized ProcessId=> AppProcessId
+WAIT (UIAutomation.WaitForWindow.ToOpenByTitleClass Title: $'''Google*''' Class: $'''Chrome_WidgetWin_1''' FocusWindow: True) FOR 30
+WebAutomation.LaunchChrome.AttachToChromeByTitle TabTitle: $'''Google''' AttachTimeout: 5 BrowserInstance=> BrowserMain
+ON ERROR REPEAT 5 TIMES WAIT 3
+END
+WebAutomation.GoToWebPage.GoToWebPageNoWait BrowserInstance: BrowserMain Url: URL
