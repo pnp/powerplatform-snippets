@@ -1,0 +1,145 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnSelectIntent
+  id: main
+  actions:
+    - kind: SetVariable
+      id: setVariable_M6434i
+      variable: init:Topic.IntentOptions
+      value: =Sort(System.Recognizer.IntentOptions, Score, SortOrder.Descending)
+
+    - kind: EditTable
+      id: sendMessage_g5Ls09
+      changeType: Add
+      itemsVariable: Topic.IntentOptions
+      value: "={DisplayName: \"None of these\", Score: 1, TopicId: \"NoTopic\", TriggerId: \"NoTrigger\"}"
+
+    - kind: ConditionGroup
+      id: conditionGroup_BZBXjl
+      conditions:
+        - id: conditionItem_qwbsLc
+          condition: =If(First(Topic.IntentOptions).Score < 0.6, true, false) 
+          actions:
+            - kind: BeginDialog
+              id: JctqIl
+              dialog: { REPLACE-WITH-COPILOT-NAME }.topic.Search
+
+        - id: conditionItem_f3pa8W
+          condition: =If(First(Topic.IntentOptions).Score > 0.9, true, false) 
+          actions:
+            - kind: SetVariable
+              id: setVariable_Qhl0U3
+              variable: System.Recognizer.SelectedIntent
+              value: =First(System.Recognizer.IntentOptions)
+
+      elseActions:
+        - kind: ConditionGroup
+          id: conditionGroup_EPYJPx
+          conditions:
+            - id: conditionItem_dzrlbQ
+              condition: =System.Activity.Channel = ChannelId.MsTeams
+              actions:
+                - kind: Question
+                  id: twm7JZ
+                  interruptionPolicy:
+                    allowInterruption: false
+
+                  alwaysPrompt: true
+                  variable: Topic.SelectedOption
+                  prompt:
+                    text:
+                      - "To clarify, did you mean:"
+                    attachments:
+                      - kind: AdaptiveCardTemplate
+                        cardContent: |-
+                          ={
+                            type: "AdaptiveCard",
+                            '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                            version: "1.5",
+                            body: ForAll(Topic.IntentOptions,
+                              {
+                                type: "Container",
+                                items: [
+                                  {
+                                    type: "ActionSet",
+                                    actions: [
+                                      {
+                                        type: "Action.Submit",
+                                        title: DisplayName,
+                                        data: 
+                                        {
+                                          msteams: 
+                                          {
+                                            type: "messageBack",
+                                            text: DisplayName,
+                                            displayText: DisplayName
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            )
+                          }
+
+                  entity: StringPrebuiltEntity
+
+          elseActions:
+            - kind: Question
+              id: bRVrDV
+              interruptionPolicy:
+                allowInterruption: false
+
+              alwaysPrompt: true
+              variable: Topic.SelectedOption
+              prompt:
+                text:
+                  - "To clarify, did you mean:"
+                attachments:
+                  - kind: AdaptiveCardTemplate
+                    cardContent: |-
+                      ={
+                        type: "AdaptiveCard",
+                        '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                        version: "1.5",
+                        body: ForAll(Topic.IntentOptions,
+                          {
+                            type: "Container",
+                            items: [
+                              {
+                                type: "ActionSet",
+                                actions: [
+                                  {
+                                    type: "Action.Submit",
+                                    title: DisplayName,
+                                    data: DisplayName
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        )
+                      }
+
+              entity: StringPrebuiltEntity
+
+        - kind: SetVariable
+          id: WUqM8G
+          variable: System.Recognizer.SelectedIntent
+          value: |-
+            =If(
+                IsBlank(LookUp(Topic.IntentOptions, DisplayName = Topic.SelectedOption)),
+                LookUp(Topic.IntentOptions, DisplayName = "None of these"),
+                LookUp(Topic.IntentOptions, DisplayName = Topic.SelectedOption)
+            )
+
+        - kind: ConditionGroup
+          id: Jwq5JE
+          conditions:
+            - id: XEQ3fR
+              condition: =System.Recognizer.SelectedIntent.TopicId = "NoTopic"
+              actions:
+                - kind: ReplaceDialog
+                  id: Kvvsbg
+                  dialog: { REPLACE-WITH-COPILOT-NAME }.topic.Fallback
