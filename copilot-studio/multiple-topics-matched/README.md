@@ -33,3 +33,5 @@ This is a snippet that demonstrates how you can provide the user of your copilot
 
 1. Replace  **{ REPLACE-WITH-COPILOT-NAME }** on line 145 with the internal name of your copilot we just copied to notepad as well.
 1. Select **Save** to save the **Multiple Topics Matched** topic.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/multiple-topics-matched" aria-hidden="true" />
