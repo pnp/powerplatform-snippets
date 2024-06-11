@@ -129,10 +129,21 @@ beginDialog:
           variable: System.Recognizer.SelectedIntent
           value: |-
             =If(
-                IsBlank(LookUp(Topic.IntentOptions, DisplayName = Topic.SelectedOption)),
-                LookUp(Topic.IntentOptions, DisplayName = "None of these"),
-                LookUp(Topic.IntentOptions, DisplayName = Topic.SelectedOption)
-            )
+                IsBlank(
+                    LookUp(
+                        Topic.IntentOptions, 
+                        Lower(DisplayName) = Lower(Topic.SelectedOption)
+                        )
+                    ),
+                LookUp(
+                    Topic.IntentOptions, 
+                    DisplayName = "None of these"
+                    ),
+                LookUp(
+                    Topic.IntentOptions, 
+                    Lower(DisplayName) = Lower(Topic.SelectedOption)
+                    )
+                )
 
         - kind: ConditionGroup
           id: Jwq5JE
