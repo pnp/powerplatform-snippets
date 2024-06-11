@@ -1,4 +1,13 @@
 kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: units
+    value: C
+
+  - kind: AutomaticTaskInput
+    propertyName: Location
+    entity: StringPrebuiltEntity
+
 outputs:
   - propertyName: responses.weather.current.temp
     name: Temperature
@@ -15,6 +24,9 @@ outputs:
 action:
   kind: InvokeConnectorTaskAction
   connectionReference: { REPLACE-WITH-CONNECTION-REFERENCE-NAME }
+  connectionProperties:
+    mode: Maker
+
   operationId: CurrentWeather
 
 response:
