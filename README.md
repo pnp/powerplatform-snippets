@@ -5,6 +5,10 @@ This repository contains community snippets that demonstrate different usage pat
 ![](./assets/CopilotStudio.Scalable.svg)  
 The snippets for Copilot Studio can be found [here](copilot-studio).
 
+## Power Apps
+![](./assets/PowerApps_scalable.svg)  
+The snippets for Power Apps can be found [here](power-apps).
+
 ## Power Automate Desktop
 ![](./assets/PowerAutomate_scalable.svg)  
 The snippets for Power Automate Desktop can be found [here](power-automate-desktop).
