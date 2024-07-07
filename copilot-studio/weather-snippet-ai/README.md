@@ -1,8 +1,8 @@
-# Weather Snippet (Adaptive Card)
+# Weather Snippet (AI generated message)
 
-This is a snippet that demonstrates how to use the MSN Weather - Get current weather action in a plugin action.  It uses an adaptive card as an output.
+This is a snippet that demonstrates how to use the MSN Weather - Get current weather action in a plugin action. It uses the AI generated text as output.
 
-![A view of examples of the get current weather action where the user asks for the weather in Ottawa, Miami and La Palma](./assets/plugin-action-examples.png)
+![A view of examples of the get current weather action where the user asks for the weather for Utrecht in celsius](./assets/plugin-action-examples.png)
 
 ## Minimal path to awesome
 
@@ -25,7 +25,5 @@ This is a snippet that demonstrates how to use the MSN Weather - Get current wea
 1. Save the **plugin action**
 1. Select **Generative AI**
 1. Scroll down to **Dynamic Chaining with generative actions (preview)** and enable it by flipping the toggle on
-1. Test out the **plugin action** by using the **Test copilot** section and send `What's the current weather in Amsterdam`
+1. Test out the **plugin action** by using the **Test copilot** section and send `What's the current weather for Amsterdam in Celsius`
 1. When you get the Amsterdam weather, you're **done**!
-
-    ![View of the plugin action where the user asks for the current weather in Amsterdam and the copilot responds with the weather in Amsterdam, including a cloud to indicate that it's cloudy](./assets/plugin-action-example.png)
