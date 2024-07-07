@@ -1,0 +1,65 @@
+kind: TaskDialog
+inputs:
+  - kind: AutomaticTaskInput
+    propertyName: units
+    entity: StringPrebuiltEntity
+
+  - kind: AutomaticTaskInput
+    propertyName: Location
+    entity: StringPrebuiltEntity
+
+outputs:
+  - propertyName: responses.source.coordinates.lat
+
+  - propertyName: responses.source.coordinates.lon
+
+  - propertyName: responses.source.location
+
+  - propertyName: responses.weather.current.baro
+
+  - propertyName: responses.weather.current.cap
+
+  - propertyName: responses.weather.current.created
+
+  - propertyName: responses.weather.current.dewPt
+
+  - propertyName: responses.weather.current.feels
+
+  - propertyName: responses.weather.current.rh
+
+  - propertyName: responses.weather.current.sky
+
+  - propertyName: responses.weather.current.temp
+
+  - propertyName: responses.weather.current.uv
+
+  - propertyName: responses.weather.current.uvDesc
+
+  - propertyName: responses.weather.current.vis
+
+  - propertyName: responses.weather.current.windDir
+
+  - propertyName: responses.weather.current.windGust
+
+  - propertyName: responses.weather.current.windSpd
+
+  - propertyName: responses.weather.current.wx
+
+  - propertyName: units.distance
+
+  - propertyName: units.pressure
+
+  - propertyName: units.speed
+
+  - propertyName: units.temperature
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: { REPLACE-WITH-CONNECTION-REFERENCE-NAME }
+  connectionProperties:
+    mode: Maker
+
+  operationId: CurrentWeather
+
+response:
+  mode: Generated
