@@ -1,6 +1,6 @@
-# Weather Snippet
+# Weather Snippet (Adaptive Card)
 
-This is a snippet that demonstrates how to use the MSN Weather - Get current weather action in a plugin action.
+This is a snippet that demonstrates how to use the MSN Weather - Get current weather action in a plugin action.  It uses an adaptive card as an output.
 
 ![A view of examples of the get current weather action where the user asks for the weather in Ottawa, Miami and La Palma](./assets/plugin-action-examples.png)
 
