@@ -1,0 +1,14 @@
+kind: TaskDialog
+outputs:
+  - propertyName: joke
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: { REPLACE-WITH-CONNECTION-REFERENCE-NAME }
+  connectionProperties:
+    mode: Maker
+
+  operationId: FetchRandomJoke
+
+response:
+  mode: Generated
