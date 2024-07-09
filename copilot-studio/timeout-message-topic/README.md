@@ -27,7 +27,9 @@ This is a snippet that demonstrates a sample message for when a copilot session 
 1. Enter a **Name** for your Topic.
 1. Select **Save**
 1. Test out the **Timeout Message** by publishing your copilot to **Microsoft Teams** and enter a trigger phase for one of your Topics.
-1. After receiving a response from your copilot, do not enter a message and leave idle for 10 minutes. 
+1. After receiving a response from your copilot, do not enter a message and leave idle for 10 minutes.
 1. After 10 minutes, the trigger for inactivity will be executed and the timeout message will be displayed, you're **done**!
 
     ![View of the timeout message after the condition has been met](./assets/timeout-message-output-in-Microsoft-Teams.jpg)
+
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/timeout-message-topic" aria-hidden="true" />

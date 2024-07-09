@@ -17,9 +17,9 @@ This is a snippet that demonstrates how you can provide the user of your copilot
 1. Select **System**.
 1. Select the **Multiple Topics Matched** topic by selecting the name.
 1. Select the **...** in the upper right corner and select **Open code editor**.
-1. At the bottom line of the code editor, you should see the internal name of the copilot. Copy the internal name of the copilot and save it temporarily in a place where you can easily copy it from later on (for instance in notepad). 
+1. At the bottom line of the code editor, you should see the internal name of the copilot. Copy the internal name of the copilot and save it temporarily in a place where you can easily copy it from later on (for instance in notepad).
 
-    NOTE: only copy the part before `.topic.Fallback`. 
+    NOTE: only copy the part before `.topic.Fallback`.
 
     ![View of the bottom of the code editor](./assets/internal-name.png)
 

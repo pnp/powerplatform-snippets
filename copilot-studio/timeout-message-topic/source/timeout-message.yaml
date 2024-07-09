@@ -2,7 +2,6 @@ kind: AdaptiveDialog
 beginDialog:
   kind: OnInactivity
   id: main
-  condition: =System.Bot.Name = { REPLACE-WITH-COPILOT-NAME }
   durationInSeconds: 600
   actions:
     - kind: SendActivity
