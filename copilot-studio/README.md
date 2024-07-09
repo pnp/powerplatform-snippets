@@ -2,9 +2,9 @@
 
 In this directory, you will find Copilot Studio snippets. Read the README in the folder of the snippet you want to use to know how to use it!
 
-## Plugin Actions
+## Actions
 
-For plugin actions, there are three types of outputs:
+For actions, there are three types of outputs:
 
 * AI-generated text (the LLM will generate a text for you) - these kinds of snippets will have `-ai` as the suffix.
 * Text (this is what you have to configure yourself) - these kinds of snippets will have `-txt` as the suffix.
