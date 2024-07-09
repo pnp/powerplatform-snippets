@@ -1,0 +1,84 @@
+kind: TaskDialog
+modelDescription: Fetch a random dad joke from icanhazdadjoke.com
+outputs:
+  - propertyName: id
+
+  - propertyName: joke
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: { REPLACE-WITH-CONNECTION-REFERENCE-NAME }
+  connectionProperties:
+    mode: Maker
+
+  operationId: FetchRandomJoke
+
+response:
+  activity:
+    attachments:
+      - kind: AdaptiveCardTemplate
+        cardContent: |-
+          ={
+            type: "AdaptiveCard",
+            body: [
+              {
+                type: "ColumnSet",
+                columns: [
+                  {
+                    type: "Column",
+                    width: "auto",
+                    items: [
+                      {
+                        type: "Image",
+                        url: "https://github.com/pnp/powerplatform-snippets/raw/main/copilot-studio/icanhazdadjoke-fetch-random-dad-joke-ac/assets/smile.svg",
+                        size: "Medium",
+                        horizontalAlignment: "Center"
+                      }
+                    ],
+                    style: "emphasis"
+                  },
+                  {
+                    type: "Column",
+                    width: "70",
+                    items: [
+                      {
+                        type: "TextBlock",
+                        text: "icanhazdadjoke",
+                        wrap: true,
+                        weight: "Bolder",
+                        size: "Medium",
+                        horizontalAlignment: "Center",
+                        maxLines: 1,
+                        isSubtle: false,
+                        fontType: "Monospace",
+                        spacing: "None",
+                        color: "Default"
+                      }
+                    ],
+                    backgroundImage: {
+                      horizontalAlignment: "Center"
+                    },
+                    verticalContentAlignment: "Center",
+                    height: "stretch",
+                    spacing: "None",
+                    style: "emphasis"
+                  }
+                ],
+                spacing: "Medium",
+                separator: true
+              },
+              {
+                type: "TextBlock",
+                text: Topic.Output.joke,
+                wrap: true,
+                spacing: "Medium",
+                horizontalAlignment: "Center",
+                fontType: "Monospace",      
+                style: "default"
+              }
+            ],
+            '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+            version: "1.5"
+          }
+
+  mode: Strict
