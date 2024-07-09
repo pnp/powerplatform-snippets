@@ -1,17 +1,17 @@
 [
   {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
-    "name": "pnp-powerplatform-snippets-msn-weather-current-weather-snippet-ac",
+    "name": "pnp-powerplatform-snippets-icanhazdadjoke-fetch-random-dad-joke-ac",
     "version": "1.0.0.0",
     "source": "pnp",
-    "creationDateTime": "2024-02-18T00:00:00.000Z",
-    "updateDateTime": "2024-02-18T00:00:00.000Z",
-    "title": "MSN Weather - Current Weather (Adaptive Card)",
-    "shortDescription": "This is a snippet that demonstrates how to use the MSN Weather - Get current weather action in an action.",
+    "creationDateTime": "2024-07-09T00:00:00.000Z",
+    "updateDateTime": "2024-07-09T00:00:00.000Z",
+    "title": "icanhazdadjoke - Fetch a random dad joke (Adaptive Card)",
+    "shortDescription": "This is a snippet that demonstrates how to use the icanhazdadjoke - fetch a random dad joke action in an action.",
     "longDescription": [
-      "This is a snippet that demonstrates how to use the MSN Weather - Get current weather action in an action."
+      "This is a snippet that demonstrates how to use the icanhazdadjoke - fetch a random dad joke action in an action. It uses an adaptive card as an output."
     ],
-    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/copilot-studio/msn-weather-current-weather-snippet-ac/",
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/copilot-studio/icanhazdadjoke-fetch-random-dad-joke-ac/",
     "products": [
       "Power Platform",
       "Copilot Studio",
