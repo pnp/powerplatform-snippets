@@ -63,3 +63,9 @@ This is a snippet that demonstrates how to get the manager of any user using the
     You should then get the following result (with your manager's name):
 
     ![My manager result](./assets/my-manager-result.png)
+
+1. If you test with a colleague of yours (who has a different manager), you should then ask **_"Who is {COLLEAGUE'S FIRST NAME} manager?"_** and follow the prompts.
+
+    You should then get the following result (with your colleague's manager's name):
+
+    ![Colleague's manager result](./assets/colleague-manager-result.png) 
