@@ -1,0 +1,46 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-responsive-her-card-gallery",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2024-07-30T00:00:00.000Z",
+    "updateDateTime": "2024-07-30T00:00:00.000Z",
+    "title": "Responsive Hero Card Gallery",
+    "shortDescription": "This is a Power Apps YAML snippet that shows a responsive gallery of clickable hero cards similar to those you see in make.powerapps.com.",
+    "longDescription": [
+      "This is a Power Apps YAML snippet that shows a responsive gallery of clickable hero cards similar to those you see in make.powerapps.com. Cards will re-flow as the width of the app reduces. The heigh of the container is dynamically calculated to accommodate the wrapped cards. "
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/responsive-hero-card-gallery/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets"
+    ],
+    "tags": [
+    ],
+    "categories": [
+    ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/templates/previewsnippets.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "scottdurow",
+        "name": "Scott Durow",
+        "pictureUrl": "https://github.com/scottdurow.png"
+      }
+    ]
+  }
+]
