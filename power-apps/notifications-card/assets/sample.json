@@ -4,13 +4,14 @@
     "name": "pnp-powerplatform-snippets-notifications-card",
     "version": "1.0.0.0",
     "source": "pnp",
-    "creationDateTime": "2024-07-30T00:00:00.000Z",
-    "updateDateTime": "2024-07-30T00:00:00.000Z",
+    "creationDateTime": "2024-07-31T00:00:00.000Z",
+    "updateDateTime": "2024-07-31T00:00:00.000Z",
     "title": "Notifications Card",
     "shortDescription": "This snippet shows how to implement a notifications card in Power Apps.",
     "longDescription": [
       "This snippet shows how to implement a notifications card in Power Apps."
     ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/notifications-card/source/notifications-card.yaml",
     "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/notifications-card/",
     "products": [
       "Power Platform",

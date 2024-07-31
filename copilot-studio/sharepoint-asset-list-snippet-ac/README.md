@@ -26,6 +26,19 @@ This is a snippet that demonstrates how to use the SharePoint - Get items action
 
     ![View of the code editor with a red line around the connection reference name](./assets/cname.png)
 
+### Setup the SharePoint List
+This snippet connects to a SharePoint list which will need to be configured before you setup the topic. Follow these steps to setup the list:
+1. Go to your SharePoint site and select **New** and **List**
+   ![View of the code editor with a red line around the connection reference name](./assets/newlist.png)
+1. From the list of templates, select the **Asset Manager** template
+   ![View of the code editor with a red line around the connection reference name](./assets/listTemplates.png)
+1. In the pop-up, select **Use this template**
+1. Give your list a name (keep track of this to use in later steps) and select **Create**
+1. In the newly created list, scroll all the way to the right and select **Add column**
+   ![View of the code editor with a red line around the connection reference name](./assets/addcolumn.png)
+1. Choose **Hyperlink** as the column type and click **Next**
+1. For the Name type **Image** and click **Save**
+
 ### Configure the Topic    
 1. Select the **Topics** tab
 1. Select **Add Topic** and **From Blank**

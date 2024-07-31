@@ -45,7 +45,7 @@
             FirstN(
                 Sort(
                     Filter(
-                        Table({title:"This is a sample notification",status:"Approved",employee:"April Dunnam",date:"8/1/2024"},{title:"This is a rejected notification sample",status:"Rejected",employee:"April Dunnam",date:"7/21/2024"},{title:"And another one",status:"Pending",employee:"April Dunnam",date:"7/29/2024"},{title:"This is one more",status:"Approved",employee:"April Dunnam",date:"7/31/2024"}),
+                        Table({title:"This is a sample notification",status:"Approved",employee:User().FullName,date:"8/1/2024"},{title:"This is a rejected notification sample",status:"Rejected",employee:User().FullName,date:"7/21/2024"},{title:"And another one",status:"Pending",employee:User().FullName,date:"7/29/2024"},{title:"This is one more",status:"Approved",employee:User().FullName,date:"7/31/2024"}),
                         employee = User().FullName
                     ),
                     date,

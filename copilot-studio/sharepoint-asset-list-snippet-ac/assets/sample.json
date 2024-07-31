@@ -11,6 +11,7 @@
     "longDescription": [
       "This is a snippet that demonstrates how to use the SharePoint - Get items action as a connector action in a topic.  It uses a custom adaptive card as the output to show a table of items using the SharePoint Asset list template."
     ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/powerplatform-snippets/tree/main/copilot-studio/sharepoint-asset-list-snippet-ac/source/AvailableDevices.yaml",
     "url": "https://github.com/pnp/powerplatform-snippets/tree/main/copilot-studio/sharepoint-asset-list-snippet-ac/",
     "products": [
       "Power Platform",
