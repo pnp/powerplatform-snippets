@@ -1,0 +1,587 @@
+kind: AdaptiveDialog
+modelDescription: This topic helps users find devices that are available from our SharePoint device management list. They can ask to see available devices and it will return a list of devices that are available which can include laptops, smartphones, accessories and more
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: Question
+      id: question_a5Fiv4
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.VarDeviceType
+      prompt: What type of device are you looking for?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Desktop
+              displayName: Desktop
+
+            - id: Laptop
+              displayName: Laptop
+
+            - id: Smartphone
+              displayName: Smartphone
+
+    - kind: ConditionGroup
+      id: conditionGroup_YBQTFu
+      conditions:
+        - id: conditionItem_2LbRxW
+          condition: =Topic.VarDeviceType = '{ REPLACE-WITH-COPILOT-NAME }.topic.{ REPLACE-WITH-TOPIC-NAME }.main.question_a5Fiv4'.Desktop
+
+        - id: conditionItem_UCMwQy
+          condition: =Topic.VarDeviceType = '{ REPLACE-WITH-COPILOT-NAME }.topic.{ REPLACE-WITH-TOPIC-NAME }.main.question_a5Fiv4'.Laptop
+
+        - id: conditionItem_qbKsj4
+          condition: =Topic.VarDeviceType = '{ REPLACE-WITH-COPILOT-NAME }.topic.{ REPLACE-WITH-TOPIC-NAME }.main.question_a5Fiv4'.Smartphone
+
+    - kind: SetVariable
+      id: setVariable_kJmZTV
+      variable: Topic.VarFilter
+      value: |
+        =Concatenate("Status eq 'Available' and AssetType eq '", Topic.VarDeviceType,"'")
+
+    - kind: InvokeConnectorAction
+      id: invokeConnectorAction_jonyuq
+      input:
+        binding:
+          $filter: =Topic.VarFilter
+          dataset: { REPLACE-WITH-SHAREPOINT-SITE-URL }
+          table: { REPLACE-WITH-SHAREPOINT-LIST-GUID }
+
+      output:
+        binding:
+          value: Topic.varDevices
+
+      connectionReference: { REPLACE-WITH-CONNECTION-REFERENCE-NAME }
+      connectionProperties:
+        mode: Invoker
+
+      operationId: GetItems
+      dynamicOutputSchema:
+        kind: Record
+        properties:
+          value:
+            description: List of Items
+            order: 0
+            type:
+              kind: Table
+              properties:
+                {FilenameWithExtension}:
+                  displayName: File name with extension
+                  description: For libraries, returns file name including extension. For lists, returns the title property.
+                  order: 27
+                  type: String
+
+                {FullPath}:
+                  displayName: Full Path
+                  description: Full path of an item or a folder or a file
+                  order: 29
+                  type: String
+
+                {HasAttachments}:
+                  displayName: Has attachments
+                  description: Indicates the presence of attachments in the item.
+                  order: 32
+                  type: Boolean
+
+                {Identifier}:
+                  displayName: Identifier
+                  description: Value that can be used in file related actions for selecting a file.
+                  order: 22
+                  type: String
+
+                {IsFolder}:
+                  displayName: IsFolder
+                  description: True when the item is a folder, false otherwise.
+                  order: 23
+                  type: Boolean
+
+                {Link}:
+                  displayName: Link to item
+                  description: Link that can be used to get to the file or list item. Only people with permissions to the item will be able to open the link.
+                  order: 25
+                  type: String
+
+                {ModerationComment}:
+                  displayName: Comments associated with the content approval of this list item
+                  description: The comments associated with moderation of the list item.
+                  order: 31
+                  type: String
+
+                {ModerationStatus}:
+                  displayName: Content approval status
+                  description: "The content approval status. It can be one of the following: Draft, Pending, Approved, or Rejected"
+                  order: 30
+                  type: String
+
+                {Name}:
+                  displayName: Name
+                  description: File name of the item in document libraries, display name of the item in lists.
+                  order: 26
+                  type: String
+
+                {Path}:
+                  displayName: Folder path
+                  description: Path to the folder the item is in, relative to the site address.
+                  order: 28
+                  type: String
+
+                {Thumbnail}:
+                  displayName: Thumbnail
+                  description: URL to the thumbnails of the item in 3 different sizes, if available.
+                  order: 24
+                  type:
+                    kind: Record
+                    properties:
+                      Large:
+                        displayName: Large
+                        description: URL to the largest size thumbnail of the item, if available.
+                        order: 2
+                        type: String
+
+                      Medium:
+                        displayName: Medium
+                        description: URL to the standard size thumbnail of the item, if available.
+                        order: 1
+                        type: String
+
+                      Small:
+                        displayName: Small
+                        description: URL to the small, highly compressed size thumbnail of the item, if available.
+                        order: 0
+                        type: String
+
+                {TriggerWindowEndToken}:
+                  displayName: Trigger Window End Token
+                  description: A token expressing the time of the current flow check. Use this if you want to check if one or more columns were modified since the last flow check.
+                  order: 35
+                  type: String
+
+                {TriggerWindowStartToken}:
+                  displayName: Trigger Window Start Token
+                  description: A token expressing the time of the last flow check. Use this if you want to check if one or more columns were modified since the last flow check.
+                  order: 34
+                  type: String
+
+                {VersionNumber}:
+                  displayName: Version number
+                  description: The version number of the file or the list item.
+                  order: 33
+                  type: String
+
+                AssetType:
+                  displayName: Asset type
+                  description: "Specify the type of asset: laptop, smartphone, etc."
+                  order: 5
+                  type:
+                    kind: Record
+                    properties:
+                      Value:
+                        displayName: Value
+                        order: 0
+                        dynamicValuesConfig:
+                          capability: List
+
+                        type: String
+
+                Author:
+                  displayName: Created By
+                  description: The user who created this item.
+                  order: 20
+                  type:
+                    kind: Record
+                    properties:
+                      Claims:
+                        displayName: Claims
+                        description: Internal identifier for the user who created this item.
+                        order: 0
+                        dynamicValuesConfig:
+                          capability: List
+
+                        type: String
+
+                      Department:
+                        displayName: Department
+                        description: Department name of the user who created this item.
+                        order: 4
+                        type: String
+
+                      DisplayName:
+                        displayName: DisplayName
+                        description: The name of the user who created this item.
+                        order: 1
+                        type: String
+
+                      Email:
+                        displayName: Email
+                        description: Email address of the user who created this item.
+                        order: 2
+                        type: String
+
+                      JobTitle:
+                        displayName: JobTitle
+                        description: Job title of the user who created this item.
+                        order: 5
+                        type: String
+
+                      Picture:
+                        displayName: Picture
+                        description: Link to a picture of the user who created this item.
+                        order: 3
+                        type: String
+
+                Color:
+                  displayName: Color
+                  description: Color of the asset
+                  order: 6
+                  type:
+                    kind: Record
+                    properties:
+                      Value:
+                        displayName: Value
+                        order: 0
+                        dynamicValuesConfig:
+                          capability: List
+
+                        type: String
+
+                ComplianceAssetId:
+                  displayName: Compliance Asset Id
+                  order: 17
+                  type: String
+
+                ConditionNotes:
+                  displayName: Condition notes
+                  description: Notes about the current condition of the asset
+                  order: 14
+                  type: String
+
+                Created:
+                  displayName: Created
+                  description: When this item was created.
+                  order: 19
+                  type: DateTime
+
+                CurrentOwner:
+                  displayName: Current owner
+                  description: Person currently using the asset
+                  order: 11
+                  type:
+                    kind: Record
+                    properties:
+                      Claims:
+                        displayName: Claims
+                        order: 0
+                        dynamicValuesConfig:
+                          capability: List
+
+                        type: String
+
+                      Department:
+                        displayName: Department
+                        order: 4
+                        type: String
+
+                      DisplayName:
+                        displayName: DisplayName
+                        order: 1
+                        type: String
+
+                      Email:
+                        displayName: Email
+                        order: 2
+                        type: String
+
+                      JobTitle:
+                        displayName: JobTitle
+                        order: 5
+                        type: String
+
+                      Picture:
+                        displayName: Picture
+                        order: 3
+                        type: String
+
+                DueDate:
+                  displayName: Due date
+                  description: When the asset will be returned by the current owner
+                  order: 13
+                  type: Date
+
+                Editor:
+                  displayName: Modified By
+                  description: The user who last changed this item.
+                  order: 21
+                  type:
+                    kind: Record
+                    properties:
+                      Claims:
+                        displayName: Claims
+                        description: Internal identifier for the user who last changed this item.
+                        order: 0
+                        dynamicValuesConfig:
+                          capability: List
+
+                        type: String
+
+                      Department:
+                        displayName: Department
+                        description: Department name of the user who last changed this item.
+                        order: 4
+                        type: String
+
+                      DisplayName:
+                        displayName: DisplayName
+                        description: The name of the user who last changed this item.
+                        order: 1
+                        type: String
+
+                      Email:
+                        displayName: Email
+                        description: Email address of the user who last changed this item.
+                        order: 2
+                        type: String
+
+                      JobTitle:
+                        displayName: JobTitle
+                        description: Job title of the user who last changed this item.
+                        order: 5
+                        type: String
+
+                      Picture:
+                        displayName: Picture
+                        description: Link to a picture of the user who last changed this item.
+                        order: 3
+                        type: String
+
+                ID:
+                  displayName: ID
+                  description: List item id. Use this value for specifying the item to act on in other list related actions.
+                  order: 0
+                  type: Number
+
+                Image:
+                  displayName: Image
+                  order: 15
+                  type: String
+
+                Manufacturer:
+                  displayName: Manufacturer
+                  description: Manufacturer of the asset
+                  order: 3
+                  type:
+                    kind: Record
+                    properties:
+                      Value:
+                        displayName: Value
+                        order: 0
+                        dynamicValuesConfig:
+                          capability: List
+
+                        type: String
+
+                Model:
+                  displayName: Model
+                  description: "Model/make of the device (e.g: Surface Go, Surface Headphones etc)"
+                  order: 4
+                  type: String
+
+                Modified:
+                  displayName: Modified
+                  description: When this item was last changed.
+                  order: 18
+                  type: DateTime
+
+                OData__ColorTag:
+                  displayName: Color Tag
+                  order: 16
+                  type: String
+
+                OrderNumber:
+                  displayName: "Order #"
+                  description: Order or invoice number for the purchase
+                  order: 10
+                  type: String
+
+                PreviousOwner:
+                  displayName: Previous owner
+                  description: Person who last used the asset
+                  order: 12
+                  type:
+                    kind: Record
+                    properties:
+                      Claims:
+                        displayName: Claims
+                        order: 0
+                        dynamicValuesConfig:
+                          capability: List
+
+                        type: String
+
+                      Department:
+                        displayName: Department
+                        order: 4
+                        type: String
+
+                      DisplayName:
+                        displayName: DisplayName
+                        order: 1
+                        type: String
+
+                      Email:
+                        displayName: Email
+                        order: 2
+                        type: String
+
+                      JobTitle:
+                        displayName: JobTitle
+                        order: 5
+                        type: String
+
+                      Picture:
+                        displayName: Picture
+                        order: 3
+                        type: String
+
+                PurchaseDate:
+                  displayName: Purchase date
+                  description: When the asset was purchased
+                  order: 8
+                  type: Date
+
+                PurchasePrice:
+                  displayName: Purchase price
+                  description: The purchase price of the asset
+                  order: 9
+                  type: Number
+
+                SerialNumber:
+                  displayName: Serial number
+                  description: Serial number associated with the asset
+                  order: 7
+                  type: String
+
+                Status:
+                  displayName: Status
+                  description: Checkout status of the asset
+                  order: 2
+                  type:
+                    kind: Record
+                    properties:
+                      Value:
+                        displayName: Value
+                        order: 0
+                        dynamicValuesConfig:
+                          capability: List
+
+                        type: String
+
+                Title:
+                  displayName: Title
+                  order: 1
+                  type: String
+
+    - kind: SendActivity
+      id: sendActivity_mrJIZW
+      activity:
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                  type: "AdaptiveCard",
+                  body: [
+                              {
+                                  type: "TextBlock",
+                                  text: "AVAILABLE DEVICES",
+                                  wrap: true,
+                                  size: "Small",
+                                  isSubtle: true,
+                                  weight: "Bolder",
+                                  spacing: "Medium"
+                              },
+                              {
+                              type:"Container",
+                              items: 
+                                  ForAll(Topic.varDevices,
+                                  {
+                                  
+                                  type: "ColumnSet",
+                                  columns: [
+                                      {
+                                          type: "Column",
+                                          width: "80px",
+                                          minHeight: "80px",
+                                          items: [
+                                              {
+                                                  type: "Container",
+                                                  backgroundImage: {
+                                                      url: Image,
+                                                      horizontalAlignment: "Center",
+                                                      verticalAlignment: "Center"
+                                                  },
+                                                  minHeight: "80px",
+                                                  horizontalAlignment: "Center",
+                                                  verticalContentAlignment: "Center"
+                                              }
+                                          ],
+                                          verticalContentAlignment: "Center",
+                                          horizontalAlignment: "Left"
+                                      },
+                                      {
+                                          type: "Column",
+                                          width: "auto",
+                                          items: [
+                                              {
+                                                  type: "TextBlock",
+                                                  text: Model,
+                                                  wrap: true,
+                                                  weight: "Bolder",
+                                                  size: "Medium"
+                                              },
+                                              {
+                                                  type: "TextBlock",
+                                                  text: Manufacturer.Value,
+                                                  isSubtle: true,
+                                                  wrap: true,
+                                                  spacing: "Small",
+                                                  maxLines: 1
+                                              },
+                                                {
+                                                  type: "TextBlock",
+                                                  text: "Color: " & Color.Value,
+                                                  isSubtle: true,
+                                                  wrap: true,
+                                                  spacing: "Small",
+                                                  maxLines: 1
+                                              }
+                                          ],
+                                          verticalContentAlignment: "Center"
+                                      },
+                                      {
+                                          type: "Column",
+                                          width: "20px",
+                                          items: [
+                                              {
+                                                  type: "Image",
+                                                  url: "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/arrow-right.png",
+                                                  horizontalAlignment: "Right",
+                                                  width: "20px",
+                                                  height: "20px",
+                                                  selectAction: {
+                                                      type:"Action.OpenUrl",
+                                                      url:'{Link}'
+                                                  }
+                                              }
+                                          ],
+                                          verticalContentAlignment: "Center"
+                                      }
+                                  ]
+                              }
+                      )
+                      }
+                  ]
+              }
