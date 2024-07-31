@@ -1,0 +1,105 @@
+- ContainerNotifications:
+    Control: GroupContainer
+    Variant: horizontalAutoLayoutContainer
+    Properties:
+      DropShadow: =DropShadow.Regular
+      Fill: =RGBA(255, 255, 255, 1)
+      Height: =464
+      LayoutDirection: =LayoutDirection.Vertical
+      LayoutMode: =LayoutMode.Auto
+      PaddingBottom: =10
+      PaddingLeft: =10
+      PaddingRight: =10
+      PaddingTop: =10
+      RadiusBottomLeft: =12
+      RadiusBottomRight: =12
+      RadiusTopLeft: =12
+      RadiusTopRight: =12
+      Width: =410
+      X: =40
+      Y: =40
+    Children:
+    - txtNotification:
+        Control: Text
+        Properties:
+          Text: ="Notifications"
+          Weight: ='TextCanvas.Weight'.Semibold
+          Width: =140
+    - txtNoNotifications:
+        Control: Text
+        Properties:
+          Align: ='TextCanvas.Align'.Center
+          Text: ="You have no notifications"
+          AlignInContainer: =AlignInContainer.Start
+          Height: =45
+          Visible: =If(CountRows(galNotifications.AllItems) = 0,true,false)
+          Width: =Parent.Width - 15
+    - galNotifications:
+        Control: Gallery
+        Variant: BrowseLayout_Vertical_TwoTextVariant_ver5.0
+        Properties:
+          OnSelect: =Navigate(EditScreen,ScreenTransition.Fade,{selectedItem:galNotifications.Selected})
+          AccessibleLabel: ="Notifcations List"
+          Items: |-
+            =
+            FirstN(
+                Sort(
+                    Filter(
+                        Table({title:"This is a sample notification",status:"Approved",employee:"April Dunnam",date:"8/1/2024"},{title:"This is a rejected notification sample",status:"Rejected",employee:"April Dunnam",date:"7/21/2024"},{title:"And another one",status:"Pending",employee:"April Dunnam",date:"7/29/2024"},{title:"This is one more",status:"Approved",employee:"April Dunnam",date:"7/31/2024"}),
+                        employee = User().FullName
+                    ),
+                    date,
+                    SortOrder.Descending
+                ),
+                5
+            )
+          AlignInContainer: =AlignInContainer.Center
+          DelayItemLoading: =true
+          Height: =Parent.Height
+          Layout: =Layout.Vertical
+          LoadingSpinner: =LoadingSpinner.Data
+          TabIndex: =0
+          TemplatePadding: =0
+          TemplateSize: =88
+          Width: =Parent.Width
+        Children:
+        - Icon3:
+            Control: Classic/Icon
+            Variant: CheckBadge
+            Properties:
+              OnSelect: =Select(Parent)
+              Color: =App.Theme.Colors.Lighter30
+              Height: =20
+              Icon: =Switch(ThisItem.status, "Approved", Icon.CheckBadge,"Rejected",Icon.CancelBadge,"Pending",Icon.Warning)
+              Width: =20
+              X: =15
+              Y: =14
+        - txtNotificationDate:
+            Control: Text
+            Properties:
+              Align: ='TextCanvas.Align'.End
+              Size: =12
+              Text: =ThisItem.date
+              Weight: ='TextCanvas.Weight'.Medium
+              Height: =24
+              Width: =245
+              X: =142
+              Y: =56
+        - txtNotificationInfo:
+            Control: Text
+            Properties:
+              Text: =ThisItem.title
+              VerticalAlign: ='TextCanvas.VerticalAlign'.Top
+              Weight: ='TextCanvas.Weight'.Medium
+              Height: =42
+              Width: =337
+              X: =Icon3.X + Icon3.Width + 15
+              Y: =14
+        - Separator3_3:
+            Control: Rectangle
+            Properties:
+              OnSelect: =Select(Parent)
+              Fill: =RGBA(214, 221, 224, 1)
+              Height: =0
+              Width: =Parent.TemplateWidth
+              Y: =Parent.TemplateHeight - Self.Height

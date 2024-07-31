@@ -1,0 +1,21 @@
+- Image1:
+    Control: Image
+    Properties:
+      Image: |
+        =
+        "data:image/svg+xml," & EncodeUrl(
+            "<svg width='100%' height='100%' viewBox='0 0 42 42' class='donut' xmlns='http://www.w3.org/2000/svg'>
+          <circle class='donut-hole' cx='21' cy='21' r='15.91549430918954' fill='#fff'></circle>
+          <circle class='donut-ring' cx='21' cy='21' r='15.91549430918954' fill='transparent' stroke='#74b741' stroke-width='5'></circle>
+          <circle class='donut-segment' cx='21' cy='21' r='15.91549430918954' fill='transparent' stroke='#808080' stroke-width='5' stroke-dasharray='" &  IfError(Replace-With-Dividend-Value /Value(Replace-With-Divisor-Value)*100,0) & " "&IfError((100-Replace-With-Dividend-Value/Replace-With-Divisor-Value*100),0) &"' stroke-dashoffset='25'></circle>
+        </svg>"
+        )
+      Height: =150
+      ImagePosition: =ImagePosition.Fill
+      RadiusBottomLeft: =8
+      RadiusBottomRight: =8
+      RadiusTopLeft: =8
+      RadiusTopRight: =8
+      Width: =150
+      X: =27
+      Y: =46
