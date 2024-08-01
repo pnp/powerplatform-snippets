@@ -2,7 +2,7 @@
 
 This snippet shows how to add an SVG donut visual that gets data dynamically from your Power App to fill in the donut to show an amount used and amount remaining. 
 
-![A basic example](./assets/donut.png)
+![A basic example](./assets/preview.png)
 
 This is for the donut visual only but this can be used within a gallery along with labels to accomplish a visual like shown below.
 
@@ -46,5 +46,8 @@ This is for the donut visual only but this can be used within a gallery along wi
 ![component items property](./assets/component_divisor_value.png)
 1. Select the **imgSVGDonut** control and go to the **Image** property and replace **{REPLACE-WITH-DIVIDEND-VALUE}** with **{INSERT-NAME-OF-YOUR-COMPONENT}.Dividend** and **{REPLACE-WITH-DIVISOR-VALUE}** with **{INSERT-NAME-OF-YOUR-COMPONENT}.Divisor**
 ![gallery items](./assets/component_svg_image_complete.png)
+
+#### Learn more about YAML and integrating with Components
+[![Watch the video](https://img.youtube.com/vi/WWCj1MgYlbM/hqdefault.jpg)](https://www.youtube.com/embed/WWCj1MgYlbM)
 
 <img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/svg-donut" aria-hidden="true" />

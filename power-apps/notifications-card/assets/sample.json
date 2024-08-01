@@ -11,7 +11,6 @@
     "longDescription": [
       "This snippet shows how to implement a notifications card in Power Apps."
     ],
-    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/notifications-card/source/notifications-card.yaml",
     "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/notifications-card/",
     "products": [
       "Power Platform",
@@ -37,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/templates/previewsnippets.png",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/notifications-card/assets/notificationsGal.png",
         "alt": "Preview PNG"
       }
     ],

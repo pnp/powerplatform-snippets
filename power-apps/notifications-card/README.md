@@ -35,5 +35,8 @@ This snippet shows how to implement a notifications card in Power Apps.
 1. Select the **galNotifications** gallery and go to the **Items** property and replace the code with the **{INSERT-NAME-OF-YOUR-COMPONENT}.Items**
 ![gallery items](./assets/galItems.png)
 
+#### Learn more about YAML and integrating with Components
+[![Watch the video](https://img.youtube.com/vi/WWCj1MgYlbM/hqdefault.jpg)](https://www.youtube.com/embed/WWCj1MgYlbM)
+
 
 <img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/notifications-card" aria-hidden="true" />
