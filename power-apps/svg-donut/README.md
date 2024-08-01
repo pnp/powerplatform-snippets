@@ -2,7 +2,7 @@
 
 This snippet shows how to add an SVG donut visual that gets data dynamically from your Power App to fill in the donut to show an amount used and amount remaining. 
 
-![A basic example](./assets/preview.png)
+![A basic example](./assets/donut.png)
 
 This is for the donut visual only but this can be used within a gallery along with labels to accomplish a visual like shown below.
 
