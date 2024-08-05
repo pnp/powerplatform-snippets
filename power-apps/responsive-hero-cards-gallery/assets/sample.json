@@ -11,11 +11,12 @@
     "longDescription": [
       "This is a Power Apps YAML snippet that shows a responsive gallery of clickable hero cards similar to those you see in make.powerapps.com. Cards will re-flow as the width of the app reduces. The heigh of the container is dynamically calculated to accommodate the wrapped cards. "
     ],
-    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/responsive-hero-card-gallery/",
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/responsive-hero-cards-gallery/",
     "products": [
       "Power Platform",
       "Power Apps",
-      "powerplatform-snippets"
+      "powerplatform-snippets",
+      "power-apps-snippets"
     ],
     "tags": [
     ],
