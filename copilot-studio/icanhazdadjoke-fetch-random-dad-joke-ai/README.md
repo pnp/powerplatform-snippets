@@ -1,4 +1,4 @@
-# icanhazdadjoke - Fetch a random dad joke (AI Generated Message)
+# icanhazdadjoke - Fetch a random dad joke (AI)
 
 This is a snippet that demonstrates how to use the icanhazdadjoke - fetch a random dad joke action in an action. It uses an AI generated message as an output.
 
