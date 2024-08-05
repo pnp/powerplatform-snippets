@@ -1,4 +1,4 @@
-# MSN Weather - Current Weather (AI generated message)
+# MSN Weather - Current Weather (AI)
 
 This is a snippet that demonstrates how to use the MSN Weather - Get current weather action in a plugin action. It uses the AI generated text as output.
 
