@@ -4,6 +4,12 @@ This is a snippet that demonstrates how to use the SharePoint - Get items action
 
 ![A view of examples of getting a list of available laptops](./assets/laptopAdaptiveCard.png)
 
+## Authors
+
+Snippet|Author(s)
+--------|---------
+SharePoint Get Items - Asset List (Topic with Adaptive Card) | [April Dunnam](https://github.com/aprildunnam) ([@aprildunnam](https://www.twitter.com/aprildunnam))
+
 ## Minimal path to awesome
 
 ### Enable dynamic chaining before proceeding
@@ -60,5 +66,9 @@ This snippet connects to a SharePoint list which will need to be configured befo
 1. When you get a list of devices, you're **done**!
 
     ![View of the plugin action where the user asks for available smartphones](./assets/phoneAdaptiveCard.png)
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/sharepoint-asset-list-snippet-ac" aria-hidden="true" />

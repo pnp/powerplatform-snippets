@@ -4,6 +4,12 @@ This is a snippet that demonstrates how you can provide the user of your copilot
 
 ![A view of choice for the user](./assets/select-topic.png)
 
+## Authors
+
+Snippet|Author(s)
+--------|---------
+Multiple Topics Matched (Topic) | [Henry Jammes](https://github.com/HenryJammes) ([@HenryJammes](https://www.twitter.com/HenryJammes))
+
 ## Minimal path to awesome
 
 1. Open a copilot in **Copilot Studio**.
@@ -33,5 +39,9 @@ This is a snippet that demonstrates how you can provide the user of your copilot
 
 1. Replace  **{ REPLACE-WITH-COPILOT-NAME }** on line 145 with the internal name of your copilot we just copied to notepad as well.
 1. Select **Save** to save the **Multiple Topics Matched** topic.
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/multiple-topics-matched" aria-hidden="true" />
