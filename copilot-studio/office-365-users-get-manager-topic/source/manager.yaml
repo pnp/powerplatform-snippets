@@ -1,0 +1,79 @@
+kind: TaskDialog
+inputs:
+  - kind: AutomaticTaskInput
+    propertyName: id
+    description: User principal name or id or email address
+    entity: StringPrebuiltEntity
+
+outputs:
+  - propertyName: aboutMe
+
+  - propertyName: accountEnabled
+
+  - propertyName: birthday
+
+  - propertyName: businessPhones
+
+  - propertyName: city
+
+  - propertyName: companyName
+
+  - propertyName: country
+
+  - propertyName: department
+
+  - propertyName: displayName
+
+  - propertyName: givenName
+
+  - propertyName: hireDate
+
+  - propertyName: id
+
+  - propertyName: interests
+
+  - propertyName: jobTitle
+
+  - propertyName: mail
+
+  - propertyName: mailNickname
+
+  - propertyName: mobilePhone
+
+  - propertyName: mySite
+
+  - propertyName: officeLocation
+
+  - propertyName: pastProjects
+
+  - propertyName: postalCode
+
+  - propertyName: preferredLanguage
+
+  - propertyName: preferredName
+
+  - propertyName: responsibilities
+
+  - propertyName: schools
+
+  - propertyName: skills
+
+  - propertyName: state
+
+  - propertyName: streetAddress
+
+  - propertyName: surname
+
+  - propertyName: userPrincipalName
+
+  - propertyName: userType
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: { REPLACE-WITH-CONNECTION-REFERENCE-NAME }
+  connectionProperties:
+    mode: Invoker
+
+  operationId: Manager_V2
+
+triggerCondition: false
