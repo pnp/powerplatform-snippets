@@ -4,6 +4,12 @@ This is a snippet that demonstrates how to use the MSN Weather - Get current wea
 
 ![A view of examples of the get current weather action where the user asks for the weather for Utrecht in celsius](./assets/plugin-action-examples.png)
 
+## Authors
+
+Snippet|Author(s)
+--------|---------
+MSN Weather - Current Weather (Action with AI Generated Message) | [Daniel Laskewitz](https://github.com/laskewitz) ([@laskewitz](https://www.twitter.com/laskewitz))
+
 ## Minimal path to awesome
 
 1. Open a copilot in **Copilot Studio**
@@ -25,5 +31,9 @@ This is a snippet that demonstrates how to use the MSN Weather - Get current wea
 1. Select **Generative AI**
 1. Scroll down to **Dynamic Chaining with generative actions (preview)** and enable it by flipping the toggle on
 1. Test out the **action** by using the **Test copilot** pane
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/msn-weather-current-weather-snippet-ai" aria-hidden="true" />

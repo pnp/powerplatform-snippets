@@ -4,6 +4,12 @@ This is a snippet that demonstrates how to use the MSN Weather - Get current wea
 
 ![A view of examples of the get current weather action where the user asks for the weather in Ottawa, Miami and La Palma](./assets/plugin-action-examples.png)
 
+## Authors
+
+Snippet|Author(s)
+--------|---------
+MSN Weather - Current Weather (Action with Adaptive Card) | [Daniel Laskewitz](https://github.com/laskewitz) ([@laskewitz](https://www.twitter.com/laskewitz))
+
 ## Minimal path to awesome
 
 1. Open a copilot in **Copilot Studio**
@@ -28,5 +34,9 @@ This is a snippet that demonstrates how to use the MSN Weather - Get current wea
 1. When you get the Amsterdam weather, you're **done**!
 
     ![View of the plugin action where the user asks for the current weather in Amsterdam and the copilot responds with the weather in Amsterdam, including a cloud to indicate that it's cloudy](./assets/plugin-action-example.png)
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/msn-weather-current-weather-snippet-ac" aria-hidden="true" />
