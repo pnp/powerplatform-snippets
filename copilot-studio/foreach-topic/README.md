@@ -1,4 +1,4 @@
-# Foreach Snippet
+# Foreach Snippet (Topic)
 
 This is a snippet that demonstrates how to do a foreach loop in Copilot Studio.
 

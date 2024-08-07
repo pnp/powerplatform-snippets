@@ -1,4 +1,4 @@
-# icanhazdadjoke - Fetch a random dad joke (Adaptive Card)
+# icanhazdadjoke - Fetch a random dad joke (Action with Adaptive Card)
 
 This is a snippet that demonstrates how to use the icanhazdadjoke - fetch a random dad joke action in an action. It uses an adaptive card as an output.
 

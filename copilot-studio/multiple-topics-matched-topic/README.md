@@ -1,4 +1,4 @@
-# Multiple Topics Matched
+# Multiple Topics Matched (Topic)
 
 This is a snippet that demonstrates how you can provide the user of your copilot the option to select a topic when multiple topics are triggered. In this topic, an adaptive card will be sent to the user, so that the user can select the topic they want to trigger.
 
