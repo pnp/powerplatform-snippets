@@ -1,4 +1,4 @@
-# Timeout Message Snippet
+# Timeout Message (Topic)
 
 This is a snippet that demonstrates a sample message for when a copilot session times out. It includes two Power Fx expressions for formatting of the time and date.
 

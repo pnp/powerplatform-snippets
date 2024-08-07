@@ -1,4 +1,4 @@
-# MSN Weather - Current Weather (Adaptive Card)
+# MSN Weather - Current Weather (Action with Adaptive Card)
 
 This is a snippet that demonstrates how to use the MSN Weather - Get current weather action in an action.  It uses an adaptive card as an output.
 
