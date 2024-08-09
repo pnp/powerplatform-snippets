@@ -2,6 +2,8 @@
 
 This is a snippet that demonstrates how to do a foreach loop in Copilot Studio.
 
+**Today, the foreach node isn't exposed in the UX and isn't documented. Using it is hence not formally supported for production use.**
+
 ## Authors
 
 Snippet|Author(s)
