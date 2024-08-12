@@ -1,8 +1,14 @@
-# icanhazdadjoke - Fetch a random dad joke (Adaptive Card)
+# icanhazdadjoke - Fetch a random dad joke (Action with Adaptive Card)
 
 This is a snippet that demonstrates how to use the icanhazdadjoke - fetch a random dad joke action in an action. It uses an adaptive card as an output.
 
 ![A view of an example of the output of the action in the test pane in Microsoft Copilot Studio](./assets/plugin-action-example.png)
+
+## Authors
+
+Snippet|Author(s)
+--------|---------
+icanhazdadjoke - Fetch a random dad joke (Action with Adaptive Card) | [Daniel Laskewitz](https://github.com/laskewitz) ([@laskewitz](https://www.twitter.com/laskewitz))
 
 ## Minimal path to awesome
 
@@ -28,5 +34,9 @@ This is a snippet that demonstrates how to use the icanhazdadjoke - fetch a rand
 1. Test out the **action** by using the **Test copilot** pane
 
     ![A view of an example of the output of the plugin action in the test pane in Microsoft Copilot Studio](./assets/plugin-action-example.png)
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/icanhazdadjoke-fetch-random-dad-joke-ac" aria-hidden="true" />

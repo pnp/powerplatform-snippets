@@ -1,4 +1,4 @@
-# Timeout Message Snippet
+# Timeout Message (Topic)
 
 This is a snippet that demonstrates a sample message for when a copilot session times out. It includes two Power Fx expressions for formatting of the time and date.
 
@@ -6,6 +6,12 @@ This is a snippet that demonstrates a sample message for when a copilot session 
 1. The current date, e.g Thursday, March 21
 
 ![A view of the message out for when a copilot session times out](./assets/timeout-message-node.jpg)
+
+## Authors
+
+Snippet|Author(s)
+--------|---------
+Timeout Message (Topic) | [Elaiza Benitez](https://github.com/elaizabenitez) ([@benitezhere](https://www.twitter.com/benitezhere))
 
 ## Minimal path to awesome
 
@@ -31,5 +37,9 @@ This is a snippet that demonstrates a sample message for when a copilot session 
 1. After 10 minutes, the trigger for inactivity will be executed and the timeout message will be displayed, you're **done**!
 
     ![View of the timeout message after the condition has been met](./assets/timeout-message-output-in-Microsoft-Teams.jpg)
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/timeout-message-topic" aria-hidden="true" />

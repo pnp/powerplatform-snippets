@@ -1,0 +1,38 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    triggerQueries:
+      - Tell me about for each
+      - For each
+      - Loop
+      - Foreach
+
+  actions:
+    - kind: SendActivity
+      id: sendActivity_irC79X
+      activity: "Foreach lets you loop through all the records in a table. Today, you need to go to the code editor view to add a **kind: Foreach** node."
+
+    - kind: SetVariable
+      id: setVariable_J56SGN
+      variable: Topic.Cities
+      value: |-
+        =[
+            { Id: 1, Name: "Paris", Description: "The capital of France, known for the Eiffel Tower and art museums." },
+            { Id: 2, Name: "Rome", Description: "The capital of Italy, known for its ancient history and the Colosseum." },
+            { Id: 3, Name: "Berlin", Description: "The capital of Germany, known for its modern landmarks and vibrant culture." },
+            { Id: 4, Name: "Madrid", Description: "The capital of Spain, known for its royal palace and bustling nightlife." }
+        ]
+
+    - kind: Foreach
+      id: Foreach_GOFWYp
+      items: =Topic.Cities
+      value: Topic.CurrentCity
+      actions:
+        - kind: SendActivity
+          id: sendActivity_uoiLTo
+          activity: |-
+            **{Topic.CurrentCity.Name}**
+            
+            {Topic.CurrentCity.Description}

@@ -1,12 +1,12 @@
 [
   {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
-    "name": "pnp-powerplatform-snippets-icanhazdadjoke-fetch-random-dad-joke-ac",
+    "name": "pnp-powerplatform-snippets-icanhazdadjoke-fetch-random-dad-joke-ai",
     "version": "1.0.0.0",
     "source": "pnp",
     "creationDateTime": "2024-07-09T00:00:00.000Z",
     "updateDateTime": "2024-07-09T00:00:00.000Z",
-    "title": "icanhazdadjoke - Fetch a random dad joke (AI Generated Message)",
+    "title": "icanhazdadjoke - Fetch a random dad joke (Action with AI Generated Message)",
     "shortDescription": "This is a snippet that demonstrates how to use the icanhazdadjoke - fetch a random dad joke action in an action.",
     "longDescription": [
       "This is a snippet that demonstrates how to use the icanhazdadjoke - fetch a random dad joke action in an action. It uses an AI generated message as an output."

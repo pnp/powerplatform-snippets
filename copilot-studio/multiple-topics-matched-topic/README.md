@@ -1,8 +1,14 @@
-# Multiple Topics Matched
+# Multiple Topics Matched (Topic)
 
 This is a snippet that demonstrates how you can provide the user of your copilot the option to select a topic when multiple topics are triggered. In this topic, an adaptive card will be sent to the user, so that the user can select the topic they want to trigger.
 
 ![A view of choice for the user](./assets/select-topic.png)
+
+## Authors
+
+Snippet|Author(s)
+--------|---------
+Multiple Topics Matched (Topic) | [Henry Jammes](https://github.com/HenryJammes) ([@HenryJammes](https://www.twitter.com/HenryJammes))
 
 ## Minimal path to awesome
 
@@ -33,5 +39,9 @@ This is a snippet that demonstrates how you can provide the user of your copilot
 
 1. Replace  **{ REPLACE-WITH-COPILOT-NAME }** on line 145 with the internal name of your copilot we just copied to notepad as well.
 1. Select **Save** to save the **Multiple Topics Matched** topic.
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/multiple-topics-matched" aria-hidden="true" />
