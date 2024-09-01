@@ -8,6 +8,8 @@ beginDialog:
       - Travel plan
       - Trip plans
       - Trip plan
+      - Can you help me with a travel plan?
+      - Travel plan help
 
   actions:
     - kind: AdaptiveCardPrompt
@@ -80,22 +82,9 @@ beginDialog:
           destination: String
           number: String
 
-    - kind: InvokeAIBuilderModelAction
-      id: invokeAIBuilderModelAction_nvzjGu
-      input:
-        binding:
-          Destination: =Topic.destination
-          Number: =Topic.number
-
-      output:
-        binding:
-          predictionOutput: Topic.promptOutput
-
-      aIModelId: { REPLACE-WITH-AI-MODEL-ID }
-
     - kind: SendActivity
       id: sendActivity_4AC9u6
-      activity: '{Topic.promptOutput.text}'
+      activity: 'Prompt output'
 
     - kind: EndDialog
       id: INpkyZ
