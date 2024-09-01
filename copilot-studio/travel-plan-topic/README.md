@@ -93,4 +93,4 @@ Travel Plan (Topic) | [Daniel Laskewitz](https://github.com/laskewitz) ([@laskew
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/msn-weather-current-weather-snippet-ac" aria-hidden="true" />
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/travel-plan-topic" aria-hidden="true" />
