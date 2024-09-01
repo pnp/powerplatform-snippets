@@ -12,17 +12,6 @@ Travel Plan (Topic) | [Daniel Laskewitz](https://github.com/laskewitz) ([@laskew
 
 ## Minimal path to awesome
 
-**Prerequisites**
-
-- Create the Travel Plan AI Prompt in the same environment as where your copilot is. 
-- Make sure to copy the ID of the AI model 
-  - Go to [the Power Apps maker portal](https://make.powerapps.com) and go to **Solutions** > **Common Data Services Default Solution** > **AI Models** and select **Travel Plan** there - if that's the name you gave your AI Prompt. If you gave a different name, select that.
-    
-    This will open a URL with the following format: `https://make.powerapps.com/environment/{Environment ID}/aibuilder/solutions/00000001-0000-0000-0001-00000000009b/models/{Model ID}`
-  - Copy the Model ID from the URL in the address bar and keep it somewhere safe so that you can easily copy and paste it later.
-
-**Steps**
-
 1. Open a copilot in **Copilot Studio**
 1. Select **Topics**
 1. Select **+ Add a topic**
