@@ -1,0 +1,91 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  priority: -1
+  actions:
+    - kind: SearchAndSummarizeContent
+      id: search-content
+      latencyMessageSettings:
+        allowLatencyMessage: false
+
+      userInput: =System.Activity.Text
+      autoSend: false
+      variable: Topic.Answer
+      additionalInstructions: Keep answers very short, less then 25 words.
+      responseCaptureType: FullResponse
+
+    - kind: ConditionGroup
+      id: has-answer-conditions
+      conditions:
+        - id: has-answer
+          condition: =!IsBlank(Topic.Answer)
+          actions:
+            - kind: SetVariable
+              id: setVariable_LKxsRA
+              variable: Topic.FilesSources
+              value: |-
+                =[
+                    {
+                        FileName: "Azure%20-%20Compliance%20Offerings%20(June%202024)%20(1).pdf",
+                        FileUrl: "https://x.sharepoint.com/sites/KnowledgeBase/Shared%20Documents/Uploaded%20Files/Azure/Azure%20-%20Compliance%20Offerings%20(June%202024)%20(1).pdf"
+                    },
+                    {
+                        FileName: "Northwind_Standard_Benefits_Details%201.pdf",
+                        FileUrl: "https://x.sharepoint.com/sites/KnowledgeBase/Shared%20Documents/Uploaded%20Files/Northwind/Northwind_Standard_Benefits_Details%201.pdf"
+                    },
+                    {
+                        FileName: "Northwind_Health_Plus_Benefits_Details%201.pdf",
+                        FileUrl: "https://x.sharepoint.com/sites/KnowledgeBase/Shared%20Documents/Uploaded%20Files/Northwind/Northwind_Health_Plus_Benefits_Details%201.pdf"
+                    }    
+                ]
+
+            - kind: SetVariable
+              id: setVariable_ypg23P
+              variable: Topic.UploadedFilesRootUrl
+              value: https://x.sharepoint.com/sites/KnowledgeBase/Shared%20Documents/Uploaded%20Files/
+
+            - kind: SetVariable
+              id: setVariable_eWQVoG
+              variable: Topic.FormattedAnswer
+              value: |-
+                =// Combine content with citations
+                Topic.Answer.Text.Content & Char(10) & Char(10) & 
+                
+                // Concatenate citations in Markdown format
+                Concat(
+                    Topic.Answer.Text.CitationSources,
+                    
+                    // Recreate the Url if there isn't one
+                    "[" & Id & "]: " & 
+                    If(
+                        // If there is no URL
+                        IsBlank(Url),
+                        If(
+                            // Check if the file exists in the FilesSources table
+                            IsBlank(
+                                LookUp(Topic.FilesSources, Name = FileName, ThisRecord)
+                            ), 
+                            // If doesn't exist, use the UploadedFilesRootUrl URL pattern
+                            Topic.UploadedFilesRootUrl & Name,
+                            // Else use the FilesSources table URL
+                            LookUp(Topic.FilesSources, Name = FileName, FileUrl)
+                        ), 
+                        // Else used the returned URL Value.
+                        Url
+                    ) &
+                
+                    // Improve file name formatting
+                    " """ & Substitute(Name, "%20", " ") & """",
+                    
+                    // Line breaks between citations
+                    Char(10) & Char(10)
+                )
+
+            - kind: SendActivity
+              id: sendActivity_skwikk
+              activity: "{Topic.FormattedAnswer}"
+
+            - kind: EndDialog
+              id: end-topic
+              clearTopicQueue: true

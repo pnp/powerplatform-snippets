@@ -1,0 +1,52 @@
+[
+    {
+      "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+      "name": "pnp-powerplatform-snippets-citations-topic",
+      "version": "1.0.0.0",
+      "source": "pnp",
+      "creationDateTime": "2024-09-01T00:00:00.000Z",
+      "updateDateTime": "2024-09-01T00:00:00.000Z",
+      "title": "Citations (Topic)",
+      "shortDescription": "This is a snippet that demonstrates how you can generate better looking citations in Copilot Studio.",
+      "longDescription": [
+        "This is a snippet that demonstrates how you can generate better looking citations in Copilot Studio."
+      ],
+      "url": "https://github.com/pnp/powerplatform-snippets/tree/main/copilot-studio/citations-topic/",
+      "products": [
+        "Power Platform",
+        "Copilot Studio",
+        "powerplatform-snippets",
+        "copilot-studio-snippets"
+      ],
+      "tags": [
+      ],
+      "categories": [
+      ],
+      "metadata": [
+        {
+          "key": "Product",
+          "value": "Copilot Studio"
+        },
+        {
+          "key": "Type",
+          "value": "Topic"
+        }
+      ],
+      "thumbnails": [
+        {
+          "type": "image",
+          "order": 100,
+          "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/templates/previewsnippets.png",
+          "alt": "Preview PNG"
+        }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "HenryJammes",
+          "name": "Henry Jammes",
+          "pictureUrl": "https://github.com/HenryJammes.png"
+        }
+      ]
+    }
+  ]
+  
