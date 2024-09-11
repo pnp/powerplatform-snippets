@@ -1,0 +1,90 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    triggerQueries:
+      - Travel plans
+      - Travel plan
+      - Trip plans
+      - Trip plan
+      - Can you help me with a travel plan?
+      - Travel plan help
+
+  actions:
+    - kind: AdaptiveCardPrompt
+      id: tZ7hl4
+      interruptionPolicy:
+        allowInterruption: false
+
+      repeatCount: 0
+      card: |-
+        {
+            "type": "AdaptiveCard",
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "version": "1.5",
+            "body": [
+                {
+                    "type": "TextBlock",
+                    "size": "Medium",
+                    "weight": "Bolder",
+                    "text": "✈️ Travel plan"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "We need a little bit more info from you to get you some recommendations",
+                    "wrap": true
+                },
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "Input.Text",
+                            "placeholder": "Enter your destination",
+                            "label": "Where are you going to?",
+                            "id": "destination",
+                            "isRequired": true,
+                            "separator": true,
+                            "errorMessage": "Please enter the destination of your travel."
+                        },                
+                        {
+                            "type": "Input.Text",
+                            "placeholder": "Enter the amount of activities",
+                            "label": "How many activities are you looking for?",
+                            "id": "number",
+                            "isRequired": true,
+                            "separator": true,
+                            "errorMessage": "Please enter a number of activities."
+                        },
+                        {
+                            "type": "ActionSet",
+                            "actions": [
+                                {
+                                    "type": "Action.Submit",
+                                    "title": "Submit"
+                                }
+                            ]
+                        }
+                    ],
+                    "style": "emphasis"
+                }
+            ]
+        }
+      output:
+        binding:
+          actionSubmitId: Topic.actionSubmitId
+          destination: Topic.destination
+          number: Topic.number
+
+      outputType:
+        properties:
+          actionSubmitId: String
+          destination: String
+          number: String
+
+    - kind: SendActivity
+      id: sendActivity_4AC9u6
+      activity: 'Prompt output'
+
+    - kind: EndDialog
+      id: INpkyZ
