@@ -8,7 +8,7 @@ The snippet includes a header and a side bar that can be used to add filters, a 
 
 ## Minimal Path to Awesome
 
-1. Open a new or existing canvas app in **Power Apps.**
+1. Open a new or existing canvas app (Tablet format) in **Power Apps.**
 
 1. Download the following image: [Gradient.png](./assets/Gradient.png) and upload it into the **Media** section of your app.
 
@@ -79,3 +79,13 @@ The snippet includes a header and a side bar that can be used to add filters, a 
 1. In the canvas app **Tree view**, right-click on an empty screen and select **Paste** > **Paste code**.
 
     ![Paste the YAML code into your canvas app](./assets/paste-code.png)
+
+    > **NOTE:**
+    >
+    > If you see any formula errors, you may need to copy and re-paste the [YAML-file](./source/product-gallery.yaml) back so that the control names resolve correctly. Also check if you have created the collection properly.
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/product-gallery" aria-hidden="true" />
