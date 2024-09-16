@@ -1,0 +1,204 @@
+- ScreenContainer1:
+    Control: GroupContainer
+    Variant: verticalAutoLayoutContainer
+    Properties:
+      Fill: =RGBA(245, 245, 245, 1)
+      Height: =Parent.Height
+      LayoutAlignItems: =LayoutAlignItems.Stretch
+      LayoutDirection: =LayoutDirection.Vertical
+      LayoutGap: =16
+      LayoutMode: =LayoutMode.Auto
+      PaddingBottom: =16
+      PaddingLeft: =16
+      PaddingRight: =16
+      PaddingTop: =16
+      Width: =Parent.Width
+    Children:
+    - HeaderContainer1:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          Fill: =RGBA(192, 0, 0, 1)
+          FillPortions: =0
+          Height: =110
+          LayoutMode: =LayoutMode.Auto
+          RadiusBottomLeft: =8
+          RadiusBottomRight: =8
+          RadiusTopLeft: =8
+          RadiusTopRight: =8
+        Children:
+        - Container9:
+            Control: GroupContainer
+            Variant: manualLayoutContainer
+            Children:
+            - HeaderGradientHTML:
+                Control: HtmlViewer
+                Properties:
+                  HtmlText: |
+                    ="<div style=""
+                        background: 
+                            linear-gradient(180deg, 
+                                rgba(0,0,0,0.3) 0%, 
+                                rgba(0,0,0,0.25) 25%,
+                                rgba(0,0,0,0) 70%);
+                        height:
+                            " & HeaderGradientHTML.Height -1 & "px"">
+                    </div>"
+                  DisabledBorderColor: =RGBA(56, 56, 56, 1)
+                  Fill: =RGBA(192, 0, 0, 1)
+                  Height: =Parent.Height
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =0
+                  Width: =Parent.Width
+    - MainContainer1:
+        Control: GroupContainer
+        Variant: verticalAutoLayoutContainer
+        Properties:
+          Fill: =RGBA(255, 255, 255, 1)
+          LayoutMode: =LayoutMode.Auto
+          RadiusBottomLeft: =8
+          RadiusBottomRight: =8
+          RadiusTopLeft: =8
+          RadiusTopRight: =8
+        Children:
+        - Container10:
+            Control: GroupContainer
+            Variant: verticalAutoLayoutContainer
+            Properties:
+              FillPortions: =2
+              LayoutDirection: =LayoutDirection.Vertical
+              LayoutMode: =LayoutMode.Auto
+              RadiusBottomLeft: =0
+              RadiusBottomRight: =0
+              RadiusTopLeft: =0
+              RadiusTopRight: =0
+            Children:
+            - Container1:
+                Control: GroupContainer
+                Variant: manualLayoutContainer
+                Children:
+                - GalleryBackground:
+                    Control: Image
+                    Properties:
+                      Image: =Gradient
+                      Height: =Parent.Height
+                      ImagePosition: =ImagePosition.Fill
+                      Width: =Parent.Width
+                - ProductGallery:
+                    Control: Gallery
+                    Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                    Properties:
+                      Items: ='PizzaSpecials'
+                      WrapCount: =2
+                      DelayItemLoading: =true
+                      Fill: =RGBA(255, 255, 255, 0)
+                      Height: =Parent.Height
+                      Layout: =Layout.Vertical
+                      LoadingSpinner: =LoadingSpinner.Data
+                      ShowScrollbar: =false
+                      TemplatePadding: =0
+                      TemplateSize: =251
+                      Transition: =Transition.Pop
+                      Width: =871
+                    Children:
+                    - ProductPrice:
+                        Control: Classic/Button
+                        Properties:
+                          OnSelect: =Select(Parent)
+                          Text: =(Text(ThisItem.Price, "$#,##0.00", "en-US"))
+                          DisplayMode: =DisplayMode.View
+                          Fill: =RGBA(13, 175, 8, 1)
+                          RadiusBottomLeft: =6
+                          RadiusBottomRight: =6
+                          RadiusTopLeft: =6
+                          RadiusTopRight: =6
+                          Size: =18
+                          Width: =110
+                          X: =300
+                          Y: =191
+                    - ProductDescription:
+                        Control: Label
+                        Properties:
+                          OnSelect: =
+                          Text: =ThisItem.Description
+                          Color: =RGBA(255, 242, 204, 1)
+                          FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                          Height: =71
+                          PaddingBottom: =0
+                          PaddingLeft: =12
+                          PaddingRight: =0
+                          PaddingTop: =0
+                          Size: =14
+                          VerticalAlign: =VerticalAlign.Top
+                          Width: =370
+                          X: =ProductName.X
+                          Y: =ProductName.Y + ProductName.Height
+                    - ProductName:
+                        Control: Label
+                        Properties:
+                          OnSelect: =Select(Parent)
+                          Text: =Upper(ThisItem.Name)
+                          Color: =RGBA(255, 255, 255, 1)
+                          FontWeight: =FontWeight.Semibold
+                          Height: =43
+                          PaddingBottom: =0
+                          PaddingLeft: =12
+                          PaddingRight: =0
+                          PaddingTop: =0
+                          Size: =22
+                          VerticalAlign: =VerticalAlign.Top
+                          Width: =406
+                          X: =29.5
+                          Y: =50
+                    - ImageGradientHtml:
+                        Control: HtmlViewer
+                        Properties:
+                          OnSelect: =Select(Parent)
+                          HtmlText: |-
+                            ="<div style=""
+                                background: 
+                                    linear-gradient(180deg, 
+                                        rgba(0,0,0,0.8183648459383753) 20%, 
+                                        rgba(0,0,0,0) 70%,
+                                        rgba(0,0,0,0) 70%);
+                                width: 100%;
+                                height:
+                                    " & ImageGradientHtml.Height -1 & "px;
+                                border-radius: 30px;"">
+                            </div>"
+                          DisabledBorderColor: =RGBA(56, 56, 56, 1)
+                          Height: =208
+                          PaddingBottom: =0
+                          PaddingLeft: =0
+                          PaddingRight: =0
+                          PaddingTop: =0
+                          Width: =406
+                          X: =27
+                          Y: =28
+                    - ProductImage:
+                        Control: Image
+                        Properties:
+                          OnSelect: =Select(Parent)
+                          Image: =ThisItem.ImageUrl
+                          Height: =215
+                          ImagePosition: =ImagePosition.Fill
+                          RadiusBottomLeft: =30
+                          RadiusBottomRight: =30
+                          RadiusTopLeft: =30
+                          RadiusTopRight: =30
+                          Width: =406
+                          X: =27
+                          Y: =28
+        - Container11:
+            Control: GroupContainer
+            Variant: verticalAutoLayoutContainer
+            Properties:
+              Fill: =RGBA(51, 51, 51, 1)
+              LayoutDirection: =LayoutDirection.Vertical
+              LayoutMode: =LayoutMode.Auto
+              RadiusBottomLeft: =0
+              RadiusBottomRight: =0
+              RadiusTopLeft: =0
+              RadiusTopRight: =0
