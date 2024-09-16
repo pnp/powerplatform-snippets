@@ -1,0 +1,129 @@
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: id
+    value: =System.User.PrincipalName
+
+outputs:
+  - propertyName: aboutMe
+
+  - propertyName: accountEnabled
+
+  - propertyName: birthday
+
+  - propertyName: businessPhones
+
+  - propertyName: city
+
+  - propertyName: companyName
+
+  - propertyName: country
+
+  - propertyName: department
+
+  - propertyName: displayName
+
+  - propertyName: givenName
+
+  - propertyName: hireDate
+
+  - propertyName: id
+
+  - propertyName: interests
+
+  - propertyName: jobTitle
+
+  - propertyName: mail
+
+  - propertyName: mailNickname
+
+  - propertyName: mobilePhone
+
+  - propertyName: mySite
+
+  - propertyName: officeLocation
+
+  - propertyName: pastProjects
+
+  - propertyName: postalCode
+
+  - propertyName: preferredLanguage
+
+  - propertyName: preferredName
+
+  - propertyName: responsibilities
+
+  - propertyName: schools
+
+  - propertyName: skills
+
+  - propertyName: state
+
+  - propertyName: streetAddress
+
+  - propertyName: surname
+
+  - propertyName: userPrincipalName
+
+  - propertyName: userType
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: { REPLACE-WITH-CONNECTION-REFERENCE-NAME }
+  connectionProperties:
+    mode: Invoker
+
+  operationId: Manager_V2
+
+response:
+  activity:
+    attachments:
+      - kind: AdaptiveCardTemplate
+        cardContent: |-
+          ={
+            type: "AdaptiveCard",
+            body: [
+              {
+                type: "TextBlock",
+                text: "Your manager is",
+                wrap: true
+              },
+              {
+                type: "ColumnSet",
+                columns: [
+                  {
+                    type: "Column",
+                    items: [
+                      {
+                        type: "TextBlock",
+                        weight: "Bolder",
+                        text: Topic.Output.displayName,
+                        wrap: true
+                      },
+                      {
+                        type: "TextBlock",
+                        spacing: "None",
+                        text: Topic.Output.jobTitle,
+                        isSubtle: true,
+                        wrap: true
+                      }
+                    ],
+                    width: "stretch"
+                  }
+                ]
+              }
+            ],
+            actions: [
+              {
+                type: "Action.OpenUrl",
+                title: $"💬 Start a Teams chat with {Topic.Output.givenName}",
+                url: $"https://teams.microsoft.com/l/chat/0/0?users={Topic.Output.mail}"
+              }
+            ],
+            '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+            version: "1.3"
+          }
+
+  mode: Strict
+
+outputMode: Specific
