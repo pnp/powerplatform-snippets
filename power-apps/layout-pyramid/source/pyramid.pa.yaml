@@ -1,0 +1,79 @@
+- MainContainerPyramidScreen:
+    Control: GroupContainer
+    Variant: verticalAutoLayoutContainer
+    Properties:
+      Height: =Parent.Height
+      LayoutAlignItems: =LayoutAlignItems.Stretch
+      LayoutDirection: =LayoutDirection.Vertical
+      LayoutJustifyContent: =LayoutJustifyContent.Center
+      LayoutMode: =LayoutMode.Auto
+      Width: =Parent.Width
+    Children:
+    - Container1PyramidScreen:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          LayoutMode: =LayoutMode.Auto
+    - Container2PyramidScreen:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          LayoutMode: =LayoutMode.Auto
+        Children:
+        - Container21PyramidScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container22PyramidScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+    - Container3PyramidScreen:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          LayoutMode: =LayoutMode.Auto
+        Children:
+        - Container31PyramidScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container32PyramidScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container33PyramidScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+    - Container4PyramidScreen:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          LayoutMode: =LayoutMode.Auto
+        Children:
+        - Container41PyramidScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container42PyramidScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container43PyramidScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container44PyramidScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
