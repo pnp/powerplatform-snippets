@@ -49,5 +49,5 @@ Remove the unused `Minimal path to awesome`, the instructions that are not relev
 <!---
 Replace X with the directory name of your snippet and uncomment this comment.
 
-<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/X" aria-hidden="true" />
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/X" aria-hidden="true" />
 --->
