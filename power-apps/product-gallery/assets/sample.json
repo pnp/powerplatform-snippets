@@ -1,0 +1,51 @@
+[
+    {
+      "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+      "name": "pnp-powerplatform-snippets-product-gallery",
+      "version": "1.0.0.0",
+      "source": "pnp",
+      "creationDateTime": "2024-09-12T00:00:00.000Z",
+      "updateDateTime": "2024-09-12T00:00:00.000Z",
+      "title": "Product Gallery",
+      "shortDescription": "This is a simple Power Apps YAML snippet that shows a scrollable gallery of products styled in a modern way.",
+      "longDescription": [
+        "This is a simple Power Apps YAML snippet that shows a scrollable gallery of products styled in a modern way. This gallery can be customized to show any type of data for a variety of use cases."
+      ],
+      "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/product-gallery/",
+      "products": [
+        "Power Platform",
+        "Power Apps",
+        "powerplatform-snippets",
+        "power-apps-snippets"
+      ],
+      "tags": [
+      ],
+      "categories": [
+      ],
+      "metadata": [
+        {
+          "key": "Product",
+          "value": "Power Apps"
+        },
+        {
+          "key": "Type",
+          "value": "Snippet"
+        }
+      ],
+      "thumbnails": [
+        {
+          "type": "image",
+          "order": 100,
+          "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/product-gallery/assets/product-gallery.png",
+          "alt": "Preview PNG"
+        }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "gomomohapi",
+          "name": "Gomolemo Mohapi",
+          "pictureUrl": "https://github.com/gomomohapi.png"
+        }
+      ]
+    }
+  ]
