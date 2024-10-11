@@ -18,7 +18,7 @@ This is for the donut visual only but this can be used within a gallery along wi
 1. Select the **imgSVGDonut** control and go to the **Image** property
 1. Replace **{ Replace-With-Dividend-Value }** with the **Number value that you want in the dividend of the calculation** 
 1. Replace **{ Replace-With-Divisor-Value }** with the **Number value that you want in the divisor of the calculation** 
-    ![View of the code](./assets/pastedsnippet.png)
+    ![View of the code](./assets/pastedSnippet.png)
 1. Once you replace those values, the SVG donut will appear and be filled in
   ![View of the code](./assets/workingsnippet.png)
 
