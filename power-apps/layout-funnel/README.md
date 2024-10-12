@@ -8,10 +8,94 @@ Snippet|Author(s)
 --------|---------
 Daniel Laskewitz | [GitHub](https://github.com/laskewitz) ([@Laskewitz](https://www.twitter.com/laskewitz) )
 
+## Code
+
+```yaml
+- MainContainerFunnelScreen:
+    Control: GroupContainer
+    Variant: verticalAutoLayoutContainer
+    Properties:
+      Height: =Parent.Height
+      LayoutAlignItems: =LayoutAlignItems.Stretch
+      LayoutDirection: =LayoutDirection.Vertical
+      LayoutJustifyContent: =LayoutJustifyContent.Center
+      LayoutMode: =LayoutMode.Auto
+      Width: =Parent.Width
+    Children:
+    - Container1FunnelScreen:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          LayoutMode: =LayoutMode.Auto
+        Children:
+        - Container11FunnelScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container12FunnelScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container13FunnelScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container14FunnelScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+    - Container2FunnelScreen:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          LayoutMode: =LayoutMode.Auto
+        Children:
+        - Container21FunnelScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container22FunnelScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container23FunnelScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+    - Container3FunnelScreen:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          LayoutMode: =LayoutMode.Auto
+        Children:
+        - Container31FunnelScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+        - Container32FunnelScreen:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              LayoutMode: =LayoutMode.Auto
+    - Container4FunnelScreen:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          LayoutMode: =LayoutMode.Auto
+```
+
 ## Minimal path to awesome
 
 1. Open your canvas app in **Power Apps**
-1. Copy the contents of the **[YAML-file](./source/funnel.pa.yaml)** 
+1. Copy the contents of the **[YAML-file](./source/funnel.pa.yaml)** or copy it from the code above.
 1. Right click on the screen where you want to add the snippet and select "Paste YAML"
 ![View of the paste code button](./assets/pastecode.png)
 
