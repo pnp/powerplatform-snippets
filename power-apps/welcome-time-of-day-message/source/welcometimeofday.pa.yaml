@@ -1,0 +1,8 @@
+- TextCanvas3_1:
+    Control: Text
+    Properties:
+      Size: =24
+      Text: "=If(\n        Hour(Now()) >= 6 && Hour(Now()) < 12, \"\U0001F324️  Good Morning, \",\n        Hour(Now()) >= 12 && Hour(Now()) < 18, \"☀️  Good Afternoon, \",\n        \"\U0001F319  Good Night, \")\n & Left(User().FullName, Find(\" \", User().FullName) - 1)\n "
+      Weight: ='TextCanvas.Weight'.Semibold
+      Height: =40
+      Width: =500
