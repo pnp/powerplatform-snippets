@@ -34,7 +34,7 @@
         {
           "type": "image",
           "order": 100,
-          "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/glass-effect-template/assets/screen-glass.png",
+          "url": "https://raw.githubusercontent.com/leorrusso/powerplatform-snippets/main/power-apps/glass-effect-template/assets/screen-glass.png",
           "alt": "Preview PNG"
         }
       ],
