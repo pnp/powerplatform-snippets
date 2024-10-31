@@ -11,7 +11,7 @@
       "longDescription": [
         "This screen showcases a glass-effect design using the HTML text component in Power Apps. It features a prominent main card in the center displaying a profile, with navigation buttons at the top. At the bottom, there’s a navbar for additional navigation options. This snippet helps create a visually engaging layout using simple Power Apps elements."
       ],
-      "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/layout-funnel/",
+      "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/glass-effect-template/",
       "products": [
         "Power Platform",
         "Power Apps",
