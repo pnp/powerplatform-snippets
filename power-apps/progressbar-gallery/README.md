@@ -16,7 +16,7 @@ Elianne Burgers | [GitHub](https://github.com/Dutchy365) ([@elianne_tweets](http
 > **_NOTE:_** The recommended best practice is to utilize this YAML snippet inside of a canvas component for reusability. While at the moment of publishing this example the pasting code in a component doesn't work. While in sources both yaml files are added.
 
 1. Open your canvas app in **Power Apps**
-1. Copy the contents of the **[YAML-file](./source/progressbargallery.pa.yaml)** 
+1. Copy the contents of the **[YAML-file](./source/progressbar-component.pa.yaml)** 
 1. Click on the three dots of the screen where you want to add the snippet and select "Paste code"
 ![View of the paste code button](./assets/pastecode.png)
 1. Replace **Items Property** in the gallery with **your data**. 
