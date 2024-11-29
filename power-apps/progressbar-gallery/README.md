@@ -22,6 +22,55 @@ Elianne Burgers | [GitHub](https://github.com/Dutchy365) ([@elianne_tweets](http
 1. Replace **Items Property** in the gallery with **your data**. 
 ![Pasted Code](./assets/itemsgallery.png)
 
+### Example data
+This is the  collection, used in this example.
+```
+ClearCollect(colSteps, Table(
+            {
+                StepName: "Start",
+                StepNo: 0,
+                IsCurrent: true,
+                hasError: 0
+            },
+            {
+                StepName: "1. Self-assessment",
+                StepNo: 1,
+                IsCurrent: false,
+                hasFeedback: 2,
+                hasError: 1
+            },
+            {
+                StepName: "2. Career goals",
+                StepNo: 2,
+                IsCurrent: false,
+                hasFeedback: 3,
+                hasError: 0
+            },
+            {
+                StepName: "3. Learning & development",
+                StepNo: 3,
+                StepScreen: "Steps Screen",
+                IsCurrent: false,
+                hasFeedback: 0,
+                hasError: 2
+            },
+            {
+                StepName: "4. Work-life balance",
+                StepNo: 4,
+                IsCurrent: false,
+                hasFeedback: 1,
+                hasError: 0
+            },
+            {
+                StepName: "Save & Submit",
+                StepNo: 5,
+                IsCurrent: false,
+                hasError: 0
+            }
+        )
+    );
+```
+
 ## Code
 
 ``` YAML
@@ -29,58 +78,9 @@ Elianne Burgers | [GitHub](https://github.com/Dutchy365) ([@elianne_tweets](http
     Control: Gallery
     Variant: BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0
     Properties:
-      OnSelect: |+
-        =Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);
-        Set(varStepToNavigate, ThisItem.StepNo); 
-
-
-
-
+      OnSelect: "=Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);\nSet(varStepToNavigate, ThisItem.StepNo); \n\nUpdateIf(colSteps, StepNo = varCurrentStep,{IsCurrent: false});\nUpdateIf(colSteps, StepNo = varStepToNavigate,{IsCurrent: true});\nSet(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);"
       AccessibleLabel: ="Progress"
-      Items: |-
-        =Table(
-                    {
-                        StepName: "Start",
-                        StepNo: 0,
-                        IsCurrent: true,
-                        hasError: 0
-                    },
-                    {
-                        StepName: "1. Self-assessment",
-                        StepNo: 1,
-                        IsCurrent: false,
-                        hasFeedback: 2,
-                        hasError: 1
-                    },
-                    {
-                        StepName: "2. Career goals",
-                        StepNo: 2,
-                        IsCurrent: false,
-                        hasFeedback: 3,
-                        hasError: 0
-                    },
-                    {
-                        StepName: "3. Learning & development",
-                        StepNo: 3,
-                        StepScreen: "Steps Screen",
-                        IsCurrent: false,
-                        hasFeedback: 0,
-                        hasError: 2
-                    },
-                    {
-                        StepName: "4. Work-life balance",
-                        StepNo: 4,
-                        IsCurrent: false,
-                        hasFeedback: 1,
-                        hasError: 0
-                    },
-                    {
-                        StepName: "Save & Submit",
-                        StepNo: 5,
-                        IsCurrent: false,
-                        hasError: 0
-                    }
-                )
+      Items: =colSteps
       BorderColor: =
       BorderStyle: =BorderStyle.None
       DelayItemLoading: =true

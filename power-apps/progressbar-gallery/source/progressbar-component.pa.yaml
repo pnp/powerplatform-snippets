@@ -2,50 +2,7 @@
     Control: Component
     Properties:
       Color: =RGBA(16,162,194, 1)
-      ProgressItems: |-
-        =Table(
-            {
-                StepName: "Start",
-                StepNo: 0,
-                IsCurrent: true,
-                hasError: 0
-            },
-            {
-                StepName: "1. Self-assessment",
-                StepNo: 1,
-                IsCurrent: false,
-                hasFeedback: 2,
-                hasError: 1
-            },
-            {
-                StepName: "2. Career goals",
-                StepNo: 2,
-                IsCurrent: false,
-                hasFeedback: 3,
-                hasError: 0
-            },
-            {
-                StepName: "3. Learning & development",
-                StepNo: 3,
-                StepScreen: "Steps Screen",
-                IsCurrent: false,
-                hasFeedback: 0,
-                hasError: 2
-            },
-            {
-                StepName: "4. Work-life balance",
-                StepNo: 4,
-                IsCurrent: false,
-                hasFeedback: 1,
-                hasError: 0
-            },
-            {
-                StepName: "Save & Submit",
-                StepNo: 5,
-                IsCurrent: false,
-                hasError: 0
-            }
-        )
+      ProgressItems: =colSteps
       Height: =100
       Width: =CountRows(ProgressBarModern.ProgressItems) * 106
     Children:
@@ -53,12 +10,13 @@
         Control: Gallery
         Variant: BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0
         Properties:
-          OnSelect: |+
-            =Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);
-            Set(varStepToNavigate, ThisItem.StepNo); 
+  OnSelect: |+
+        =Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);
+        Set(varStepToNavigate, ThisItem.StepNo); 
 
-
-
+        UpdateIf(colSteps, StepNo = varCurrentStep,{IsCurrent: false});
+        UpdateIf(colSteps, StepNo = varStepToNavigate,{IsCurrent: true});
+        Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);
 
           AccessibleLabel: ="Progress"
           Items: =ProgressBarModern.ProgressItems
