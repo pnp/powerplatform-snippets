@@ -1,6 +1,6 @@
 # Glass Effect Template
 
-This screen showcases a glass-effect design using the HTML component in Power Apps. It features a prominent main card in the center displaying a profile. 
+This screen showcases a glass-effect design using the HTML component in Power Apps. It features a prominent main card in the center displaying a profile.  
 ![View of the paste code button](./assets/maincard.png)
 
 The KPI section uses emoji icons creatively to represent key metrics, adding a visual and intuitive touch. Each KPI is displayed within a card, featuring the metric value alongside its corresponding emoji.  
