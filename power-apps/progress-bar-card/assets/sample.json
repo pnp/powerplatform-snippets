@@ -1,0 +1,50 @@
+[
+    {
+      "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+      "name": "pnp-powerplatform-snippets-progress-bar-card",
+      "version": "1.0.0.0",
+      "source": "pnp",
+      "creationDateTime": "2024-10-31T00:00:00.000Z",
+      "updateDateTime": "2024-10-31T00:00:00.000Z",
+      "title": "HTML Progress Bar Card",
+      "shortDescription": "A Power Apps YAML snippet for a customizable progress bar card with gradient and text options.",
+      "longDescription": [
+        "This is a Power Apps YAML snippet that displays a customizable HTML-based progress bar card. The card is designed to show a title, percentage value, and descriptive subtitle with gradient color options for visual appeal. Suitable for applications that require easy visualization of progress metrics."
+      ],
+      "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/progress-bar-card/",
+      "products": [
+        "Power Platform",
+        "Power Apps",
+        "powerplatform-snippets",
+        "power-apps-snippets"
+      ],
+      "tags": ["progress", "gradient", "html", "powerapps"],
+      "categories": ["Visualizations", "Dashboard Components"],
+      "metadata": [
+        {
+          "key": "Product",
+          "value": "Power Apps"
+        },
+        {
+          "key": "Type",
+          "value": "Snippet"
+        }
+      ],
+      "thumbnails": [
+        {
+          "type": "image",
+          "order": 100,
+          "url": "https://raw.githubusercontent.com/rualthof/powerplatform-snippets/main/power-apps/progress-bar-card/assets/progress-bar-card.png",
+          "alt": "Progress Bar Card Preview"
+        }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "rualthof",
+          "name": "Rudimar Baesso Althof",
+          "pictureUrl": "https://github.com/rualthof.png"
+        }
+      ]
+    }
+  ]
+  
