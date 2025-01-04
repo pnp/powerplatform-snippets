@@ -1,0 +1,33 @@
+- htmlProgressBarCard:
+    Control: HtmlViewer
+    Properties:
+      HtmlText: |+
+        =With(
+            {
+                Title: "Customer Satisfaction",
+                Subtitle: "Satisfaction Rate",
+                Value: "92%",
+                BgColor: Color.White,
+                GradientStart: "#da22ff", // Start color of the gradient
+                GradientEnd: "#ff9b44"    // End color of the gradient
+            },
+            $"<div style='text-align: center; border-radius: 10px; padding: 10px; background-color: {Substitute(JSON(BgColor), """","")}; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: absolute; height: 96%; width: 96%;'>
+                <div style='height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;'>
+                    <!-- Title Section -->
+                    <div style='font-size: 1.2em; font-weight: bold; margin-bottom: 5px; color: #333;'>{Title}</div>
+                    <!-- Value Section -->
+                    <div style='font-size: 2.5em; font-weight: bold; background: linear-gradient(90deg, {GradientStart}, {GradientEnd}); -webkit-background-clip: text; color: transparent; margin-bottom: 10px;'>{Value}</div>
+                    <!-- Progress Bar Section -->
+                    <div style='width: 80%; height: 8px; background-color: #e0e0e0; border-radius: 4px; margin-top: 10px;'>
+                        <div style='width: {Value}; height: 100%; background: linear-gradient(90deg, {GradientStart}, {GradientEnd}); border-radius: 4px;'></div>
+                    </div>
+                    <!-- Footer Text Section -->
+                    <div style='font-size: 0.9em; color: #666; margin-top: 10px;'>{Subtitle}</div>
+                </div>
+            </div>"
+        )
+      Height: =161
+      Size: =12
+      Width: =275
+      X: =56
+      Y: =104
