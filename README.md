@@ -8,4 +8,3 @@ This repository contains community snippets that demonstrate different usage pat
 |<h2>Power Automate Desktop</h2>|<h2>Power Pages</h2>|
 |:--------------------------------------------------:|:----------------------:|
 |![](./assets/PowerAutomate_scalable.svg)<br/>The snippets for Power Automate Desktop can be found [here](power-automate-desktop).|![](./assets/PowerPages_scalable.svg) <br/>The snippets for Power Pages can be found [here](power-pages).|
-
