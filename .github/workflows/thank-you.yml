@@ -1,0 +1,14 @@
+name: Thank Contributor
+on: pull_request_target
+
+jobs:
+  thank_contributor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            Thank you for your contribution, @${{ github.actor }}! We (@pnp/power-platform-collaborators) aim to review it in the upcoming days!          
+          comment_includes: "Thank you"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
