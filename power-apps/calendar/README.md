@@ -16,10 +16,10 @@ Marcel Ferreira | [GitHub](https://github.com/marcelbf)
 
 1. Open your canvas app in **Power Apps**
 1. Copy the contents of the **[YAML-file](./source/calendar.pa.yaml)** or copy the code from above.
-1. Right click on the screen where you want to add the snippet and select "Paste YAML"
-This will add the calendar to your screen. Customize the values to your need.
+1. Right click on the screen where you want to add the snippet and select "Paste Code"
+1. Customize the values to your need. Use the variable **_selectedDate** to get or set the selected date.
+
 ![View of the paste code button](./assets/calendar.png)
-1. Use the variable **_selectedDate** to get or set the selected date
 
 ## Disclaimer
 
