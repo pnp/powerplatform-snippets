@@ -25,4 +25,4 @@ Marcel Ferreira | [GitHub](https://github.com/marcelbf)
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/layout-pyramid" aria-hidden="true" />
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/calendar" aria-hidden="true" />
