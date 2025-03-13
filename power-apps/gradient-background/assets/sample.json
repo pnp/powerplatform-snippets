@@ -1,0 +1,50 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-gradient-background",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-03-13T00:00:00.000Z",
+    "updateDateTime": "2025-03-13T00:00:00.000Z",
+    "title": "Gradient Background",
+    "shortDescription": "This function, funcGenerateHTMLForColourGradientBackground, generates the HTML Text required to create a linear colour-gradient background, with any number of colours.",
+    "longDescription": [
+      "This function, funcGenerateHTMLForColourGradientBackground, generates the HTML Text required to create a linear colour-gradient background, with any number of colours. The snippet also includes a function used to convert RGBA colours to Hex strings, which is called by funcGenerateHTMLForColourGradientBackground. This function can also be used independently."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/gradient-background/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets",
+      "formula-snippets"
+    ],
+    "tags": [ ],
+    "categories": [ ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Formula"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/gradient-background/assets/example.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ClarissaGillinghamPDS",
+        "name": "Clarissa Gillingham",
+        "pictureUrl": "https://github.com/ClarissaGillinghamPDS.png"
+      }
+    ]
+  }
+]
