@@ -1,0 +1,87 @@
+kind: AdaptiveDialog
+modelDescription: This topic showcase how to render charts in Copilot agents using an HTTP based chart rendering API. It can answer to question like 'Show chart examples'.
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: Question
+      id: question_rOYgms
+      displayName: Question
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.varSelectedChart
+      prompt: |-
+        Select the type of chart you want to generate.
+        
+        _**Note:** This example uses static data for demonstration purposes. To generate charts with dynamic data, you’ll need to fetch and pass the data accordingly. Refer to https://quickchart.io/ for more details._
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Bar Chart
+              displayName: Bar Chart
+
+            - id: Line Graph
+              displayName: Line Graph
+
+            - id: Doughnut Chart
+              displayName: Doughnut Chart
+
+            - id: Mixed Chart
+              displayName: Mixed Chart
+
+    - kind: ConditionGroup
+      id: conditionGroup_EH32HX
+      conditions:
+        - id: conditionItem_Zt64Ak
+          condition: =Topic.varSelectedChart = 'dev_sampleChart.topic.ChartNew.main.question_rOYgms'.'Bar Chart'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_gTuTTp
+              activity:
+                attachments:
+                  - kind: ImageCardTemplate
+                    title: Bar chart example
+                    image: https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], datasets:[{label:'Users',data:[50,60,70,180]},{label:'Revenue',data:[100,200,300,400]}]}}
+
+        - id: conditionItem_hXahLC
+          condition: =Topic.varSelectedChart = 'dev_sampleChart.topic.ChartNew.main.question_rOYgms'.'Line Graph'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_jq5l8I
+              activity:
+                attachments:
+                  - kind: ImageCardTemplate
+                    title: Line graph example
+                    image: https://quickchart.io/chart?c={type:'line',data:{labels:['January','February','March','April','May'],datasets:[{label:'Dogs',data:[50,60,70,180,190],fill:false,borderColor:'blue'},{label:'Cats',data:[100,200,300,400,500],fill:false,borderColor:'green'}]}}
+
+        - id: conditionItem_D86X7M
+          condition: =Topic.varSelectedChart = 'dev_sampleChart.topic.ChartNew.main.question_rOYgms'.'Doughnut Chart'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_qBgeYM
+              activity:
+                attachments:
+                  - kind: ImageCardTemplate
+                    title: Doughnut chart example
+                    image: https://quickchart.io/chart?c={type:'doughnut',data:{labels:['January','February','March','April','May'],datasets:[{data:[50,60,70,180,190]}]},options:{plugins:{doughnutlabel:{labels:[{text:'550',font:{size:20}},{text:'total'}]}}}}
+
+        - id: conditionItem_j5Nxrl
+          condition: =Topic.varSelectedChart = 'dev_sampleChart.topic.ChartNew.main.question_rOYgms'.'Mixed Chart'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_Qbrd6V
+              activity:
+                attachments:
+                  - kind: ImageCardTemplate
+                    title: Mixed chart example
+                    image: https://quickchart.io/chart?c={type:'bar',data:{labels:['January','February','March','April','May'],datasets:[{label:'Dogs',data:[50,60,70,180,190]},{label:'Cats',data:[100,200,300,400,500]},{type:'line',fill:false,label:'Potatoes',data:[100,400,200,400,700]}]}}
+
+    - kind: EndDialog
+      id: svnnol
+
+inputType: {}
+outputType: {}
