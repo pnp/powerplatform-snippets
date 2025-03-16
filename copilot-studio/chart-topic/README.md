@@ -1,6 +1,6 @@
-# Chart in Copilot
+# Chart (Topic)
 
-This snippet demonstrates how to render charts in Copilot agents using an HTTP based chart rendering API.
+This snippet demonstrates how to render charts in Copilot Studio agents using an HTTP based chart rendering API.
 
 ![Chart Topic](./assets/chart.png)
 
