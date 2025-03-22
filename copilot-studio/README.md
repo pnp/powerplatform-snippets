@@ -1,5 +1,7 @@
 # Copilot Studio
 
+![](./assets/CopilotStudio.Scalable.svg)
+
 In this directory, you will find Copilot Studio snippets. Read the README in the folder of the snippet you want to use to know how to use it!
 
 ## Actions
