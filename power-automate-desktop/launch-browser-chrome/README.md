@@ -27,3 +27,8 @@ The code is compatible with Power Automate Desktop version 2.42.317.24061 and la
 9. Click **Save** in the flow designer
 10. **Enjoy**
 
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-automate-desktop/launch-browser-chrome" aria-hidden="true" />
