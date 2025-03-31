@@ -41,7 +41,7 @@ This snippet connects to a SharePoint list which will need to be configured befo
 1. In the pop-up, select **Use this template**
 1. Give your list a name (keep track of this to use in later steps) and select **Create**
 1. In the newly created list, scroll all the way to the right and select **Add column**
-   ![View of the code editor with a red line around the connection reference name](./assets/addcolumn.png)
+   ![View of the code editor with a red line around the connection reference name](./assets/addColumn.png)
 1. Choose **Hyperlink** as the column type and click **Next**
 1. For the Name type **Image** and click **Save**
 
