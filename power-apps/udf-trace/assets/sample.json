@@ -1,0 +1,50 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-udf-trace",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-02T00:00:00.000Z",
+    "updateDateTime": "2025-04-02T00:00:00.000Z",
+    "title": "Send telemetry logs with User Defined Functions to Azure Application Insights",
+    "shortDescription": "This snippet demonstrates how to implement telemetry logging in Power Apps using User Defined Functions (UDFs) and Azure Application Insights. It showcases the definition and application of UDFs to efficiently manage and send telemetry data.",
+    "longDescription": [
+      "This sample demonstrates a structured approach to telemetry logging in Power Apps using the Trace() function with Azure Application Insights. It addresses common issues that arise when Trace() is used inconsistently - such as mismatched parameters, varying message formats, and unstandardized severity levels. These inconsistencies can lead to unreliable telemetry data and complicate analysis. The sample also highlights the importance of preparing data properly before logging to avoid redundant nesting, which can make logs more difficult to parse and interpret."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/udf-trace/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets",
+      "formula-snippets"
+    ],
+    "tags": [ ],
+    "categories": [ ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Formula"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/udf-trace/assets/udf-trace.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Katerina-Chernevskaya",
+        "name": "Katerina Chernevskaya",
+        "pictureUrl": "https://github.com/Katerina-Chernevskaya.png"
+      }
+    ]
+  }
+]
