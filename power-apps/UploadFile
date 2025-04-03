@@ -108,7 +108,7 @@
                 Variant: Vertical
                 Properties:
                   BorderColor: =RGBA(0, 18, 107, 1)
-                  Height: =Parent.Height/2
+                  Height: =2*Parent.Height/4
                   Items: =var_uploadFile_listeAttachment
                   TemplatePadding: =0
                   TemplateSize: =RoundDown((Self.Height/(If(Self.AllItemsCount=0,1,RoundUp(Self.AllItemsCount/2,0)))),0)
@@ -116,7 +116,7 @@
                   Width: =18*Parent.Width/20
                   WrapCount: =2
                   X: =Parent.Width/20
-                  Y: =384
+                  Y: = Parent.Height/16+btn_fond.Height+10
                 Children:
                   - lab_title:
                       Control: Label@2.5.1
