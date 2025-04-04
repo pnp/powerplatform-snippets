@@ -22,15 +22,20 @@ Katerina Chernevskaya | [GitHub](https://github.com/Katerina-Chernevskaya/) - [L
 
 ## Prerequisites
 
-1. Existing Azure Application Insights resource. Add Azure Application Insights **Connection String** into the Power Apps Canvas app.
-![Instrumentation Key](./assets/key.png)
+1. Existing Azure Application Insights resource. Learn more how to create Azure Application Insights resource [here](https://learn.microsoft.com/en-us/azure/azure-monitor/app/create-workspace-resource?tabs=portal).
 
-2. Make sure that experimental features are enabled: 
+2. Connect your Power Apps Canvas app to Application Insights. You can follow the [official guide](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/application-insights#connect-your-app-to-application-insights) or use the steps below:
+   - Go to your Application Insights resource in Azure. On the **Overview** page, locate and copy the **Connection String**:
+   ![Connection String - Copy](./assets/key.png)
+   - In Power Apps Studio, select the **App** level, then navigate to the **Connection string** property on the right-hand pane and paste the copied value:
+   ![Connection String - Paste](./assets/key-paste.png)
+
+3. Make sure that experimental features are enabled: 
    - User-defined functions
    - User-defined types
    ![experimental-features](./assets/experimental-features.png)
 
-2. Power Apps Canvas app with the following controls (name the controls the same as in the list below):
+4. Power Apps Canvas app with the following controls (name the controls the same as in the list below). You can use the [sample screen snippet](./source/screen.pa.yaml) to quickly add a preconfigured screen with all necessary controls.
    - DatePicker
    - Slider
    - Gallery
@@ -47,11 +52,10 @@ Katerina Chernevskaya | [GitHub](https://github.com/Katerina-Chernevskaya/) - [L
 1. Open your Power App in edit mode
 2. Copy the contents of the **[udf.fx](./source/udf.fx)**
 3. Add the copied code into `Formula` property on the `App` level
-4. Copy the contents of the **[onselect.fx](./source/onselect.fx)**
-5. Insert the copied code into the `OnSelect` property of the Button
-6. Save the app and publish it
-7. Play the app, test the button to send telemetry to Azure Application Insights
-8. Navigate to the Azure Application Insights resource. Open the `Logs` under `Monitoring`. Select `trace` table. You will see the collected telemetry under the `customDimensions`
+4. *(Optional: if you didn't create the screen with the [sample screen snippet](./source/screen.pa.yaml))* Copy the contents of the **[onselect.fx](./source/onselect.fx)** and insert the copied code into the `OnSelect` property of the Button
+5. Make sure the screen with controls is easily accessible - either move it to a higher position in the screen list or add a navigation control to reach it. Save the app and publish it
+6. Play the app, test the button to send telemetry to Azure Application Insights
+7. Navigate to the Azure Application Insights resource. Open the `Logs` under `Monitoring`. Select `trace` table. You will see the collected telemetry under the `customDimensions`
 ![Azure Application Insights](./assets/aap.png)
 
 ## Disclaimer

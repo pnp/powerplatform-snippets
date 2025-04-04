@@ -78,18 +78,3 @@ udfTrace(
         )
     )
 };
-
-udfTraceError(
-    screen: Text,
-    button: Text 
-):Void =
-{
-    Trace(
-        "udf_trace_onError",
-        TraceSeverity.Error,
-        {
-            screen: screen,
-            button: button  
-        }
-    )
-};
