@@ -13,7 +13,7 @@ Star rating gallery| [mmbr1606](https://github.com/mmbr1606)
 ## Minimal path to awesome
 
 1. Open your canvas app in **Power Apps**
-1. Copy the contents of the **[YAML-file](./source/minesweeper.yaml)** 
+1. Copy the contents of the Yaml File. 
 1. Click on the three dots of the screen where you want to add the snippet and select "Paste code"
 
 
@@ -55,6 +55,4 @@ Screens:
 
 
 
-
-<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/star-rating" aria-hidden="true"
 
