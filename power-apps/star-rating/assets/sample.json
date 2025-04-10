@@ -11,7 +11,7 @@
       "longDescription": [
         "This snippet is designed for giving the possibility to have a star rating in a gallery. Simply insert a star icon in the gallery and copy over the YAML code."
       ],
-      "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/progressbar-gallery/",
+      "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/star-rating/",
       "products": [
         "Power Platform",
         "Power Apps",
@@ -34,7 +34,7 @@
         {
           "type": "image",
           "order": 100,
-          "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/refs/heads/main/power-apps/progressbar-gallery/assets/progressbar.png",
+          "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/refs/heads/main/power-apps/star-rating/assets/full_star_rating.png",
           "alt": "Preview PNG"
         }
       ],
