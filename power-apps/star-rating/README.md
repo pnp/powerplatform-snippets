@@ -8,7 +8,7 @@ Markus Franz
 
 Snippet|Author(s)
 --------|---------
-X | [X](https://github.com/mmbr1606) 
+Markus Franz | [mmbr1606](https://github.com/mmbr1606) 
 
 ## Minimal path to awesome
 
