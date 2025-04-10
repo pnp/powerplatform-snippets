@@ -34,7 +34,7 @@
         {
           "type": "image",
           "order": 100,
-          "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/refs/heads/main/power-apps/star-rating/assets/partialrating.png",
+          "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/star-rating/assets/partialrating.png"",
           "alt": "Preview PNG"
         }
       ],
