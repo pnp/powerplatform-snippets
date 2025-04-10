@@ -1,0 +1,49 @@
+[
+    {
+      "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+      "name": "pnp-powerplatform-snippets-star-rating",
+      "version": "1.0.0.0",
+      "source": "pnp",
+      "creationDateTime": "2025-04-10T00:00:00.000Z",
+      "updateDateTime": "2024-04-10T00:00:00.000Z",
+      "title": "Star Rating Gallery",
+      "shortDescription": "This is a snippet that creates a possibility for star ratings in a gallery",
+      "longDescription": [
+        "This snippet is designed for giving the possibility to have a star rating in a gallery. Simply insert a star icon in the gallery and copy over the YAML code."
+      ],
+      "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/progressbar-gallery/",
+      "products": [
+        "Power Platform",
+        "Power Apps",
+        "powerplatform-snippets",
+        "power-apps-snippets"
+      ],
+      "tags": [],
+      "categories": [],
+      "metadata": [
+        {
+          "key": "Product",
+          "value": "Power Apps"
+        },
+        {
+          "key": "Type",
+          "value": "Snippet"
+        }
+      ],
+      "thumbnails": [
+        {
+          "type": "image",
+          "order": 100,
+          "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/refs/heads/main/power-apps/progressbar-gallery/assets/progressbar.png",
+          "alt": "Preview PNG"
+        }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "mmbr1606",
+          "name": "Markus Franz",
+          "pictureUrl": "https://github.com/mmbr1606.png"
+        }
+      ]
+    }
+  ]
