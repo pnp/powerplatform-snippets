@@ -8,7 +8,7 @@ Markus Franz
 
 Snippet|Author(s)
 --------|---------
-Markus Franz | [mmbr1606](https://github.com/mmbr1606) 
+Star rating gallery| [mmbr1606](https://github.com/mmbr1606) 
 
 ## Minimal path to awesome
 
