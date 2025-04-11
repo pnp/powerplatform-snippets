@@ -1,7 +1,9 @@
 # Pickleball Team Generator
 
 
-Ever been out on the courts, and want to switch things up a bit? Break up the team that keep smashing everyone?..... Have an odd number of people, and need an unbiased way to have someone sit out? then have no fear! The Pickleball Team Generator is here!!
+Ever been out on the courts, and want to switch things up a bit? Break up the team that keep smashing everyone?..... Have an odd number of people, and need an unbiased way to have someone sit out? Then have no fear! The Pickleball Team Generator is here!!
+
+This code doesn't have to just be used for pickleball! It could be used for any game that has 2 teams facing each other with variable number of players per team AND variable number of simultaneous games!
 
 
 ## Author
@@ -12,7 +14,7 @@ Replace the X by the correct values in the table below.
 
 Snippet|Author
 --------|---------
-Nate Halliwell | [Youtube](https://www.youtube.com/playlist?list=PLlQ81_et2aJ-XKx3gVfVl0dQbJU5mUfgf) ([LinkedIn](hhttps://www.linkedin.com/in/natehalliwell/))
+Nate Halliwell | [Youtube](https://www.youtube.com/playlist?list=PLlQ81_et2aJ-XKx3gVfVl0dQbJU5mUfgf) ([LinkedIn](hhttps://www.linkedin.com/in/natehalliwell/) )
 
 ## Minimal path to awesome
 
