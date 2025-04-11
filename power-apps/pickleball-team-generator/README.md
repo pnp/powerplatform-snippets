@@ -14,7 +14,7 @@ Replace the X by the correct values in the table below.
 
 Snippet|Author
 --------|---------
-Nate Halliwell | [Youtube](https://www.youtube.com/playlist?list=PLlQ81_et2aJ-XKx3gVfVl0dQbJU5mUfgf) ([LinkedIn](hhttps://www.linkedin.com/in/natehalliwell/) )
+Nate Halliwell | [Youtube](https://www.youtube.com/playlist?list=PLlQ81_et2aJ-XKx3gVfVl0dQbJU5mUfgf) ([LinkedIn](https://www.linkedin.com/in/natehalliwell/ ))
 
 ## Minimal path to awesome
 
