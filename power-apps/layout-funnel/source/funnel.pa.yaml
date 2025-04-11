@@ -1,79 +1,78 @@
 - MainContainerFunnelScreen:
-    Control: GroupContainer
-    Variant: verticalAutoLayoutContainer
+    Control: GroupContainer@1.3.0
+    Variant: AutoLayout
     Properties:
       Height: =Parent.Height
       LayoutAlignItems: =LayoutAlignItems.Stretch
       LayoutDirection: =LayoutDirection.Vertical
       LayoutJustifyContent: =LayoutJustifyContent.Center
-      LayoutMode: =LayoutMode.Auto
       Width: =Parent.Width
     Children:
-    - Container1FunnelScreen:
-        Control: GroupContainer
-        Variant: horizontalAutoLayoutContainer
-        Properties:
-          LayoutMode: =LayoutMode.Auto
-        Children:
-        - Container11FunnelScreen:
-            Control: GroupContainer
-            Variant: horizontalAutoLayoutContainer
-            Properties:
-              LayoutMode: =LayoutMode.Auto
-        - Container12FunnelScreen:
-            Control: GroupContainer
-            Variant: horizontalAutoLayoutContainer
-            Properties:
-              LayoutMode: =LayoutMode.Auto
-        - Container13FunnelScreen:
-            Control: GroupContainer
-            Variant: horizontalAutoLayoutContainer
-            Properties:
-              LayoutMode: =LayoutMode.Auto
-        - Container14FunnelScreen:
-            Control: GroupContainer
-            Variant: horizontalAutoLayoutContainer
-            Properties:
-              LayoutMode: =LayoutMode.Auto
-    - Container2FunnelScreen:
-        Control: GroupContainer
-        Variant: horizontalAutoLayoutContainer
-        Properties:
-          LayoutMode: =LayoutMode.Auto
-        Children:
-        - Container21FunnelScreen:
-            Control: GroupContainer
-            Variant: horizontalAutoLayoutContainer
-            Properties:
-              LayoutMode: =LayoutMode.Auto
-        - Container22FunnelScreen:
-            Control: GroupContainer
-            Variant: horizontalAutoLayoutContainer
-            Properties:
-              LayoutMode: =LayoutMode.Auto
-        - Container23FunnelScreen:
-            Control: GroupContainer
-            Variant: horizontalAutoLayoutContainer
-            Properties:
-              LayoutMode: =LayoutMode.Auto
-    - Container3FunnelScreen:
-        Control: GroupContainer
-        Variant: horizontalAutoLayoutContainer
-        Properties:
-          LayoutMode: =LayoutMode.Auto
-        Children:
-        - Container31FunnelScreen:
-            Control: GroupContainer
-            Variant: horizontalAutoLayoutContainer
-            Properties:
-              LayoutMode: =LayoutMode.Auto
-        - Container32FunnelScreen:
-            Control: GroupContainer
-            Variant: horizontalAutoLayoutContainer
-            Properties:
-              LayoutMode: =LayoutMode.Auto
-    - Container4FunnelScreen:
-        Control: GroupContainer
-        Variant: horizontalAutoLayoutContainer
-        Properties:
-          LayoutMode: =LayoutMode.Auto
+      - Container1FunnelScreen:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            LayoutDirection: =LayoutDirection.Horizontal
+          Children:
+            - Container11FunnelScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  LayoutDirection: =LayoutDirection.Horizontal
+            - Container12FunnelScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  LayoutDirection: =LayoutDirection.Horizontal
+            - Container13FunnelScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  LayoutDirection: =LayoutDirection.Horizontal
+            - Container14FunnelScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  LayoutDirection: =LayoutDirection.Horizontal
+      - Container2FunnelScreen:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            LayoutDirection: =LayoutDirection.Horizontal
+          Children:
+            - Container21FunnelScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  LayoutDirection: =LayoutDirection.Horizontal
+            - Container22FunnelScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  LayoutDirection: =LayoutDirection.Horizontal
+            - Container23FunnelScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  LayoutDirection: =LayoutDirection.Horizontal
+      - Container3FunnelScreen:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            LayoutDirection: =LayoutDirection.Horizontal
+          Children:
+            - Container31FunnelScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  LayoutDirection: =LayoutDirection.Horizontal
+            - Container32FunnelScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  LayoutDirection: =LayoutDirection.Horizontal
+      - Container4FunnelScreen:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            LayoutDirection: =LayoutDirection.Horizontal

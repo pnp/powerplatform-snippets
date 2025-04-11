@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-grouped-vertical-feed",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-09T00:00:00.000Z",
+    "updateDateTime": "2025-04-09T00:00:00.000Z",
+    "title": "Grouped Vertical Feed",
+    "shortDescription": "This snippet demonstrates a nested gallery layout in Power Apps that visually groups records by date",
+    "longDescription": [
+      "This snippet demonstrates a nested gallery layout in Power Apps that visually groups records by date. The outer gallery generates the next 14 days using Sequence, while the inner gallery displays items (like appointments or tasks) that fall on each respective day."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/grouped-vertical-feed/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/grouped-vertical-feed/assets/feed.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "aprildunnam",
+        "name": "April Dunnam",
+        "pictureUrl": "https://github.com/aprildunnam.png"
+      }
+    ]
+  }
+]
