@@ -22,6 +22,15 @@
     ],
     "categories": [
     ],
+        "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/powerplatform-snippets/blob/main/templates/previewsnippets.png",
+        "alt": "Preview PNG"
+      }
+    ],
+
     "metadata": [
       {
         "key": "Product",
