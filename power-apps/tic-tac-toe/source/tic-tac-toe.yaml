@@ -1,0 +1,256 @@
+Screens:
+  scrGame:
+    Properties:
+      Fill: =RGBA(255, 255, 255, 1)
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+    Children:
+      - ctnGame:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            Height: =1136
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            Width: =App.Width
+          Children:
+            - btnStart:
+                Control: Button@0.0.44
+                Properties:
+                  Appearance: ='ButtonCanvas.Appearance'.Primary
+                  BasePaletteColor: =RGBA(76, 133, 169, 1)
+                  FontSize: =45
+                  Height: =63
+                  OnSelect: |-
+                    =Set(varGameStart,false);
+                    ClearCollect(colBoard,
+                        {
+                            id:1,
+                            player:"",
+                            open:true
+                        },
+                            {
+                            id:2,
+                            player:"",
+                            open:true
+                        },
+                            {
+                            id:3,
+                            player:"",
+                            open:true
+                        },
+                            {
+                            id:4,
+                            player:"",
+                            open:true
+                        },
+                            {
+                            id:5,
+                            player:"",
+                            open:true
+                        },
+                            {
+                            id:6,
+                            player:"",
+                            open:true
+                        },
+                            {
+                            id:7,
+                            player:"",
+                            open:true
+                        },
+                            {
+                            id:8,
+                            player:"",
+                            open:true
+                        },
+                            {
+                            id:9,
+                            player:"",
+                            open:true
+                        });
+                        Set(varCatsGame,false);
+                        Set(varGameStart,true)
+                  Text: =If(IsBlank(varGameStart),"Start","Restart")
+                  Width: =Parent.Width
+                  X: =App.Width/2 - Self.Width/2
+                  Y: =39
+            - galGameBoard:
+                Control: Gallery@2.15.0
+                Variant: Vertical
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  DisplayMode: =If(varGameStart,DisplayMode.Edit,DisplayMode.View)
+                  Height: =879
+                  Items: =colBoard
+                  TemplateSize: =Self.Height/3 - Self.TemplatePadding*3
+                  Visible: =!varCatsGame && !ctnoWins.Visible && !ctnxWins.Visible
+                  Width: =ctnGame.Width
+                  WrapCount: =3
+                  Y: =App.Height/2 - Self.Height/2
+                Children:
+                  - lblClaimedBy:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Fill: =If(ThisItem.player = "X",ColorValue("#81ADC8"),ColorValue("#CD4631"))
+                        Font: =Font.'Courier New'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Size: =100
+                        Text: =ThisItem.player
+                        Visible: =!ThisItem.open
+                        Width: =Parent.TemplateWidth
+                  - btnPlayerSelect:
+                      Control: Classic/Button@2.2.0
+                      Properties:
+                        BorderColor: =ColorFade(Self.Fill, -15%)
+                        Color: =RGBA(255, 255, 255, 1)
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisplayMode: |-
+                          =If(ctnoWins.Visible || ctnxWins.Visible || catsGame.Visible,
+                          DisplayMode.Disabled,DisplayMode.Edit)
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Font: =Font.'Open Sans'
+                        Height: =Parent.TemplateHeight
+                        HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+                        HoverColor: =RGBA(255, 255, 255, 1)
+                        HoverFill: =Color.LightGray
+                        OnSelect: |-
+                          =Patch(
+                              colBoard,
+                              ThisItem,
+                              {
+                                  open: false,
+                                  player: If(varXTurn,"X","O")
+                              }
+                          );
+                          Set(varXTurn,!varXTurn);
+                          If(IsEmpty(Filter(colBoard,open)),Set(varCatsGame,true))
+                        PressedBorderColor: =Self.Fill
+                        PressedColor: =Self.Fill
+                        PressedFill: =Self.Color
+                        Text: =""
+                        Visible: =ThisItem.open
+                        Width: =Parent.TemplateWidth
+            - lblWhosUp:
+                Control: Label@2.5.1
+                Properties:
+                  Align: =Align.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Font: =Font.'Open Sans'
+                  Height: =128
+                  PaddingBottom: =20
+                  PaddingTop: =0
+                  Size: =38
+                  Text: |-
+                    ="Playing:
+                    "& If(varXTurn,"X","O")
+                  Visible: =!varCatsGame && !ctnoWins.Visible && !ctnxWins.Visible
+                  Width: =App.Width
+                  Y: =App.Height - Self.Height
+            - ctnxWins:
+                Control: GroupContainer@1.3.0
+                Variant: ManualLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.Semibold
+                  Fill: =ColorValue("#9CBED3")
+                  Height: =App.Height - Self.Y
+                  RadiusBottomLeft: =10
+                  RadiusBottomRight: =10
+                  RadiusTopLeft: =10
+                  RadiusTopRight: =10
+                  Visible: "=With({xscore:Concat(Sort(Filter(colBoard,!open,player=\"X\"),id,SortOrder.Ascending),id)},\r\n\r\n(\"1\" in xscore && \"2\" in xscore && \"3\" in xscore) \r\n|| (\"1\" in xscore && \"4\" in xscore && \"7\" in xscore) \r\n|| (\"1\" in xscore && \"5\" in xscore && \"9\" in xscore) \r\n|| (\"2\" in xscore && \"5\" in xscore && \"8\" in xscore) \r\n|| (\"3\" in xscore && \"5\" in xscore && \"7\" in xscore) \r\n|| (\"3\" in xscore && \"6\" in xscore && \"9\" in xscore) \r\n|| (\"4\" in xscore && \"5\" in xscore && \"6\" in xscore) \r\n|| (\"7\" in xscore && \"8\" in xscore && \"9\" in xscore)) "
+                  Width: =App.Width
+                  Y: =galGameBoard.Height + galGameBoard.Y
+                Children:
+                  - lblXWins:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Color: =RGBA(255, 255, 255, 1)
+                        Font: =Font.'Open Sans'
+                        Height: =Parent.Height
+                        Size: =50
+                        Text: ="X Wins!"
+                        Width: =Parent.Width
+            - ctnoWins:
+                Control: GroupContainer@1.3.0
+                Variant: ManualLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.Semibold
+                  Fill: =ColorValue("#E7A69C")
+                  Height: =App.Height - Self.Y
+                  RadiusBottomLeft: =10
+                  RadiusBottomRight: =10
+                  RadiusTopLeft: =10
+                  RadiusTopRight: =10
+                  Visible: "=With({oscore:Concat(Sort(Filter(colBoard,!open,player=\"O\"),id,SortOrder.Ascending),id)},\r\n\r\n(\"1\" in oscore && \"2\" in oscore && \"3\" in oscore) \r\n|| (\"1\" in oscore && \"4\" in oscore && \"7\" in oscore) \r\n|| (\"1\" in oscore && \"5\" in oscore && \"9\" in oscore) \r\n|| (\"2\" in oscore && \"5\" in oscore && \"8\" in oscore) \r\n|| (\"3\" in oscore && \"5\" in oscore && \"7\" in oscore) \r\n|| (\"3\" in oscore && \"6\" in oscore && \"9\" in oscore) \r\n|| (\"4\" in oscore && \"5\" in oscore && \"6\" in oscore) \r\n|| (\"7\" in oscore && \"8\" in oscore && \"9\" in oscore)) "
+                  Width: =App.Width
+                  X: =App.Width/2 - Self.Width/2
+                  Y: =galGameBoard.Height + galGameBoard.Y
+                Children:
+                  - lblOWins:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Color: =RGBA(255, 255, 255, 1)
+                        Font: =Font.'Open Sans'
+                        Height: =Parent.Height
+                        Size: =50
+                        Text: ="O Wins!"
+                        Width: =Parent.Width
+            - catsGame:
+                Control: GroupContainer@1.3.0
+                Variant: ManualLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.Semibold
+                  Fill: =RGBA(214, 221, 224, 1)
+                  Height: =879
+                  RadiusBottomLeft: =10
+                  RadiusBottomRight: =10
+                  RadiusTopLeft: =10
+                  RadiusTopRight: =10
+                  Visible: =varCatsGame && !ctnxWins.Visible && !ctnoWins.Visible
+                  Width: =640
+                  X: =App.Width/2 - Self.Width/2
+                  Y: =galGameBoard.Y
+                Children:
+                  - lblCatsGame:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Font: =Font.'Open Sans'
+                        Height: =133
+                        Size: =50
+                        Text: ="Cat's Game!"
+                        Width: =640
+                        Y: =13
+                  - imgCat:
+                      Control: Image@2.2.3
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =648
+                        Image: ="https://3.bp.blogspot.com/-e9iaysd5X1E/UDJmovqjrYI/AAAAAAAAAaE/lQVAJcSeCtA/s1600/catpicturess+(4).jpg"
+                        ImagePosition: =ImagePosition.Fill
+                        RadiusBottomLeft: =20
+                        RadiusBottomRight: =20
+                        RadiusTopLeft: =20
+                        RadiusTopRight: =20
+                        Width: =516
+                        X: =Parent.Width/2 - Self.Width/2
+                        Y: =173
