@@ -4,7 +4,7 @@ This snippet allows you to display a photo gallery, navigate between photos, and
 
 ![photo-gallery](./assets/photo-gallery.png)
 
-![photo-gallery-video](./assets/photo-gallery.mp4)
+![photo-gallery](./assets/photo-gallery.mp4)
 
 ## Authors
 
@@ -15,7 +15,7 @@ Steve Bourdin | [GitHub](https://github.com/SteveBourdin) ([@steve-bourdin-ab998
 ## Minimal path to awesome
 
 1. Open your canvas app in **Power Apps**
-1. Copy the contents of the **[YAML-file](./source/minesweeper.yaml)** 
+1. Copy the contents of the **[YAML-file](./source/photo-gallery.yaml)** 
 1. Click on the three dots of the screen where you want to add the snippet and select "Paste code"
 
 ## Code
