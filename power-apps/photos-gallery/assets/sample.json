@@ -1,0 +1,52 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-photos_gallery",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-11T00:00:00.000Z",
+    "updateDateTime": "2025-04-11T00:00:00.000Z",
+    "title": "Photos Gallery",
+    "shortDescription": "This snippet allows you to display a photo gallery, navigate between photos, and zoom in to view the photo in full screen.",
+    "longDescription": [
+      "This snippet allows you to display a photo gallery, navigate between photos, and zoom in to view the photo in full screen."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/photos-gallery/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [
+    ],
+    "categories": [
+    ],
+        "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/powerplatform-snippets/blob/main/templates/previewsnippets.png",
+        "alt": "Preview PNG"
+      }
+    ],
+
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SteveBourdin",
+        "name": "Steve Bourdin",
+        "pictureUrl": "https://github.com/SteveBourdin.png"
+      }
+    ]
+  }
+]
