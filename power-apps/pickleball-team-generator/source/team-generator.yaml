@@ -1,0 +1,439 @@
+Screens:
+  scrGameMaker:
+    Properties:
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+    Children:
+      - ctnResults:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            Height: =App.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            Visible: =varViewResults
+            Width: =App.Width
+          Children:
+            - Header1:
+                Control: Header@0.0.42
+                Properties:
+                  BasePaletteColor: =RGBA(8, 222, 8, 1)
+                  IsLogoVisible: =false
+                  Logo: =SampleImage
+                  Title: ="Team Results"
+            - tabCourts:
+                Control: TabList@2.2.30
+                Properties:
+                  BasePaletteColor: =RGBA(8, 222, 8, 1)
+                  Height: =61
+                  Items: =colCourts
+                  Width: =640
+                  Y: =96
+                Children:
+                  - Title6_1:
+                      Control: TabListDataField@1.5.0
+                      Variant: textualColumn
+                      IsLocked: true
+                      Properties:
+                        FieldDisplayName: ="Title"
+                        FieldName: ="Title"
+                        FieldType: ="s"
+                        Order: =1
+            - galTeams:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =RGBA(255, 255, 255, 1)
+                  Height: =Parent.Height*.4
+                  Items: =Distinct(colTeams,team)
+                  LayoutMinHeight: =150
+                  TemplateSize: =120
+                  Y: =78
+                Children:
+                  - Separator:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =8
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight - Self.Height
+                  - lblTeamPlayers:
+                      Control: Text@0.0.50
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        AutoHeight: =true
+                        Size: =24
+                        Text: =Concat(Filter(colTeams,team=ThisItem.Value,court=tabCourts.Selected.Value),Name,Char(10))
+                        Width: =Parent.TemplateWidth - Self.X
+                        X: =lblTeamName.X
+                        Y: =lblTeamName.Y + lblTeamName.Height
+                  - lblTeamName:
+                      Control: Text@0.0.50
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        Height: =38
+                        Size: =24
+                        Text: ="Team "&ThisItem.Value
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.TemplateWidth
+                        Y: =18
+            - lblSitting:
+                Control: Label@2.5.1
+                Properties:
+                  Align: =Align.Center
+                  AlignInContainer: =AlignInContainer.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =RGBA(255, 184, 174, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =FontWeight.Semibold
+                  Text: ="Sitting"
+                  Visible: =CountIf(colPlayers,status="Sitting")<>0
+                  Width: =Parent.Width
+                  Y: =767
+            - galSittingPlayers:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  FillPortions: =0
+                  Height: =240
+                  Items: =Filter(colPlayers,status="Sitting")
+                  TemplateSize: =60
+                  Width: =Parent.Width
+                  Y: =741
+                Children:
+                  - Separator5:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =8
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight - Self.Height
+                  - lblSittingPlayerName:
+                      Control: Text@0.0.50
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        Height: |+
+                          =40
+                        Size: =24
+                        Text: =ThisItem.Name
+                        VerticalAlign: =VerticalAlign.Middle
+                        Width: =Parent.TemplateWidth - 173
+                        X: =Parent.TemplateWidth/2-Self.Width/2
+            - btnBack:
+                Control: Button@0.0.44
+                Properties:
+                  BasePaletteColor: =RGBA(8, 222, 8, 1)
+                  FontSize: =24
+                  Height: =58
+                  OnSelect: |-
+                    =Set(varViewResults,false);
+                    Clear(colActivePlayers);
+                    UpdateIf(colPlayers,true,{status:""});
+                    Clear(colTeams);Clear(colCourts)
+                  Text: ="Back"
+                  Width: =Parent.Width
+                  Y: =1077
+      - ctnConfig:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            Height: =App.Height
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            Visible: =!varViewResults
+            Width: =App.Width
+          Children:
+            - Header2:
+                Control: Header@0.0.42
+                Properties:
+                  BasePaletteColor: =RGBA(8, 222, 8, 1)
+                  IsLogoVisible: =false
+                  Title: ="Game Configuration"
+            - ctnAddPlayer:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  FillPortions: =0
+                  Height: =83
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  Width: =640
+                  Y: =75
+                Children:
+                  - lblPlayerNameInput:
+                      Control: Text@0.0.50
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        Size: =20
+                        Text: ="Player Name:"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =150
+                  - inpAddPlayer:
+                      Control: TextInput@0.0.53
+                      Properties:
+                        BasePaletteColor: =RGBA(8, 222, 8, 1)
+                        FontSize: =20
+                        Height: =50
+                        TriggerOutput: ='TextInputCanvas.TriggerOutput'.Keypress
+                  - btnAddPlayer:
+                      Control: Button@0.0.44
+                      Properties:
+                        BasePaletteColor: =RGBA(8, 222, 8, 1)
+                        DisplayMode: =If(IsBlank(inpAddPlayer.Value),DisplayMode.Disabled,DisplayMode.Edit)
+                        Height: |+
+                          =50
+                        Icon: ="Add"
+                        Layout: ='ButtonCanvas.Layout'.IconOnly
+                        OnSelect: =Collect(colPlayers,{Name:inpAddPlayer.Value,id:CountRows(colPlayers)+1,status:""});Reset(inpAddPlayer);SetFocus(inpAddPlayer)
+            - galPlayers:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Height: =378
+                  Items: =colPlayers
+                  TemplateSize: =48
+                  Y: =201
+                Children:
+                  - Separator1:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =8
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight - Self.Height
+                  - ctnPlayerInfo:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        Height: =48
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        PaddingLeft: =5
+                        Width: =Parent.Width
+                        X: =Parent.TemplateWidth/2-Self.Width/2
+                      Children:
+                        - lblPlayerName:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 1)
+                              Color: =If(ThisItem.status="Sitting",Color.Red,Color.Black)
+                              Font: =Font.'Open Sans'
+                              Height: =Parent.Height
+                              OnSelect: =
+                              PaddingBottom: =0
+                              PaddingLeft: =0
+                              PaddingRight: =0
+                              PaddingTop: =0
+                              Size: =20
+                              Text: =ThisItem.Name
+                              Width: =300
+                              X: =49
+                        - lblPlayerID:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 1)
+                              Color: =If(ThisItem.status="Sitting",Color.Red,Color.Black)
+                              Font: =Font.'Open Sans'
+                              Height: =Parent.Height
+                              OnSelect: =
+                              PaddingBottom: =0
+                              PaddingLeft: =0
+                              PaddingRight: =0
+                              PaddingTop: =0
+                              Size: =20
+                              Text: =ThisItem.id
+                              Width: =15
+                              X: =5
+                        - lblStatus:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 1)
+                              Color: =If(ThisItem.status="Sitting",Color.Red,Color.Black)
+                              Font: =Font.'Open Sans'
+                              Height: =Parent.Height
+                              OnSelect: =
+                              PaddingBottom: =0
+                              PaddingLeft: =0
+                              PaddingRight: =0
+                              PaddingTop: =0
+                              Size: =20
+                              Text: =ThisItem.status
+                              Width: =161
+                              X: =325
+                        - btnRemovePlayer:
+                            Control: Button@0.0.44
+                            Properties:
+                              Appearance: ='ButtonCanvas.Appearance'.Secondary
+                              FontColor: =RGBA(189, 49, 51, 1)
+                              Height: =Parent.Height
+                              Icon: ="Delete"
+                              Layout: ='ButtonCanvas.Layout'.IconOnly
+                              OnSelect: =UpdateIf(colPlayers,id>ThisItem.id,{id:id -1});Remove(colPlayers,ThisItem)
+                              Width: =46
+                              X: =565
+                              Y: =8
+            - ctnGameType:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  FillPortions: =0
+                  Height: =50
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =10
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                Children:
+                  - lblGameType:
+                      Control: Text@0.0.50
+                      Properties:
+                        Align: ='TextCanvas.Align'.End
+                        Size: =20
+                        Text: ="Game Type"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =150
+                  - cmbGameType:
+                      Control: ComboBox@0.0.49
+                      Properties:
+                        BasePaletteColor: =RGBA(8, 222, 8, 1)
+                        DefaultSelectedItems: ={title:"Doubles",gameplayers:4,teamplayers:2}
+                        FontSize: =20
+                        IsSearchable: =false
+                        Items: =[{title:"Doubles",gameplayers:4,teamplayers:2},{title:"Singles",gameplayers:2,teamplayers:1}]
+                        OnChange: =Clear(colActivePlayers);UpdateIf(colPlayers,true,{status:""})
+                      Children:
+                        - title1:
+                            Control: ComboBoxDataField@1.5.0
+                            Variant: textualColumn
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="title"
+                              FieldName: ="title"
+                              FieldType: ="s"
+                              Order: =1
+            - ctnCourts:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  FillPortions: =0
+                  Height: =50
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =10
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                Children:
+                  - lblCourts:
+                      Control: Text@0.0.50
+                      Properties:
+                        Align: ='TextCanvas.Align'.End
+                        Size: =20
+                        Text: ="Courts"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =150
+                  - numCourts:
+                      Control: NumberInput@2.9.12
+                      Properties:
+                        BasePaletteColor: =RGBA(8, 222, 8, 1)
+                        FontSize: =20
+                        OnChange: =Clear(colActivePlayers);UpdateIf(colPlayers,true,{status:""})
+                        Value: =1
+            - ctnActions:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =10
+                  LayoutJustifyContent: =LayoutJustifyContent.End
+                  PaddingBottom: =10
+                  Width: =Parent.Width
+                Children:
+                  - btnGenerate:
+                      Control: Button@0.0.44
+                      Properties:
+                        BasePaletteColor: =RGBA(8, 222, 8, 1)
+                        DisplayMode: =If(CountRows(colPlayers)<numCourts.Value*cmbGameType.Selected.gameplayers,DisplayMode.Disabled,DisplayMode.Edit)
+                        FontSize: =24
+                        Height: |+
+                          =60
+                        OnSelect: |-
+                          =Clear(colTeams);Collect(
+                              colActivePlayers,
+                              FirstN(
+                                  Shuffle(colPlayers),
+                                  cmbGameType.Selected.gameplayers * numCourts.Value
+                              )
+                          );
+                          UpdateIf(
+                              colPlayers,
+                              id in colActivePlayers.id,
+                              {status: "Playing"}
+                          );
+                          UpdateIf(
+                              colPlayers,
+                              IsBlank(status),
+                              {status: "Sitting"}
+                          );
+                          Collect(
+                              colTeams,
+                              AddColumns(
+                                  Shuffle(colActivePlayers),
+                                  'team',
+                                  0,
+                                  'court',
+                                  0
+                              )
+                          );
+                          ForAll(
+                              FirstN(
+                                  colTeams,
+                                  CountRows(colTeams) / 2
+                              ),
+                              Patch(
+                                  colTeams,
+                                  ThisRecord,
+                                  {team: 1}
+                              )
+                          );
+                          UpdateIf(
+                              colTeams,
+                              team = 0,
+                              {team: 2}
+                          );
+                          ClearCollect(
+                              colCourts,
+                              AddColumns( Sequence(
+                                  numCourts.Value,
+                                  1,
+                                  1
+                              ),'Title',"Court "&Value)
+                          );
+
+
+                          ForAll(colCourts As thisCourt, ForAll(FirstN(Shuffle(Filter(colTeams,team=1,court=0)),CountRows(Filter(colTeams,team=1))/CountRows(colCourts)) As thisPlayer,Patch(colTeams,thisPlayer,{court:thisCourt.Value})));
+                          ForAll(colCourts As thisCourt, ForAll(FirstN(Shuffle(Filter(colTeams,team=2,court=0)),CountRows(Filter(colTeams,team=1))/CountRows(colCourts)) As thisPlayer,Patch(colTeams,thisPlayer,{court:thisCourt.Value})));
+                          Set(varViewResults,true)
+                        Text: =If(Self.DisplayMode = DisplayMode.Edit, "Generate","Add More Players")
+                        Width: =640
+                  - btnReset:
+                      Control: Button@0.0.44
+                      Properties:
+                        BasePaletteColor: =RGBA(249, 83, 109, 1)
+                        FontSize: =24
+                        Height: =60
+                        OnSelect: =Clear(colActivePlayers);UpdateIf(colPlayers,true,{status:""});Clear(colTeams);Clear(colCourts)
+                        Text: ="Reset"
+                        Width: =640
