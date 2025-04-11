@@ -4,8 +4,6 @@ This snippet allows you to display a photo gallery, navigate between photos, and
 
 ![photo-gallery](./assets/photo-gallery.png)
 
-![photo-gallery](./assets/photo-gallery.mp4)
-
 ## Authors
 
 Snippet|Author
