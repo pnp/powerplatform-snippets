@@ -28,4 +28,4 @@ Nate Halliwell | [Youtube](https://www.youtube.com/playlist?list=PLlQ81_et2aJ-XK
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/pickleball-team-generator" aria-hidden="true" />
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/tic-tac-toe" aria-hidden="true" />
