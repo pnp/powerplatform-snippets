@@ -1,18 +1,13 @@
 # Tic-Tac-Toe
 
-
 Just a simple way to challenge your friends or family to a nice (ad-free) game of tic tac toe on your phone.
 
 
 ## Author
 
-<!--- 
-Replace the X by the correct values in the table below.
---->
-
 Snippet|Author
 --------|---------
-Nate Halliwell | [Youtube](https://www.youtube.com/playlist?list=PLlQ81_et2aJ-XKx3gVfVl0dQbJU5mUfgf) ([LinkedIn](https://www.linkedin.com/in/natehalliwell/))
+Nate Halliwell | [YouTube](https://www.youtube.com/playlist?list=PLlQ81_et2aJ-XKx3gVfVl0dQbJU5mUfgf) ([LinkedIn](https://www.linkedin.com/in/natehalliwell/))
 
 ## Minimal path to awesome
 
@@ -22,7 +17,6 @@ Nate Halliwell | [Youtube](https://www.youtube.com/playlist?list=PLlQ81_et2aJ-XK
 1. Preview the app, and hit the 'Start' button in order to initialize the game.
 
 ![A screenshot of the Game in Power Apps](./assets/tictactoe.png)
-
 
 ## Disclaimer
 

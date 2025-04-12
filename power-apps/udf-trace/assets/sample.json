@@ -35,7 +35,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/Katerina-Chernevskaya/powerplatform-snippets/dc573cf7bc535f6072dcaa5abf2d91ebb270f53d/power-apps/udf-trace/assets/udf-trace.png",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/udf-trace/assets/udf-trace.png",
         "alt": "Preview PNG"
       }
     ],

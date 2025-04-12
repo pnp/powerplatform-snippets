@@ -1,0 +1,45 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-tic-tac-toe",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-11T00:00:00.000Z",
+    "updateDateTime": "2025-04-11T00:00:00.000Z",
+    "title": "Tic Tac Toe",
+    "shortDescription": "Just a simple way to challenge your friends or family to a nice (ad-free) game of tic tac toe on your phone.",
+    "longDescription": [
+      "Just a simple way to challenge your friends or family to a nice (ad-free) game of tic tac toe on your phone."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/tic-tac-toe/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [ ],
+    "categories": [ ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/tic-tac-toe/assets/tictactoe.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Power-TT-People",
+        "name": "Nate Halliwell",
+        "pictureUrl": "https://github.com/Power-TT-People.png"
+      }
+    ]
+  }
+]
