@@ -919,7 +919,7 @@
                   VerticalAlign: =VerticalAlign.Middle
                   Width: =Parent.Width
             - prg_popinProgressBar_Pourcent:
-                Control: Progress@1.1.33
+                Control: Progress@1.1.34
                 Properties:
                   Height: =Parent.Height/6
                   Max: =var_popinProgressBar_Total
@@ -1170,7 +1170,7 @@
                         Align: ='TextCanvas.Align'.Center
                         AutoHeight: =true
                         FontColor: =RGBA(255, 255, 255, 1)
-                        Height: =20
+                        Height: =Parent.Height
                         Size: =popinMessage_Header.Height*0.5
                         Text: |-
                           =If(
@@ -1200,6 +1200,7 @@
                               ),
                               var_popinConfirmation_Yes
                           )
+                        VerticalAlign: =VerticalAlign.Middle
                         Weight: ='TextCanvas.Weight'.Semibold
                         Width: =popinMessage_Header.Width*0.6
                   - btn_popinMessage_Header_Close:
