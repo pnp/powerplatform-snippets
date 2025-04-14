@@ -1,0 +1,51 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-multiple-popin",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-11T00:00:00.000Z",
+    "updateDateTime": "2025-04-11T00:00:00.000Z",
+    "title": "Photos Gallery",
+    "shortDescription": "This snippet is composed of 4 pop-ins for your applications. Reduce the number of components in your PowerApps apps by always using this snippet. You can put this snippet in each of your screens.You can also customize the language.",
+    "longDescription": [
+      "This snippet is composed of 4 pop-ins for your applications. Reduce the number of components in your PowerApps apps by always using this snippet. You can put this snippet in each of your screens.You can also customize the language."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/multiple-popin/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [
+    ],
+    "categories": [
+    ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/powerplatform-snippets/blob/main/templates/previewsnippets.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SteveBourdin",
+        "name": "Steve Bourdin",
+        "pictureUrl": "https://github.com/SteveBourdin.png"
+      }
+    ]
+  }
+]
