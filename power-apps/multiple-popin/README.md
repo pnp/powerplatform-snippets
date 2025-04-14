@@ -52,9 +52,8 @@ To display the progress Pop-In you need to initialize 3 variables:
   - var_popinProgressBar_Current : Interger => Order of the current action
 
 Example : 
-
-```UpdateContext(
-
+```
+UpdateContext(
     {
 
         var_popinProgressBar: true;
@@ -65,7 +64,8 @@ Example :
 
     }
 
-);;```
+);;
+```
 
 As the actions progress, increment the variable var_popinProgressBar_Current 
 
@@ -88,7 +88,8 @@ To use the confirmation pop-in, you must enter at least two variables:
 
 Example :
 
-```UpdateContext(
+```
+UpdateContext(
 
     {
 
@@ -96,7 +97,8 @@ Example :
         var_popinConfirmation_Show:true
 
     }
-)```
+)
+```
 
 You must then put the actions to be executed in the Yes and No (OnSelect) buttons:
 
@@ -108,13 +110,15 @@ You must then put the actions to be executed in the Yes and No (OnSelect) button
 If you want to use this Pop-In for the same screen for several cases, you can create a variable and then test it in the actions above.
 Exemple : 
 
-```UpdateContext(
+```
+UpdateContext(
 
     {
 
         var_popinConfirmation_case : "REMOVE_USER"
 
-)```
+)
+```
 
 
 
