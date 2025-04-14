@@ -8,8 +8,10 @@ You can also customize the language.
 
 ![multiple-popin](./assets/multiple-popin.png)
 
+## Video Link
 
-[See an example in video :](https://www.youtube.com/embed/yTaPOKJ15Xc)
+[Watch the video on YouTube](https://youtu.be/yTaPOKJ15Xc)
+
 
 
 
