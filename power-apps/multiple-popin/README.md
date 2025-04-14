@@ -9,7 +9,9 @@ You can also customize the language.
 ![multiple-popin](./assets/multiple-popin.png)
 
 
-[See an example in video :]([URL_de_la_vidéo](https://www.youtube.com/embed/yTaPOKJ15Xc))
+[See an example in video :](https://www.youtube.com/embed/yTaPOKJ15Xc)
+
+
 
 ## Authors
 
