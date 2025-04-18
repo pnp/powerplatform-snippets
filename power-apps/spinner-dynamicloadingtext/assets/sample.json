@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-spinner-dynamicloadingtext",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-18T00:00:00.000Z",
+    "updateDateTime": "2025-04-18T00:00:00.000Z",
+    "title": "Loading spinner",
+    "shortDescription": "This is a snippet that creates a loading spinner with a user experience to add a visual sense to the user waiting for the app.",
+    "longDescription": [
+      "This is a snippet that creates a loading spinner with a user experience to add a visual sense to the user waiting for the app. The messaging can make the wait feel shorter, even if the actual load time is the same. Add some personality with your own branded messages to make the experience even better."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/spinner-dynamicloadingtext/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/spinner-dynamicloadingtext/assets/SpinnerLoadingText.gif",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Dutchy365",
+        "name": "Elianne Burgers",
+        "pictureUrl": "https://github.com/Dutchy365.png"
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 # Loading spinner
 
-This is a snippet that creates a loading spinner with a user experience to add a visual sense to the user waiting for the app.The messaging can make the wait feel shorter, even if the actual load time is the same. Add some personality with your own branded messages to make the experience even better.
+This is a snippet that creates a loading spinner with a user experience to add a visual sense to the user waiting for the app. The messaging can make the wait feel shorter, even if the actual load time is the same. Add some personality with your own branded messages to make the experience even better.
 
 An image of how it can look like:
 

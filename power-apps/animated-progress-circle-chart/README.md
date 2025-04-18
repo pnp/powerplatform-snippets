@@ -2,6 +2,8 @@
 
 This is an animated progress chart which functions off of a slider value 0 - 100. 
 
+![View of the paste code button](./assets/animated-circle-chart.jpg)
+
 ## Authors
 
 Snippet|Author(s)
@@ -12,8 +14,8 @@ Animated Progress Circle Chart | [Melissa Hale](https://github.com/Mello245) ([L
 
 1. Open your canvas app in **Power Apps**
 1. Copy the contents of the **[YAML-file](./source/sample.yaml)** 
-1. Right click on the screen where you want to add the snippet and select "Paste YAML"
-![View of the paste code button](./assets/animated-circle-chart.jpg)
+1. Click on the three dots in a screen in the app where you want to add this and select "Paste code"
+![View of the paste code button](./assets/pastecode.png)
 
 ## Code
 

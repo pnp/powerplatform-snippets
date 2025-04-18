@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-animated-progress-circle-chart",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-18T00:00:00.000Z",
+    "updateDateTime": "2025-04-18T00:00:00.000Z",
+    "title": "Animated Progress Circle Chart",
+    "shortDescription": "This is an animated progress chart which functions off of a slider value 0 - 100.",
+    "longDescription": [
+      "This is an animated progress chart which functions off of a slider value 0 - 100."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/animated-progress-circle-chart/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/animated-progress-circle-chart/assets/animated-circle-chart.jpg",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Mello245",
+        "name": "Melissa Hale",
+        "pictureUrl": "https://github.com/Mello245.png"
+      }
+    ]
+  }
+]
