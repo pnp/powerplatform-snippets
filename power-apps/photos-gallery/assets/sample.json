@@ -26,7 +26,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/powerplatform-snippets/blob/main/templates/previewsnippets.png",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/photos-gallery/assets/photos-gallery.png",
         "alt": "Preview PNG"
       }
     ],
