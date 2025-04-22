@@ -1,21 +1,66 @@
-- imgSVGDonut:
-    Control: Image
+- Image1:
+    Control: Image@2.2.3
     Properties:
-      Image: |
-        =
-        "data:image/svg+xml," & EncodeUrl(
-            "<svg width='100%' height='100%' viewBox='0 0 42 42' class='donut' xmlns='http://www.w3.org/2000/svg'>
-          <circle class='donut-hole' cx='21' cy='21' r='15.91549430918954' fill='#fff'></circle>
-          <circle class='donut-ring' cx='21' cy='21' r='15.91549430918954' fill='transparent' stroke='#ce4b99' stroke-width='5'></circle>
-          <circle class='donut-segment' cx='21' cy='21' r='15.91549430918954' fill='transparent' stroke='#b1c94e' stroke-width='5' stroke-dasharray='" &  IfError({REPLACE-WITH-DIVIDEND-VALUE} /Value({REPLACE-WITH-DIVISOR-VALUE})*100,0) & " "&IfError((100-{REPLACE-WITH-DIVIDEND-VALUE}/{REPLACE-WITH-DIVISOR-VALUE}*100),0) &"' stroke-dashoffset='25'></circle>
+      BorderColor: =RGBA(0, 18, 107, 1)
+      Height: =1096
+      Image: |-
+        =With(
+            {
+                donutValue: 70,
+                textValue: "70%",
+                animationDuration: 1,
+                circleMiddleColor: Color.White,
+                unusedRingColor: Color.LightGray,
+                usedRingColor: Color.Green,
+                textColor: Color.Black
+            },
+            "data:image/svg+xml," & EncodeUrl(
+                "<svg width='100%' height='100%' viewBox='0 0 42 42' xmlns='http://www.w3.org/2000/svg'>
+          <!-- Donut Center Fill Color. Replace Stroke value with your color value -->
+          <circle cx='21' cy='21' r='15.91549430918954'  fill='" & Substitute(
+                    JSON(
+                        circleMiddleColor,
+                        JSONFormat.IgnoreUnsupportedTypes
+                    ),
+                    Char(34),
+                    ""
+                ) & "' />
+          <!-- Unused portion (full ring). Replace Stroke value with your color value -->
+          <circle cx='21' cy='21' r='15.91549430918954' fill='transparent' stroke='" & Substitute(
+                    JSON(
+                        unusedRingColor,
+                        JSONFormat.IgnoreUnsupportedTypes
+                    ),
+                    Char(34),
+                    ""
+                ) & "' stroke-width='5'/>
+          <!-- Used segment with animation. Replace Stroke value with your color value -->
+          <circle cx='21' cy='21' r='15.91549430918954' fill='transparent' stroke-linecap='" & If(
+                    donutValue >= 90,
+                    "butt",
+                    "round"
+                ) & "' stroke='" & Substitute(
+                    JSON(
+                        usedRingColor,
+                        JSONFormat.IgnoreUnsupportedTypes
+                    ),
+                    Char(34),
+                    ""
+                ) & "' stroke-width='5'
+            stroke-dasharray='0 100' stroke-dashoffset='25'>
+            <animate attributeName='stroke-dasharray' from='0 100' to='" & donutValue & " " & (100 - donutValue) & "' dur='" & animationDuration & "s' fill='freeze' />
+          </circle>
+          <!-- Centered percentage text -->
+          <text x='50%' y='50%' text-anchor='middle' dy='.3em' font-size='6' font-family='Segoe UI, Helvetica, sans-serif' letter-spacing='0.5px' fill='" & Substitute(
+                    JSON(
+                        textColor,
+                        JSONFormat.IgnoreUnsupportedTypes
+                    ),
+                    Char(34),
+                    ""
+                ) & "'>" & textValue & "</text>
         </svg>"
+            )
         )
-      Height: =150
-      ImagePosition: =ImagePosition.Fill
-      RadiusBottomLeft: =8
-      RadiusBottomRight: =8
-      RadiusTopLeft: =8
-      RadiusTopRight: =8
-      Width: =150
-      X: =27
-      Y: =46
+      Width: =627
+      Y: =40
