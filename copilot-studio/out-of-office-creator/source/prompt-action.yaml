@@ -1,0 +1,82 @@
+kind: TaskDialog
+response:
+  activity:
+    attachments:
+      - kind: AdaptiveCardTemplate
+        cardContent: |-
+          ={
+            type: "AdaptiveCard",
+            version: "1.5",
+            body: [
+              {
+                type: "Image",
+                url: "https://raw.githubusercontent.com/OfficeDev/Microsoft-Teams-Adaptive-Card-Samples/main/samples/time-off-request/assets/hero-image-default.png",
+                style: "RoundedCorners",
+                targetWidth: "AtMost:Standard"
+             },
+             {
+                type: "TextBlock",
+                text: "The OOO message for you:",
+                wrap: true,
+                weight: "Bolder",
+                fontType: "Monospace",
+                separator: true
+              },
+              {
+                type: "TextBlock",
+                text: Topic.Output.text,
+                wrap: true,
+                size: "Large",
+                weight: "Default",
+                separator: true
+              }
+            ],
+            '$schema': "https://adaptivecards.io/schemas/adaptive-card.json"
+          }
+
+  mode: Strict
+
+inputs:
+  - kind: AutomaticTaskInput
+    propertyName: varReason
+    name: varReason
+    description: Ask the user for a reason for the Out of Office message.
+    shouldPromptUser: true
+
+  - kind: AutomaticTaskInput
+    propertyName: varStartDate
+    name: varStartDate
+    description: Ask the user for a start date of the Out of Office period in the format YYYY-MM-DD.
+    shouldPromptUser: true
+
+  - kind: AutomaticTaskInput
+    propertyName: varEndDate
+    name: varEndDate
+    description: Ask the user for a end date of the Out of Office period in the format YYYY-MM-DD.
+    shouldPromptUser: true
+
+  - kind: AutomaticTaskInput
+    propertyName: varDestination
+    name: varDestination
+    description: Ask the user for a the city or country where the user will be traveling. Leave empty if not applicable.
+    shouldPromptUser: true
+
+  - kind: AutomaticTaskInput
+    propertyName: varStyle
+    name: varStyle
+    description: Ask the user for a preferred style of the message
+    shouldPromptUser: true
+
+modelDisplayName: Out of Office Creator - prompt sample
+modelDescription: Trigger this action when the user has requested help with writing an Out of Office (OOO) message.
+outputs:
+  - propertyName: text
+    description: Generated Out of Office message text, ready to be used as an automatic reply.
+
+action:
+  kind: InvokeAIPluginTaskAction
+  entityKey: { REPLACE-WITH-ENTITY-KEY-VALUE }
+  primaryConnectionReference:
+    kind: InvokerConnectionReference
+
+outputMode: All

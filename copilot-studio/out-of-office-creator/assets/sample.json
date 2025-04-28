@@ -1,0 +1,61 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-out-of-office-creator",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-28T00:00:00.000Z",
+    "updateDateTime": "2025-04-28T00:00:00.000Z",
+    "title": "Out of Office Creator",
+    "shortDescription": "AI-powered agent for Microsoft Teams and/or Microsoft 365 Copilot that helps users easily create and set Out of Office automatic reply messages for Outlook.",
+    "longDescription": [
+      "Out of Office Creator is an AI-powered agent for Microsoft Teams and Microsoft 365 Copilot that helps users generate and set Out of Office automatic replies in Outlook through a simple, guided flow. The agent prompts users for the necessary information, such as start and end dates, message content, and any exceptions, and then generates the appropriate Out of Office settings. This streamlines the process of setting up Out of Office replies, ensuring that users can easily manage their availability while away from work."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/out-of-office-creator/",
+    "products": [
+      "Power Platform",
+      "Copilot Studio",
+      "Microsoft 365 Copilot",
+      "powerplatform-snippets",
+      "copilot-studio-snippets"
+    ],
+    "tags": [ ],
+    "categories": [ ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Copilot Studio"
+      },
+      {
+        "key": "Type",
+        "value": "Action"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/out-of-office-creator/assets/preview.png",
+        "alt": "Preview PNG"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/SD_rv2wyqeg",
+        "alt": "Out of Office Creator"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Katerina-Chernevskaya",
+        "name": "Katerina Chernevskaya",
+        "pictureUrl": "https://github.com/Katerina-Chernevskaya.png"
+      },
+      {
+        "gitHubAccount": "artemchern",
+        "name": "Artem Chernevskiy",
+        "pictureUrl": "https://github.com/artemchern.png"
+      }
+    ]
+  }
+]
