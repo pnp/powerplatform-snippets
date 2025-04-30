@@ -32,14 +32,6 @@
         "value": "Snippet"
       }
     ],
-    "thumbnails": [
-      {
-        "type": "image",
-        "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/piano/assets/piano.png",
-        "alt": "Preview PNG"
-      }
-    ],
     "authors": [
       {
         "gitHubAccount": "SteveBourdin",
