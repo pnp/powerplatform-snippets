@@ -15,7 +15,7 @@ Steve Bourdin | [GitHub](https://github.com/SteveBourdin) ([LinkedIn](https://ww
 ## Minimal path to awesome
 
 1. Open your canvas app in **Power Apps**
-2. Copy the contents of the **[YAML-file](./source/multiple-popin.yaml)** 
+2. Copy the contents of the **[YAML-file](./source/piano.yaml)** 
 3. Click on the three dots of the screen where you want to add the snippet and select "Paste code"
 
 
