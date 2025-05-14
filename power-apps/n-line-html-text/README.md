@@ -2,12 +2,14 @@
 
 This code snippet provides a solution to dynamically truncate HTML text in a Power Apps Canvas app based on the desired number of lines (n). It maintains the integrity of the HTML structure, ensuring that truncated content doesn’t cause formatting issues.
 
-![preview](./assets/n-line-html-demo.gif)
+![preview](./assets/n-line-html-demo.png)
 
 Use Cases:
 - Displaying previews of long text content (e.g., blog posts, comments).
 - Enhancing user interfaces with concise, readable snippets.
 - Avoiding clutter in data-heavy applications.
+
+![preview](./assets/n-line-html-demo.gif)
 
 ## Authors
 
