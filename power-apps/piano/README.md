@@ -28,9 +28,4 @@ Steve Bourdin | [GitHub](https://github.com/SteveBourdin) ([LinkedIn](https://ww
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<!---
-Replace X with the directory name of your snippet and uncomment this comment.
-
-<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/X" aria-hidden="true" />
---->
-
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/piano" aria-hidden="true" />
