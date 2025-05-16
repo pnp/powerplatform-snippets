@@ -1,16 +1,13 @@
 # Animated SVG Loading
 
-![](./assets/componentPasteCode.png)
+![](./assets/SVG-Animated-Loading.png)
 
 ## Authors
-[](./source/animated-svg-loading.pa.yaml)
-<!--- 
-Replace the X by the correct values in the table below.
---->
+
 
 Snippet|Author(s)
 --------|---------
-Cathrine Bruvold | [X](https://github.com/X) ([@X](https://www.twitter.com/X) )
+Cathrine Bruvold | [](https://github.com/cathrinebruvold) [](https://www.linkedin.com/in/cathrine-bruvold-b91b92113/)
 
 ## Minimal path to awesome
 

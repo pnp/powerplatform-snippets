@@ -1,0 +1,44 @@
+- imgAnimatedSVGLoading:
+    Control: Image@2.2.3
+    Properties:
+      Height: =500
+      Image: |-
+        = "data:image/svg+xml;utf8," & EncodeUrl(
+                    "
+        <svg xmlns='http://www.w3.org/2000/svg' width='500' height='500'>
+          <defs>
+            <linearGradient id='circleGradient' x1='0%' y1='0%' x2='100%' y2='100%'>
+              <stop offset='0%' stop-color='pink' />
+              <stop offset='60%' stop-color='purple' />
+              <stop offset='100%' stop-color='darkpurple' />
+            </linearGradient>
+          </defs>
+          <!-- Larger background circle -->
+          <circle cx='250' cy='250' r='220' fill='rgba(255, 182, 193, 0.1)' />
+          <!-- Static outline -->
+          <circle cx='250' cy='250' r='220'
+                  fill='none' stroke='lightpink' stroke-width='2' />
+          <!-- Animated border stroke -->
+          <circle cx='250' cy='250' r='220'
+                  fill='none'
+                  stroke='url(#circleGradient)'
+                  stroke-width='5'
+                  stroke-linecap='round'
+                  stroke-dasharray='1382.3'
+                  stroke-dashoffset='1382.3'>
+            <animate attributeName='stroke-dashoffset'
+                     from='1382.3' to='0'
+                     dur='3s'
+                     repeatCount='indefinite'
+                     fill='freeze' />
+          </circle>
+          <!-- Centered text (scaled up) -->
+          <text x='250' y='250' dominant-baseline='middle' text-anchor='middle'
+                font-size='22' font-family='Segoe UI' font-weight='bold' fill='black'>
+            Loading cool things... ✨
+          </text>
+        </svg>
+        ")
+      Width: =781
+      X: =280
+      Y: =140
