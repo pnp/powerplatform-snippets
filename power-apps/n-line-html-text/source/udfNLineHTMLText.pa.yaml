@@ -1,0 +1,8 @@
+- htmNLineHTMLText_Standalone:
+    Control: HtmlViewer@2.1.0
+    Properties:
+      Font: =Font.'Open Sans'
+      Height: =150
+      HtmlText: "=// 5px in max-width accomodate for possible scrollbar\r\n// Amount of lanes is controlled with webkit-line-clamp\r\n$\"<span style='\r\n    font-weight: 600;\r\n    display: -webkit-box;\r\n    \r\n    max-width: {Self.Width - 5}px;\r\n    -webkit-line-clamp: 3;\r\n    -webkit-box-orient: vertical;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    text-align:left;\r\n    line-height: 1.2;\r\n    margin: 1px;\r\n    padding: 2px;'>\r\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n    \r\n</span>\""
+      Tooltip: =PlainText(Self.HtmlText)
+      Width: =350
