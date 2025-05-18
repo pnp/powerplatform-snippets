@@ -1,41 +1,133 @@
 # Animated SVG Loading
 
-![](./assets/SVG-Animated-Loading.png)
-
-## Authors
+This is a custom animated loading visual of a circle with gradient border color changing from purple to pink to purple over three seconds. The spinning graphic can be used to show application users that something is being processed in a more engaging way. 
 
 
-Snippet|Author(s)
---------|---------
-Cathrine Bruvold | [](https://github.com/cathrinebruvold) [](https://www.linkedin.com/in/cathrine-bruvold-b91b92113/)
+<img src="./assets/Animated_SVG_Loading.gif" alt="Video of Animated SVG Loading" width="300">
+
+
+<!-- Spacer -->
+
+
+## Author
+
+
+Snippet | Author  
+--------|----------
+Animated SVG Loading | Cathrine Bruvold \| [GitHub](https://github.com/cathrinebruvold) \| [LinkedIn](https://www.linkedin.com/in/cathrine-bruvold-b91b2113/)
+
+<!-- Spacer -->
 
 ## Minimal path to awesome
 
-
-When creating a YAML snippet for Power Apps use the following `Minimal path to awesome` and replace the X with the correct value:
-
-> **_NOTE:_** The recommended best practice is to utilize this YAML snippet inside of a canvas component for reusability. 
-
 1. Open your canvas app in **Power Apps**
-1. Copy the contents of the **[YAML-file](./source/X.yaml)** 
-1. Right click on the screen where you want to add the snippet and select "Paste YAML"
+2. Copy the contents of the **[YAML-file](./source/animated-svg-loading.pa.yaml)** 
+3. Right click on the screen where you want to add the snippet and select "Paste"
 ![View of the paste code button](./assets/pastecode.png)
+4. Edit the code on the Image property of the SVG to change size, colors, duration etc. 
 
-If it makes sense to use this snippet as a canvas component, also add the following steps and make sure to add steps to make it useful for your snippet:
+<!-- Spacer -->
 
-## Steps to use as a component
-1. Open your Power App in edit mode
-1. Select the **components** tab in the tree view
-![components tab](./assets/componentstab.png)
-1. Select **New component**
-1. Rename your component to something relevant like **X**
-1. Add steps for adding inputs / outputs for your component (replace this step with all the steps that are useful for your component)
-1. Right click in the component and select **Paste Code**
-![paste code](./assets/componentPasteCode.png)
-1. Add steps to configure your pasted code with the inputs / outputs you have added for your component (replace this step with all the steps that are useful for your component)
 
-Remove the unused `Minimal path to awesome`, the instructions that are not relevant to the user and uncomment this comment.
+## 🎨 Customize the SVG Code
 
+If you want to adapt the SVG to your needs, here are some options:
+
+---
+
+### 1. Repetition
+
+Change how many times the animated circle should be drawn. Use a number or leave it infinite:
+
+```xml
+repeatCount="indefinite"
+```
+
+<!-- Spacer -->
+### 2. Center Text
+
+Update the text message shown in the middle of the visual:
+
+```xml
+<text ...>Loading cool things... ✨</text>
+```
+<!-- Spacer -->
+
+### 3. Color Outline
+
+Customize the outer stroke color of the circle:
+
+```xml
+<circle ... stroke="lightpink" />
+```
+
+<!-- Spacer -->
+
+### 4. Background Circle
+
+Change the background color or its transparency (the last number controls opacity):
+
+```xml
+<circle cx="250" cy="250" r="220" fill="rgba(255, 182, 193, 0.1)" />
+```
+
+<!-- Spacer -->
+
+### 5. Gradient Colors
+
+Add or update gradient stops to create a smooth color transition:
+
+```xml
+<stop offset="0%" stop-color="pink" />
+<stop offset="60%" stop-color="purple" />
+<stop offset="100%" stop-color="darkpurple" />
+```
+
+> 💡 You can add more `<stop>` tags to create richer color transitions.
+
+<!-- Spacer -->
+
+### 6. Animation Speed
+
+Control how fast the circle is drawn:
+
+```xml
+dur="3s"
+```
+
+Try `2s`, `5s`, etc. to make it faster or slower.
+
+<!-- Spacer -->
+### 7. Visual Styling
+
+**Stroke Appearance**  
+Control the thickness and shape of the animated stroke:
+
+```xml
+stroke-width="5"
+stroke-linecap="round"
+```
+
+You can try `"square"` or `"butt"` instead of `"round"` for different styles.
+
+**Text Styling**  
+Tweak the font, size, and color of the central message:
+
+```xml
+font-size="22"
+font-family="Segoe UI"
+font-weight="bold"
+fill="black"
+```
+
+<!-- Spacer -->
+
+### 💡 Final Tip
+
+Most importantly — **have fun** and make something **AMAZING** ✨  
+This is your loading screen, so give it your personality!
+
+<!-- Spacer -->
 
 ## Disclaimer
 
