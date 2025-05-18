@@ -23,8 +23,8 @@ When creating a YAML snippet for Power Apps use the following `Minimal path to a
 
 1. Open your canvas app in **Power Apps**
 1. Copy the contents of the **[YAML-file](./source/X.yaml)** 
-1. Right click on the screen where you want to add the snippet and select "Paste YAML"
-![View of the paste code button](./assets/pastecode.png)
+1. Right click on the screen where you want to add the snippet and select "Paste"
+![View of the paste code button](./assets/paste.png)
 
 If it makes sense to use this snippet as a canvas component, also add the following steps and make sure to add steps to make it useful for your snippet:
 
@@ -35,8 +35,8 @@ If it makes sense to use this snippet as a canvas component, also add the follow
 1. Select **New component**
 1. Rename your component to something relevant like **X**
 1. Add steps for adding inputs / outputs for your component (replace this step with all the steps that are useful for your component)
-1. Right click in the component and select **Paste Code**
-![paste code](./assets/componentPasteCode.png)
+1. Right click on the three dots next to the component name and select **Paste**
+![paste code](./assets/componentPaste.png)
 1. Add steps to configure your pasted code with the inputs / outputs you have added for your component (replace this step with all the steps that are useful for your component)
 
 Remove the unused `Minimal path to awesome`, the instructions that are not relevant to the user and uncomment this comment.
