@@ -2,6 +2,10 @@
 
 This snippet is designed to have the possibility for a star rating inside a gallery. Default is 1 star up to 5 stars. If you want to have more or less stars, simply increase or decrease the amount of items in the gallery.
 
+![Partial rating](<./assets/partial star rating.png>)
+![Full rating](./assets/fullrating.png)
+
+
 ## Authors
 
 Markus Franz
@@ -18,7 +22,7 @@ Star rating gallery| [mmbr1606](https://github.com/mmbr1606)
 
 
 ## Code
-
+``` YAML
 Screens:
   Screen1:
     Properties:
@@ -47,6 +51,7 @@ Screens:
                     =Set(SelectedRating, ThisItem.Value)
                   X: =40
                   Y: =40
+```
 
 
 ## Disclaimer
