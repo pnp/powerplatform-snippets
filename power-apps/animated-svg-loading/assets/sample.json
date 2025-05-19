@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-animated-svg-loading",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-05-18T00:00:00.000Z",
+    "updateDateTime": "2025-05-18T00:00:00.000Z",
+    "title": "Animated SVG Loading",
+    "shortDescription": "This is a custom animated loading visual of a circle with gradient border color changing from purple to pink to purple over three seconds.",
+    "longDescription": [
+      "This is a custom animated loading visual of a circle with gradient border color changing from purple to pink to purple over three seconds. The spinning graphic can be used to show application users that something is being processed in a more engaging way."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/animated-svg-loading/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/animated-svg-loading/assets/Animated_SVG_Loading.gif",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "cathrinebruvold",
+        "name": "Cathrine Bruvold",
+        "pictureUrl": "https://github.com/cathrinebruvold.png"
+      }
+    ]
+  }
+]
