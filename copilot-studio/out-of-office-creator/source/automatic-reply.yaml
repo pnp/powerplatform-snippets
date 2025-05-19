@@ -1,0 +1,51 @@
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: automaticRepliesSetting.status
+    value: scheduled
+
+  - kind: ManualTaskInput
+    propertyName: automaticRepliesSetting.externalAudience
+    value: all
+
+  - kind: AutomaticTaskInput
+    propertyName: automaticRepliesSetting.scheduledStartDateTime.dateTime
+    description: "Scheduled start time (example: '2017-08-29T04:00:00.0000000')"
+
+  - kind: AutomaticTaskInput
+    propertyName: automaticRepliesSetting.scheduledEndDateTime.dateTime
+    description: "Scheduled end time (example: '2017-08-29T05:00:00.0000000')"
+
+  - kind: AutomaticTaskInput
+    propertyName: automaticRepliesSetting.externalReplyMessage
+    description: Generated Out of Office message text, ready to be used as an automatic reply
+
+  - kind: AutomaticTaskInput
+    propertyName: automaticRepliesSetting.internalReplyMessage
+    description: Generated Out of Office message text, ready to be used as an automatic reply
+
+modelDisplayName: Out of Office set up
+modelDescription: |-
+  The action is triggered after the action 'Out of Office Creator - prompt sample' generates an Out of Office message text, ready to be used as an automatic reply.
+  When triggered, first ask the user if they would like to set the generated message as their automatic reply in Outlook.
+  Important: The confirmation question must not include or display the Out of Office message text.
+  
+  Proceed to set the automatic reply only if the user explicitly confirms.
+  
+  Notes:
+  Do not set up automatic reply before you receive confirmation from the user.
+  After the action completes, the agent informs the user that the Out of Office message has been successfully set in Outlook.
+outputs:
+  - propertyName: confirmation
+    name: confirmation
+    description: AI-generated confirmation that the automatic reply set up completed
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: { REPLACE-WITH-CONNECTION-REFERENCE-NAME }
+  connectionProperties:
+    mode: Invoker
+
+  operationId: SetAutomaticRepliesSetting_V2
+
+outputMode: Specific
