@@ -23,5 +23,3 @@ Allow you to change the form factor in edit mode, helping you to design responsi
                 Coalesce(vFormFactor.Height,Max(App.Height, App.MinScreenHeight))
 
 <img width="520" alt="sample_tablet_landscape" src="./assets/sample_tablet_landscape.png" /><img width="206" alt="sample_tablet_portrait.png" src="./assets/sample_tablet_portrait.png" /><img width="150" alt="phone_portrait.png" src="./assets/sample_phone_portrait.png" />
-
-
