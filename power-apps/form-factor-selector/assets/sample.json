@@ -34,7 +34,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "./assets/sample_tablet_portrait.png",
+        "url": "./sample_tablet_portrait.png",
         "alt": "Preview PNG"
       }
     ],
