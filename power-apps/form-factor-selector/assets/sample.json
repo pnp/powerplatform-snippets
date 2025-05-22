@@ -34,7 +34,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "./sample_tablet_portrait.png",
+        "url": "https://github.com/DavidZoon/powerplatform-snippets/raw/main/power-apps/form-factor-selector/assets/formfactorselector.png",
         "alt": "Preview PNG"
       }
     ],
