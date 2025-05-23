@@ -2,9 +2,7 @@
 
 This snippet allows you to import files by dragging and dropping them onto a designated area.
 
-![Minesweeper](./assets/uploadfile.jpg)
-
-![Minesweeper](./assets/uploadfile.mp4)
+![Upload File](./assets/uploadfile.gif)
 
 ## Authors
 
