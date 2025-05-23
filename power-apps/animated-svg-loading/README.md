@@ -8,7 +8,7 @@ This is a custom animated loading visual of a circle with gradient border color 
 
 Snippet | Author  
 --------|----------
-Animated SVG Loading | Cathrine Bruvold \| [GitHub](https://github.com/cathrinebruvold) \| [LinkedIn](https://www.linkedin.com/in/cathrine-bruvold-b91b2113/)
+Animated SVG Loading | Cathrine Bruvold \| [GitHub](https://github.com/cathrinebruvold) \| [LinkedIn](https://www.linkedin.com/in/cathrine-bruvold-b91b92113/)
 
 ## Minimal path to awesome
 
