@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/klondike/assets/klondike.png",
+        "url": "https://github.com/pnp/powerplatform-snippets/blob/5cf930e5169555d9ff4695e024799d9cc7d8415d/power-apps/klondike/assets/klondike.png",
         "alt": "Preview PNG"
       }
     ],
