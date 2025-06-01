@@ -2,12 +2,15 @@
 
 Animated accordion component implemented using native components in Power Apps Canvas. Great for FAQs, navigation menus, interactive forms, and any other foldable UI objects that require content organization.
 
+> [!WARNING]
+> All native Power Apps snippets offer limited performance in Studio mode. If you see any performance issues, test via published app/player mode first!
+
 ### Animated Accordion
 Basic accordion dedicated to FAQ content. Row items are dynamically generated on Gallery items, all content is passed directly to text fields.
 ![preview](./assets/animated-accordion-demo.gif)
 
 ### Animated Form
-Manually built container set, inspired on top of the idea of animated accordion. It can scale to any number of items. Great for building forms and menus.
+Manually built container set, inspired on top of the idea of an animated accordion. It can scale to any number of items. Great for building forms and menus.
 ![preview](./assets/animated-form-demo.gif)
 
 
