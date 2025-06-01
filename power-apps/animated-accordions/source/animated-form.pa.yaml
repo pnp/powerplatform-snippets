@@ -1,0 +1,522 @@
+- cntAnimatedForm:
+    Control: GroupContainer@1.3.0
+    Variant: AutoLayout
+    Properties:
+      ContentLanguage: |-
+        =""
+        /*
+        Animated Form - Canvas App code snippet
+        Author: Jan Chlebek, May 2025
+        Linkedin: https://www.linkedin.com/in/jan-chlebek/
+        GitHub: https://github.com/jan-chlebek
+        */
+      DropShadow: =DropShadow.None
+      Height: =600
+      LayoutDirection: =LayoutDirection.Vertical
+      RadiusBottomLeft: =0
+      RadiusBottomRight: =0
+      RadiusTopLeft: =0
+      RadiusTopRight: =0
+      X: =415
+      Y: =75
+    Children:
+      - cntSection1:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.None
+            FillPortions: =0
+            Height: "=42 + If(\r\n    // As animation do not work in Studio Editor, additional state is added to ensure app can be fully tested\r\n    StartsWith(Host.Version, \"PowerApps-Studio\"),\r\n    If(btnSection1Title.Text = lclCurrentSelectedAccordionItem, cntSection1Content.Height),\r\n\r\n    With(\r\n        {_timerStep: tmrAnimatedFormTimer.Value / tmrAnimatedFormTimer.Duration},\r\n        If(\r\n            btnSection1Title.Text  = lclCurrentSelectedAccordionItem, \r\n            cntSection1Content.Height * (_timerStep) * (2 - _timerStep), \r\n\r\n            btnSection1Title.Text  = lclLastSelectedAccordionItem,\r\n            cntSection1Content.Height* (1 - (_timerStep) * (2 - _timerStep)),\r\n            \r\n            0\r\n        )\r\n    )\r\n)"
+            LayoutDirection: =LayoutDirection.Vertical
+            PaddingBottom: =2
+            PaddingLeft: =2
+            PaddingRight: =2
+            PaddingTop: =2
+            Width: =Parent.Width
+            Y: =20
+          Children:
+            - cntSection1Header:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  Fill: =Color.White
+                  FillPortions: =0
+                  Height: =40
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  PaddingRight: =3
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - btnSection1Title:
+                      Control: Button@0.0.45
+                      Properties:
+                        AccessibleLabel: =Self.Text
+                        Align: =Align.Left
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                        OnSelect: =Select(btnSection1Chevron)
+                        Text: ="Personal Information"
+                        Width: =Parent.Width - btnSection1Chevron.Width - Parent.PaddingRight
+                  - btnSection1Chevron:
+                      Control: Button@0.0.45
+                      Properties:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        Icon: ="ChevronDown"
+                        IconRotation: "=\r\nIf(\r\n    btnSection1Title.Text = lclCurrentSelectedAccordionItem || lclCurrentSelectedAccordionItem = \"All\", \r\n    If(\r\n        StartsWith(Host.Version, \"PowerApps-Studio\"),\r\n        180,\r\n        tmrAnimatedFormTimer.Value / tmrAnimatedFormTimer.Duration * 180\r\n    ),\r\n\r\n    btnSection1Title.Text = lclLastSelectedAccordionItem || lclLastSelectedAccordionItem = \"All\",\r\n    If(\r\n        StartsWith(Host.Version, \"PowerApps-Studio\"),\r\n        0,\r\n        (1 - tmrAnimatedFormTimer.Value / tmrAnimatedFormTimer.Duration) * 180\r\n    ),\r\n    \r\n    0\r\n)"
+                        Layout: ='ButtonCanvas.Layout'.IconOnly
+                        OnSelect: |
+                          =Reset(tmrAnimatedFormTimer);
+                          UpdateContext({lclStartTimer: false});
+                          UpdateContext({
+                              lclStartTimer: true, 
+                              lclLastSelectedAccordionItem: lclCurrentSelectedAccordionItem,
+                              lclCurrentSelectedAccordionItem: If(lclCurrentSelectedAccordionItem = btnSection1Title.Text , Blank(), btnSection1Title.Text)
+                          })
+                        Text: =btnSection1Title.Text
+                        Width: =32
+            - cntSection1Content:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =210
+                  LayoutDirection: =LayoutDirection.Vertical
+                  Visible: |-
+                    =// To ensure proper tabulation support and component memory management, we hide item content when it won't be visible. Without this statement, when tabulating through the component, the user could see its content without expanding it and breaking the UI
+                    btnSection1Title.Text = lclCurrentSelectedAccordionItem || (btnSection1Title.Text = lclLastSelectedAccordionItem && lclStartTimer)
+                  Width: =Parent.Width
+                Children:
+                  - cntSection1Field1:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection1Field1:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Font: =Font.'Segoe UI'
+                              Text: ="First Name"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - inpSection1Field1:
+                            Control: TextInput@0.0.54
+                            Properties:
+                              Placeholder: ="Provide first name..."
+                  - cntSection1Field2:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection1Field2:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Text: ="Last Name"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - inpSection1Field2:
+                            Control: TextInput@0.0.54
+                            Properties:
+                              Placeholder: ="Provide last name..."
+                  - cntSection1Field3:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection1Field3:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Text: ="LinkedIn"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - inpSection1Field3:
+                            Control: TextInput@0.0.54
+                            Properties:
+                              Placeholder: ="Provide last name..."
+                  - cntSection1Field4:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection1Field4:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Text: ="GitHub"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - inpSection1Field4:
+                            Control: TextInput@0.0.54
+                            Properties:
+                              Placeholder: ="Provide last name..."
+                  - cntSection1Field5:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection1Field5:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Text: ="Date of Birth"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - dteSection1Field5:
+                            Control: DatePicker@0.0.46
+      - cntSection2:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.None
+            FillPortions: =0
+            Height: "=42 + If(\r\n    // As animation do not work in Studio Editor, additional state is added to ensure app can be fully tested\r\n    StartsWith(Host.Version, \"PowerApps-Studio\"),\r\n    If(btnSection2Title.Text = lclCurrentSelectedAccordionItem, cntSection2Content.Height),\r\n\r\n    With(\r\n        {_timerStep: tmrAnimatedFormTimer.Value / tmrAnimatedFormTimer.Duration},\r\n        If(\r\n            btnSection2Title.Text  = lclCurrentSelectedAccordionItem, \r\n            cntSection2Content.Height * (_timerStep) * (2 - _timerStep), \r\n\r\n            btnSection2Title.Text  = lclLastSelectedAccordionItem,\r\n            cntSection2Content.Height* (1 - (_timerStep) * (2 - _timerStep)),\r\n            \r\n            0\r\n        )\r\n    )\r\n)"
+            LayoutDirection: =LayoutDirection.Vertical
+            PaddingBottom: =2
+            PaddingLeft: =2
+            PaddingRight: =2
+            PaddingTop: =2
+            Width: =Parent.Width
+            Y: =40
+          Children:
+            - cntSection2Header:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  Fill: =Color.White
+                  FillPortions: =0
+                  Height: =40
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  PaddingRight: =3
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - btnSection2Title:
+                      Control: Button@0.0.45
+                      Properties:
+                        AccessibleLabel: =Self.Text
+                        Align: =Align.Left
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                        OnSelect: =Select(btnSection1Chevron_1)
+                        Text: ="Employment Information"
+                        Width: =Parent.Width - btnSection1Chevron_1.Width - Parent.PaddingRight
+                  - btnSection1Chevron_1:
+                      Control: Button@0.0.45
+                      Properties:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        Icon: ="ChevronDown"
+                        IconRotation: "=\r\nIf(\r\n    btnSection2Title.Text = lclCurrentSelectedAccordionItem || lclCurrentSelectedAccordionItem = \"All\", \r\n    If(\r\n        StartsWith(Host.Version, \"PowerApps-Studio\"),\r\n        180,\r\n        tmrAnimatedFormTimer.Value / tmrAnimatedFormTimer.Duration * 180\r\n    ),\r\n\r\n    btnSection2Title.Text = lclLastSelectedAccordionItem || lclLastSelectedAccordionItem = \"All\",\r\n    If(\r\n        StartsWith(Host.Version, \"PowerApps-Studio\"),\r\n        0,\r\n        (1 - tmrAnimatedFormTimer.Value / tmrAnimatedFormTimer.Duration) * 180\r\n    ),\r\n    \r\n    0\r\n)"
+                        Layout: ='ButtonCanvas.Layout'.IconOnly
+                        OnSelect: |
+                          =Reset(tmrAnimatedFormTimer);
+                          UpdateContext({lclStartTimer: false});
+                          UpdateContext({
+                              lclStartTimer: true, 
+                              lclLastSelectedAccordionItem: lclCurrentSelectedAccordionItem,
+                              lclCurrentSelectedAccordionItem: If(lclCurrentSelectedAccordionItem = btnSection2Title.Text , Blank(), btnSection2Title.Text)
+                          })
+                        Text: =btnSection2Title.Text
+                        Width: =32
+            - cntSection2Content:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =130
+                  LayoutDirection: =LayoutDirection.Vertical
+                  Visible: |-
+                    =// To ensure proper tabulation support and component memory management, we hide item content when it won't be visible. Without this statement, when tabulating through the component, the user could see its content without expanding it and breaking the UI
+                    btnSection2Title.Text = lclCurrentSelectedAccordionItem || (btnSection2Title.Text = lclLastSelectedAccordionItem && lclStartTimer)
+                  Width: =Parent.Width
+                Children:
+                  - cntSection2Field1:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection2Field1:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Font: =Font.'Segoe UI'
+                              Text: ="Expected Salary"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - numSection2Field1:
+                            Control: NumberInput@2.9.12
+                  - cntSection2Field2:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection2Field2:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Text: ="Work Location"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - cbxSection2Field2:
+                            Control: ComboBox@0.0.51
+                  - cntSection2Field3:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection2Field3:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Text: ="Start Date"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - dteSection2Field3:
+                            Control: DatePicker@0.0.46
+      - cntSection3:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.None
+            FillPortions: =0
+            Height: "=42 + If(\r\n    // As animation do not work in Studio Editor, additional state is added to ensure app can be fully tested\r\n    StartsWith(Host.Version, \"PowerApps-Studio\"),\r\n    If(btnSection3Title.Text = lclCurrentSelectedAccordionItem, cntSection3Content.Height),\r\n\r\n    With(\r\n        {_timerStep: tmrAnimatedFormTimer.Value / tmrAnimatedFormTimer.Duration},\r\n        If(\r\n            btnSection3Title.Text  = lclCurrentSelectedAccordionItem, \r\n            cntSection3Content.Height * (_timerStep) * (2 - _timerStep), \r\n\r\n            btnSection3Title.Text  = lclLastSelectedAccordionItem,\r\n            cntSection3Content.Height* (1 - (_timerStep) * (2 - _timerStep)),\r\n            \r\n            0\r\n        )\r\n    )\r\n)"
+            LayoutDirection: =LayoutDirection.Vertical
+            PaddingBottom: =2
+            PaddingLeft: =2
+            PaddingRight: =2
+            PaddingTop: =2
+            Width: =Parent.Width
+            Y: =40
+          Children:
+            - cntSection3Header:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  Fill: =Color.White
+                  FillPortions: =0
+                  Height: =40
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  PaddingRight: =3
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - btnSection3Title:
+                      Control: Button@0.0.45
+                      Properties:
+                        AccessibleLabel: =Self.Text
+                        Align: =Align.Left
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                        OnSelect: =Select(btnSection3Chevron)
+                        Text: ="Skills and Competencies"
+                        Width: =Parent.Width - btnSection3Chevron.Width - Parent.PaddingRight
+                  - btnSection3Chevron:
+                      Control: Button@0.0.45
+                      Properties:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        Icon: ="ChevronDown"
+                        IconRotation: "=\r\nIf(\r\n    btnSection3Title.Text = lclCurrentSelectedAccordionItem || lclCurrentSelectedAccordionItem = \"All\", \r\n    If(\r\n        StartsWith(Host.Version, \"PowerApps-Studio\"),\r\n        180,\r\n        tmrAnimatedFormTimer.Value / tmrAnimatedFormTimer.Duration * 180\r\n    ),\r\n\r\n    btnSection3Title.Text = lclLastSelectedAccordionItem || lclLastSelectedAccordionItem = \"All\",\r\n    If(\r\n        StartsWith(Host.Version, \"PowerApps-Studio\"),\r\n        0,\r\n        (1 - tmrAnimatedFormTimer.Value / tmrAnimatedFormTimer.Duration) * 180\r\n    ),\r\n    \r\n    0\r\n)"
+                        Layout: ='ButtonCanvas.Layout'.IconOnly
+                        OnSelect: |
+                          =Reset(tmrAnimatedFormTimer);
+                          UpdateContext({lclStartTimer: false});
+                          UpdateContext({
+                              lclStartTimer: true, 
+                              lclLastSelectedAccordionItem: lclCurrentSelectedAccordionItem,
+                              lclCurrentSelectedAccordionItem: If(lclCurrentSelectedAccordionItem = btnSection3Title.Text , Blank(), btnSection3Title.Text)
+                          })
+                        Text: =btnSection3Title.Text
+                        Width: =32
+            - cntSection3Content:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =130
+                  LayoutDirection: =LayoutDirection.Vertical
+                  Visible: |-
+                    =// To ensure proper tabulation support and component memory management, we hide item content when it won't be visible. Without this statement, when tabulating through the component, the user could see its content without expanding it and breaking the UI
+                    btnSection3Title.Text = lclCurrentSelectedAccordionItem || (btnSection3Title.Text = lclLastSelectedAccordionItem && lclStartTimer)
+                  Width: =Parent.Width
+                Children:
+                  - cntSection3Field1:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection3Field1:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Font: =Font.'Segoe UI'
+                              Text: ="Technical Skills"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - cbxSection3Field1:
+                            Control: ComboBox@0.0.51
+                  - cntSection3Field2:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection3Field2:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Text: ="Languages"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - cbxSection3Field2:
+                            Control: ComboBox@0.0.51
+                  - cntSection3Field3:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =5
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - txtSection3Field3:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Text: ="Certificates"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =110
+                        - cbxSection3Field3:
+                            Control: ComboBox@0.0.51
+      - tmrAnimatedFormTimer:
+          Control: Timer@2.1.0
+          Properties:
+            AutoPause: =false
+            AutoStart: =true
+            Duration: =400
+            OnTimerEnd: |-
+              =UpdateContext({lclStartTimer: false})
+            Start: =lclStartTimer
+            Text: =Self.Value
+            Visible: =false
+            Y: =360

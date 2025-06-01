@@ -2,6 +2,14 @@
     Control: GroupContainer@1.3.0
     Variant: ManualLayout
     Properties:
+      ContentLanguage: |-
+        =""
+        /*
+        Animated Form - Canvas App code snippet
+        Author: Jan Chlebek, May 2025
+        Linkedin: https://www.linkedin.com/in/jan-chlebek/
+        GitHub: https://github.com/jan-chlebek
+        */
       DropShadow: =DropShadow.None
       Height: =galAccordion.Height
       RadiusBottomLeft: =0
@@ -74,6 +82,7 @@
                               Align: =Align.Left
                               Appearance: ='ButtonCanvas.Appearance'.Transparent
                               IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                              OnSelect: =Select(btnAccordionChevron)
                               Text: =ThisItem.Header
                               Width: =Parent.Width - btnAccordionChevron.Width
                         - btnAccordionChevron:
@@ -103,6 +112,9 @@
                         PaddingRight: =5
                         PaddingTop: =10
                         Text: =ThisItem.Value
+                        Visible: |-
+                          =// To ensure proper tabulation support and component memory management, we hide item content when it won't be visible. Without this statement, when tabulating through the component, the user could see its content without expanding it and breaking the UI
+                          ThisItem.Header = lclCurrentSelectedAccordionItem || (ThisItem.Header = lclLastSelectedAccordionItem && lclStartTimer)
                         Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
                         Y: =40
       - tmrAccordionTimer:
