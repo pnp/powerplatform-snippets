@@ -7,7 +7,7 @@ Basic accordion dedicated to FAQ content. Row items are dynamically generated on
 ![preview](./assets/animated-accordion-demo.gif)
 
 ### Animated Form
-Manually build container set, build on top of the idea of animated accordion. It can scale to any number of items. Great for building forms and menus.
+Manually built container set, inspired on top of the idea of animated accordion. It can scale to any number of items. Great for building forms and menus.
 ![preview](./assets/animated-form-demo.gif)
 
 
