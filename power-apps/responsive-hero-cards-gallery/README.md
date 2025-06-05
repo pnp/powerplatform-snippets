@@ -22,9 +22,9 @@ This is a Power Apps YAML snippet that shows a responsive gallery of clickable h
 
 1. Inside the **Tree View**, select the *screen* or *parent container* you would like to add the snippet to.
 
-2. **Right click** - **Paste**
+1. **Right click** - **Paste**
 
-3. **Note:** If you see any formula errors, you may need to edit the cut and re-paste the formula back so that the control names resolve correctly.
+1. **Note:** If you see any formula errors, you may need to edit the cut and re-paste the formula back so that the control names resolve correctly.
 
 ## Disclaimer
 
