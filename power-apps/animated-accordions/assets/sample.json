@@ -1,0 +1,58 @@
+[
+    {
+        "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+        "name": "pnp-powerplatform-snippets-animated-accordions",
+        "version": "1.0.0.0",
+        "source": "pnp",
+        "creationDateTime": "2025-05-22T00:00:00.000Z",
+        "updateDateTime": "2025-05-22T00:00:00.000Z",
+        "title": "Animated Accordions",
+        "shortDescription": "Animated accordion component implemented using native components in Power Apps Canvas.",
+        "longDescription": [
+            "Animated accordion component implemented using native components in Power Apps Canvas. Great for FAQ, navigation menus, interactive forms and any other foldable UI objects that require content organization."
+        ],
+        "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/animated-accordions/",
+        "products": [
+            "Power Platform",
+            "Power Apps",
+            "powerplatform-snippets",
+            "power-apps-snippets"
+        ],
+        "tags": [
+        ],
+        "categories": [
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/animated-accordions/assets/animated-accordion-demo.gif",
+                "alt": "Preview GIF - Animated Accordion"
+            },
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/animated-accordions/assets/animated-form-demo.gif",
+                "alt": "Preview GIF - Animated Form"
+        }
+        ],
+
+        "metadata": [
+            {
+                "key": "Product",
+                "value": "Power Apps"
+            },
+            {
+                "key": "Type",
+                "value": "Snippet"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "jan-chlebek",
+                "name": "Jan Chlebek",
+                "pictureUrl": "https://github.com/jan-chlebek.png"
+            }
+        ]
+    }
+]
