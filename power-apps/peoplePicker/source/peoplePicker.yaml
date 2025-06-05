@@ -75,7 +75,7 @@
             Items: |-
               =If(
                   varRaz<>true && Len(lbl_user.Text) > 0,
-                  'Utilisateursd’Office365'.SearchUserV2(
+                  Office365Users.SearchUserV2(
                       {
                           searchTerm: lbl_user.Text,
                           top: If(Len(lbl_user.Text)<3,10,100),
@@ -161,7 +161,7 @@
                       Properties:
                         BorderColor: =RGBA(0, 18, 107, 1)
                         Height: =Parent.Height
-                        Image: =IfError('Utilisateursd’Office365'.UserPhoto(ThisItem.Id),Blank(),'Utilisateursd’Office365'.UserPhoto(ThisItem.Id))
+                        Image: =IfError(Office365Users.UserPhoto(ThisItem.Id),Blank(),Office365Users.UserPhoto(ThisItem.Id))
                         RadiusBottomLeft: =30
                         RadiusBottomRight: =30
                         RadiusTopLeft: =30
