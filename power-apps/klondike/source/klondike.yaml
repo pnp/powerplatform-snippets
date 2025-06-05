@@ -1,0 +1,268 @@
+- lbl_fondTapis:
+    Control: Label@2.5.1
+    Group: Solitaire
+    Properties:
+      BorderColor: =RGBA(0, 18, 107, 1)
+      Fill: =RGBA(34, 139, 34, 1)
+      Font: =Font.'Open Sans'
+      Height: =768
+      Text: =""
+      Width: =1366
+- frm_rectangle:
+    Control: Rectangle@2.3.0
+    Group: Solitaire
+    Properties:
+      BorderColor: =RGBA(255, 255, 255, 1)
+      BorderThickness: =5
+      Fill: =RGBA(0, 0, 0, 0)
+      Height: =169
+      Width: =129
+      X: =46
+      Y: =22
+- gal_septPiles:
+    Control: Gallery@2.15.0
+    Variant: Horizontal
+    Group: Solitaire
+    Properties:
+      BorderColor: =RGBA(0, 18, 107, 1)
+      Height: =2*App.Height/3
+      Items: =If(varChargement <> true,pilesBas,Blank())
+      OnSelect: =
+      TemplatePadding: =0
+      TemplateSize: =Self.Width/If(Self.AllItemsCount=0,1,Self.AllItemsCount)
+      Width: =App.Width
+      Y: =App.Height-Self.Height
+    Children:
+      - lbl_galPile:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(0,0,0,0)
+            Font: =Font.'Open Sans'
+            Height: =Parent.Height
+            OnSelect: "=If(\n    varCarteAncSolution.Numero = 13 && gal_pileCartes.AllItemsCount = 0,\n    Patch(\n        cardGame,\n        varCarteAncSolution,\n        {\n            position: 1,\n            pile: ThisItem.no,\n            pioche: false,\n            decouverte: false,\n            verso: false\n        }\n    );\n    ForAll(\n        Sequence(\n            CountRows(\n                Filter(\n                    cardGame,\n                    pile = varCarteAncSolution.pile && position > varCarteAncSolution.position\n                )\n            )\n        ),\n        Patch(\n            cardGame,\n            LookUp(\n                cardGame,\n                pile = varCarteAncSolution.pile && position = Value + varCarteAncSolution.position\n            ),\n            {\n                pile: ThisItem.no,\n                position:  1 + Value,\n                pioche: false,\n                decouverte: false,\n                verso: false\n            }\n        )\n    );\n    \n);\nIf(\n    varCarteAncSolution.decouverte = true,\n    UpdateContext({varCartePiocheDecouverte: Blank()})\n)"
+            Text: =
+            Width: =Parent.TemplateWidth
+      - gal_pileCartes:
+          Control: Gallery@2.15.0
+          Variant: Vertical
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =If(Self.AllItemsCount>0,Parent.Height,0)
+            Items: =Sort(Filter(cardGame,pile = ThisItem.no),position)
+            OnSelect: =
+            TemplateSize: =Self.Height/17
+            Width: =Parent.TemplateWidth
+          Children:
+            - img_cartePile:
+                Control: Image@2.2.3
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =If(ThisItem.solution=true,Color.Aqua)
+                  Height: =var200
+                  HoverFill: =ColorFade( lbl_fondTapis.Fill,40%)
+                  Image: =If(ThisItem.verso=true,varImgVersoCarte, ThisItem.img)
+                  OnSelect: |
+                    =UpdateContext({varMode : "pile",varCarteSelectionnee:ThisItem});
+                  Width: =var200
+- gal_pioche:
+    Control: Gallery@2.15.0
+    Variant: Horizontal
+    Group: Solitaire
+    Properties:
+      BorderColor: =RGBA(0, 18, 107, 1)
+      Height: =214
+      Items: =If(varChargement <> true,Sort(Filter(cardGame,pioche=true),position),Blank())
+      OnSelect: |-
+        =If(
+            gal_pioche.AllItemsCount = 0,
+            UpdateIf(
+                cardGame,
+                decouverte = true,
+                {
+                    pioche: true,
+                    decouverte: false
+                }
+            ),
+            UpdateContext(
+                {
+                    varCartePiocheDecouverte: Patch(
+                        cardGame,
+                        Last(gal_pioche.AllItems),
+                        {
+                            decouverte: true,
+                            pioche: false
+                        }
+                    )
+                }
+            )
+        )
+      TemplateSize: '=0.1  '
+      Width: =339
+    Children:
+      - img_cartePioche:
+          Control: Image@2.2.3
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =200
+            Image: =varImgVersoCarte
+            OnSelect: =Select(Parent)
+            Width: =var200
+- img_carteRetournee:
+    Control: Image@2.2.3
+    Group: Solitaire
+    Properties:
+      BorderColor: =RGBA(0, 18, 107, 1)
+      Height: =200
+      Image: =If(IsBlank(varCartePiocheDecouverte)=false,varCartePiocheDecouverte.img)
+      OnSelect: |
+        =UpdateContext({varMode : "pioche",varCarteSelectionnee:varCartePiocheDecouverte});
+      Width: =140
+      X: =353
+      Y: =5
+- lbl_clickPioche:
+    Control: Label@2.5.1
+    Group: Solitaire
+    Properties:
+      BorderColor: =RGBA(0, 18, 107, 1)
+      Font: =Font.'Open Sans'
+      Height: =200
+      OnSelect: |-
+        =
+
+        UpdateContext({varCartePiocheDecouverte : Blank()});
+        If(
+            gal_pioche.AllItemsCount = 0,
+            UpdateIf(
+                cardGame,
+                decouverte = true,
+                {
+                    pioche: true,
+                    decouverte: false
+                }
+            ),
+            UpdateContext(
+                {
+                    varCartePiocheDecouverte: Patch(
+                        cardGame,
+                        Last(gal_pioche.AllItems),
+                        {
+                            decouverte: true,
+                            pioche: false
+                        }
+                    )
+                }
+            )
+        )
+      Text: =""
+      Width: =353
+      Y: =5
+- gal_cartesRangees:
+    Control: Gallery@2.15.0
+    Variant: Horizontal
+    Group: Solitaire
+    Properties:
+      BorderColor: =Color.White
+      BorderThickness: =5
+      Fill: =RGBA(0, 128, 0, 0.6)
+      Height: =1*App.Height/4
+      Items: |-
+        =[
+                {famille: "heart"},
+                {famille: "diamond"},
+                {famille: "club"},
+                {famille: "spade"}
+            ]
+      TemplatePadding: =0
+      TemplateSize: =Self.Width/If(Self.AllItemsCount=0,1,Self.AllItemsCount)
+      Width: =App.Width-Self.X-5
+      X: =2*App.Width/5
+      Y: =5
+    Children:
+      - img_carteRangee:
+          Control: Image@2.2.3
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =Parent.Height
+            Image: "=If(\n    CountRows(\n        Filter(\n            cardGame,\n            rangee = ThisItem.famille\n        )\n    ) = 0,\n    \"https://github.com/htdebeer/SVG-cards/raw/refs/heads/master/png/1x/\" & ThisItem.famille & \"_1.png\",\n    \n    Last(\n        Sort(\n            Filter(\n                cardGame,\n                rangee = ThisItem.famille\n            ),\n            Numero\n        )\n    ).img\n)"
+            OnSelect: =Select(Parent)
+            Transparency: =If(CountRows(Filter(cardGame,rangee=ThisItem.famille))=0 ,0.8,0)
+            Width: =Parent.TemplateWidth
+- tim_traiteCarte:
+    Control: Timer@2.1.0
+    Group: Solitaire
+    Properties:
+      AutoStart: =IsBlank(varCarteSelectionnee)=false
+      BorderColor: =ColorFade(Self.Fill, -15%)
+      Color: =RGBA(255, 255, 255, 1)
+      DisabledBorderColor: =ColorFade(Self.BorderColor, 70%)
+      DisabledColor: =ColorFade(Self.Fill, 90%)
+      DisabledFill: =ColorFade(Self.Fill, 70%)
+      Duration: =600
+      Fill: =RGBA(56, 96, 178, 1)
+      Font: =Font.'Open Sans'
+      HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+      HoverColor: =RGBA(255, 255, 255, 1)
+      HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+      OnTimerStart: "=If(\n    IsBlank(varCarteSelectionnee) = false,\n    UpdateContext({varRetourneCarte: false});\n    If(\n        varCarteSelectionnee.solution = true,\n        Patch(\n            cardGame,\n            varCarteAncSolution,\n            {\n                pile: varCarteSelectionnee.pile,\n                position: varCarteSelectionnee.position + 1,\n                pioche: false,\n                decouverte: false,\n                verso: false\n            }\n        );\n        ForAll(\n            Sequence(\n                CountRows(\n                    Filter(\n                        cardGame,\n                        pile = varCarteAncSolution.pile && position > varCarteAncSolution.position\n                    )\n                )\n            ),\n            Patch(\n                cardGame,\n                LookUp(\n                    cardGame,\n                    pile = varCarteAncSolution.pile && position = Value + varCarteAncSolution.position\n                ),\n                {\n                    pile: varCarteSelectionnee.pile,\n                    position: varCarteSelectionnee.position + 1 + Value,\n                    pioche: false,\n                    decouverte: false,\n                    verso: false\n                }\n            )\n        );\n        If(\n            varCarteAncSolution.Numero = varCartePiocheDecouverte.Numero && varCarteAncSolution.Couleur = varCartePiocheDecouverte.Couleur,\n            UpdateContext({varCartePiocheDecouverte: Blank()})\n        );\n        UpdateIf(\n            cardGame,\n            solution = true,\n            {solution: false}\n        ),\n        UpdateIf(\n            cardGame,\n            solution = true,\n            {solution: false}\n        );\n        If(\n            varCarteSelectionnee.verso = false || varCarteSelectionnee.decouverte = true,\n            If(\n                CountRows(\n                    Filter(\n                        cardGame,\n                        rangee = varCarteSelectionnee.Couleur\n                    )\n                ) = 0 && varCarteSelectionnee.Numero = 1 || Last(\n                    Sort(\n                        Filter(\n                            cardGame,\n                            rangee = varCarteSelectionnee.Couleur\n                        ),\n                        Numero\n                    )\n                ).Numero = varCarteSelectionnee.Numero - 1,\n                Patch(\n                    cardGame,\n                    varCarteSelectionnee,\n                    {\n                        rangee: varCarteSelectionnee.Couleur,\n                        pile: 0,\n                        pioche: false,\n                        decouverte: false,\n                        verso: false\n                    }\n                );\n                If(\n                    varMode = \"pioche\",\n                    UpdateContext({varCartePiocheDecouverte: Blank()})\n                );\n                UpdateContext({varRetourneCarte: true}),\n                ForAll(\n                    gal_septPiles.AllItems,\n                    If(\n                        CountRows(\n                            Sort(\n                                Filter(\n                                    cardGame,\n                                    pile = no\n                                ),\n                                position\n                            )\n                        ) > 0,\n                        If(\n                            Last(\n                                Sort(\n                                    Filter(\n                                        cardGame,\n                                        pile = no\n                                    ),\n                                    position\n                                )\n                            ).Numero = varCarteSelectionnee.Numero + 1 && (Last(\n                                Sort(\n                                    Filter(\n                                        cardGame,\n                                        pile = no\n                                    ),\n                                    position\n                                )\n                            ).Couleur in [\n                                \"heart\",\n                                \"diamond\"\n                            ] && varCarteSelectionnee.Couleur in [\n                                \"club\",\n                                \"spade\"\n                            ] || Last(\n                                Sort(\n                                    Filter(\n                                        cardGame,\n                                        pile = no\n                                    ),\n                                    position\n                                )\n                            ).Couleur in [\n                                \"club\",\n                                \"spade\"\n                            ] && varCarteSelectionnee.Couleur in [\n                                \"heart\",\n                                \"diamond\"\n                            ]),\n                            Patch(\n                                cardGame,\n                                Last(\n                                    Sort(\n                                        Filter(\n                                            cardGame,\n                                            pile = no\n                                        ),\n                                        position\n                                    )\n                                ),\n                                {solution: true}\n                            );\n                        )\n                    )\n                )\n            )\n        );\n        If(\n            varRetourneCarte = true,\n            If(\n                IsBlank(Last(gal_pileCartes.AllItems)) = false,\n                Patch(\n                    cardGame,\n                    Last(Sort(Filter(cardGame,pile = varCarteSelectionnee.pile),position)),\n                    {verso: false}\n                )\n            )\n        );\n        If(\n            CountRows(\n                Filter(\n                    cardGame,\n                    solution = true\n                )\n            ) > 0,\n            UpdateContext({varCarteAncSolution: varCarteSelectionnee})\n        )\n    );\n    If(\n        varCarteSelectionnee.verso = true,\n        If(\n            varCarteSelectionnee.Numero = Last(\n                Sort(\n                    Filter(\n                        cardGame,\n                        pile = varCarteSelectionnee.pile\n                    ),\n                    position\n                )\n            ).Numero,\n            Patch(\n                cardGame,\n                varCarteSelectionnee,\n                {verso: false}\n            )\n        )\n    );\n    UpdateContext({varCarteAncSolution: varCarteSelectionnee});\n    UpdateContext({varCarteSelectionnee: Blank()});\n    \n)"
+      PressedBorderColor: =Self.Fill
+      PressedColor: =Self.Fill
+      PressedFill: =Self.Color
+      Start: =Self.AutoStart
+      Visible: =false
+      X: =160
+      Y: =728
+- img_victoire:
+    Control: Image@2.2.3
+    Group: Solitaire
+    Properties:
+      BorderColor: =RGBA(0, 18, 107, 1)
+      Height: =768
+      Image: =If(Self.Visible = true, "https://www.menosfios.com/wp-content/uploads/2020/05/Jogo-solitaire-Menos-Fios.gif",Blank())
+      ImagePosition: =ImagePosition.Stretch
+      Visible: =CountRows(cardGame)>0 && (CountRows(Filter(cardGame,Len(rangee)>0))=CountRows(cardGame))
+      Width: =1366
+- btn_initialisation:
+    Control: Classic/Button@2.2.0
+    Group: Solitaire
+    Properties:
+      BorderColor: =ColorFade(Self.Fill, -15%)
+      Color: =RGBA(255, 255, 255, 1)
+      DisabledBorderColor: =RGBA(166, 166, 166, 1)
+      Fill: =RGBA(56, 96, 178, 0.5)
+      Font: =Font.'Open Sans'
+      Height: =30
+      HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+      HoverColor: =RGBA(255, 255, 255, 1)
+      HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+      OnSelect: "=UpdateContext({varChargement : true});\n\nUpdateContext({varImgVersoCarte: \"https://github.com/htdebeer/SVG-cards/raw/refs/heads/master/png/1x/back-navy.png\"});\nUpdateContext({var200 : 200});\n\nClearCollect(\n    cardGame,\n    Blank()\n);\nForAll(\n    [\n        {famille: \"heart\"},\n        {famille: \"diamond\"},\n        {famille: \"club\"},\n        {famille: \"spade\"}\n    ],\n//On insere les coeurs\n    ForAll(\n        Sequence(13),\n        Collect(\n            cardGame,\n            {\n                Numero: ThisRecord.Value,\n                Couleur: famille,\n                pile: 0,\n                position: 0,\n                pioche : true,\n                decouverte : false,\n                verso: true,\n                libre: true,\n                rangee : \"\",\n                solution : false,\n        \n\n                img: \"https://github.com/htdebeer/SVG-cards/raw/refs/heads/master/png/1x/\"&famille&\"_\" & Switch(\n                    ThisRecord.Value,\n                    \n                    11,\n                    \"jack\",\n                    12,\n                    \"queen\",\n                    13,\n                    \"king\",\n                    ThisRecord.Value\n                ) & \".png\"\n            }\n        )\n    )\n);\n//On va créer les 7 piles du bas et mettre les cartes aux hasard\nClearCollect(\n    pilesBas,\n    Blank()\n);\nForAll(\n    AddColumns(\n        Sequence(7),\n        noPile,\n        Value\n    ),\n    Collect(\n        pilesBas,\n        {\n            no: noPile,\n            nbCard: noPile\n        }\n    );\n    ForAll(\n        Sequence(noPile),\n        Patch(\n            cardGame,\n            Index(\n                Filter(\n                    cardGame,\n                    libre = true\n                ),\n                RandBetween(\n                    1,\n                    CountRows(\n                        Filter(\n                            cardGame,\n                            libre = true\n                        )\n                    )\n                )\n            ),\n            {\n                libre: false,\n                pile: noPile,\n                position: ThisRecord.Value,\n                pioche : false,\n                decouverte : false\n            }\n        )\n    )\n);\n//On retourne la carte du dessus de chaque pile\nForAll(\n    AddColumns(\n        pilesBas,\n        noPileInit,\n        no\n    ),\n    Patch(\n        cardGame,\n        Last(\n            Sort(\n                Filter(\n                    cardGame,\n                    pile = noPileInit\n                ),\n                position\n            )\n        ),\n        {verso: false}\n    )\n);\n//On mélange les cartes du paquets restants\nUpdateContext(\n    {\n        varNbCartesRestantes: CountRows(\n            Filter(\n                cardGame,\n                libre = true\n            )\n        )\n    }\n);\nForAll(\n    AddColumns(\n        Sequence(varNbCartesRestantes),\n        noCarte,\n        Value\n    ),\n    Patch(\n        cardGame,\n        Index(\n            Filter(\n                cardGame,\n                libre = true\n            ),\n            noCarte\n        ),\n        {\n            position: RandBetween(\n                1,\n                varNbCartesRestantes\n            )\n        }\n    )\n);\n\nUpdateContext({varChargement : false});"
+      PressedBorderColor: =Self.Fill
+      PressedColor: =Self.Fill
+      PressedFill: =Self.Color
+      Text: ="Reset"
+      Width: =206
+      X: =1160
+      Y: =208
+- tim_debut:
+    Control: Timer@2.1.0
+    Group: Solitaire
+    Properties:
+      AutoStart: =true
+      BorderColor: =ColorFade(Self.Fill, -15%)
+      Color: =RGBA(255, 255, 255, 1)
+      DisabledBorderColor: =ColorFade(Self.BorderColor, 70%)
+      DisabledColor: =ColorFade(Self.Fill, 90%)
+      DisabledFill: =ColorFade(Self.Fill, 70%)
+      Fill: =RGBA(56, 96, 178, 1)
+      Font: =Font.'Open Sans'
+      HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+      HoverColor: =RGBA(255, 255, 255, 1)
+      HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+      OnTimerStart: =Select(btn_initialisation)
+      PressedBorderColor: =Self.Fill
+      PressedColor: =Self.Fill
+      PressedFill: =Self.Color
+      Start: =true
+      Visible: =false
+      X: =140
+      Y: =728
