@@ -1,0 +1,15 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewBox='0 0 300 60'>
+  <text x='50' y='40' fill='#2c3e50' font-family='Arial, sans-serif' font-size='16' text-anchor='start'> Loading your data </text>
+  <!-- First dot -->
+  <circle cx='210' cy='40' r='6' fill='#942e89'>
+    <animate attributeName='cy' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0s' />
+  </circle>
+  <!-- Second dot -->
+  <circle cx='230' cy='40' r='6' fill='#942e89'>
+    <animate attributeName='cy' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0.2s' />
+  </circle>
+  <!-- Third dot -->
+  <circle cx='250' cy='40' r='6' fill='#942e89'>
+    <animate attributeName='cy' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0.4s' />
+  </circle>
+</svg>

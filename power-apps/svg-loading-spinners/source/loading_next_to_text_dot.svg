@@ -1,0 +1,15 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewBox='0 0 300 60'>
+  <text x='50' y='40' fill='#2c3e50' font-family='Arial, sans-serif' font-size='16' text-anchor='start'> Loading your data </text>
+  <!-- First dot -->
+  <text x='185' y='40' fill='#942e89' font-family='Arial, sans-serif' font-size='22' text-anchor='middle'> .
+    <animate attributeName='y' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0s' />
+  </text>
+  <!-- Second dot -->
+  <text x='195' y='40' fill='#942e89' font-family='Arial, sans-serif' font-size='22' text-anchor='middle'> .
+    <animate attributeName='y' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0.2s' />
+  </text>
+  <!-- Third dot -->
+  <text x='205' y='40' fill='#942e89' font-family='Arial, sans-serif' font-size='22' text-anchor='middle'> .
+    <animate attributeName='y' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0.4s' />
+  </text>
+</svg>
