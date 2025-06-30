@@ -1,0 +1,218 @@
+- cntSVGSpinners:
+    Control: GroupContainer@1.3.0
+    Variant: AutoLayout
+    Properties:
+      DropShadow: =DropShadow.Semibold
+      Height: =475
+      LayoutDirection: =LayoutDirection.Horizontal
+      Width: =950
+      X: =215
+      Y: =135
+    Children:
+      - cntDotSpinner:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =25
+          Children:
+            - txtLabel1:
+                Control: Text@0.0.51
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  Height: =50
+                  Size: =20
+                  Text: ="Dot spinner"
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Semibold
+                  Width: =Parent.Width
+            - imgSpinner1.1:
+                Control: Image@2.2.3
+                Properties:
+                  Image: |-
+                    ="data:image/svg+xml;utf8, "& EncodeUrl("
+                    <svg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'>
+                      <!-- Center at (30, 30) with 8 dots positioned around the circle -->
+                      <!-- Dot 1: Top (0 degrees) -->
+                      <circle cx='30' cy='4' r='3' fill='#3498db'>
+                        <animate attributeName='fill-opacity' values='1;0.7;0.5;0.2;0.2;0.2;0.2;0.2;1' dur='1.1s' repeatCount='indefinite' />
+                      </circle>
+                      <!-- Dot 2: Top-right (45 degrees) -->
+                      <circle cx='48.4' cy='11.6' r='3' fill='#3498db'>
+                        <animate attributeName='fill-opacity' values='0.2;1;0.7;0.5;0.2;0.2;0.2;0.2;0.2' dur='1.1s' repeatCount='indefinite' />
+                      </circle>
+                      <!-- Dot 3: Right (90 degrees) -->
+                      <circle cx='56' cy='30' r='3' fill='#3498db'>
+                        <animate attributeName='fill-opacity' values='0.2;0.2;1;0.7;0.5;0.2;0.2;0.2;0.2' dur='1.1s' repeatCount='indefinite' />
+                      </circle>
+                      <!-- Dot 4: Bottom-right (135 degrees) -->
+                      <circle cx='48.4' cy='48.4' r='3' fill='#3498db'>
+                        <animate attributeName='fill-opacity' values='0.2;0.2;0.2;1;0.7;0.5;0.2;0.2;0.2' dur='1.1s' repeatCount='indefinite' />
+                      </circle>
+                      <!-- Dot 5: Bottom (180 degrees) -->
+                      <circle cx='30' cy='56' r='3' fill='#3498db'>
+                        <animate attributeName='fill-opacity' values='0.2;0.2;0.2;0.2;1;0.7;0.5;0.2;0.2' dur='1.1s' repeatCount='indefinite' />
+                      </circle>
+                      <!-- Dot 6: Bottom-left (225 degrees) -->
+                      <circle cx='11.6' cy='48.4' r='3' fill='#3498db'>
+                        <animate attributeName='fill-opacity' values='0.2;0.2;0.2;0.2;0.2;1;0.7;0.5;0.2' dur='1.1s' repeatCount='indefinite' />
+                      </circle>
+                      <!-- Dot 7: Left (270 degrees) -->
+                      <circle cx='4' cy='30' r='3' fill='#3498db'>
+                        <animate attributeName='fill-opacity' values='0.5;0.2;0.2;0.2;0.2;0.2;1;0.7;0.5' dur='1.1s' repeatCount='indefinite' />
+                      </circle>
+                      <!-- Dot 8: Top-left (315 degrees) -->
+                      <circle cx='11.6' cy='11.6' r='3' fill='#3498db'>
+                        <animate attributeName='fill-opacity' values='0.7;0.5;0.2;0.2;0.2;0.2;0.2;1;0.7' dur='1.1s' repeatCount='indefinite' />
+                      </circle>
+                    </svg>
+                    ")
+                  Width: =150
+      - cntJumpingDotSpinner:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =25
+          Children:
+            - txtLabel2:
+                Control: Text@0.0.51
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  Height: =50
+                  Size: =20
+                  Text: ="Dots jumping above text"
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Semibold
+                  Width: =Parent.Width
+            - imgSpinner2.1:
+                Control: Image@2.2.3
+                Properties:
+                  Image: |-
+                    ="data:image/svg+xml;utf8, "& EncodeUrl("
+                    <svg xmlns='http://www.w3.org/2000/svg' width='200' height='100' viewBox='0 0 200 100'>
+                      <!-- Circle 1 -->
+                      <circle cx='50' cy='50' r='10' fill='#3498db'>
+                        <animate attributeName='cy' values='50;20;50' dur='0.8s' repeatCount='indefinite' begin='0s' />
+                      </circle>
+                      <!-- Circle 2 -->
+                      <circle cx='100' cy='50' r='10' fill='#3498db'>
+                        <animate attributeName='cy' values='50;20;50' dur='0.8s' repeatCount='indefinite' begin='0.2s' />
+                      </circle>
+                      <!-- Circle 3 -->
+                      <circle cx='150' cy='50' r='10' fill='#3498db'>
+                        <animate attributeName='cy' values='50;20;50' dur='0.8s' repeatCount='indefinite' begin='0.4s' />
+                      </circle>
+                      <!-- Loading Text -->
+                      <text x='100' y='90' fill='#942e89' font-family='Arial, sans-serif' font-size='16' text-anchor='middle'> Loading your data </text>
+                    </svg>
+                    ")
+                  Width: =200
+            - imgSpinner2.2:
+                Control: Image@2.2.3
+                Properties:
+                  Image: |-
+                    ="data:image/svg+xml;utf8, "& EncodeUrl("
+                    <svg xmlns='http://www.w3.org/2000/svg' width='200' height='100' viewBox='0 0 200 100'>
+                      <!-- Circle 1 -->
+                      <circle cx='50' cy='50' r='10' fill='#3498db'>
+                        <animate attributeName='cy' values='50;20;50;50;20;50;50;20;50;50;50;50' dur='4s' repeatCount='indefinite' begin='0s' />
+                      </circle>
+                      <!-- Circle 2 -->
+                      <circle cx='100' cy='50' r='10' fill='#3498db'>
+                        <animate attributeName='cy' values='50;20;50;50;20;50;50;20;50;50;50;50' dur='4s' repeatCount='indefinite' begin='0.2s' />
+                      </circle>
+                      <!-- Circle 3 -->
+                      <circle cx='150' cy='50' r='10' fill='#3498db'>
+                        <animate attributeName='cy' values='50;20;50;50;20;50;50;20;50;50;50;50' dur='4s' repeatCount='indefinite' begin='0.4s' />
+                      </circle>
+                      <text x='100' y='90' fill='#942e89' font-family='Arial, sans-serif' font-size='16' text-anchor='middle'> Loading your data </text>
+                    </svg>
+                    ")
+                  Width: =200
+      - cntDotNextToText:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =25
+          Children:
+            - txtLabel3:
+                Control: Text@0.0.51
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  Height: =50
+                  Size: =20
+                  Text: ="Animated dots next to the text"
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Semibold
+                  Width: =Parent.Width
+            - imgSpinner3.1:
+                Control: Image@2.2.3
+                Properties:
+                  Image: |-
+                    ="data:image/svg+xml;utf8, "& EncodeUrl("
+                    <svg xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewBox='0 0 300 60'>
+                      <text x='50' y='40' fill='#2c3e50' font-family='Arial, sans-serif' font-size='16' text-anchor='start'> Loading your data </text>
+                      <!-- First dot -->
+                      <circle cx='210' cy='40' r='6' fill='#942e89'>
+                        <animate attributeName='cy' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0s' />
+                      </circle>
+                      <!-- Second dot -->
+                      <circle cx='230' cy='40' r='6' fill='#942e89'>
+                        <animate attributeName='cy' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0.2s' />
+                      </circle>
+                      <!-- Third dot -->
+                      <circle cx='250' cy='40' r='6' fill='#942e89'>
+                        <animate attributeName='cy' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0.4s' />
+                      </circle>
+                    </svg>
+                    ")
+                  Width: =300
+            - imgSpinner3.2:
+                Control: Image@2.2.3
+                Properties:
+                  Image: |-
+                    ="data:image/svg+xml;utf8, "& EncodeUrl("
+                    <svg xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewBox='0 0 300 60'>
+                      <text x='50' y='40' fill='#2c3e50' font-family='Arial, sans-serif' font-size='16' text-anchor='start'> Loading your data </text>
+                      <!-- First dot -->
+                      <text x='185' y='40' fill='#942e89' font-family='Arial, sans-serif' font-size='22' text-anchor='middle'> .
+                        <animate attributeName='y' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0s' />
+                      </text>
+                      <!-- Second dot -->
+                      <text x='195' y='40' fill='#942e89' font-family='Arial, sans-serif' font-size='22' text-anchor='middle'> .
+                        <animate attributeName='y' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0.2s' />
+                      </text>
+                      <!-- Third dot -->
+                      <text x='205' y='40' fill='#942e89' font-family='Arial, sans-serif' font-size='22' text-anchor='middle'> .
+                        <animate attributeName='y' values='40;30;40;40;30;40;40;30;40;40;40;40' dur='4s' repeatCount='indefinite' begin='0.4s' />
+                      </text>
+                    </svg>
+                    ")
+                  Width: =300
+            - imgSpinner3.3:
+                Control: Image@2.2.3
+                Properties:
+                  Image: |-
+                    ="data:image/svg+xml;utf8, "& EncodeUrl("
+                    <svg xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewBox='0 0 300 60'>
+                      <text x='50' y='40' fill='#2c3e50' font-family='Arial, sans-serif' font-size='16' text-anchor='start'> Loading your data </text>
+                      <!-- First dot -->
+                      <text x='185' y='40' fill='#942e89' font-family='Arial, sans-serif' font-size='22' text-anchor='middle' opacity='0'> .
+                        <animate attributeName='opacity' values='0;1;1;0;0;0' keyTimes='0;0.2;0.4;0.6;0.8;1' keySplines='0.42 0 0.58 1;0.42 0 0.58 1' dur='2s' repeatCount='indefinite' begin='0s' />
+                      </text>
+                      <!-- Second dot -->
+                      <text x='195' y='40' fill='#942e89' font-family='Arial, sans-serif' font-size='22' text-anchor='middle' opacity='0'> .
+                        <animate attributeName='opacity' values='0;0;1;1;0;0' keyTimes='0;0.2;0.4;0.6;0.8;1' keySplines='0.42 0 0.58 1;0.42 0 0.58 1' dur='2s' repeatCount='indefinite' begin='0s' />
+                      </text>
+                      <!-- Third dot -->
+                      <text x='205' y='40' fill='#942e89' font-family='Arial, sans-serif' font-size='22' text-anchor='middle' opacity='0'> .
+                        <animate attributeName='opacity' values='0;0;0;1;1;0' keyTimes='0;0.2;0.4;0.6;0.8;1' keySplines='0.42 0 0.58 1;0.42 0 0.58 1' dur='2s' repeatCount='indefinite' begin='0s' />
+                      </text>
+                    </svg>
+                    ")
+                  Width: =300
