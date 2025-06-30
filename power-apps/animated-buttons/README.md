@@ -70,7 +70,7 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                 Properties:
                   Height: =Parent.Height
                   HoverFill: =
-                  Image: "=\"data:image/svg+xml;utf8,  \" & EncodeUrl(\"\r\n<svg xmlns='http://www.w3.org/2000/svg' fill='black' class='bi bi-list' viewBox='-6.5 -6 28 28'>\r\n   <style>\r\n  @keyframes animate {\r\n    from {\r\n      transform: translateY(0px);\r\n    }\r\n    to {\r\n      transform: translateY(\r\n        var(--bounce-offset)\r\n      );\r\n      fill: \"& nfIconColorSelectedHex &\"  \r\n    }\r\n  }\r\n\r\n  .animate\"& varTimeStamp1 &\" {\r\n    animation:\r\n      \r\n      animate alternate 4;\r\n      cubic-bezier(.2, .65, .6, 1);\r\n      --bounce-offset: -5px;\r\n    animation-duration: 200ms;\r\n  }\r\n  \r\n</style>\r\n  <path class = 'animate\"& varTimeStamp1 &\"' d='M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5'/>\r\n</svg>\r\n\"\r\n)\r\n\r\n\r\n/*\r\n\"data:image/svg+xml;utf8,  \" & EncodeUrl(\"\r\n<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#FFFFFH' viewBox='-2 -2 20 20' style='animation: shake 1s infinite;'>\r\n  <style>\r\n    @keyframes shake {\r\n      0%, 100% { transform: translate3d(0, 0, 0); }\r\n      25% { transform: translate3d(-10px, 0, 0); }\r\n      50% { transform: translate3d(10px, 0, 0); }\r\n      75% { transform: translate3d(-10px, 0, 0); }\r\n    }\r\n</style>\r\n  <rect width='50' height='15' rx='6' fill='#5227CC'/>\r\n</svg>\r\n\")\r\n*/"
+                  Image: "=\"data:image/svg+xml;utf8,  \" & EncodeUrl(\"\r\n<svg xmlns='http://www.w3.org/2000/svg' fill='white' class='bi bi-list' viewBox='-6.5 -6 28 28'>\r\n   <style>\r\n  @keyframes animate {\r\n    from {\r\n      transform: translateY(0px);\r\n    }\r\n    to {\r\n      transform: translateY(\r\n        var(--bounce-offset)\r\n      );\r\n      fill: \"& \"#3A3B3C\" &\"  \r\n    }\r\n  }\r\n\r\n  .animate\"& varTimeStamp1 &\" {\r\n    animation:\r\n      \r\n      animate alternate 4;\r\n      cubic-bezier(.2, .65, .6, 1);\r\n      --bounce-offset: -5px;\r\n    animation-duration: 200ms;\r\n  }\r\n  \r\n</style>\r\n  <path class = 'animate\"& varTimeStamp1 &\"' d='M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5'/>\r\n</svg>\r\n\"\r\n)\r\n\r\n\r\n/*\r\n\"data:image/svg+xml;utf8,  \" & EncodeUrl(\"\r\n<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#FFFFFH' viewBox='-2 -2 20 20' style='animation: shake 1s infinite;'>\r\n  <style>\r\n    @keyframes shake {\r\n      0%, 100% { transform: translate3d(0, 0, 0); }\r\n      25% { transform: translate3d(-10px, 0, 0); }\r\n      50% { transform: translate3d(10px, 0, 0); }\r\n      75% { transform: translate3d(-10px, 0, 0); }\r\n    }\r\n</style>\r\n  <rect width='50' height='15' rx='6' fill='#5227CC'/>\r\n</svg>\r\n\")\r\n*/"
                   OnSelect: |-
                     =UpdateContext({locShowSettingsMenu: false});
                     UpdateContext({locShowSettingsMenu: true})
@@ -78,11 +78,11 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                   PaddingLeft: =10
                   PaddingRight: =10
                   PaddingTop: =10
-                  PressedFill: =varPressedFill
-                  RadiusBottomLeft: =varBorderRadiusCircle
-                  RadiusBottomRight: =varBorderRadiusCircle
-                  RadiusTopLeft: =varBorderRadiusCircle
-                  RadiusTopRight: =varBorderRadiusCircle
+                  PressedFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
+                  RadiusBottomLeft: =100
+                  RadiusBottomRight: =100
+                  RadiusTopLeft: =100
+                  RadiusTopRight: =100
                   Width: =Parent.Width
                   X: =(Parent.Width - Self.Width) / 2
                   Y: =(Parent.Height - Self.Height) / 2
@@ -113,10 +113,10 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                   PressedBorderColor: =Self.Fill
                   PressedColor: =Self.Fill
                   PressedFill: =RGBA(196,196,196,0.4)
-                  RadiusBottomLeft: =varBorderRadiusCircle
-                  RadiusBottomRight: =varBorderRadiusCircle
-                  RadiusTopLeft: =varBorderRadiusCircle
-                  RadiusTopRight: =varBorderRadiusCircle
+                  RadiusBottomLeft: =100
+                  RadiusBottomRight: =100
+                  RadiusTopLeft: =100
+                  RadiusTopRight: =100
                   Text: =""
                   Width: =Parent.Width * 0.69
                   X: =(Parent.Width - Self.Width) / 2
@@ -161,7 +161,7 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                 Properties:
                   Height: =Parent.Height
                   HoverFill: =
-                  Image: "=\"data:image/svg+xml;utf8,  \" & EncodeUrl(\"\r\n<svg xmlns='http://www.w3.org/2000/svg' fill='black' class='bi bi-list' viewBox='-6.5 -6 28 28'>\r\n   <style>\r\n   .animate\"& varTimeStamp2 &\" {\r\n    animation-name: shake;\r\n    animation-duration: 1.5s;\r\n    animation-fill-mode: both;\r\n  }\r\n  @keyframes shake {\r\n      0%, 100% { transform: translate3d(0, 0, 0); }\r\n      25% { transform: translate3d(-5px, 0, 0); fill: \"& nfIconColorSelectedHex &\"  }\r\n      50% { transform: translate3d(5px, 0, 0); fill: red  }\r\n      75% { transform: translate3d(-5px, 0, 0); fill: \"& nfIconColorSelectedHex &\"  }\r\n    }\r\n\r\n  \r\n  \r\n</style>\r\n  <path class = 'animate\"& varTimeStamp2 &\"' d='M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z'/>\r\n</svg>\r\n\"\r\n)\r\n\r\n\r\n/*\r\nstyle='animation: shake 1.5s infinite;'>\r\n  <style>\r\n    @keyframes shake {\r\n      0%, 100% { transform: translate3d(0, 0, 0); }\r\n      25% { transform: translate3d(-10px, 0, 0); }\r\n      50% { transform: translate3d(10px, 0, 0); }\r\n      75% { transform: translate3d(-10px, 0, 0); }\r\n    }\r\n  </style>\r\n*/"
+                  Image: "=\"data:image/svg+xml;utf8,  \" & EncodeUrl(\"\r\n<svg xmlns='http://www.w3.org/2000/svg' fill='white' class='bi bi-list' viewBox='-6.5 -6 28 28'>\r\n   <style>\r\n   .animate\"& varTimeStamp2 &\" {\r\n    animation-name: shake;\r\n    animation-duration: 1.5s;\r\n    animation-fill-mode: both;\r\n  }\r\n  @keyframes shake {\r\n      0%, 100% { transform: translate3d(0, 0, 0); }\r\n      25% { transform: translate3d(-5px, 0, 0); fill: \"& \"#3A3B3C\" &\"  }\r\n      50% { transform: translate3d(5px, 0, 0); fill: red  }\r\n      75% { transform: translate3d(-5px, 0, 0); fill: \"& \"#3A3B3C\" &\"  }\r\n    }\r\n\r\n  \r\n  \r\n</style>\r\n  <path class = 'animate\"& varTimeStamp2 &\"' d='M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z'/>\r\n</svg>\r\n\"\r\n)\r\n\r\n\r\n/*\r\nstyle='animation: shake 1.5s infinite;'>\r\n  <style>\r\n    @keyframes shake {\r\n      0%, 100% { transform: translate3d(0, 0, 0); }\r\n      25% { transform: translate3d(-10px, 0, 0); }\r\n      50% { transform: translate3d(10px, 0, 0); }\r\n      75% { transform: translate3d(-10px, 0, 0); }\r\n    }\r\n  </style>\r\n*/"
                   OnSelect: |-
                     =UpdateContext({locShowSettingsMenu: false});
                     UpdateContext({locShowSettingsMenu: true})
@@ -169,11 +169,11 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                   PaddingLeft: =10
                   PaddingRight: =10
                   PaddingTop: =10
-                  PressedFill: =varPressedFill
-                  RadiusBottomLeft: =varBorderRadiusCircle
-                  RadiusBottomRight: =varBorderRadiusCircle
-                  RadiusTopLeft: =varBorderRadiusCircle
-                  RadiusTopRight: =varBorderRadiusCircle
+                  PressedFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
+                  RadiusBottomLeft: =100
+                  RadiusBottomRight: =100
+                  RadiusTopLeft: =100
+                  RadiusTopRight: =100
                   Width: =Parent.Width
                   X: =(Parent.Width - Self.Width) / 2
                   Y: =(Parent.Height - Self.Height) / 2
@@ -223,10 +223,10 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                   PressedBorderColor: =Self.Fill
                   PressedColor: =Self.Fill
                   PressedFill: =RGBA(196,196,196,0.4)
-                  RadiusBottomLeft: =varBorderRadiusCircle
-                  RadiusBottomRight: =varBorderRadiusCircle
-                  RadiusTopLeft: =varBorderRadiusCircle
-                  RadiusTopRight: =varBorderRadiusCircle
+                  RadiusBottomLeft: =100
+                  RadiusBottomRight: =100
+                  RadiusTopLeft: =100
+                  RadiusTopRight: =100
                   Text: =""
                   Width: =Parent.Width * 0.69
                   X: =(Parent.Width - Self.Width) / 2
@@ -287,7 +287,7 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                           50% {
                             transform: scale(1.15);
                             opacity: 0.8;
-                            fill: "& nfIconColorSelectedHex &"
+                            fill: "& "#3A3B3C" &"
                           }
                         }  
                     </style>
@@ -303,11 +303,11 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                   PaddingLeft: =10
                   PaddingRight: =10
                   PaddingTop: =10
-                  PressedFill: =varPressedFill
-                  RadiusBottomLeft: =varBorderRadiusCircle
-                  RadiusBottomRight: =varBorderRadiusCircle
-                  RadiusTopLeft: =varBorderRadiusCircle
-                  RadiusTopRight: =varBorderRadiusCircle
+                  PressedFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
+                  RadiusBottomLeft: =100
+                  RadiusBottomRight: =100
+                  RadiusTopLeft: =100
+                  RadiusTopRight: =100
                   Width: =Parent.Width
                   X: =(Parent.Width - Self.Width) / 2
                   Y: =(Parent.Height - Self.Height) / 2
@@ -338,10 +338,10 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                   PressedBorderColor: =Self.Fill
                   PressedColor: =Self.Fill
                   PressedFill: =RGBA(196,196,196,0.4)
-                  RadiusBottomLeft: =varBorderRadiusCircle
-                  RadiusBottomRight: =varBorderRadiusCircle
-                  RadiusTopLeft: =varBorderRadiusCircle
-                  RadiusTopRight: =varBorderRadiusCircle
+                  RadiusBottomLeft: =100
+                  RadiusBottomRight: =100
+                  RadiusTopLeft: =100
+                  RadiusTopRight: =100
                   Text: =""
                   Width: =Parent.Width * 0.69
                   X: =(Parent.Width - Self.Width) / 2
@@ -418,11 +418,11 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                   PaddingLeft: =10
                   PaddingRight: =10
                   PaddingTop: =10
-                  PressedFill: =varPressedFill
-                  RadiusBottomLeft: =varBorderRadiusCircle
-                  RadiusBottomRight: =varBorderRadiusCircle
-                  RadiusTopLeft: =varBorderRadiusCircle
-                  RadiusTopRight: =varBorderRadiusCircle
+                  PressedFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
+                  RadiusBottomLeft: =100
+                  RadiusBottomRight: =100
+                  RadiusTopLeft: =100
+                  RadiusTopRight: =100
                   Width: =Parent.Width
                   X: =(Parent.Width - Self.Width) / 2
                   Y: =(Parent.Height - Self.Height) / 2
@@ -472,10 +472,10 @@ Animated CSS SVG Button | [Felix Verduin](https://github.com/felixverduin) ([Has
                   PressedBorderColor: =Self.Fill
                   PressedColor: =Self.Fill
                   PressedFill: =RGBA(196,196,196,0.4)
-                  RadiusBottomLeft: =varBorderRadiusCircle
-                  RadiusBottomRight: =varBorderRadiusCircle
-                  RadiusTopLeft: =varBorderRadiusCircle
-                  RadiusTopRight: =varBorderRadiusCircle
+                  RadiusBottomLeft: =100
+                  RadiusBottomRight: =100
+                  RadiusTopLeft: =100
+                  RadiusTopRight: =100
                   Text: =""
                   Width: =Parent.Width * 0.69
                   X: =(Parent.Width - Self.Width) / 2
