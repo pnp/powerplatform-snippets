@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-pickleball-team-generator",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-11T00:00:00.000Z",
+    "updateDateTime": "2025-04-11T00:00:00.000Z",
+    "title": "Pickleball Team Generator",
+    "shortDescription": "Ever been out on the courts, and want to switch things up a bit? Break up the team that keep smashing everyone?..... Have an odd number of people, and need an unbiased way to have someone sit out? Then have no fear! The Pickleball Team Generator is here!!",
+    "longDescription": [
+      "Ever been out on the courts, and want to switch things up a bit? Break up the team that keep smashing everyone?..... Have an odd number of people, and need an unbiased way to have someone sit out? Then have no fear! The Pickleball Team Generator is here!!"
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/pickleball-team-generator/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/pickleball-team-generator/assets/App-Screenshots.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Power-TT-People",
+        "name": "Nate Halliwell",
+        "pictureUrl": "https://github.com/Power-TT-People.png"
+      }
+    ]
+  }
+]
