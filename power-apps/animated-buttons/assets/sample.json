@@ -1,0 +1,52 @@
+[
+    {
+        "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+        "name": "pnp-powerplatform-snippets-animated-buttons",
+        "version": "1.0.0.0",
+        "source": "pnp",
+        "creationDateTime": "2025-07-06T00:00:00.000Z",
+        "updateDateTime": "2025-07-06T00:00:00.000Z",
+        "title": "Animated Buttons",
+        "shortDescription": "Bring your Canvas Power Apps to life with animated SVG buttons styled to mimic CSS hover and microinteraction effects.",
+        "longDescription": [
+            "Bring your Canvas Power Apps to life with animated SVG buttons styled to mimic CSS hover and microinteraction effects. Use this reusable snippet to apply visual polish and responsiveness to buttons via declarative YAML."
+        ],
+        "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/animated-buttons/",
+        "products": [
+            "Power Platform",
+            "Power Apps",
+            "powerplatform-snippets",
+            "power-apps-snippets"
+        ],
+        "tags": [
+        ],
+        "categories": [
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/animated-buttons/assets/GIF_Buttons.gif",
+                "alt": "Preview GIF - Animated Buttons"
+        }
+        ],
+
+        "metadata": [
+            {
+                "key": "Product",
+                "value": "Power Apps"
+            },
+            {
+                "key": "Type",
+                "value": "Snippet"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "felixverduin",
+                "name": "Felix Verduin",
+                "pictureUrl": "https://github.com/felixverduin.png"
+            }
+        ]
+    }
+]
