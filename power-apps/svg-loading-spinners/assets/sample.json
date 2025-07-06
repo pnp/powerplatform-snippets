@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-svg-loading-spinners",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-07-06T00:00:00.000Z",
+    "updateDateTime": "2025-07-06T00:00:00.000Z",
+    "title": "SVG Loading Spinners",
+    "shortDescription": "One of the best ways to learn to implement simple, static animations in Canvas Apps - learn SVG! Here are a few examples that may help you get started!",
+    "longDescription": [
+      "One of the best ways to learn to implement simple, static animations in Canvas Apps - learn SVG! Here are a few examples that may help you get started!"
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/svg-loading-spinners/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/svg-loading-spinners/assets/svg-loading-spinners.gif",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "jan-chlebek",
+        "name": "Jan Chlebek",
+        "pictureUrl": "https://github.com/jan-chlebek.png"
+      }
+    ]
+  }
+]

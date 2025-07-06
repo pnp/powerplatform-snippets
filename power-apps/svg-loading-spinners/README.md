@@ -1,12 +1,12 @@
 # SVG Loading Spinners
 
 One of the best ways to learn to implement simple, static animations in Canvas Apps - learn SVG! 
+
 SVG is a robust format that allows you to perform vector graphic animations that are compliant with any web-based technology, including Canvas Apps. The simplest way to get started? Start experimenting with loading spinners!
+
 SVG lets you transform objects by moving, rotating, changing opacity, and much more. To best understand it, review some examples, go through some tutorials (highly recommending [w3schools](https://www.w3schools.com/graphics/svg_animation.asp)), and maybe try experimenting with LLMs!
 
 ![preview](./assets/svg-loading-spinners.gif)
-
-
 
 Here are a few examples that may help you get started!
 
