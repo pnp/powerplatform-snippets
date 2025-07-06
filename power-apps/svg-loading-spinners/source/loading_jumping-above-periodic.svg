@@ -1,0 +1,15 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='200' height='100' viewBox='0 0 200 100'>
+  <!-- Circle 1 -->
+  <circle cx='50' cy='50' r='10' fill='#942e89'>
+    <animate attributeName='cy' values='50;20;50;50;20;50;50;20;50;50;50;50' dur='4s' repeatCount='indefinite' begin='0s' />
+  </circle>
+  <!-- Circle 2 -->
+  <circle cx='100' cy='50' r='10' fill='#942e89'>
+    <animate attributeName='cy' values='50;20;50;50;20;50;50;20;50;50;50;50' dur='4s' repeatCount='indefinite' begin='0.2s' />
+  </circle>
+  <!-- Circle 3 -->
+  <circle cx='150' cy='50' r='10' fill='#942e89'>
+    <animate attributeName='cy' values='50;20;50;50;20;50;50;20;50;50;50;50' dur='4s' repeatCount='indefinite' begin='0.4s' />
+  </circle>
+  <text x='100' y='90' fill='#2c3e50' font-family='Arial, sans-serif' font-size='16' text-anchor='middle'> Loading your data </text>
+</svg>
