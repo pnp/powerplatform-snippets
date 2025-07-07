@@ -61,7 +61,8 @@ nfColors = {
 
 Go to the OnStart property (on App level) and copy the code below
 
-``
+```
+
 Collect(
     colNotifications,
     {
@@ -93,7 +94,8 @@ Collect(
         isVisible: true
     }
 )
-``
+
+```
 
 ![Create collection](./assets/create-collection.gif)
 
