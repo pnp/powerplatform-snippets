@@ -119,7 +119,7 @@ Now open the just created component and paste the YAML code below.
 
 ## Code
 
-`` YAML
+```yaml
 
 - galNotifications:
     Control: Gallery@2.15.0
@@ -313,7 +313,7 @@ Now open the just created component and paste the YAML code below.
                   Height: =104
                   Width: =6
 
-``
+```
 
 Or you can use this [YAML-file](./source/toast-notification.pa.yml)
 
