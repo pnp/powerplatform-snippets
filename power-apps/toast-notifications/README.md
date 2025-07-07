@@ -321,4 +321,12 @@ Or you can use this [YAML-file](./source/toast-notification.pa.yml)
 
 ## Related
 
-For a complete guide chech out the article on [LinkedIn](https://www.linkedin.com/pulse/toast-notifications-arjan-rijsdijk-lukee/)
+For a complete guide check out the toast notifications article on [LinkedIn](https://www.linkedin.com/pulse/toast-notifications-arjan-rijsdijk-lukee/)
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<!---
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/toast-notifications" aria-hidden="true" />
+--->
