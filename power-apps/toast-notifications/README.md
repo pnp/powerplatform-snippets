@@ -115,9 +115,11 @@ Don't forget to run OnStart, so that the collection will be created
 
 ![Create components](./assets/create-component.gif)
 
-Now open the just created component and paste the YAML code below.
+
 
 ## Code
+
+Open the just created component and paste the YAML code below.
 
 ```yaml
 
