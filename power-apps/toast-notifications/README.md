@@ -8,7 +8,7 @@ This snippet shows you how to build toast notifications for Canvas apps. In this
 
 Snippet|Author
 --------|---------
-Arjan Rijsdijk | [GitHub](https://github.com/arijsdijk) [Bluesky](https://bsky.app/profile/arjanrijsdijk.com) [LinkedIn](https://www.linkedin.com/in/arjanrijsdijk/)
+Arjan Rijsdijk | [GitHub](https://github.com/arijsdijk) - [Bluesky](https://bsky.app/profile/arjanrijsdijk.com) - [LinkedIn](https://www.linkedin.com/in/arjanrijsdijk/)
 
 ## Minimal path to awesome
 
