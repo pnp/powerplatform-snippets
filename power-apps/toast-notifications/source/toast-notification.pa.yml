@@ -1,0 +1,191 @@
+- galNotifications:
+    Control: Gallery@2.15.0
+    Variant: Vertical
+    Properties:
+      Height: =Parent.Height
+      Items: =colNotifications
+      TemplatePadding: =16
+      TemplateSize: |
+        =104
+      Width: =Parent.Width
+    Children:
+      - conNotification:
+          Control: GroupContainer@1.3.0
+          Variant: ManualLayout
+          Properties:
+            BorderColor: |-
+              =Switch( 
+                  ThisItem.Severity, 
+
+                  "success",
+                  nfColors.success.BorderColor,
+
+                  "danger",
+                  nfColors.danger.BorderColor,
+
+                  "warning",
+                  nfColors.warning.BorderColor,
+
+                  nfColors.info.BorderColor
+              )
+            BorderThickness: =1
+            DropShadow: =DropShadow.Regular
+            Fill: |-
+              =Switch( 
+                  ThisItem.Severity, 
+
+                  "success",
+                  nfColors.success.Fill,
+
+                  "danger",
+                  nfColors.danger.Fill,
+
+                  "warning",
+                  nfColors.warning.Fill,
+
+                  nfColors.info.Fill
+              )
+            Height: =Parent.TemplateHeight
+            Width: =Parent.TemplateWidth
+          Children:
+            - btnNotificationHide:
+                Control: Button@0.0.45
+                Properties:
+                  Appearance: ='ButtonCanvas.Appearance'.Transparent
+                  FontColor: |-
+                    =Switch( 
+                        ThisItem.Severity, 
+
+                        "success",
+                        nfColors.success.Primary,
+
+                        "danger",
+                        nfColors.danger.Primary,
+
+                        "warning",
+                        nfColors.warning.Primary,
+
+                        nfColors.info.Primary
+                    )
+                  Height: =24
+                  Icon: ="Dismiss"
+                  IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                  Layout: ='ButtonCanvas.Layout'.IconOnly
+                  Width: =24
+                  X: =Parent.Width - 40
+                  Y: =16
+            - lblNotificationText:
+                Control: Text@0.0.51
+                Properties:
+                  AutoHeight: =true
+                  FontColor: |-
+                    =Switch( 
+                        ThisItem.Severity, 
+
+                        "success",
+                        nfColors.success.Text,
+
+                        "danger",
+                        nfColors.danger.Text,
+
+                        "warning",
+                        nfColors.warning.Text,
+
+                        nfColors.info.Text
+                    )
+                  Height: =24
+                  Size: =13
+                  Text: =ThisItem.Text
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Regular
+                  Width: |+
+                    =Parent.Width - 96
+
+                  X: =48
+                  Y: =40
+            - lblNotificationTitle:
+                Control: Text@0.0.51
+                Properties:
+                  FontColor: |-
+                    =Switch( 
+                        ThisItem.Severity, 
+
+                        "success",
+                        nfColors.success.Primary,
+
+                        "danger",
+                        nfColors.danger.Primary,
+
+                        "warning",
+                        nfColors.warning.Primary,
+
+                        nfColors.info.Primary
+                    )
+                  Height: =24
+                  Size: =13
+                  Text: =ThisItem.Title
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Bold
+                  Width: |+
+                    =Parent.Width - 96
+
+                  X: =48
+                  Y: =16
+            - icoNotification:
+                Control: Icon@0.0.7
+                Properties:
+                  Height: =24
+                  Icon: |-
+                    =Switch( 
+                        ThisItem.Severity, 
+
+                        "success",
+                        "CheckmarkCircle",
+
+                        "danger",
+                        "DismissCircle",
+
+                        "warning",
+                        "Warning",
+
+                        "Info"
+                    )
+                  IconColor: |-
+                    =Switch( 
+                        ThisItem.Severity, 
+
+                        "success",
+                        nfColors.success.Primary,
+
+                        "danger",
+                        nfColors.danger.Primary,
+
+                        "warning",
+                        nfColors.warning.Primary,
+
+                        nfColors.info.Primary
+                    )
+                  IconStyle: ='Icon.IconStyle'.Filled
+                  Width: =24
+                  X: =16
+                  Y: =16
+            - recNotification:
+                Control: Rectangle@2.3.0
+                Properties:
+                  Fill: |-
+                    =Switch( 
+                        ThisItem.Severity, 
+
+                        "success",
+                        nfColors.success.Primary,
+
+                        "danger",
+                        nfColors.danger.Primary,
+
+                        "warning",
+                        nfColors.warning.Primary,
+
+                        nfColors.info.Primary
+                    )
+                  Height: =104
+                  Width: =6 
