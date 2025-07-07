@@ -16,7 +16,8 @@ Arjan Rijsdijk | [GitHub](https://github.com/arijsdijk) - [Bluesky](https://bsky
 
 Go to the Formulas property (on App level) and copy the code below
 
-``
+```
+
 nfColors = {
 
     success: { 
@@ -51,7 +52,8 @@ nfColors = {
     }   
 
 };
-``
+
+```
 
 ![Create formula](./assets/create-formula.gif)
 
