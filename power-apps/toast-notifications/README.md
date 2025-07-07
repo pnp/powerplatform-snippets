@@ -120,6 +120,7 @@ Now open the just created component and paste the YAML code below.
 ## Code
 
 `` YAML
+
 - galNotifications:
     Control: Gallery@2.15.0
     Variant: Vertical
