@@ -2,7 +2,7 @@
 
 This snippet shows you how to build toast notifications for Canvas apps. In this example, we will use a component so that the functionalities are reusable on different screens within your Canvas app.
 
-![Toast notifications](./assets/toast-notifications.png)
+![Toast notifications](./assets/toast-notifications.gif)
 
 ## Authors
 
