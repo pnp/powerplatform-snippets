@@ -4,12 +4,12 @@
     "name": "pnp-powerplatform-snippets-form-factor",
     "version": "1.0.0.0",
     "source": "pnp",
-    "creationDateTime": "2025-05-18T00:00:00.000Z",
-    "updateDateTime": "2025-05-18T00:00:00.000Z",
-    "title": "Form factor for power apps editor",
-    "shortDescription": "Allow you to change the form factor in edit mode",
+    "creationDateTime": "2025-07-13T00:00:00.000Z",
+    "updateDateTime": "2025-07-13T00:00:00.000Z",
+    "title": "Form Factor selector",
+    "shortDescription": "Allows you to change the form factor in edit mode",
     "longDescription": [
-      "Allow you to change the form factor in edit mode, helping you to design responsive applications. 5 formats are present : smartphone & tablet, landscape & portrait for both plus laptop. You can customize or add your own formats"
+      "Allows you to change the form factor in edit mode, helping you to design responsive applications. 5 formats are present : smartphone & tablet, landscape & portrait for both plus laptop. You can customize or add your own formats"
     ],
     "url": "https://github.com/DavidZoon/powerplatform-snippets/blob/main/power-apps/form-factor-selector/",
     "products": [
@@ -34,14 +34,14 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/DavidZoon/powerplatform-snippets/raw/main/power-apps/form-factor-selector/assets/formfactorselector.png",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/form-factor-selector/assets/formfactorselector.png",
         "alt": "Preview PNG"
       }
     ],
     "authors": [
       {
         "gitHubAccount": "DavidZoon",
-        "name": "Dvid Zoonekyndt",
+        "name": "David Zoonekyndt",
         "pictureUrl": "https://github.com/DavidZoon.png"
       }
     ]
