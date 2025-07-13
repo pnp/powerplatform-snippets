@@ -28,4 +28,4 @@ Steve Bourdin | [GitHub](https://github.com/SteveBourdin) ([LinkedIn](https://ww
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://github.com/pnp/powerplatform-snippets/blob/689a8bc21677a45e33c7e7990e52849cf7048cf6/power-apps/date-range-picker/assets/date-range-picker.png" aria-hidden="true" />
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/date-range-picker" aria-hidden="true" />
