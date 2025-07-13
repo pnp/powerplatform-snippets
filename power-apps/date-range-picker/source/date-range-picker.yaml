@@ -1,0 +1,623 @@
+- cont_dateInput:
+    Control: GroupContainer@1.3.0
+    Variant: ManualLayout
+    Group: snippet_dateRangePicker
+    Properties:
+      BorderColor: |-
+        =/* Steve BOURDIN MOCA by ASI Juillet 2025*/
+        RGBA(0, 0, 0, 1)
+      Height: =32
+      Width: =378
+      X: =300
+      Y: =260
+    Children:
+      - inp_dates:
+          Control: TextInput@0.0.54
+          Properties:
+            Align: =Align.Center
+            FontColor: |-
+              =If(
+                  IsBlank(var_RangeDatePicker_DateStart) || IsBlank(var_RangeDatePicker_DateStart),Color.Gray,Color.Black)
+            FontSize: =17
+            FontWeight: =FontWeight.Semibold
+            Height: =Parent.Height
+            Value: |-
+              =If(
+                  IsBlank(var_RangeDatePicker_DateStart) || IsBlank(var_RangeDatePicker_DateStart),
+                  "Select your dates",
+                  DateValue(var_RangeDatePicker_DateStart) & "             " & DateValue(var_RangeDatePicker_DateEnd)
+              )
+            Width: =Parent.Width
+      - ico_calendar:
+          Control: Icon@0.0.7
+          Properties:
+            Height: =Parent.Height
+            Icon: ="Calendar"
+            IconStyle: ='Icon.IconStyle'.Outline
+            Width: =Parent.Height
+            X: =Parent.Width-Self.Width
+      - tim_initialization:
+          Control: Timer@2.1.0
+          Properties:
+            AutoStart: =true
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =ColorFade(Self.BorderColor, 70%)
+            DisabledColor: =ColorFade(Self.Fill, 90%)
+            DisabledFill: =ColorFade(Self.Fill, 70%)
+            Fill: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            Height: =32
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnTimerStart: |-
+              =UpdateContext(
+                  {
+                      var_RangeDatePickerDayTab: [
+                          {
+                              legend: "Mon",
+                              no: 2,
+                              pos: 1,
+                              color : Color.Black
+                          },
+                          {
+                              legend: "Tue",
+                              no: 3,
+                              pos: 2,
+                              color : Color.Black
+                          },
+                          {
+                              legend: "Wed",
+                              no: 4,
+                              pos: 3,
+                              color : Color.Black
+                          },
+                          {
+                              legend: "Thu",
+                              no: 5,
+                              pos: 4,
+                              color : Color.Black
+                          },
+                          {
+                              legend: "Fri",
+                              no: 6,
+                              pos: 5,
+                              color : Color.Black
+                          },
+                          {
+                              legend: "Sat",
+                              no: 7,
+                              pos: 6,
+                              color : Color.Red
+                          },
+                          {
+                              legend: "Sun",
+                              no: 1,
+                              pos: 7,
+                              color : Color.Black
+                          }
+                      ]
+                  ,tabYear : Sort(AddColumns (Sequence(300),colYear,Value+1950),colYear,SortOrder.Descending)}
+              );
+              If(false,UpdateContext({var_RangeDatePicker_DateEnd : Today()}));
+              If(false,UpdateContext({var_RangeDatePicker_DateStart : Today()}))
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Start: =true
+            Visible: =false
+            X: =40
+      - ico_separatorDate:
+          Control: Icon@0.0.7
+          Properties:
+            Height: =2*Parent.Height/3
+            Icon: ="Send"
+            Visible: =ico_eraser.Visible
+            Width: =Parent.Width
+            Y: =Parent.Height/6
+      - btn_changeDates:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(122, 138, 143, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(255, 255, 255, 0)
+            Font: =Font.'Open Sans'
+            Height: =Parent.Height
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(56, 96, 178, 0.2)
+            OnSelect: |-
+              =
+              UpdateContext(
+                  {
+                      var_RangeDatePicker: true,
+                      var_RangePickerDateRef: DateValue("01/" & Month(Now()) & "/" & Year(Now())),
+                      var_RangeDatePicker_DateStart_Modify : var_RangeDatePicker_DateStart,
+                      var_RangeDatePicker_DateEnd_Modify : var_RangeDatePicker_DateEnd
+                  }
+              );
+
+              Select(ico_refreshMonth)
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Text: =""
+            Width: =Parent.Width
+      - ico_eraser:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(215, 58, 60, 1)
+            Height: =Parent.Height
+            HoverFill: =ColorFade( Self.Color,80%)
+            Icon: =Icon.Erase
+            OnSelect: =UpdateContext({var_RangeDatePicker_DateStart:Blank(),var_RangeDatePicker_DateEnd:Blank()})
+            PaddingBottom: =7
+            PaddingLeft: =7
+            PaddingRight: =7
+            PaddingTop: =7
+            Visible: =IsBlank(var_RangeDatePicker_DateStart)=false && IsBlank(var_RangeDatePicker_DateEnd)=false
+            Width: =Parent.Height
+- cont_calendar:
+    Control: GroupContainer@1.3.0
+    Variant: AutoLayout
+    Group: snippet_dateRangePicker
+    Properties:
+      BorderColor: |-
+        =/* Steve BOURDIN MOCA by ASI Juillet 2025*/
+        RGBA(0, 0, 0, 1)
+      DropShadow: =DropShadow.Semibold
+      Fill: =RGBA(255, 255, 255, 0.95)
+      Height: =Self.Width
+      LayoutDirection: =LayoutDirection.Vertical
+      Visible: =var_RangeDatePicker=true&&var_RangeDatePicker_SelectMonthYear<>true
+      Width: =cont_dateInput.Width
+      X: =300
+      Y: =292
+    Children:
+      - cont_monthYear:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            FillPortions: =0
+            Height: =Parent.Height/10
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Horizontal
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            Width: =Parent.Width
+          Children:
+            - ico_previousMonth:
+                Control: Classic/Icon@2.5.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Height: =Parent.Height
+                  Icon: =Icon.BackArrow
+                  OnSelect: |-
+                    =UpdateContext(
+                        {
+                            var_RangePickerDateRef: DateAdd(
+                                var_RangePickerDateRef,
+                                -1,
+                                TimeUnit.Months
+                            )
+                        }
+                    );
+                    Select(ico_refreshMonth)
+                  PaddingBottom: =7
+                  PaddingLeft: =7
+                  PaddingRight: =7
+                  PaddingTop: =7
+                  Width: =Parent.Height
+            - btn_monthyear:
+                Control: Button@0.0.45
+                Properties:
+                  Appearance: ='ButtonCanvas.Appearance'.Outline
+                  BorderThickness: '=0   '
+                  Height: =Parent.Height-2
+                  OnSelect: |-
+                    =UpdateContext({var_RangeDatePicker_SelectMonthYear : true})
+                  Text: =Proper(Text(var_RangePickerDateRef,"mmmm"))&" "&Text(var_RangePickerDateRef,"yyyy")
+                  Width: =Parent.Width-2*ico_previousMonth.Width
+            - ico_nextMonth:
+                Control: Classic/Icon@2.5.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Height: =Parent.Height
+                  Icon: =Icon.NextArrow
+                  OnSelect: |-
+                    =UpdateContext(
+                        {
+                            var_RangePickerDateRef: DateAdd(
+                                var_RangePickerDateRef,
+                                1,
+                                TimeUnit.Months
+                            )
+                        }
+                    );
+                    Select(ico_refreshMonth)
+                  PaddingBottom: =7
+                  PaddingLeft: =7
+                  PaddingRight: =7
+                  PaddingTop: =7
+                  Width: =Parent.Height
+      - cont_rangePicker:
+          Control: GroupContainer@1.3.0
+          Variant: ManualLayout
+          Properties:
+            DropShadow: =DropShadow.None
+          Children:
+            - gal_daysOfWeek:
+                Control: Gallery@2.15.0
+                Variant: Horizontal
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Height: =Parent.Height
+                  Items: |-
+                    =AddColumns(
+                        var_RangeDatePickerDayTab,
+                        DateDeb,
+                        DateAdd(
+                            var_RangeDatePicker_dateDebCalend,
+                            pos - 1,
+                            TimeUnit.Days
+                        )
+                    )
+                  TemplatePadding: =0
+                  TemplateSize: =Self.Width/If(Self.AllItemsCount>0,Self.AllItemsCount,1)
+                  Width: =Self.Height
+                  X: =(Parent.Width-Self.Width)/2
+                Children:
+                  - lbl_legendDayOfWeek:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        FontColor: =ThisItem.color
+                        Height: =Self.Width
+                        Text: =Proper(Left(Text(ThisItem.DateDeb,"dddd"),3))
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.TemplateWidth
+                  - gal_days:
+                      Control: Gallery@2.15.0
+                      Variant: Vertical
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =Parent.Height-lbl_legendDayOfWeek.Height
+                        Items: |-
+                          =AddColumns(
+                              [
+                                  ThisItem.DateDeb,
+                                  DateAdd(
+                                      ThisItem.DateDeb,
+                                      7,
+                                      TimeUnit.Days
+                                  ),
+                                  DateAdd(
+                                      ThisItem.DateDeb,
+                                      14,
+                                      TimeUnit.Days
+                                  ),
+                                  DateAdd(
+                                      ThisItem.DateDeb,
+                                      21,
+                                      TimeUnit.Days
+                                  ),
+                                  DateAdd(
+                                      ThisItem.DateDeb,
+                                      28,
+                                      TimeUnit.Days
+                                  ),
+                                  DateAdd(
+                                      ThisItem.DateDeb,
+                                      35,
+                                      TimeUnit.Days
+                                  )
+                              ],
+                              color,
+                              ThisItem.color
+                          )
+                        TemplatePadding: =0
+                        TemplateSize: =Self.Height/If(Self.AllItemsCount>0,Self.AllItemsCount,1)
+                        Width: =Parent.TemplateWidth
+                        Y: =lbl_legendDayOfWeek.Height
+                      Children:
+                        - lbl_selectedDate:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Color: =RGBA(180, 214, 250, 1)
+                              Fill: =RGBA(180, 214, 250, 1)
+                              Font: =Font.'Open Sans'
+                              Height: =Parent.TemplateHeight/2
+                              OnSelect: =Select(Parent)
+                              Text: =""
+                              Visible: |-
+                                =(var_RangeDatePicker_DateEnd_Modify = ThisItem.Value || var_RangeDatePicker_DateStart_Modify = ThisItem.Value) || (IsBlank(var_RangeDatePicker_DateEnd_Modify) = false && IsBlank(var_RangeDatePicker_DateStart_Modify) = false) && DateDiff(
+                                    var_RangeDatePicker_DateEnd_Modify,
+                                    ThisItem.Value,
+                                    TimeUnit.Days
+                                ) < 0 && DateDiff(
+                                    ThisItem.Value,
+                                    var_RangeDatePicker_DateStart_Modify,
+                                    TimeUnit.Days
+                                ) < 0
+                              Width: =Parent.TemplateWidth
+                              X: |-
+                                =If (
+                                    var_RangeDatePicker_DateEnd_Modify = ThisItem.Value,
+                                    -1 * Self.Width / 2,
+                                    If (
+                                        var_RangeDatePicker_DateStart_Modify = ThisItem.Value,
+                                        Self.Width / 2,
+                                        0
+                                    )
+                                )
+                              Y: =Parent.TemplateHeight/3
+                        - btn_date:
+                            Control: Classic/Button@2.2.0
+                            Properties:
+                              BorderColor: =ColorFade(Self.Fill, -15%)
+                              BorderThickness: =If(var_RangeDatePicker_DateEnd = ThisItem.Value,0,If(var_RangeDatePicker_DateStart = ThisItem.Value||var_RangeDatePicker_DateEnd = ThisItem.Value||  DateDiff(var_RangeDatePicker_DateEnd,ThisItem.Value,TimeUnit.Days)<0 && DateDiff(ThisItem.Value,var_RangeDatePicker_DateStart,TimeUnit.Days)<0,0,3))
+                              Color: |-
+                                =If(
+                                    Month(ThisItem.Value) = Month(var_RangePickerDateRef),
+                                    If(
+                                        var_RangeDatePicker_DateEnd_Modify = ThisItem.Value || var_RangeDatePicker_DateStart_Modify = ThisItem.Value,
+                                        Color.White,
+                                        ThisItem.color
+                                    ),
+                                    Color.LightGray
+                                )
+                              DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                              Fill: |-
+                                =If(
+                                    var_RangeDatePicker_DateEnd_Modify = ThisItem.Value || var_RangeDatePicker_DateStart_Modify = ThisItem.Value,
+                                    Color.Blue,
+                                    RGBA(
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    )
+                                )
+                              Font: =Font.'Open Sans'
+                              Height: =If(Self.Fill<>Color.LightBlue&&Self.Fill<>Color.Blue, 2*Parent.TemplateHeight/3,2*Parent.TemplateHeight/3)
+                              HoverBorderColor: =If(Month(ThisItem.Value)=Month(var_RangePickerDateRef), If(var_RangeDatePicker_DateEnd = ThisItem.Value || var_RangeDatePicker_DateStart = ThisItem.Value,Color.Blue,Color.Blue),Color.White)
+                              HoverColor: =Self.Color
+                              HoverFill: =Self.Fill
+                              OnSelect: |-
+                                =If(
+                                    IsBlank(var_RangeDatePicker_DateStart_Modify) = false && ThisItem.Value = var_RangeDatePicker_DateStart_Modify,
+                                    /*When the user clicks on the previously selected start date, it gets deselected*/
+                                    UpdateContext({var_RangeDatePicker_DateStart_Modify: Blank()}),
+                                    If(
+                                        IsBlank(var_RangeDatePicker_DateEnd_Modify) = false && ThisItem.Value = var_RangeDatePicker_DateEnd_Modify,
+                                        /*When the user clicks on the previously selected end date, it gets deselected*/
+                                        UpdateContext({var_RangeDatePicker_DateEnd_Modify: Blank()}),
+                                        If(
+                                            IsBlank(var_RangeDatePicker_DateStart_Modify),
+                                            UpdateContext({var_RangeDatePicker_DateStart_Modify: ThisItem.Value}),
+                                            If (
+                                                IsBlank(var_RangeDatePicker_DateEnd_Modify),
+                                                UpdateContext({var_RangeDatePicker_DateEnd_Modify: ThisItem.Value}),
+                                                UpdateContext(
+                                                    {
+                                                        var_RangeDatePickerDiffDeb: DateDiff(
+                                                            var_RangeDatePicker_DateStart_Modify,
+                                                            ThisItem.Value
+                                                        )
+                                                    }
+                                                );
+                                                UpdateContext(
+                                                    {
+                                                        var_RangeDatePickerDiffFin: DateDiff(
+                                                            ThisItem.Value,
+                                                            var_RangeDatePicker_DateEnd_Modify
+                                                        )
+                                                    }
+                                                );
+                                                If(
+                                                    var_RangeDatePickerDiffDeb < 0 || var_RangeDatePickerDiffDeb > 0 && var_RangeDatePickerDiffDeb < var_RangeDatePickerDiffFin,
+                                                    UpdateContext({var_RangeDatePicker_DateStart_Modify: ThisItem.Value}),
+                                                    UpdateContext({var_RangeDatePicker_DateEnd_Modify: ThisItem.Value})
+                                                )
+                                            );
+                                            If(
+                                                DateDiff(
+                                                    var_RangeDatePicker_DateEnd_Modify,
+                                                    var_RangeDatePicker_DateStart_Modify,
+                                                    TimeUnit.Days
+                                                ) > 0,
+                                                UpdateContext(
+                                                    {
+                                                        var_RangeDatePickerDateTmp: var_RangeDatePicker_DateStart_Modify,
+                                                        var_RangeDatePicker_DateEnd_Modify: var_RangeDatePicker_DateStart_Modify,
+                                                        var_RangeDatePicker_DateStart_Modify: var_RangeDatePicker_DateEnd_Modify
+                                                    }
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                              PaddingBottom: =0
+                              PaddingLeft: =0
+                              PaddingRight: =0
+                              PaddingTop: =0
+                              PressedBorderColor: =Self.Fill
+                              PressedColor: =Self.Fill
+                              PressedFill: =Self.Color
+                              RadiusBottomLeft: =90
+                              RadiusBottomRight: =90
+                              RadiusTopLeft: =90
+                              RadiusTopRight: =90
+                              Size: =10
+                              Text: =Day(ThisItem.Value)
+                              Width: =Self.Height
+                              X: =Self.Width/6
+                              Y: =If(Self.Fill<>Color.LightBlue&&Self.Fill<>Color.Blue, Parent.TemplateHeight/4,Parent.TemplateHeight/4)
+      - cont_buttons:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            FillPortions: =0
+            Height: =cont_monthYear.Height
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Horizontal
+            LayoutGap: =btn_cancel.Width
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            Width: =Parent.Width
+          Children:
+            - btn_cancel:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =RGBA(249, 83, 109, 1)
+                  Height: =2*Parent.Height/3
+                  OnSelect: =UpdateContext({var_RangeDatePicker:false})
+                  Text: ="Cancel"
+            - btn_validate:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =RGBA(141, 229, 250, 1)
+                  Height: =btn_cancel.Height
+                  OnSelect: |-
+                    =UpdateContext(
+                        {
+                            var_RangeDatePicker_DateStart: var_RangeDatePicker_DateStart_Modify,
+                            var_RangeDatePicker_DateEnd: var_RangeDatePicker_DateEnd_Modify,
+                            var_RangeDatePicker:false
+                        }
+                    )
+                  Text: ="OK"
+      - ico_refreshMonth:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =28
+            Icon: =Icon.Reload
+            OnSelect: |
+              =UpdateContext({var_RangeDatePickerChargement: true});
+              If(
+                  Weekday(var_RangePickerDateRef) > First(var_RangeDatePickerDayTab).no,
+                  UpdateContext(
+                      {
+                          var_RangeDatePicker_dateDebCalend: DateAdd(
+                              var_RangePickerDateRef,
+                              (Weekday(var_RangePickerDateRef) - First(var_RangeDatePickerDayTab).no)*-1,
+                              TimeUnit.Days
+                          )
+                      }
+                  ),
+                  If(
+                      Weekday(var_RangePickerDateRef) = First(var_RangeDatePickerDayTab).no,
+                      UpdateContext({var_RangeDatePicker_dateDebCalend: var_RangePickerDateRef}),
+                      UpdateContext(
+                          {
+                              var_RangeDatePicker_dateDebCalend: DateAdd(
+                                  var_RangePickerDateRef,
+                                  (Weekday(var_RangePickerDateRef)+7 - First(var_RangeDatePickerDayTab).no)*-1,
+                                  TimeUnit.Days
+                              )
+                          }
+                      )
+                  )
+              );
+              UpdateContext({var_RangeDatePickerChargement: false});
+            PaddingBottom: =7
+            PaddingLeft: =7
+            PaddingRight: =7
+            PaddingTop: =7
+            Visible: =false
+            Width: =32
+            X: =61
+            Y: =5
+- cont_modifMonthYears:
+    Control: GroupContainer@1.3.0
+    Variant: AutoLayout
+    Group: snippet_dateRangePicker
+    Properties:
+      BorderColor: |-
+        =/* Steve BOURDIN MOCA by ASI Juillet 2025*/
+        RGBA(0, 0, 0, 1)
+      Fill: =RGBA(255, 255, 255, 0.95)
+      Height: =cont_calendar.Height
+      LayoutAlignItems: =LayoutAlignItems.Stretch
+      LayoutDirection: =LayoutDirection.Horizontal
+      Visible: =var_RangeDatePicker_SelectMonthYear=true
+      Width: =cont_calendar.Width
+      X: =300
+      Y: =cont_calendar.Y
+    Children:
+      - gal_changeMonth:
+          Control: Gallery@2.15.0
+          Variant: Vertical
+          Properties:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =Parent.Height
+            Items: |-
+              =/*This functionality enables month names to appear in the user's language setting.*/
+              AddColumns(
+                  Sequence(12),
+                  colMonth,
+                  DateTimeValue(
+                      "01/" & Value & "/" & Year(var_RangePickerDateRef),
+                      "fr"
+                  )
+              )
+            LayoutMinWidth: =Parent.Width/3
+            TemplateSize: =Self.Height/12 - Self.TemplatePadding -1
+            Width: =Parent.Width/2
+          Children:
+            - btn_month:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =RGBA(141, 229, 250, 1)
+                  Height: =Parent.TemplateHeight
+                  OnSelect: |-
+                    =UpdateContext(
+                        {
+                            var_RangePickerDateRef: ThisItem.colMonth
+                        }
+                    );
+                    Select(ico_refreshMonth);
+                    UpdateContext({var_RangeDatePicker_SelectMonthYear : false})
+                  Text: =Proper(Text(ThisItem.colMonth,"mmmm"))
+                  Width: =Parent.Width-2*Parent.TemplatePadding
+      - gal_changeYear:
+          Control: Gallery@2.15.0
+          Variant: Horizontal
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Default: =LookUp(tabYear,colYear=Year(var_RangePickerDateRef)+10)
+            Items: =tabYear
+            LayoutMinWidth: =2*Parent.Width/3
+            TabIndex: =20
+            TemplateSize: =Self.Width/3-Self.TemplatePadding
+            WrapCount: =10
+          Children:
+            - btn_year:
+                Control: Button@0.0.45
+                Properties:
+                  Appearance: ='ButtonCanvas.Appearance'.Secondary
+                  BasePaletteColor: =RGBA(5, 102, 178, 1)
+                  FontColor: =If(Year(var_RangePickerDateRef) = ThisItem.colYear,Color.Red)
+                  Height: =Parent.TemplateHeight-Parent.TemplatePadding
+                  IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                  OnSelect: |-
+                    =UpdateContext(
+                        {
+                            var_RangePickerDateRef: DateValue("01/"&Month(var_RangePickerDateRef)&"/"& ThisItem.colYear,"fr")
+                        }
+                    );
+                    Select(ico_refreshMonth);
+                    UpdateContext({var_RangeDatePicker_SelectMonthYear : false})
+                  Text: =ThisItem.colYear
+                  Width: =Parent.TemplateWidth-2
+                  Y: =
