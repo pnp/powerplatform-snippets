@@ -1,0 +1,51 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-office-365-users-get-manager-ac",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2024-09-15T00:00:00.000Z",
+    "updateDateTime": "2024-09-15T00:00:00.000Z",
+    "title": "Office 365 Users: Get Manager (Action)",
+    "shortDescription": "This is a snippet that demonstrates how to get your manager details using the Office 365 Users action.",
+    "longDescription": [
+      "This is a snippet that demonstrates how to get your manager details using the Office 365 Users action. It uses an adaptive card as an output to not only display your manager details but to also start a Teams chat with them."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/copilot-studio/office-365-users-get-manager-ac/",
+    "products": [
+      "Power Platform",
+      "Copilot Studio",
+      "powerplatform-snippets",
+      "copilot-studio-snippets"
+    ],
+    "tags": [
+    ],
+    "categories": [
+    ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Copilot Studio"
+      },
+      {
+        "key": "Type",
+        "value": "Topic"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/templates/previewsnippets.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "gomomohapi",
+        "name": "Gomolemo Mohapi",
+        "pictureUrl": "https://github.com/gomomohapi.png"
+      }
+    ]
+  }
+]
