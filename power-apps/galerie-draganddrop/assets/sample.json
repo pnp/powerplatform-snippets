@@ -1,0 +1,51 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-galerie-draganddrop",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-29T00:00:00.000Z",
+    "updateDateTime": "2025-04-29T00:00:00.000Z",
+    "title": "Galerie Drag & Drop",
+    "shortDescription": "Here is a snippet that enables drag and drop functionality on a PowerApps gallery. This method only works if all gallery items are fully visible (no scrollbar). Feel free to explore the code and adapt it to your own examples.",
+    "longDescription": [
+      "Here is a snippet that enables drag and drop functionality on a PowerApps gallery. This method only works if all gallery items are fully visible (no scrollbar). Feel free to explore the code and adapt it to your own examples."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/galerie-draganddrop/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [
+    ],
+    "categories": [
+    ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/date-range-picker/assets/galerie-draganddrop.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SteveBourdin",
+        "name": "Steve Bourdin",
+        "pictureUrl": "https://github.com/SteveBourdin.png"
+      }
+    ]
+  }
+]
