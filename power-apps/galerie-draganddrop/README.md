@@ -3,7 +3,7 @@
 Here is a snippet that enables drag and drop functionality on a PowerApps gallery. This method only works if all gallery items are fully visible (no scrollbar). Feel free to explore the code and adapt it to your own examples.
 
 
-![galerie-draganddrop](./assets/galerie-draganddrop.gif)
+![galerie-draganddrop](./assets/galerie_draganddrop.gif)
 
 
 ## Authors
