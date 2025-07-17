@@ -1,17 +1,17 @@
 [
   {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
-    "name": "pnp-powerplatform-snippets-galerie-draganddrop",
+    "name": "pnp-powerplatform-snippets-gallery-draganddrop",
     "version": "1.0.0.0",
     "source": "pnp",
-    "creationDateTime": "2025-04-29T00:00:00.000Z",
-    "updateDateTime": "2025-04-29T00:00:00.000Z",
-    "title": "Galerie Drag & Drop",
+    "creationDateTime": "2025-07-17T00:00:00.000Z",
+    "updateDateTime": "2025-07-17T00:00:00.000Z",
+    "title": "Gallery Drag & Drop",
     "shortDescription": "Here is a snippet that enables drag and drop functionality on a PowerApps gallery. This method only works if all gallery items are fully visible (no scrollbar). Feel free to explore the code and adapt it to your own examples.",
     "longDescription": [
       "Here is a snippet that enables drag and drop functionality on a PowerApps gallery. This method only works if all gallery items are fully visible (no scrollbar). Feel free to explore the code and adapt it to your own examples."
     ],
-    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/galerie-draganddrop/",
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/gallery-draganddrop/",
     "products": [
       "Power Platform",
       "Power Apps",
@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/9f2e1293160a391075bcfb8e8be0c368961a7159/power-apps/galerie-draganddrop/assets/galerie-draganddrop.png",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/gallery-draganddrop/assets/gallery-draganddrop.png",
         "alt": "Preview PNG"
       }
     ],
