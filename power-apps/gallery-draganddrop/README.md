@@ -1,9 +1,9 @@
-# Galerie Drag & Drop
+# Gallery Drag & Drop
 
 Here is a snippet that enables drag and drop functionality on a PowerApps gallery. This method only works if all gallery items are fully visible (no scrollbar). Feel free to explore the code and adapt it to your own examples.
 
 
-![galerie-draganddrop](./assets/galerie_draganddrop.gif)
+![gallery-draganddrop](./assets/gallery-draganddrop.gif)
 
 
 ## Authors
@@ -21,11 +21,11 @@ Steve Bourdin | [GitHub](https://github.com/SteveBourdin) ([LinkedIn](https://ww
 
 
 ## Code
- **[YAML-file](./source/galerie-draganddrop.yaml)** 
+ **[YAML-file](./source/gallery-draganddrop.yaml)** 
 
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/galerie-draganddrop" aria-hidden="true" />
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/gallery-draganddrop" aria-hidden="true" />
