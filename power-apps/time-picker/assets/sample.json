@@ -1,0 +1,51 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-time-picker",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-29T00:00:00.000Z",
+    "updateDateTime": "2025-04-29T00:00:00.000Z",
+    "title": "Time Picker",
+    "shortDescription": "Select a specific time using the interactive time picker. This component lets you quickly choose any time between 00:00 and 23:59 with a clear display and intuitive input.",
+    "longDescription": [
+      "Select a specific time using the interactive time picker. This component lets you quickly choose any time between 00:00 and 23:59 with a clear display and intuitive input."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/time-picker/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [
+    ],
+    "categories": [
+    ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/49552cb8dfd123db7bec59a1bc6f36f27a9bea7d/power-apps/time-picker/assets/time-picker.gif",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SteveBourdin",
+        "name": "Steve Bourdin",
+        "pictureUrl": "https://github.com/SteveBourdin.png"
+      }
+    ]
+  }
+]
