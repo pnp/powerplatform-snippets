@@ -9,7 +9,7 @@ This allows to both display a **title** for the document, but also to point to a
 
 The sample works both for uploaded files and other knowledge sources (e.g. public website, SharePoint / OneDrive).
 
-With this sample, you have two options, that can be used indepently from each other:
+With this sample, you have two options, that can be used independently from each other:
 1. Set a URL pointing to a folder where files are expected to be available to your users, when no URLs are available. For this, set the URL for your base folder in `Topic.UploadedFilesRootUrl`.
 1. Set a mapping between each document and a URL location for the file. For this, udpdated the `Topic.FilesSources` table. Make sure that each file name is encoded in the same way as returned as citation when an answer is generated (e.g. use %20 instead of spaces, etc.)
 
