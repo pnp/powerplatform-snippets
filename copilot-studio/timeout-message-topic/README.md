@@ -15,28 +15,29 @@ Timeout Message (Topic) | [Elaiza Benitez](https://github.com/elaizabenitez) ([@
 
 ## Minimal path to awesome
 
-1. Open a copilot in **Copilot Studio**
+1. Open an agent in **Copilot Studio**
 1. Select **Topics**
-1. Select **+ Create**
-1. Select **Topic**
+1. Select **+ Add a topic**
 1. Select **Create from blank**
 1. Select the **...** in the upper right corner and select **Open code editor**
 1. Click inside the code editor and **CTL + A for Windows** or **Command-A** for Mac to select all rows.
 1. Paste the contents of the **[YAML-file](./source/timeout-message.yaml)** inside the code editor.
 
-    ![View of the code editor](./assets/code-editor-copied-YAML.jpg)
-
-1. Replace **{ REPLACE-WITH-COPILOT-NAME }** with the name of your copilot.
-
-    ![View of the code editor with a red line around the connection reference name](./assets/code-editor-with-copilot-name.jpg)
+    ![View of the code editor](./assets/code-editor-copied-YAML.png)
 
 1. Enter a **Name** for your Topic.
 1. Select **Save**
-1. Test out the **Timeout Message** by publishing your copilot to **Microsoft Teams** and enter a trigger phase for one of your Topics.
-1. After receiving a response from your copilot, do not enter a message and leave idle for 10 minutes.
+1. Test out the **Timeout Message** by publishing your agent to **Microsoft Teams** and enter a trigger phase for one of your Topics.
+1. After receiving a response from your agent, do not enter a message and leave idle for 10 minutes.
 1. After 10 minutes, the trigger for inactivity will be executed and the timeout message will be displayed, you're **done**!
 
-    ![View of the timeout message after the condition has been met](./assets/timeout-message-output-in-Microsoft-Teams.jpg)
+    ![View of the timeout message after the condition has been met](./assets/timeout-message-output-in-Microsoft-Teams.png)
+
+### Note
+
+If you want to change the timeout duration, select the **ellipsis (. . .) icon** in the trigger. The **Inactivity properties** pane will load and the inactivity duration value can be updated. Convert desired minutes into seconds. For example 10 minutes is 600 seconds.
+
+![Inactivity duration](./assets/InactivityDuration.png)
 
 ## Disclaimer
 
