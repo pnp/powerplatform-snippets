@@ -6,7 +6,7 @@
     "source": "pnp",
     "creationDateTime": "2025-04-29T00:00:00.000Z",
     "updateDateTime": "2025-04-29T00:00:00.000Z",
-    "title": "pnp-powerplatform-snippets-date-range-picker",
+    "title": "Date Range Picker",
     "shortDescription": "This snippet implements a date range picker, enabling users to select a start and end date, thus improving the overall UX",
     "longDescription": [
       "This snippet implements a date range picker, enabling users to select a start and end date, thus improving the overall UX"
