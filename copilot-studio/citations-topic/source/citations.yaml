@@ -67,7 +67,7 @@ beginDialog:
                                 LookUp(Topic.FilesSources, Name = FileName, ThisRecord)
                             ), 
                             // If doesn't exist, use the UploadedFilesRootUrl URL pattern
-                            Topic.UploadedFilesRootUrl & EncodeURL(Name),
+                            Topic.UploadedFilesRootUrl & EncodeUrl(Name),
                             // Else use the FilesSources table URL
                             LookUp(Topic.FilesSources, Name = FileName, FileUrl)
                         ), 
