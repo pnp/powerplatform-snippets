@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/time-picker/assets/loading-squid-game.gif",
+        "url": "https://github.com/pnp/powerplatform-snippets/blob/82a7fc112a2a9acb47407dca01395d0aeb04baef/power-apps/loading-squid-game/assets/loading-squid-game.gif",
         "alt": "Preview PNG"
       }
     ],
@@ -48,4 +48,5 @@
       }
     ]
   }
+
 ]
