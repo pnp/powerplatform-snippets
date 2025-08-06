@@ -1,0 +1,180 @@
+ComponentDefinitions:
+  NotificationToaster:
+    DefinitionType: CanvasComponent
+    AccessAppScope: true
+    CustomProperties:
+      AutoHeight:
+        PropertyKind: Output
+        DisplayName: AutoHeight
+        Description: A custom property
+        DataType: Number
+      Theme:
+        PropertyKind: Input
+        DisplayName: Theme
+        Description: Theme & Colors used for notifications
+        DataType: Record
+        Default: |-
+          =/*---------------- Instructions ------------------
+          To Notify, use :
+          Collect(colNotifications, {
+              Title:      "✅ Success",                                      // set your notificaiton title here
+              Text:       "Your settings have been saved successfully.",  // put you notification text here
+              Type:       NotificationType.Success,                       // used for notification appearance
+              Duration:   2000                                            // Notification duration in milliseconds
+              }
+          )
+          Componnent positionning : To position the component in the bottom right corner of your screen, use the following positioning formulas:
+          x: Parent.Width-Self.Width
+          y: Parent.Height-Self.Height
+
+          */
+          {Transparency:"99", // in hexadecimal : from 00(transparent) to ff (opaque)
+          FontSize:11,
+          SuccessTextColor:"#ffffff",
+          SuccessBckgndColor:"#009944",
+          ErrorTextColor:"#ffffff",
+          ErrorBckgndColor:"#cf000f",
+          WarningTextColor:"#ffffff",
+          WarningBckgndColor:"#f0541e",
+          InformationTextColor:"#000000",
+          InformationBckgndColor:"#ffffff"
+          }
+    Properties:
+      AutoHeight: =Sum(GalleryNotifs.AllItems,HtmlTextNotif.Height) + (GalleryNotifs.AllItemsCount*10)+10
+      ContentLanguage: ="" // YAML Snipet component by David Zoonekyndt https://dz13n.wordpress.com/
+      Height: |-
+        =// Adjusts the height according to the number of notifications without exceeding the screen height, do not modify
+        Min(NotificationToaster.AutoHeight,App.ActiveScreen.Height)
+      Width: =640 // Can be adjusted
+    Children:
+      - GalleryNotifs:
+          Control: Gallery@2.15.0
+          Variant: VariableHeight
+          Properties:
+            Height: =Parent.Height
+            Items: =colNotifications
+            ShowScrollbar: =false
+            TemplatePadding: =0
+            Width: =Parent.Width
+          Children:
+            - HtmlTextNotif:
+                Control: HtmlViewer@2.1.0
+                Properties:
+                  AutoHeight: =true
+                  Height: =203
+                  HtmlText: |-
+                    =$"<!DOCTYPE html>
+                    <html lang='fr'>
+                    <head>
+                        <meta charset='UTF-8'>
+                        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                        <title>Notification toaster</title>
+                    </head>
+
+                        <div class='notification' style='
+                            /* --- Div styles --- */
+                            position: relative;
+                            overflow: hidden; /* Nécessaire pour couper la barre de progression aux bords arrondis */
+                            width: 98%;
+                            box-sizing: border-box;
+                            color: {Switch(ThisItem.Type,NotificationType.Error,NotificationToaster.Theme.ErrorTextColor,NotificationType.Information,NotificationToaster.Theme.InformationTextColor,NotificationType.Success,NotificationToaster.Theme.SuccessTextColor,NotificationType.Warning,NotificationToaster.Theme.WarningTextColor,"#000000")};
+                            border-radius: 16px;
+                            border: 1px solid rgba(255, 255, 255, 0.3);
+                            box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.2);
+                            margin-bottom: 5px;
+                            padding: 20px;
+                            padding-top: 25px;
+                            backdrop-filter: blur(8px);
+                            -webkit-backdrop-filter: blur(8px);
+
+                            /* --- Glassmorphism --- */
+                            /* 1. Fond semi-transparent : indispensable pour voir à travers. */
+                            background: {Switch(ThisItem.Type,NotificationType.Error,NotificationToaster.Theme.ErrorBckgndColor,NotificationType.Information,NotificationToaster.Theme.InformationBckgndColor,NotificationType.Success,NotificationToaster.Theme.SuccessBckgndColor,NotificationType.Warning,NotificationToaster.Theme.WarningBckgndColor,"#ffffff")}{NotificationToaster.Theme.Transparency}; 
+
+                        '>
+                            <div class='progress-bar-container' style='
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 4px;
+                                background-color: rgba(255, 255, 255, 0.3);
+                            '>{If((ThisItem.ID=First(colNotifications).ID && ThisItem.ID <> Blank()) || CountRows(colNotifications)=1 /* Hide progress bar if not first item */,$"
+                            <div class='progress-bar-fill' style='
+                                    height: 100%;
+                                    width: {Text(IfError(TimerDeleteNotification.Value*100/TimerDeleteNotification.Duration,0),"0.00","en-US")}%; /* Force en-US to avoid comma separated decimals */
+                                    background-color: {Switch(ThisItem.Type,NotificationType.Error,NotificationToaster.Theme.ErrorBckgndColor,NotificationType.Information,NotificationToaster.Theme.InformationBckgndColor,NotificationType.Success,NotificationToaster.Theme.SuccessBckgndColor,NotificationType.Warning,NotificationToaster.Theme.WarningBckgndColor,"#ffffff")};
+                                    border-radius: 0 2px 2px 0;
+                                '></div>")}
+                            </div>
+                            <p style='
+                                font-weight: bold;
+                                margin-top: 0;
+                                margin-bottom: 8px;
+                                font-size: 1.2em;
+                            '>
+                                {ThisItem.Title}
+                            </p>
+                            <p style='margin: 0;'>
+                                {ThisItem.Text}
+                            </p>
+                        </div>
+
+                    </body>
+                    </html>"
+                  OnSelect: =Select(Parent)
+                  Size: =NotificationToaster.Theme.FontSize
+                  Width: =Parent.TemplateWidth-Self.X*2
+                  X: =5
+            - ButtonRemoveNotif:
+                Control: Button@0.0.45
+                Properties:
+                  Appearance: ='ButtonCanvas.Appearance'.Subtle
+                  BasePaletteColor: =ColorValue(Switch(ThisItem.Type,NotificationType.Error,NotificationToaster.Theme.ErrorBckgndColor,NotificationType.Information,NotificationToaster.Theme.InformationBckgndColor,NotificationType.Success,NotificationToaster.Theme.SuccessBckgndColor,NotificationType.Warning,NotificationToaster.Theme.WarningBckgndColor,"#ffffff"))
+                  FontColor: =ColorValue(Switch(ThisItem.Type,NotificationType.Error,NotificationToaster.Theme.ErrorTextColor,NotificationType.Information,NotificationToaster.Theme.InformationTextColor,NotificationType.Success,NotificationToaster.Theme.SuccessTextColor,NotificationType.Warning,NotificationToaster.Theme.WarningTextColor,"#ffffff"))
+                  FontSize: =34
+                  Height: =40
+                  Icon: ="DismissCircle"
+                  IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                  Layout: ='ButtonCanvas.Layout'.IconOnly
+                  OnSelect: =If(ThisItem.ID=First(colNotifications).ID && ThisItem.ID <> Blank(), Set(vRemoveNotif,TimerDeleteNotification.Value) ,Remove(colNotifications,ThisItem))
+                  Text: ="Remove"
+                  Width: =40
+                  X: =Parent.TemplateWidth-Self.Width-25
+                  Y: =15
+      - TimerDeleteNotification:
+          Control: Timer@2.1.0
+          Properties:
+            AutoStart: =true
+            Duration: =Coalesce(vRemoveNotif,First(colNotifications).Duration,2000)
+            OnSelect: =Collect(colNotifications,FirstN([{ID:1,Title:"",Text:"",Duration:1000}],0))
+            OnTimerEnd: =UpdateIf(colNotifications,ID=Blank(),{ID:Max(colNotifications,ID)+1});Remove(colNotifications,First(colNotifications));Set(vRemoveNotif,Blank())
+            OnTimerStart: =UpdateIf(colNotifications,ID=Blank(),{ID:Max(colNotifications,ID)+1})
+            Repeat: =true
+            Reset: =//CountIf(colNotifications,ID=Blank())>0 || CountIf(colNotifications,ID=Blank())=0
+            Start: =true
+            TabIndex: =-1
+            Y: =-50
+      - Admin_ButtonRandomNotification:
+          Control: Classic/Button@2.2.0
+          Properties:
+            OnSelect: |-
+              =Collect(colNotifications,Switch(RandBetween(1,4),
+                  1,{Title:"✅ Success",Text:"Your settings have been saved successfully.", Type:NotificationType.Success, Duration: 3000},
+                  2,{Title:"❌ Payment Authorization Failed",Text:"We were unable to process your payment for order #855-24B. The authorization was declined by your bank, which can happen due to insufficient funds, an incorrect card number, or security limits set by your financial institution. Please double-check your payment details and try again. If the issue persists after verifying your information, we recommend contacting your bank directly for more details before attempting another transaction. We have saved your cart for your convenience.", Type:NotificationType.Error, Duration: 12000},
+                  3,{Title:"⚠️ Session Expiring",Text:"Your session is about to expire due to inactivity. To protect your account, you will be logged out in two minutes. Please save any unsaved work now.", Type:NotificationType.Warning, Duration: 3000},
+                  4,{Title:"ℹ️ New Feature Available",Text:"We're excited to announce the arrival of our new ""Project Templates"" feature! You can now create and save custom project layouts to streamline your workflow. To get started, simply navigate to the ""Projects"" tab and select ""Create from Template."" We hope this update helps you work more efficiently.", Type:NotificationType.Information, Duration: 8000}
+                  )
+              )
+            TabIndex: =-1
+            Text: ="Random Notify"
+            X: =196
+            Y: =-50
+      - Admin_ButtonClear:
+          Control: Classic/Button@2.2.0
+          Properties:
+            OnSelect: =Clear(colNotifications)
+            TabIndex: =-1
+            Text: ="Clear"
+            X: =385
+            Y: =-50
