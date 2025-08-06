@@ -2,7 +2,7 @@
 
 An alternate inapp notification system, 
 
-![Notification toaster](./assets/notification-toaster.png)
+![Notification toaster](./assets/notification-toaster-demo.gif)
 
 ## Authors
 
@@ -22,7 +22,7 @@ David Zoonekyndt | [GitHub](https://github.com/DavidZoon) ([LinkedIn](https://ww
 
 Paste YAML snipet in components view !
 
-To Notify, use :
+To show a notification, use :
 ```
 Collect(colNotifications, {
     Title:      "✅ Success",                                      // set your notificaiton title here
@@ -37,6 +37,8 @@ Componnent positionning : To position the component in the bottom right corner o
 x: `Parent.Width-Self.Width`
 y: `Parent.Height-Self.Height`
 
+All settings and instruction are in the 'Theme' parameter :
+<img width="800" alt="sample_tablet_landscape" src="./assets/notification-toaster-parameters.png" />   
 
 ## Code
  **[YAML-file](./source/notification-toaster.yaml)** 
