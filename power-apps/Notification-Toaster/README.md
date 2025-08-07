@@ -42,6 +42,8 @@ All settings and instruction are in the 'Theme' parameter :
 ## Code
  **[YAML-file](./source/notification-toaster.yaml)** 
 
+ **[Demo screen (import component first ! ) YAML-file](./source/notification-toaster-demo-screen-import-compenent-first.yaml)** 
+
  ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
