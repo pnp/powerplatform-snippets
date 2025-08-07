@@ -24,12 +24,11 @@ Paste YAML snipet in components view !
 
 To show a notification, use :
 ```
-Collect(colNotifications, {
-    Title:      "✅ Success",                                      // set your notificaiton title here
-    Text:       "Your settings have been saved successfully.",  // put you notification text here
-    Type:       NotificationType.Success,                       // used for notification appearance
-    Duration:   2000                                            // Notification duration in milliseconds
-    }
+NotificationToaster_1.Notify(                           //replace 'NotificationToaster_1' by the name of the component in your app screen
+    "✅ Success",                                       // Mandatory : Title of your notification in bold text
+    NotificationType.Success,                           // Optionnal : NotificationType.Information by default
+    "Your settings have been saved successfully.",      // Optional : Detailled notifiction text
+    3000)                                               // Optionnal : The notification lifetime will be calculated based on the number of characters to be read and the 'ReadingSpeed' in the 'Theme' parameter
 ```
 
 Componnent positionning : To position the component in the bottom right corner of your screen, use the following positioning formulas:
