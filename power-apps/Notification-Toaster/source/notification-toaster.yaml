@@ -29,10 +29,10 @@ ComponentDefinitions:
               DataType: Text
               Default: =""
           - Duration:
-              Description: Notification duration in milliseconds
+              Description: A parameter
               IsOptional: true
               DataType: Number
-              Default: =Blank()
+              Default: =0
       Theme:
         PropertyKind: Input
         DisplayName: Theme
@@ -180,8 +180,7 @@ ComponentDefinitions:
               =With({FirstNotif:First(colNotifications)},
               Coalesce(
                   vRemoveNotif,
-                  FirstNotif.Duration,
-                  IfError((Len(FirstNotif.Title)+Len(FirstNotif.Text))/NotificationToaster.Theme.ReadingSpeed*1000,3500))
+                  If(FirstNotif.Duration=0,IfError((Len(FirstNotif.Title)+Len(FirstNotif.Text))/NotificationToaster.Theme.ReadingSpeed*1000,3500),FirstNotif.Duration))
               )
             OnSelect: =Collect(colNotifications,FirstN([{ID:1,Title:"",Text:"",Duration:1000}],0))
             OnTimerEnd: |-
