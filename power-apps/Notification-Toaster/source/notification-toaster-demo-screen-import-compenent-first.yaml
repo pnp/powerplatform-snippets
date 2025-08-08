@@ -48,7 +48,7 @@ Screens:
                 Control: Classic/Button@2.2.0
                 Properties:
                   Height: =37
-                  OnSelect: =NotificationToaster_1.Notify("✅ Success",NotificationType.Success,"Your settings have been saved successfully.",3000)
+                  OnSelect: =NotificationToaster_1.Notify("✅ Success",NotificationType.Success,"Your settings have been saved successfully.",3000);
                   TabIndex: =-1
                   Text: ="Short notification"
                   Width: =282
@@ -85,6 +85,13 @@ Screens:
                   Width: =282
                   X: =492
                   Y: =260
+            - Timer_On_Off:
+                Control: Toggle@1.1.5
+                Properties:
+                  AlignInContainer: =AlignInContainer.Center
+                  Checked: =true
+                  Label: ="Timer On / Off"
+                  Width: =200
       - NotificationToaster_1:
           Control: CanvasComponent
           ComponentName: NotificationToaster
@@ -120,6 +127,7 @@ Screens:
               InformationTextColor:"#000000",
               InformationBckgndColor:"#ffffff"
               }
+            Timer: =Timer_On_Off.Checked
             Width: =420
             X: =Parent.Width-Self.Width
             Y: =Parent.Height-Self.Height
