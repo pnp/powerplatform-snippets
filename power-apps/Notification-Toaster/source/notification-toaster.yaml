@@ -65,6 +65,12 @@ ComponentDefinitions:
           InformationTextColor:"#000000",
           InformationBckgndColor:"#ffffff"
           }
+      Timer:
+        PropertyKind: Input
+        DisplayName: Timer
+        Description: You can desactivate the timer
+        DataType: Boolean
+        Default: =true
     Properties:
       AutoHeight: =Sum(GalleryNotifs.AllItems,HtmlTextNotif.Height) + (GalleryNotifs.AllItemsCount*10)+10
       ContentLanguage: ="" // YAML Snipet component by David Zoonekyndt https://dz13n.wordpress.com/
@@ -78,9 +84,14 @@ ComponentDefinitions:
           Control: Gallery@2.15.0
           Variant: VariableHeight
           Properties:
+            AccessibleLabel: ="Notifications"
             Height: =Parent.Height
+            ItemAccessibleLabel: |-
+              =ThisItem.Title&".
+              "&ThisItem.Text
             Items: =colNotifications
             ShowScrollbar: =false
+            TabIndex: =0
             TemplatePadding: =0
             Width: =Parent.Width
           Children:
@@ -157,6 +168,7 @@ ComponentDefinitions:
             - ButtonRemoveNotif:
                 Control: Button@0.0.45
                 Properties:
+                  AccessibleLabel: =$"button close notification {ThisItem.Title}"
                   Appearance: ='ButtonCanvas.Appearance'.Subtle
                   BasePaletteColor: =ColorValue(Switch(ThisItem.Type,NotificationType.Error,NotificationToaster.Theme.ErrorBckgndColor,NotificationType.Information,NotificationToaster.Theme.InformationBckgndColor,NotificationType.Success,NotificationToaster.Theme.SuccessBckgndColor,NotificationType.Warning,NotificationToaster.Theme.WarningBckgndColor,"#ffffff"))
                   FontColor: =ColorValue(Switch(ThisItem.Type,NotificationType.Error,NotificationToaster.Theme.ErrorTextColor,NotificationType.Information,NotificationToaster.Theme.InformationTextColor,NotificationType.Success,NotificationToaster.Theme.SuccessTextColor,NotificationType.Warning,NotificationToaster.Theme.WarningTextColor,"#ffffff"))
@@ -175,7 +187,7 @@ ComponentDefinitions:
       - TimerDeleteNotification:
           Control: Timer@2.1.0
           Properties:
-            AutoStart: =true
+            AutoStart: =Parent.Timer
             Duration: |-
               =With({FirstNotif:First(colNotifications)},
               Coalesce(
@@ -187,10 +199,11 @@ ComponentDefinitions:
               =Remove(colNotifications,First(colNotifications));
               Set(vRemoveNotif,Blank()) // To avoid timer from keeping last item value
             OnTimerStart: =UpdateIf(colNotifications,ID=Blank(),{ID:Max(colNotifications,ID)+1})
-            Repeat: =true
+            Repeat: =Parent.Timer
             Reset: =//CountIf(colNotifications,ID=Blank())>0 || CountIf(colNotifications,ID=Blank())=0
             Start: =true
             TabIndex: =-1
+            Visible: =false
             Y: =-50
       - Admin_ButtonRandomNotification:
           Control: Classic/Button@2.2.0
@@ -215,3 +228,13 @@ ComponentDefinitions:
             Text: ="Clear"
             X: =385
             Y: =-50
+      - Accessible content:
+          Control: Label@2.5.1
+          Properties:
+            Live: =Live.Assertive
+            Size: =10
+            Text: |-
+              =If(!IsBlank(Last(colNotifications)),"New notification :"&Last(colNotifications).Title&".
+              "&Last(colNotifications).Text)
+            X: =10
+            Y: =-100
