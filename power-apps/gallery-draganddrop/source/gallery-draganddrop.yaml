@@ -1,0 +1,299 @@
+- snippet-galerieDrag&Drop:
+    Control: GroupContainer@1.3.0
+    Variant: ManualLayout
+    Properties:
+      BorderColor: |-
+        =/*Steve BOURDIN MOCA by ASI Juillet 2025*/
+        RGBA(0, 0, 0, 1)
+      DropShadow: =DropShadow.ExtraBold
+      Fill: =RGBA(255, 255, 255, 0.96)
+      Height: =Parent.Height/2
+      Width: =3*Parent.Width/4
+      X: =((Parent.Width-Self.Width)/2 )
+      Y: =((Parent.Height-Self.Height)/2 )
+    Children:
+      - gal_tickets:
+          Control: Gallery@2.15.0
+          Variant: Vertical
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =Parent.Height
+            Items: =Sort(colTicket,order,SortOrder.Ascending)
+            TemplatePadding: =0
+            TemplateSize: =If(Self.AllItemsCount>0,Self.Height/Self.AllItemsCount,Self.Height)
+            Width: =Parent.Width
+          Children:
+            - lbl_noTicket:
+                Control: Text@0.0.51
+                Group: grp_detail_gal
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  FontColor: =RGBA(39, 113, 194, 1)
+                  Height: =Parent.TemplateHeight
+                  Text: =ThisItem.noTicket
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Bold
+                  Width: =Parent.TemplateWidth/10
+            - lbl_company:
+                Control: Text@0.0.51
+                Group: grp_detail_gal
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  FontColor: =RGBA(0, 0, 0, 1)
+                  Height: =Parent.TemplateHeight
+                  Text: =ThisItem.company
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Semibold
+                  Width: =Parent.TemplateWidth/6
+                  X: =lbl_noTicket.X + lbl_noTicket.Width
+            - lbl_persona:
+                Control: Text@0.0.51
+                Group: grp_detail_gal
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  FontColor: =RGBA(0, 0, 0, 1)
+                  Height: =Parent.TemplateHeight
+                  Text: =ThisItem.author
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Medium
+                  Width: =Parent.TemplateWidth/6
+                  X: =lbl_company.X + lbl_company.Width
+            - lbl_title:
+                Control: Text@0.0.51
+                Group: grp_detail_gal
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  FontColor: =RGBA(40, 112, 134, 1)
+                  Height: =Parent.TemplateHeight
+                  Text: =ThisItem.title
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Semibold
+                  Width: =Parent.TemplateWidth/3
+                  X: =lbl_persona.X + lbl_persona.Width
+            - btn_statut:
+                Control: Classic/Button@2.2.0
+                Group: grp_detail_gal
+                Properties:
+                  BorderColor: =ColorFade(Self.Fill, -15%)
+                  Color: =RGBA(255, 255, 255, 1)
+                  DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                  Fill: =ColorFade( Switch(ThisItem.status,"In Progress",Color.Blue,"New",Color.DarkRed,"Resolved",Color.Green,"Pending",Color.Orange,"Blocked",Color.Red),0.5)
+                  Font: =Font.'Open Sans'
+                  Height: =Parent.TemplateHeight/2
+                  HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+                  HoverColor: =RGBA(255, 255, 255, 1)
+                  HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                  OnSelect: =Select(Parent)
+                  PressedBorderColor: =Self.Fill
+                  PressedColor: =Self.Fill
+                  PressedFill: =Self.Color
+                  RadiusBottomLeft: '=30  '
+                  RadiusBottomRight: '=30  '
+                  RadiusTopLeft: =30
+                  RadiusTopRight: '=30  '
+                  Size: =10
+                  Text: =ThisItem.status
+                  Width: =3*(Parent.Width-Self.X)/4
+                  X: =lbl_title.X + lbl_title.Width
+                  Y: =Parent.TemplateHeight/4
+      - cont_detail_move:
+          Control: GroupContainer@1.3.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =Color.LightGray
+            Height: =gal_tickets.TemplateHeight
+            Visible: =IsBlank(var_SelectItem)=false
+            Width: =Parent.Width
+            Y: =Parent.Height * (1 - sld_dragDrop.Value/100) - Self.Height / 2
+          Children:
+            - lbl_noTicket_move:
+                Control: Text@0.0.51
+                Group: grp_detail_move
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  FontColor: =RGBA(39, 113, 194, 1)
+                  Height: =Parent.Height
+                  Text: =var_SelectItem.noTicket
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Bold
+                  Width: =Parent.Width/10
+            - lbl_company_move:
+                Control: Text@0.0.51
+                Group: grp_detail_move
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  FontColor: =RGBA(0, 0, 0, 1)
+                  Height: =Parent.Height
+                  Text: =var_SelectItem.company
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Semibold
+                  Width: =Parent.Width/6
+                  X: =lbl_noTicket_move.X + lbl_noTicket_move.Width
+            - lbl_persona_move:
+                Control: Text@0.0.51
+                Group: grp_detail_move
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  FontColor: =RGBA(0, 0, 0, 1)
+                  Height: =Parent.Height
+                  Text: =var_SelectItem.author
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Medium
+                  Width: =Parent.Width/6
+                  X: =lbl_company_move.X + lbl_company_move.Width
+            - lbl_title_move:
+                Control: Text@0.0.51
+                Group: grp_detail_move
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  FontColor: =RGBA(0, 0, 0, 1)
+                  Height: =Parent.Height
+                  Text: =var_SelectItem.title
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Medium
+                  Width: =Parent.Width/3
+                  X: =lbl_persona_move.X + lbl_persona_move.Width
+            - lbl_statut_move:
+                Control: Text@0.0.51
+                Group: grp_detail_move
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  FontColor: =Switch(var_SelectItem.status,"In Progress",Color.Blue,"New",Color.DarkRed,"Resolved",Color.Green,"Pending",Color.Orange,"Blocked",Color.Red)
+                  Height: =Parent.Height
+                  Text: =var_SelectItem.status
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Bold
+                  Width: =Parent.Width-Self.X
+                  X: =lbl_title_move.X + lbl_title_move.Width
+            - btn_statut_move:
+                Control: Classic/Button@2.2.0
+                Group: grp_detail_move
+                Properties:
+                  BorderColor: =ColorFade(Self.Fill, -15%)
+                  Color: =RGBA(255, 255, 255, 1)
+                  DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                  Fill: =ColorFade( Switch(var_SelectItem.status,"In Progress",Color.Blue,"New",Color.DarkRed,"Resolved",Color.Green,"Pending",Color.Orange,"Blocked",Color.Red),0.5)
+                  Font: =Font.'Open Sans'
+                  Height: =Parent.Height/2
+                  HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+                  HoverColor: =RGBA(255, 255, 255, 1)
+                  HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                  PressedBorderColor: =Self.Fill
+                  PressedColor: =Self.Fill
+                  PressedFill: =Self.Color
+                  RadiusBottomLeft: '=30  '
+                  RadiusBottomRight: '=30  '
+                  RadiusTopLeft: =30
+                  RadiusTopRight: '=30  '
+                  Size: =10
+                  Text: =var_SelectItem.status
+                  Width: =3*(Parent.Width-Self.X)/4
+                  X: =lbl_title.X + lbl_title.Width
+                  Y: =Parent.Height/4
+      - sld_dragDrop:
+          Control: Classic/Slider@2.1.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            HandleFill: =RGBA(0, 0, 0, 0)
+            HandleSize: =Self.Width
+            Height: =Parent.Height
+            Layout: =Layout.Vertical
+            OnChange: |-
+              =/*In this action, we will update the positions of the items that need to be changed.*/
+
+              /*The final target position is saved.*/
+              
+              UpdateContext(
+                  {
+                      var_SelectPosition: RoundUp(
+                          (100 - Self.Value) / (100 / gal_tickets.AllItemsCount),
+                          0
+                      )
+                  }
+              );
+              If(
+                  var_SelectPosition > var_SelectItem.order,
+                  UpdateIf(
+                      colTicket,
+                      order > var_SelectItem.order && order <= var_SelectPosition,
+                      {order: order - 1}
+                  ),
+                  UpdateIf(
+                      colTicket,
+                      order < var_SelectItem.order && order >= var_SelectPosition,
+                      {order: order + 1}
+                  )
+              );
+              Patch(
+                  colTicket,
+                  var_SelectItem,
+                  {order: var_SelectPosition}
+              );
+              UpdateContext({var_SelectItem: Blank()})
+            OnSelect: |-
+              =/*On the first mouse click, the selected item is saved.*/
+              UpdateContext(
+                  {
+                      var_SelectItem: Index(
+                          Sort(colTicket,order,SortOrder.Ascending),
+                          RoundUp(
+                              (100 - Self.Value) / (100 / gal_tickets.AllItemsCount),
+                              0
+                          )
+                      )
+                  }
+              )
+            RailFill: =RGBA(0, 0, 0, 0)
+            RailThickness: =0
+            ShowValue: =false
+            ValueFill: =RGBA(0, 0, 0, 0)
+            Width: =Parent.Width
+      - tim_init_toRemove:
+          Control: Timer@2.1.0
+          Properties:
+            AutoStart: =true
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =ColorFade(Self.BorderColor, 70%)
+            DisabledColor: =ColorFade(Self.Fill, 90%)
+            DisabledFill: =ColorFade(Self.Fill, 70%)
+            Fill: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnTimerStart: |-
+              =/*This action initializes a collection. Feel free to modify it to include your own examples.*/
+
+              ClearCollect(colTicket,
+                [
+                  {noTicket:1001, title:"PowerApps Formation", status:"In Progress", author:"Steve BOURDIN", company:"MOCA by ASI", order:1},
+                  {noTicket:1002, title:"Introduction Dataverse", status:"New", author:"Claire GIRAUD", company:"MOCA by ASI", order:2},
+                  {noTicket:1003, title:"Canvas App Debugging", status:"Resolved", author:"Julien MARCHAND", company:"ASI Nantes", order:3},
+                  {noTicket:1004, title:"Flow Automatisation", status:"In Progress", author:"Steve BOURDIN", company:"MOCA by ASI", order:4},
+                  {noTicket:1005, title:"Model-Driven UI", status:"Pending", author:"Anaïs DURAND", company:"MOCA by ASI", order:5},
+                  {noTicket:1006, title:"SharePoint Integration", status:"New", author:"Lucas MARTIN", company:"ASI Bordeaux", order:6},
+                  {noTicket:1007, title:"Security Roles", status:"In Progress", author:"Steve BOURDIN", company:"MOCA by ASI", order:7},
+                  {noTicket:1008, title:"Custom Connectors", status:"Blocked", author:"Nina TESSIER", company:"ASI Toulouse", order:8},
+                  {noTicket:1009, title:"Power Automate Flows", status:"Resolved", author:"Marc LEBLANC", company:"MOCA by ASI", order:9}/*;
+                  {noTicket:1010; title:"Responsive Design"; status:"New"; author:"Steve BOURDIN"; company:"MOCA by ASI"; order:10};
+                  {noTicket:1011; title:"Performance Tuning"; status:"Pending"; author:"Claire GIRAUD"; company:"ASI Rennes"; order:11};
+                  {noTicket:1012; title:"Role-based Access"; status:"In Progress"; author:"Julien MARCHAND"; company:"MOCA by ASI"; order:12};
+                  {noTicket:1013; title:"Offline Capabilities"; status:"Blocked"; author:"Anaïs DURAND"; company:"ASI Lille"; order:13};
+                  {noTicket:1014; title:"Custom Pages"; status:"New"; author:"Lucas MARTIN"; company:"MOCA by ASI"; order:14};
+                  {noTicket:1015; title:"Component Library"; status:"Pending"; author:"Steve BOURDIN"; company:"MOCA by ASI"; order:15};
+                  {noTicket:1016; title:"Environment Variables"; status:"Resolved"; author:"Nina TESSIER"; company:"ASI Strasbourg"; order:16};
+                  {noTicket:1017; title:"App Testing Scenarios"; status:"In Progress"; author:"Marc LEBLANC"; company:"MOCA by ASI"; order:17};
+                  {noTicket:1018; title:"Dataverse API"; status:"Blocked"; author:"Claire GIRAUD"; company:"ASI Montpellier"; order:18};
+                  {noTicket:1019; title:"PowerFX Formulas"; status:"New"; author:"Julien MARCHAND"; company:"MOCA by ASI"; order:19};
+                  {noTicket:1020; title:"Monitoring Tools"; status:"Pending"; author:"Steve BOURDIN"; company:"MOCA by ASI"; order:20}*/
+                ]
+              );
+              UpdateContext({var_SelectItem : Blank()})
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Start: =true
+            Visible: =false
+            X: =40
+            Y: =40
