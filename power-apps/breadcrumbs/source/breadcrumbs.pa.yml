@@ -1,0 +1,90 @@
+- conBreadcrums:
+    Control: GroupContainer@1.3.0
+    Variant: AutoLayout
+    Properties:
+      DropShadow: =DropShadow.None
+      Fill: =RGBA(255, 255, 255, 1)
+      Height: =48
+      LayoutDirection: =LayoutDirection.Horizontal
+      PaddingLeft: =16
+      PaddingRight: =16
+      RadiusBottomLeft: =0
+      RadiusBottomRight: =0
+      RadiusTopLeft: =0
+      RadiusTopRight: =0
+      Width: =Parent.Width
+    Children:
+      - btnCrumbFirst:
+          Control: Button@0.0.45
+          Properties:
+            AccessibleLabel: =LookUp(colBreadcrumbs,DisplayOrder = 1).AccessibleLabel
+            Align: =Align.Left
+            AlignInContainer: =AlignInContainer.Center
+            Appearance: ='ButtonCanvas.Appearance'.Transparent
+            Font: =Font.'Segoe UI'
+            FontSize: =14
+            FontWeight: =FontWeight.Bold
+            Icon: ="ChevronRight"
+            Layout: ='ButtonCanvas.Layout'.TextOnly
+            OnSelect: =Navigate(LookUp(colBreadcrumbs,DisplayOrder = 1).Screen)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =LookUp(colBreadcrumbs,DisplayOrder = 1).Name
+            Visible: =LookUp(colBreadcrumbs,DisplayOrder = 1).isVisible
+            Width: |
+              =Len(LookUp(colBreadcrumbs,DisplayOrder = 1).Name) * 7.5
+            X: =136
+            Y: =40
+      - lblSeperatorFirst:
+          Control: Text@0.0.51
+          Properties:
+            Align: ='TextCanvas.Align'.Center
+            AlignInContainer: =AlignInContainer.Center
+            Text: ="/"
+            VerticalAlign: =VerticalAlign.Middle
+            Visible: =LookUp(colBreadcrumbs,DisplayOrder = 1).isVisible
+            Weight: ='TextCanvas.Weight'.Bold
+            Width: =32
+      - btnCrumbSecond:
+          Control: Button@0.0.45
+          Properties:
+            AccessibleLabel: =LookUp(colBreadcrumbs,DisplayOrder = 2).AccessibleLabel
+            Align: =Align.Center
+            AlignInContainer: =AlignInContainer.Center
+            Appearance: ='ButtonCanvas.Appearance'.Transparent
+            Font: =Font.'Segoe UI'
+            FontSize: =14
+            FontWeight: =FontWeight.Bold
+            Icon: ="ChevronRight"
+            Layout: ='ButtonCanvas.Layout'.TextOnly
+            OnSelect: =Navigate(LookUp(colBreadcrumbs,DisplayOrder = 2).Screen)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =LookUp(colBreadcrumbs,DisplayOrder = 2).Name
+            Visible: =LookUp(colBreadcrumbs,DisplayOrder = 2).isVisible
+            Width: =Len(LookUp(colBreadcrumbs,DisplayOrder = 2).Name) * 7.5
+            X: =136
+            Y: =40
+      - lblSeperatorSecond:
+          Control: Text@0.0.51
+          Properties:
+            Align: ='TextCanvas.Align'.Center
+            AlignInContainer: =AlignInContainer.Center
+            Text: ="/"
+            VerticalAlign: =VerticalAlign.Middle
+            Visible: =LookUp(colBreadcrumbs,DisplayOrder = 2).isVisible
+            Weight: ='TextCanvas.Weight'.Bold
+            Width: =32
+      - lblCrumbLast:
+          Control: Text@0.0.51
+          Properties:
+            Align: ='TextCanvas.Align'.Center
+            AlignInContainer: =AlignInContainer.Center
+            Font: =Font.'Segoe UI'
+            Text: =LookUp(colBreadcrumbs,DisplayOrder = 3).Name
+            VerticalAlign: =VerticalAlign.Middle
+            Width: =Len(LookUp(colBreadcrumbs,DisplayOrder = 3).Name) * 7.5 
