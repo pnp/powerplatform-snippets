@@ -1,0 +1,52 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-lcd-digitrenderer",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-29T00:00:00.000Z",
+    "updateDateTime": "2025-04-29T00:00:00.000Z",
+    "title": "LCD Digit Renderer",
+    "shortDescription": "A reusable PowerApps component that mimics a 16-segment LCD display. It dynamically lights up segments to render digits, letters with a classic digital look. Perfect for dashboards, retro UIs, or industrial-style apps",
+    "longDescription": [
+      "A reusable PowerApps component that mimics a 16-segment LCD display. It dynamically lights up segments to render digits, letters with a classic digital look. Perfect for dashboards, retro UIs, or industrial-style apps"
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/lcd-digitrenderer/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [
+    ],
+    "categories": [
+    ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/powerplatform-snippets/blob/d4067bee49ba49b52a39ff0be66efeb5ce886883/power-apps/lcd-digitrenderer/assets/lcd-digitrenderer.gif",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SteveBourdin",
+        "name": "Steve Bourdin",
+        "pictureUrl": "https://github.com/SteveBourdin.png"
+      }
+    ]
+  }
+
+]
