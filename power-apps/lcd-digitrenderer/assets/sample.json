@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/powerplatform-snippets/blob/d4067bee49ba49b52a39ff0be66efeb5ce886883/power-apps/lcd-digitrenderer/assets/lcd-digitrenderer.gif",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/lcd-digitrenderer/assets/lcd-digitrenderer.gif",
         "alt": "Preview PNG"
       }
     ],
