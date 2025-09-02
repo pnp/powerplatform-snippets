@@ -11,7 +11,7 @@
     "longDescription": [
       "Allows to display notification with a custom duration and some nice effets : progress bar, glassmorphism..."
     ],
-    "url": "https://github.com/DavidZoon/powerplatform-snippets/blob/main/power-apps/Notification-toaster/",
+    "url": "https://github.com/DavidZoon/powerplatform-snippets/blob/main/power-apps/notification-toaster/",
     "products": [
       "Power Platform",
       "Power Apps",
@@ -34,7 +34,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/powerplatform-snippets/blob/edee8150a614d2e62bd84b02dde5e41609eb7ea5/power-apps/Notification-Toaster/assets/notification-toaster.png",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/notification-toaster/assets/notification-toaster.png",
         "alt": "Preview PNG"
       }
     ],
