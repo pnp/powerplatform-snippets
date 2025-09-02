@@ -1,0 +1,133 @@
+Screens:
+  Notification Toaster demo:
+    Properties:
+      BackgroundImage: ="https://images.unsplash.com/photo-1558485694-21e9d4f2bd36?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      ImagePosition: =ImagePosition.Fill
+    Children:
+      - Container1:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.Bold
+            Fill: =RGBA(255, 255, 255, 0.75)
+            Height: =488
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =40
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Width: =404
+            X: =424
+            Y: =140
+          Children:
+            - ButtonRandomNotification:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  Fill: =App.Theme.Colors.Lighter20
+                  Height: =37
+                  OnSelect: |-
+                    =Switch(RandBetween(1,4),
+                        1,
+                        Select(ButtonShortNotification),
+                        2,
+                        Select(ButtonMediumNotification),
+                        3,
+                        Select(ButtonLongNotification),
+                        4,
+                        Select(ButtonVeryLongNotification)
+                        )
+                  TabIndex: =-1
+                  Text: ="Random notification"
+                  Width: =282
+                  X: =492
+                  Y: =268
+            - ButtonShortNotification:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  Height: =37
+                  OnSelect: =NotificationToaster_1.Notify("✅ Success",NotificationType.Success,"Your settings have been saved successfully.",3000);
+                  TabIndex: =-1
+                  Text: ="Short notification"
+                  Width: =282
+                  X: =492
+                  Y: =107
+            - ButtonMediumNotification:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  Height: =37
+                  OnSelect: =NotificationToaster_1.Notify("⚠️ Session Expiring",NotificationType.Warning,"Your session is about to expire due to inactivity. To protect your account, you will be logged out in two minutes. Please save any unsaved work now.")
+                  TabIndex: =-1
+                  Text: ="Medium notification"
+                  Width: =282
+                  X: =492
+                  Y: =159
+            - ButtonLongNotification:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  Height: =37
+                  OnSelect: =NotificationToaster_1.Notify("ℹ️ New Feature Available", NotificationType.Information,"We're excited to announce the arrival of our new ""Project Templates"" feature! You can now create and save custom project layouts to streamline your workflow. To get started, simply navigate to the ""Projects"" tab and select ""Create from Template."" We hope this update helps you work more efficiently.")
+                  TabIndex: =-1
+                  Text: ="Long notification"
+                  Width: =282
+                  X: =492
+                  Y: =211
+            - ButtonVeryLongNotification:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  Height: =37
+                  OnSelect: |-
+                    =NotificationToaster_1.Notify("❌ Payment Authorization Failed action required immediatly", NotificationType.Error,"We were unable to process your payment for order #855-24B. The authorization was declined by your bank, which can happen due to insufficient funds, an incorrect card number, or security limits set by your financial institution. Please double-check your payment details and try again. If the issue persists after verifying your information, we recommend contacting your bank directly for more details before attempting another transaction. We have saved your cart for your convenience.")
+                  TabIndex: =-1
+                  Text: ="Very long notification"
+                  Width: =282
+                  X: =492
+                  Y: =260
+            - Timer_On_Off:
+                Control: Toggle@1.1.5
+                Properties:
+                  AlignInContainer: =AlignInContainer.Center
+                  Checked: =true
+                  Label: ="Timer On / Off"
+                  Width: =200
+      - NotificationToaster_1:
+          Control: CanvasComponent
+          ComponentName: NotificationToaster
+          Properties:
+            ContentLanguage: ="" // YAML Snipet component by David Zoonekyndt https://dz13n.wordpress.com/
+            Height: |-
+              =// Adjusts the height according to the number of notifications without exceeding the screen height, do not modify
+              Min(NotificationToaster_1.AutoHeight,App.ActiveScreen.Height)
+            Theme: |-
+              =/*---------------- Instructions ------------------
+              To Notify, use :
+
+              NotificationToaster_1.Notify(                           //replace 'NotificationToaster_1' by the name of the component in your app screen
+                  "✅ Success",                                       // Mandatory : Title of your notification in bold text
+                  NotificationType.Success,                           // Optionnal : NotificationType.Information by default
+                  "Your settings have been saved successfully.",      // Optional : Detailled notifiction text
+                  3000                                                // Optionnal : The notification lifetime will be calculated based on the number of characters to be read and the 'ReadingSpeed' in the 'Theme' parameter
+
+              Componnent positionning : To position the component in the bottom right corner of your screen, use the following positioning formulas:
+              x: Parent.Width-Self.Width
+              y: Parent.Height-Self.Height
+
+              */
+              {Transparency:"99", // in hexadecimal : from 00(transparent) to ff (opaque)
+              FontSize:11,
+              ReadingSpeed:23, // chars per second, used to calculate default notification duration
+              SuccessTextColor:"#ffffff",
+              SuccessBckgndColor:"#009944",
+              ErrorTextColor:"#ffffff",
+              ErrorBckgndColor:"#cf000f",
+              WarningTextColor:"#ffffff",
+              WarningBckgndColor:"#f0541e",
+              InformationTextColor:"#000000",
+              InformationBckgndColor:"#ffffff"
+              }
+            Timer: =Timer_On_Off.Checked
+            Width: =420
+            X: =Parent.Width-Self.Width
+            Y: =Parent.Height-Self.Height
