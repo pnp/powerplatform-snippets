@@ -1,0 +1,52 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-emoji-input",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-29T00:00:00.000Z",
+    "updateDateTime": "2025-04-29T00:00:00.000Z",
+    "title": "Keyboard",
+    "shortDescription": "A emoji search for PowerApps",
+    "longDescription": [
+      "Emoji Input is a smart emoji search tool built in PowerApps. It lets users quickly find emojis by typing keywords, with instant filtering and organized results by category. Perfect for adding personality to forms, chats, or custom apps."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/emoji-input/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [
+    ],
+    "categories": [
+    ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/066c2045cf8d0778b401be6696cb699032dd7bfb/power-apps/emoji-input/assets/emoji-input.gif",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SteveBourdin",
+        "name": "Steve Bourdin",
+        "pictureUrl": "https://github.com/SteveBourdin.png"
+      }
+    ]
+  }
+
+]

@@ -1,0 +1,2012 @@
+- input_emoji:
+    Control: GroupContainer@1.3.0
+    Variant: ManualLayout
+    Properties:
+      DropShadow: =DropShadow.None
+      Height: =362
+      Width: =758
+      X: =272
+      Y: =217
+    Children:
+      - inp_with_emoji:
+          Control: TextInput@0.0.54
+          Properties:
+            FontSize: =20
+            Height: =Parent.Height
+            Mode: ='TextInputCanvas.Mode'.Multiline
+            Value: =varEmojiTxt
+            Width: =Parent.Width
+      - ico_launch_emoji:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(25, 114, 192, 1)
+            Height: =Self.Width
+            Icon: =Icon.EmojiSmile
+            OnSelect: |-
+              =UpdateContext({varEmoji: Not(varEmoji)});
+              UpdateContext({varEmojiBlank: " "});
+              UpdateContext({varEmojiBlank: ""});
+
+              If(
+                  varEmoji = true,
+                  SetFocus(inp_search),
+                  SetFocus(inp_with_emoji)
+              )
+            Width: =Parent.Width/30
+            X: =Parent.Width-3*Self.Width/2
+            Y: =Parent.Height-3*Self.Height/2
+      - cont_panel_emoji:
+          Control: GroupContainer@1.3.0
+          Variant: ManualLayout
+          Properties:
+            DropShadow: =DropShadow.Semibold
+            Fill: =RGBA(214, 221, 224, 0.71)
+            Visible: =varEmoji=true
+            Width: =ico_launch_emoji.X-ico_launch_emoji.Width
+            X: =10
+            Y: =Parent.Height-Self.Height-10
+          Children:
+            - gal_emoji:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Height: =2*Parent.Height/3
+                  Items: =Filter(gal_all_emoji.AllItems,categorie=First(tab_categorie.SelectedItems).Value)
+                  OnSelect: |-
+                    =UpdateContext({varEmojiTxt : Concatenate(inp_with_emoji.Value,ThisItem.emoji)});SetFocus(inp_with_emoji);
+                  ShowScrollbar: =false
+                  TemplateSize: =30
+                  Visible: =varEmoji=true
+                  Width: =Parent.Width
+                  WrapCount: =20
+                  Y: =Parent.Height-Self.Height
+                Children:
+                  - txt_emoji:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        Height: =30
+                        Size: =20
+                        Text: =ThisItem.emoji
+                        VerticalAlign: =VerticalAlign.Middle
+                        Width: =30
+                        X: =(Parent.TemplateWidth-Self.Width)/2
+                  - btn_emoji:
+                      Control: Classic/Button@2.2.0
+                      Properties:
+                        BorderColor: =ColorFade(Self.Fill, -15%)
+                        Color: =RGBA(255, 255, 255, 1)
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Font: =Font.'Open Sans'
+                        Height: =txt_emoji.Height
+                        HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+                        HoverColor: =RGBA(255, 255, 255, 1)
+                        HoverFill: =RGBA(56, 96, 178, 0.2)
+                        OnSelect: =Select(Parent)
+                        PressedBorderColor: =Self.Fill
+                        PressedColor: =Self.Fill
+                        PressedFill: =Self.Color
+                        Text: =""
+                        Tooltip: =ThisItem.texte
+                        Width: =txt_emoji.Width
+                        X: =txt_emoji.X
+                        Y: =txt_emoji.Y
+            - tab_categorie:
+                Control: TabList@2.2.31
+                Properties:
+                  Height: =gal_emoji.Height/3
+                  Items: =Distinct(gal_all_emoji.AllItems,categorie)
+                  Size: ='TabList.Size'.Large
+                  Visible: =varEmoji=true
+                  Width: =2*gal_emoji.Width/3
+            - inp_search:
+                Control: TextInput@0.0.54
+                Properties:
+                  Height: =2*tab_categorie.Height/3
+                  Placeholder: ="Search Emoji"
+                  TriggerOutput: ="Keypress"
+                  Value: =varEmojiBlank
+                  Width: =Parent.Width-10-tab_categorie.Width
+                  X: =tab_categorie.Width
+                  Y: =tab_categorie.Height/3
+            - ico_search:
+                Control: Icon@0.0.7
+                Properties:
+                  Height: =inp_search.Height
+                  Icon: ="Search"
+                  Width: =Self.Height
+                  X: =inp_search.X+inp_search.Width-Self.Width
+                  Y: =inp_search.Y
+            - gal_all_emoji:
+                Control: Gallery@2.15.0
+                Variant: Vertical
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Height: =200
+                  Items: |-
+                    =//Filtered emoji list based on text input, this gallery is not visible for user
+                    Filter(
+                        [
+                            {
+                                emoji: "😀",
+                                texte: "Grinning Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😃",
+                                texte: "Grinning Face with Big Eyes",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😄",
+                                texte: "Grinning Face with Smiling Eyes",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😁",
+                                texte: "Beaming Face with Smiling Eyes",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😆",
+                                texte: "Grinning Squinting Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😅",
+                                texte: "Grinning Face with Sweat",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😂",
+                                texte: "Face with Tears of Joy",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤣",
+                                texte: "Rolling on the Floor Laughing",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😊",
+                                texte: "Smiling Face with Smiling Eyes",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😇",
+                                texte: "Smiling Face with Halo",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🙂",
+                                texte: "Slightly Smiling Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🙃",
+                                texte: "Upside-Down Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😉",
+                                texte: "Winking Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😌",
+                                texte: "Relieved Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😍",
+                                texte: "Smiling Face with Heart-Eyes",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🥰",
+                                texte: "Smiling Face with Hearts",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😘",
+                                texte: "Face Blowing a Kiss",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😗",
+                                texte: "Kissing Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😙",
+                                texte: "Kissing Face with Smiling Eyes",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😚",
+                                texte: "Kissing Face with Closed Eyes",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😋",
+                                texte: "Face Savoring Food",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😛",
+                                texte: "Face with Tongue",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😜",
+                                texte: "Winking Face with Tongue",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤪",
+                                texte: "Zany Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😝",
+                                texte: "Squinting Face with Tongue",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤑",
+                                texte: "Money-Mouth Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤗",
+                                texte: "Hugging Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤭",
+                                texte: "Face with Hand Over Mouth",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤫",
+                                texte: "Shushing Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤔",
+                                texte: "Thinking Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤐",
+                                texte: "Zipper-Mouth Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😶",
+                                texte: "Face Without Mouth",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😏",
+                                texte: "Smirking Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😒",
+                                texte: "Unamused Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🙄",
+                                texte: "Face with Rolling Eyes",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😬",
+                                texte: "Grimacing Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😳",
+                                texte: "Flushed Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🥺",
+                                texte: "Pleading Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😢",
+                                texte: "Crying Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😭",
+                                texte: "Loudly Crying Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😤",
+                                texte: "Face with Steam From Nose",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😠",
+                                texte: "Angry Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😡",
+                                texte: "Pouting Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤬",
+                                texte: "Face with Symbols on Mouth",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😱",
+                                texte: "Face Screaming in Fear",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😨",
+                                texte: "Fearful Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😰",
+                                texte: "Anxious Face with Sweat",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😥",
+                                texte: "Sad but Relieved Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😓",
+                                texte: "Downcast Face with Sweat",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤯",
+                                texte: "Exploding Head",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😵",
+                                texte: "Dizzy Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤒",
+                                texte: "Face with Thermometer",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤕",
+                                texte: "Face with Head-Bandage",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤢",
+                                texte: "Nauseated Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤮",
+                                texte: "Face Vomiting",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😷",
+                                texte: "Face with Medical Mask",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤧",
+                                texte: "Sneezing Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🥶",
+                                texte: "Cold Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🥵",
+                                texte: "Hot Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😴",
+                                texte: "Sleeping Face",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "💤",
+                                texte: "Zzz",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "😈",
+                                texte: "Smiling Face with Horns",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "👿",
+                                texte: "Angry Face with Horns",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "👻",
+                                texte: "Ghost",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "💀",
+                                texte: "Skull",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "☠️",
+                                texte: "Skull and Crossbones",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "👽",
+                                texte: "Alien",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🤖",
+                                texte: "Robot",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🎃",
+                                texte: "Jack-O'-Lantern",
+                                categorie: "😀"
+                            },
+                            {
+                                emoji: "🐶",
+                                texte: "Dog Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐱",
+                                texte: "Cat Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐭",
+                                texte: "Mouse Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐹",
+                                texte: "Hamster Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐰",
+                                texte: "Rabbit Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦊",
+                                texte: "Fox Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐻",
+                                texte: "Bear Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐼",
+                                texte: "Panda Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐨",
+                                texte: "Koala Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐯",
+                                texte: "Tiger Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦁",
+                                texte: "Lion Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐮",
+                                texte: "Cow Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐷",
+                                texte: "Pig Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐸",
+                                texte: "Frog Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐵",
+                                texte: "Monkey Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🙈",
+                                texte: "See-No-Evil Monkey",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🙉",
+                                texte: "Hear-No-Evil Monkey",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🙊",
+                                texte: "Speak-No-Evil Monkey",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐔",
+                                texte: "Chicken",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐧",
+                                texte: "Penguin",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐦",
+                                texte: "Bird",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐤",
+                                texte: "Baby Chick",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐣",
+                                texte: "Hatching Chick",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐥",
+                                texte: "Front-Facing Baby Chick",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦆",
+                                texte: "Duck",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦅",
+                                texte: "Eagle",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦉",
+                                texte: "Owl",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦇",
+                                texte: "Bat",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐺",
+                                texte: "Wolf Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐗",
+                                texte: "Boar",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐴",
+                                texte: "Horse Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦄",
+                                texte: "Unicorn Face",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐝",
+                                texte: "Honeybee",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐛",
+                                texte: "Bug",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦋",
+                                texte: "Butterfly",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐌",
+                                texte: "Snail",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐞",
+                                texte: "Lady Beetle",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐜",
+                                texte: "Ant",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🪲",
+                                texte: "Beetle",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🪳",
+                                texte: "Cockroach",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🕷️",
+                                texte: "Spider",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🕸️",
+                                texte: "Spider Web",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦂",
+                                texte: "Scorpion",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐢",
+                                texte: "Turtle",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🐍",
+                                texte: "Snake",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦎",
+                                texte: "Lizard",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦖",
+                                texte: "T-Rex",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "🦕",
+                                texte: "Sauropod",
+                                categorie: "🐾"
+                            },
+                            {
+                                emoji: "👋",
+                                texte: "Waving Hand",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤚",
+                                texte: "Raised Back of Hand",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🖐️",
+                                texte: "Hand with Fingers Splayed",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "✋",
+                                texte: "Raised Hand",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🖖",
+                                texte: "Vulcan Salute",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👌",
+                                texte: "OK Hand",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤌",
+                                texte: "Pinched Fingers",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤏",
+                                texte: "Pinching Hand",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "✌️",
+                                texte: "Victory Hand",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤞",
+                                texte: "Crossed Fingers",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🫰",
+                                texte: "Hand with Index Finger and Thumb Crossed",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤟",
+                                texte: "Love-You Gesture",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤘",
+                                texte: "Sign of the Horns",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤙",
+                                texte: "Call Me Hand",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👈",
+                                texte: "Backhand Index Pointing Left",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👉",
+                                texte: "Backhand Index Pointing Right",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👆",
+                                texte: "Backhand Index Pointing Up",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👇",
+                                texte: "Backhand Index Pointing Down",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🖕",
+                                texte: "Middle Finger",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "☝️",
+                                texte: "Index Pointing Up",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👍",
+                                texte: "Thumbs Up",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👎",
+                                texte: "Thumbs Down",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "✊",
+                                texte: "Raised Fist",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👊",
+                                texte: "Oncoming Fist",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤛",
+                                texte: "Left-Facing Fist",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤜",
+                                texte: "Right-Facing Fist",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👏",
+                                texte: "Clapping Hands",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🙌",
+                                texte: "Raising Hands",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👐",
+                                texte: "Open Hands",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤲",
+                                texte: "Palms Up Together",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🤝",
+                                texte: "Handshake",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🙏",
+                                texte: "Folded Hands",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "💅",
+                                texte: "Nail Polish",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👂",
+                                texte: "Ear",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👃",
+                                texte: "Nose",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🧠",
+                                texte: "Brain",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🫀",
+                                texte: "Anatomical Heart",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🫁",
+                                texte: "Lungs",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🦷",
+                                texte: "Tooth",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "🦴",
+                                texte: "Bone",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👀",
+                                texte: "Eyes",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👁️",
+                                texte: "Eye",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👅",
+                                texte: "Tongue",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👄",
+                                texte: "Mouth",
+                                categorie: "👋"
+                            },
+                            {
+                                emoji: "👶",
+                                texte: "Baby",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "👧",
+                                texte: "Girl",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "👦",
+                                texte: "Boy",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "👩",
+                                texte: "Woman",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "👨",
+                                texte: "Man",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "🧑",
+                                texte: "Person",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "👵",
+                                texte: "Old Woman",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "👴",
+                                texte: "Old Man",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "🧓",
+                                texte: "Older Person",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "🧕",
+                                texte: "Woman with Headscarf",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "👲",
+                                texte: "Man with Chinese Cap",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "👮",
+                                texte: "Police Officer",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "🕵️",
+                                texte: "Detective",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "💂",
+                                texte: "Guard",
+                                categorie: "👶"
+                            },
+                            {
+                                emoji: "👕",
+                                texte: "T-Shirt",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👖",
+                                texte: "Jeans",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👗",
+                                texte: "Dress",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👘",
+                                texte: "Kimono",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👙",
+                                texte: "Bikini",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👚",
+                                texte: "Woman’s Clothes",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🩱",
+                                texte: "One-Piece Swimsuit",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🩲",
+                                texte: "Briefs",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🩳",
+                                texte: "Shorts",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👔",
+                                texte: "Necktie",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👒",
+                                texte: "Woman’s Hat",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🎩",
+                                texte: "Top Hat",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🧢",
+                                texte: "Billed Cap",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "⛑️",
+                                texte: "Rescue Worker’s Helmet",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🎓",
+                                texte: "Graduation Cap",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🪖",
+                                texte: "Military Helmet",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👞",
+                                texte: "Man’s Shoe",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👟",
+                                texte: "Running Shoe",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🥾",
+                                texte: "Hiking Boot",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🥿",
+                                texte: "Flat Shoe",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👠",
+                                texte: "High-Heeled Shoe",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👡",
+                                texte: "Woman’s Sandal",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🩴",
+                                texte: "Thong Sandal",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👢",
+                                texte: "Woman’s Boot",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🧥",
+                                texte: "Coat",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🦺",
+                                texte: "Safety Vest",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🥼",
+                                texte: "Lab Coat",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🧤",
+                                texte: "Gloves",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🧣",
+                                texte: "Scarf",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🧦",
+                                texte: "Socks",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🧇",
+                                texte: "Waffle (accessory emoji... kidding 😄)",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👓",
+                                texte: "Glasses",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🕶️",
+                                texte: "Sunglasses",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🥽",
+                                texte: "Goggles",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🥻",
+                                texte: "Sari",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🧳",
+                                texte: "Luggage",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "💼",
+                                texte: "Briefcase",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🎒",
+                                texte: "Backpack",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👝",
+                                texte: "Clutch Bag",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👛",
+                                texte: "Purse",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👜",
+                                texte: "Handbag",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👞",
+                                texte: "Dress Shoe",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👡",
+                                texte: "Open-Toe Shoe",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "👢",
+                                texte: "Boot",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "💍",
+                                texte: "Ring",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "📿",
+                                texte: "Prayer Beads",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "💄",
+                                texte: "Lipstick",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "💎",
+                                texte: "Gem Stone",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🧿",
+                                texte: "Nazar Amulet",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🎽",
+                                texte: "Running Shirt",
+                                categorie: "👗"
+                            },
+                            {
+                                emoji: "🍏",
+                                texte: "Green Apple",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍎",
+                                texte: "Red Apple",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍐",
+                                texte: "Pear",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍊",
+                                texte: "Tangerine",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍋",
+                                texte: "Lemon",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍌",
+                                texte: "Banana",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍉",
+                                texte: "Watermelon",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍇",
+                                texte: "Grapes",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍓",
+                                texte: "Strawberry",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🫐",
+                                texte: "Blueberries",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥝",
+                                texte: "Kiwi Fruit",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍒",
+                                texte: "Cherries",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍑",
+                                texte: "Peach",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥭",
+                                texte: "Mango",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍍",
+                                texte: "Pineapple",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥥",
+                                texte: "Coconut",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥑",
+                                texte: "Avocado",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍆",
+                                texte: "Eggplant",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥔",
+                                texte: "Potato",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥕",
+                                texte: "Carrot",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🌽",
+                                texte: "Ear of Corn",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🌶️",
+                                texte: "Hot Pepper",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🫑",
+                                texte: "Bell Pepper",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥒",
+                                texte: "Cucumber",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥬",
+                                texte: "Leafy Green",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥦",
+                                texte: "Broccoli",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🧄",
+                                texte: "Garlic",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🧅",
+                                texte: "Onion",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍄",
+                                texte: "Mushroom",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥜",
+                                texte: "Peanuts",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🌰",
+                                texte: "Chestnut",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍞",
+                                texte: "Bread",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥐",
+                                texte: "Croissant",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥖",
+                                texte: "Baguette Bread",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🫓",
+                                texte: "Flatbread",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥨",
+                                texte: "Pretzel",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥯",
+                                texte: "Bagel",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥞",
+                                texte: "Pancakes",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🧇",
+                                texte: "Waffle",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🧀",
+                                texte: "Cheese Wedge",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍖",
+                                texte: "Meat on Bone",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍗",
+                                texte: "Poultry Leg",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥩",
+                                texte: "Cut of Meat",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥓",
+                                texte: "Bacon",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍔",
+                                texte: "Hamburger",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍟",
+                                texte: "French Fries",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🍕",
+                                texte: "Pizza",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🌭",
+                                texte: "Hot Dog",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🥪",
+                                texte: "Sandwich",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🌮",
+                                texte: "Taco",
+                                categorie: "🍕"
+                            },
+                            {
+                                emoji: "🎉",
+                                texte: "Party Popper",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎊",
+                                texte: "Confetti Ball",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎈",
+                                texte: "Balloon",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎂",
+                                texte: "Birthday Cake",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🍰",
+                                texte: "Shortcake",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🧁",
+                                texte: "Cupcake",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎁",
+                                texte: "Wrapped Gift",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎀",
+                                texte: "Ribbon",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎇",
+                                texte: "Sparkler",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎆",
+                                texte: "Fireworks",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🧨",
+                                texte: "Firecracker",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎃",
+                                texte: "Jack-O'-Lantern",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎄",
+                                texte: "Christmas Tree",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎅",
+                                texte: "Santa Claus",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🤶",
+                                texte: "Mrs. Claus",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🧑🎄",
+                                texte: "Mx Claus",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🦌",
+                                texte: "Deer",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎁",
+                                texte: "Gift",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🕯️",
+                                texte: "Candle",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🪔",
+                                texte: "Diya Lamp",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🕎",
+                                texte: "Menorah",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎍",
+                                texte: "Pine Decoration",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎋",
+                                texte: "Tanabata Tree",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎑",
+                                texte: "Moon Viewing Ceremony",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎎",
+                                texte: "Japanese Dolls",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎏",
+                                texte: "Carp Streamer",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎐",
+                                texte: "Wind Chime",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎫",
+                                texte: "Ticket",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎟️",
+                                texte: "Admission Tickets",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎭",
+                                texte: "Performing Arts",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎪",
+                                texte: "Circus Tent",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎬",
+                                texte: "Clapper Board",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎤",
+                                texte: "Microphone",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎧",
+                                texte: "Headphone",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎼",
+                                texte: "Musical Score",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎹",
+                                texte: "Musical Keyboard",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🥁",
+                                texte: "Drum",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎷",
+                                texte: "Saxophone",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎺",
+                                texte: "Trumpet",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎸",
+                                texte: "Guitar",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🎻",
+                                texte: "Violin",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🪕",
+                                texte: "Banjo",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🪗",
+                                texte: "Accordion",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🪘",
+                                texte: "Long Drum",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🪙",
+                                texte: "Coin",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🪞",
+                                texte: "Mirror",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🪟",
+                                texte: "Window",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🪠",
+                                texte: "Plunger",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🪤",
+                                texte: "Mouse Trap",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "🪣",
+                                texte: "Bucket",
+                                categorie: "🎉"
+                            },
+                            {
+                                emoji: "❤️",
+                                texte: "Red Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🧡",
+                                texte: "Orange Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💛",
+                                texte: "Yellow Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💚",
+                                texte: "Green Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💙",
+                                texte: "Blue Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💜",
+                                texte: "Purple Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🖤",
+                                texte: "Black Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🤍",
+                                texte: "White Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🤎",
+                                texte: "Brown Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💔",
+                                texte: "Broken Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "❣️",
+                                texte: "Heart Exclamation",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💕",
+                                texte: "Two Hearts",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💞",
+                                texte: "Revolving Hearts",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💓",
+                                texte: "Beating Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💗",
+                                texte: "Growing Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💖",
+                                texte: "Sparkling Heart",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💘",
+                                texte: "Heart with Arrow",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💝",
+                                texte: "Heart with Ribbon",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "💟",
+                                texte: "Heart Decoration",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔴",
+                                texte: "Red Circle",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🟠",
+                                texte: "Orange Circle",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🟡",
+                                texte: "Yellow Circle",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🟢",
+                                texte: "Green Circle",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔵",
+                                texte: "Blue Circle",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🟣",
+                                texte: "Purple Circle",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "⚫",
+                                texte: "Black Circle",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "⚪",
+                                texte: "White Circle",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🟥",
+                                texte: "Red Square",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🟧",
+                                texte: "Orange Square",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🟨",
+                                texte: "Yellow Square",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🟩",
+                                texte: "Green Square",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🟦",
+                                texte: "Blue Square",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🟪",
+                                texte: "Purple Square",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "⬛",
+                                texte: "Black Large Square",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "⬜",
+                                texte: "White Large Square",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔶",
+                                texte: "Large Orange Diamond",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔷",
+                                texte: "Large Blue Diamond",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔸",
+                                texte: "Small Orange Diamond",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔹",
+                                texte: "Small Blue Diamond",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔺",
+                                texte: "Red Triangle Pointed Up",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔻",
+                                texte: "Red Triangle Pointed Down",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔘",
+                                texte: "Radio Button",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔳",
+                                texte: "White Square Button",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "🔲",
+                                texte: "Black Square Button",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "♻️",
+                                texte: "Recycling Symbol",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "⚠️",
+                                texte: "Warning",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "❗",
+                                texte: "Exclamation Mark",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "❓",
+                                texte: "Question Mark",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "❔",
+                                texte: "White Question Mark",
+                                categorie: "❤️"
+                            },
+                            {
+                                emoji: "❕",
+                                texte: "White Exclamation Mark",
+                                categorie: "❤️"
+                            }
+                        ],
+                        inp_search.Value in texte
+                    )
+                  Visible: =false
+                  X: =40
