@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/time-picker/assets/emoji-input.gif",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/066c2045cf8d0778b401be6696cb699032dd7bfb/power-apps/emoji-input/assets/emoji-input.gif",
         "alt": "Preview PNG"
       }
     ],
@@ -48,4 +48,5 @@
       }
     ]
   }
+
 ]
