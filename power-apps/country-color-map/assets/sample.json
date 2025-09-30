@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/time-picker/assets/country-color-map.gif",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/47e998344416e79ff1eaff347e577cdfc39f598c/power-apps/country-color-map/assets/country-color-map.png",
         "alt": "Preview PNG"
       }
     ],
@@ -48,4 +48,5 @@
       }
     ]
   }
+
 ]
