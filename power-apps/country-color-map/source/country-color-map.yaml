@@ -1318,7 +1318,35 @@ ComponentDefinitions:
             Height: =Parent.Height
             HoverBorderColor: =
             HoverFill: =
-            Image: "=\"data:image/svg+xml,\" & EncodeUrl(\r\n        \"\r\n\r\n\r\n<svg\r\n   xmlns:mapsvg='http://mapsvg.com'\r\n   xmlns:dc='http://purl.org/dc/elements/1.1/'\r\n   xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'\r\n   xmlns:svg='http://www.w3.org/2000/svg'\r\n   xmlns='http://www.w3.org/2000/svg'\r\n   mapsvg:geoViewBox='-169.110266 83.600842 190.486279 -58.508473'\r\n   width='1009.6727'\r\n   height='665.96301'>\r\n\"&Concat(CountryColorMap.Items,\"<path\r\n     d='\"&ThisRecord.d&\"'\r\n     title='\"&ThisRecord.title&\"'\r\n     id='\"&ThisRecord.id&\"' fill='\"&With(LookUp(CountryColorMap.ItemsColor,pays=id) As Couleur,If(IsBlank(Couleur),CountryColorMap.DefaultColor,Couleur.color))&\"' />\")&\" \r\n  \r\n</svg>\r\n\r\n\"\r\n    \r\n)"
+            Image: |-
+              ="data:image/svg+xml," & EncodeUrl(
+                  "<svg
+                 xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+                 xmlns:svg='http://www.w3.org/2000/svg'
+                 xmlns='http://www.w3.org/2000/svg'
+                 geoViewBox='-169.110266 83.600842 190.486279 -58.508473'
+                 width='1009.6727'
+                 height='665.96301'>
+              " & Concat(
+                      CountryColorMap.Items,
+                      "<path
+                   d='" & ThisRecord.d & "'
+                   title='" & ThisRecord.title & "'
+                   id='" & ThisRecord.id & "' fill='" & With(
+                          LookUp(
+                              CountryColorMap.ItemsColor,
+                              pays = id
+                          ) As Couleur,
+                          If(
+                              IsBlank(Couleur),
+                              CountryColorMap.DefaultColor,
+                              Couleur.color
+                          )
+                      ) & "' />"
+                  ) & " 
+              </svg>
+              "
+              )
             PressedBorderColor: =
             PressedFill: =
             Width: =Parent.Width
