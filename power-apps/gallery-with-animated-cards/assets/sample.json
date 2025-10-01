@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-gallery-with-animated-cards",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-07-13T00:00:00.000Z",
+    "updateDateTime": "2025-07-13T00:00:00.000Z",
+    "title": "Form Factor selector",
+    "shortDescription": "A fairly simple use of a dynamic SVG image in a gallery to highlight the selected item with an animation.",
+    "longDescription": [
+      "Be careful, however, the visuals are less attractive on a gallery template that is too stretched in height or width. The card is responsive; it will adapt to the gallery template format. The colors also change with the modern theme of your application."
+    ],
+    "url": "https://github.com/DavidZoon/powerplatform-snippets/blob/main/power-apps/gallery-with-animated-cards/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/DavidZoon/powerplatform-snippets/blob/cd24bdfbc69c69f48183bc70258e648d2fa0cf5b/power-apps/gallery-with-animated-cards/assets/gallery-with-animated-cards.gif",
+        "alt": "Preview GIF"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "DavidZoon",
+        "name": "David Zoonekyndt",
+        "pictureUrl": "https://github.com/DavidZoon.png"
+      }
+    ]
+  }
+]
