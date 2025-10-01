@@ -1,0 +1,52 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-country-color-map",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-29T00:00:00.000Z",
+    "updateDateTime": "2025-04-29T00:00:00.000Z",
+    "title": "Keyboard",
+    "shortDescription": "A customizable world map component for PowerApps that lets you dynamically color countries based on data—perfect",
+    "longDescription": [
+      "A customizable world map component for PowerApps that lets you dynamically color countries based on data—perfect for visualizing global statistics like temperature, pollution, or population density."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/country-color-map/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [
+    ],
+    "categories": [
+    ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/47e998344416e79ff1eaff347e577cdfc39f598c/power-apps/country-color-map/assets/country-color-map.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SteveBourdin",
+        "name": "Steve Bourdin",
+        "pictureUrl": "https://github.com/SteveBourdin.png"
+      }
+    ]
+  }
+
+]
