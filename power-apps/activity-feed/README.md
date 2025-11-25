@@ -4,7 +4,7 @@ Displays a real-time feed of activities such as posts, comments, status updates.
 
 
 
-!\[Upload File](./assets/activityfeed.gif)
+!\[Upload File](./assets/activityfeed.jpg)
 
 
 
