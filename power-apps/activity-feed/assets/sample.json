@@ -42,7 +42,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "activityfeed.jpg",
+        "url": "https://raw.githubusercontent.com/summitbaj/powerplatform-snippets/activity-feed/power-apps/activity-feed/assets/activityfeed.jpg",
         "alt": "Activity Feed Preview"
       }
     ],
