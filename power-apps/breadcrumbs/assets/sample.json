@@ -11,7 +11,7 @@
     "longDescription": [
       "This snippet shows you how to build breadcrumbs for Canvas apps. In this example, we will use a component so that the functionalities are reusable on different screens within your Canvas app."
     ],
-    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/Breadcrumbs/",
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/breadcrumbs/",
     "products": [
       "Power Platform",
       "Power Apps",
@@ -34,8 +34,8 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/Breadcrumbs/assets/13-result.gif",
-        "alt": "Preview PNG"
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/breadcrumbs/assets/13-result.gif",
+        "alt": "Preview GIF"
       }
     ],
     "authors": [
