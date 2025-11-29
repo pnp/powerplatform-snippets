@@ -1,0 +1,52 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-animation-halloween",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-04-29T00:00:00.000Z",
+    "updateDateTime": "2025-04-29T00:00:00.000Z",
+    "title": "Keyboard",
+    "shortDescription": "A spooky animated component with an embedded custom font — no installation needed! Perfect for Halloween screens, themed apps, or pranking your colleagues while showcasing how to use non-standard fonts in PowerApps",
+    "longDescription": [
+      "A spooky animated component with an embedded custom font — no installation needed! Perfect for Halloween screens, themed apps, or pranking your colleagues while showcasing how to use non-standard fonts in PowerApps"
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/animation-halloween/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [
+    ],
+    "categories": [
+    ],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/1a75e6a9210dc236726eb333740e5ac3a623fb98/power-apps/animation-halloween/assets/animation-halloween.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SteveBourdin",
+        "name": "Steve Bourdin",
+        "pictureUrl": "https://github.com/SteveBourdin.png"
+      }
+    ]
+  }
+
+]
