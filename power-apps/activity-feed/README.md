@@ -7,7 +7,7 @@ Great for collaboration scenarios and keeping users informed.
 
 ![Activity Feed](./assets/activityfeed.jpg)
 
-## ✨ Features
+## Features
 
 - Clean, vertical timeline layout  
 - Supports **HTML** in descriptions  
