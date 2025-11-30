@@ -1,21 +1,26 @@
-# Upload File
+# Activity Feed
 
-Displays a real-time feed of activities such as posts, comments, status updates. Great for collaboration and keeping users informed.
-
-
-
-![Upload File](./assets/activityfeed.jpg)
+A Activity feed UI that displays a real-time style activity feed which is perfect for showing updates such as appointments, tasks, or status changes.  
+Great for collaboration scenarios and keeping users informed.
 
 
+
+![Activity Feed](./assets/activityfeed.jpg)
+
+## ✨ Features
+
+- Clean, vertical timeline layout  
+- Supports **HTML** in descriptions  
+- Automatically sorts items by date (newest first)  
+- Easy to import with a simple YAML snippet  
+- Works with collections, Dataverse, or API data sources
 
 ## Authors
 
 
 
-Snippet|Author
-
+Author|Socials
 --------|---------
-
 Summit Bajracharya | [GitHub](https://github.com/summitbaj) ([@summitbajracharya](https://www.linkedin.com/in/summitbajracharya) )
 
 
@@ -24,16 +29,49 @@ Summit Bajracharya | [GitHub](https://github.com/summitbaj) ([@summitbajracharya
 
 
 
-1. Open your canvas app in **Power Apps**
-1. Copy the contents of the **[YAML-file](./source/activityfeed.yaml)** 
-1. Click on the three dots of the screen where you want to add the snippet and select "Paste code"
+Follow these steps to start using the Activity Feed snippet:
+
+1. Open your **Canvas App** in Power Apps.  
+2. Copy the contents of the **[activityfeed.yaml](./source/activityfeed.yaml)** file.  
+3. Select the screen where you want to insert the control, click the **three dots (…)**, and choose **Paste code**.  
+4. Add sample data (see below) or connect your own source.  
+5. Done!
 
 
 
-## Code
+## Preparation
+To help you test the Activity Feed quickly, add this sample collection to **App OnStart** or any button’s **OnSelect**:
 
+```
+ClearCollect(
+    colActivity,
+    {
+        Name: "New Product Presentation",
+        Date: DateValue("12/25/2025"),
+        Details: "You have an upcoming task"
+    },{
+        Name: "Finish the presentation",
+        Date: DateValue("11/25/2025"),
+        Details: "You have an upcoming task with <b>John Doe</b>"
+    },{
+        Name: "New Product Presentation",
+        Date: DateValue("11/05/2025"),
+        Details: "You have an upcoming appointment with <b>John Doe</b>"
+    },{
+        Name: "Invite Acme to the next month",
+        Date: DateValue("9/25/2025"),
+        Details: "You have an upcoming task"
+    }
+)
+```
+The gallery in the YAML snippet uses:
+```
+Items = Sort(colActivity, Date, SortOrder.Descending)
+```
+Replace **colActivity** with any source you prefer.
 
-
+## YAML Snippet
+Copy and paste the YAML code below into your canvas screen (right-click → Paste):
 ``` YAML
 
 - conTimelineMain:
