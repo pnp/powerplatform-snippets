@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/time-picker/assets/tetris.gif",
+        "url": "https://github.com/SteveBourdin/powerplatform-snippets/blob/tetris/power-apps/tetris/assets/tetris.gif",
         "alt": "Preview PNG"
       }
     ],
@@ -48,4 +48,5 @@
       }
     ]
   }
+
 ]
