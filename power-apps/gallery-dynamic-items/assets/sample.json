@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-gallery-dynamic-items",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2026-03-09T00:00:00.000Z",
+    "updateDateTime": "2026-03-09T00:00:00.000Z",
+    "title": "Gallery with Dynamic Items",
+    "shortDescription": "A canvas app snippet that lets users dynamically add and remove items from a gallery.",
+    "longDescription": [
+      "A canvas app snippet that lets users dynamically add and remove items from a gallery using two text fields (Name and Value). The gallery updates in real time, shows an item counter in the title, alternates row colors for readability, and displays an empty state message when no items are present. Colors adapt automatically to your app theme via App.Theme.Colors. The collection schema can be customized to fit any use case."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/gallery-dynamic-items/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/06663782f3a3a8c51a2bc7079dbe073ec14555e0/power-apps/gallery-dynamic-items/assets/gallery-dynamic-items.png",
+        "alt": "Preview PNG"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Ateina",
+        "name": "Antanina Druzhkina",
+        "pictureUrl": "https://github.com/Ateina.png"
+      }
+    ]
+  }
+]
