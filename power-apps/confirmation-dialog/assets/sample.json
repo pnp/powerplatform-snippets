@@ -1,15 +1,17 @@
 [
   {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
     "name": "confirmation-dialog",
-    "source": "community",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2025-12-30T00:00:00.000Z",
+    "updateDateTime": "2025-12-30T00:00:00.000Z",
     "title": "Confirmation Dialog Component",
     "shortDescription": "The Confirmation Dialog is a reusable Canvas Component that provides a modal, app-wide confirmation experience for Power Apps.",
-    "url": "https://github.com/sparkitect/powerplatform-snippets/tree/main/power-apps/confirmation-dialog",
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/confirmation-dialog",
     "longDescription": [
       "The Confirmation Dialog is a reusable Canvas Component that displays a centered dialog with a customizable title, message, and configurable Confirm and Cancel buttons. The component supports destructive–action styling (highlighting the confirm button in red), optional button icons, and exposes OnConfirm and OnCancel events for app logic integration. This makes it ideal for consistent, accessible confirmation prompts across your app without rewriting the UI each time."
     ],
-    "creationDateTime": "2025-12-30",
-    "updateDateTime": "2025-12-30",
     "products": [
       "Power Apps",
       "Power Platform"
@@ -43,13 +45,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/sparkitect/powerplatform-snippets/raw/main/power-apps/confirmation-dialog/assets/component-canvas.png",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/confirmation-dialog/assets/component-canvas.png",
         "alt": "Component in design canvas"
       },
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/sparkitect/powerplatform-snippets/raw/main/power-apps/confirmation-dialog/assets/component-configured.png",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/confirmation-dialog/assets/component-configured.png",
         "alt": "Component in use"
       }
     ],
@@ -58,13 +60,6 @@
         "gitHubAccount": "sparkitect",
         "pictureUrl": "https://github.com/sparkitect.png",
         "name": "Jim Duncan"
-      }
-    ],
-    "references": [
-      {
-        "name": "Microsoft Power Platform documentation",
-        "description": "Discover how to make the most of Microsoft Power Platform products with online training courses, docs, and videos covering product capabilities and how-to guides.",
-        "url": "https://learn.microsoft.com/power-platform/"
       }
     ]
   }
