@@ -21,7 +21,7 @@ Elianne Burgers | [GitHub](https://github.com/Dutchy365) ([@elianne_tweets](http
 ![Pasted Code](./assets/itemsgallery.png)
 
 ### Example data
-This is the  collection, used in this example.
+This is the collection, used in this example. Add this code to the **OnVisible** property of the screen so the collection is populated when the screen loads.
 ```
 ClearCollect(colSteps, Table(
             {
