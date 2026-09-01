@@ -15,7 +15,7 @@ Elianne Burgers | [GitHub](https://github.com/Dutchy365) ([@elianne_tweets](http
 
 1. Open your canvas app in **Power Apps**
 1. Copy the contents of the **[YAML-file](./source/progressbargallery.pa.yml)** 
-1. Click on the three dots of the screen where you want to add the snippet and select "Paste code"
+1. Click on the three dots of the screen where you want to add the snippet and select "Paste" (previously "Paste code")
 ![View of the paste code button](./assets/pastecode.png)
 1. Replace **Items Property** in the gallery with **your data**. 
 ![Pasted Code](./assets/itemsgallery.png)
