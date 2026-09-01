@@ -5,8 +5,8 @@
     "version": "1.0.0.0",
     "source": "pnp",
     "creationDateTime": "2025-04-29T00:00:00.000Z",
-    "updateDateTime": "2025-04-29T00:00:00.000Z",
-    "title": "Progress Step",
+    "updateDateTime": "2026-09-01T00:00:00.000Z",
+    "title": "Chip Picker",
     "shortDescription": "This component provides a clean and responsive chip‑based selector that allows the user to choose a single option. It is lightweight, intuitive, and easy to integrate into any Power Apps interface.",
     "longDescription": [
       "This component provides a clean and responsive chip‑based selector that allows the user to choose a single option. It is lightweight, intuitive, and easy to integrate into any Power Apps interface."
@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/SteveBourdin/powerplatform-snippets/blob/5a81de2109245058c9c5a34cdac6a8cf43baff71/power-apps/chip-picker/assets/chip-picker.gif",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/chip-picker/assets/chip-picker.png",
         "alt": "Preview PNG"
       }
     ],
