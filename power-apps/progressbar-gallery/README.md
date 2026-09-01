@@ -1,6 +1,6 @@
 # Progress bar
 
-This is a snippet that creates a progress bar for a canvas app as component. In the progress bar some icons indicates specific information on a specific step. 
+This is a snippet that creates a progress bar for a canvas app. In the progress bar some icons indicates specific information on a specific step. 
 It is a gallery in which some logic is added on displaying progress steps. 
 
 ![Progress bar](./assets/progressbar.png)
@@ -13,10 +13,8 @@ Elianne Burgers | [GitHub](https://github.com/Dutchy365) ([@elianne_tweets](http
 
 ## Minimal path to awesome
 
-> **_NOTE:_** The recommended best practice is to utilize this YAML snippet inside of a canvas component for reusability. While at the moment of publishing this example the pasting code in a component doesn't work. While in sources both yaml files are added.
-
 1. Open your canvas app in **Power Apps**
-1. Copy the contents of the **[YAML-file](./source/progressbar-component.pa.yaml)** 
+1. Copy the contents of the **[YAML-file](./source/progressbargallery.pa.yml)** 
 1. Click on the three dots of the screen where you want to add the snippet and select "Paste code"
 ![View of the paste code button](./assets/pastecode.png)
 1. Replace **Items Property** in the gallery with **your data**. 
@@ -78,7 +76,14 @@ ClearCollect(colSteps, Table(
     Control: Gallery
     Variant: BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0
     Properties:
-      OnSelect: "=Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);\nSet(varStepToNavigate, ThisItem.StepNo); \n\nUpdateIf(colSteps, StepNo = varCurrentStep,{IsCurrent: false});\nUpdateIf(colSteps, StepNo = varStepToNavigate,{IsCurrent: true});\nSet(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);"
+      OnSelect: |+
+        =Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);
+        Set(varStepToNavigate, ThisItem.StepNo); 
+
+        UpdateIf(colSteps, StepNo = varCurrentStep,{IsCurrent: false});
+        UpdateIf(colSteps, StepNo = varStepToNavigate,{IsCurrent: true});
+        Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);
+
       AccessibleLabel: ="Progress"
       Items: =colSteps
       BorderColor: =
