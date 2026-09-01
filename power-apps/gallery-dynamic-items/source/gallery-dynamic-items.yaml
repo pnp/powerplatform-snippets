@@ -1,0 +1,250 @@
+- conItems:
+    Control: GroupContainer@1.4.0
+    Variant: AutoLayout
+    Properties:
+      DropShadow: =DropShadow.None
+      Height: =200 + galItems.AllItemsCount * galItems.TemplateHeight + 8
+      LayoutAlignItems: =LayoutAlignItems.Center
+      LayoutDirection: =LayoutDirection.Vertical
+      PaddingBottom: =8
+      PaddingLeft: =24
+      PaddingRight: =24
+      PaddingTop: =8
+      Width: =Parent.Width
+    Children:
+      - lblItemsTitle:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =App.Theme.Colors.Darker10
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Semibold
+            Height: =64
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            PaddingLeft: =24
+            Size: =20
+            Text: ="Items (" & CountRows(colItems) & ")"
+            Width: =Parent.Width
+      - lblNoItemsMessage:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =Color.DimGray
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            Height: =80
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            Size: =16
+            Text: ="No items yet"
+            Visible: =CountRows(galItems.AllItems) = 0
+            Width: =Parent.Width
+      - conItemsHeader:
+          Control: GroupContainer@1.4.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =App.Theme.Colors.Lighter60
+            FillPortions: =0
+            Height: =32
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Horizontal
+            LayoutMinHeight: =24
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            Visible: =CountRows(colItems) > 0
+            Width: =Parent.Width
+          Children:
+            - lblItemsHeaderName:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 0)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =Parent.Height
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  Text: ="Name"
+                  Width: =Parent.Width / 2
+            - lblItemsHeaderValue:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 0)
+                  Color: =RGBA(50, 49, 48, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =Parent.Height
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =0
+                  Size: =14
+                  Text: ="Value"
+                  Width: =Parent.Width / 3
+                  X: =40
+      - galItems:
+          Control: Gallery@2.15.0
+          Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+          Properties:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            FillPortions: =0
+            Height: =Self.AllItemsCount * Self.TemplateHeight + 8
+            Items: =colItems
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            TemplateSize: =40
+            Visible: =CountRows(Self.AllItems) > 0
+            Width: =Parent.Width
+          Children:
+            - conItemsRow:
+                Control: GroupContainer@1.4.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =If(Mod(ThisItem.ItemIndex, 2) = 0, App.Theme.Colors.Lighter80, RGBA(255, 255, 255, 1))
+                  Height: =Parent.TemplateHeight
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  Width: =Parent.Width
+                Children:
+                  - lblItemsRowName:
+                      Control: Label@2.5.1
+                      Properties:
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        Font: =Font.'Open Sans'
+                        Height: =Parent.Height
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: =ThisItem.Name
+                        Width: =Parent.Width / 2
+                  - lblItemsRowValue:
+                      Control: Label@2.5.1
+                      Properties:
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        Color: =RGBA(50, 49, 48, 1)
+                        Font: =Font.'Open Sans'
+                        Height: =Parent.Height
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =14
+                        Text: =ThisItem.Value
+                        Width: =Parent.Width / 2 - icoItemsRowDelete.Width
+                  - icoItemsRowDelete:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        AccessibleLabel: ="Remove item"
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        Color: =App.Theme.Colors.Darker10
+                        Height: =Parent.Height
+                        Icon: =Icon.Trash
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: |
+                          =Remove(colItems, ThisItem);
+                          ForAll(
+                              Sequence(CountRows(colItems)),
+                              Patch(colItems, Index(colItems, Value), {ItemIndex: Value})
+                          );
+                        PaddingBottom: =7
+                        PaddingTop: =6
+      - conItemForm:
+          Control: GroupContainer@1.4.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            FillPortions: =0
+            Height: =70
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Horizontal
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            Width: =Parent.Width
+          Children:
+            - txtName:
+                Control: Classic/TextInput@2.3.2
+                Properties:
+                  AccessibleLabel: =Self.HintText
+                  BorderColor: =App.Theme.Colors.Lighter40
+                  Color: =Color.DimGray
+                  Default: =""
+                  Font: =Font.'Open Sans'
+                  HintText: ="Type name"
+                  HoverBorderColor: =App.Theme.Colors.Lighter20
+                  HoverColor: =Self.Color
+                  HoverFill: =App.Theme.Colors.Lighter60
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  Width: =Parent.Width * 0.4
+            - txtValue:
+                Control: Classic/TextInput@2.3.2
+                Properties:
+                  AccessibleLabel: =Self.HintText
+                  BorderColor: =App.Theme.Colors.Lighter40
+                  Color: =Color.DimGray
+                  Default: =""
+                  Font: =Font.'Open Sans'
+                  HintText: ="Type value"
+                  HoverBorderColor: =App.Theme.Colors.Lighter20
+                  HoverColor: =Self.Color
+                  HoverFill: =App.Theme.Colors.Lighter60
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  Width: =Parent.Width * 0.4
+            - btnAddItem:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  BorderColor: =Self.Fill
+                  Color: =App.Theme.Colors.Darker40
+                  DisabledBorderColor: =Self.DisabledFill
+                  DisabledColor: =App.Theme.Colors.Darker10
+                  DisabledFill: =Color.LightGray
+                  DisplayMode: =If(IsBlank(txtName.Text) || IsBlank(txtValue.Text), DisplayMode.Disabled, DisplayMode.Edit)
+                  Fill: =App.Theme.Colors.Lighter60
+                  FocusedBorderThickness: =2
+                  Font: =Font.'Open Sans'
+                  HoverBorderColor: =ColorFade(Self.HoverFill, -15%)
+                  HoverColor: =RGBA(255, 255, 255, 1)
+                  HoverFill: =App.Theme.Colors.Lighter40
+                  LayoutMinWidth: =16
+                  OnSelect: |
+                    =Collect(
+                        colItems,
+                        {
+                            Name: txtName.Text,
+                            Value: txtValue.Text,
+                            ItemIndex: CountRows(colItems) + 1
+                        }
+                    );
+                    Reset(txtName);
+                    Reset(txtValue);
+                  PressedBorderColor: =Self.PressedFill
+                  PressedColor: =RGBA(255, 255, 255, 1)
+                  PressedFill: =App.Theme.Colors.Lighter20
+                  RadiusBottomLeft: =4
+                  RadiusBottomRight: =4
+                  RadiusTopLeft: =4
+                  RadiusTopRight: =4
+                  Size: =16
+                  Text: ="Add item"
+                  Width: =170
+                  X: =40
+                  Y: =40
