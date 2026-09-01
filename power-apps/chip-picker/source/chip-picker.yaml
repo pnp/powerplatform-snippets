@@ -1,0 +1,1351 @@
+ComponentDefinitions:
+  comp_chip:
+    DefinitionType: CanvasComponent
+    CustomProperties:
+      Height_Dyn:
+        PropertyKind: Output
+        DisplayName: Height_Dyn
+        Description: A custom property
+        DataType: Number
+      HideExpand:
+        PropertyKind: Input
+        DisplayName: HideExpand
+        Description: A custom property
+        DataType: Boolean
+        Default: =false
+      Items:
+        PropertyKind: Input
+        DisplayName: Items
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Table
+        Default: |+
+          =[
+              { Title: "Tous", Color: "#0F043C" },
+              { Title: "Canvas Components", Color: "#D32E33" },
+              { Title: "Contrôles PCF", Color: "#54D3FE" },
+              { Title: "Power Automate", Color: "#29E299" },
+              { Title: "Copilot Studio", Color: "#B311EC" }/* ,
+              { Title: "Power Pages", Color: "#F8AB08" },
+              { Title: "Design Tokens", Color: "#FA4DB2" },
+              { Title: "Dataverse", Color: "#3182FF" },  
+              { Title: "Power BI", Color: "#F2C811" },   
+              { Title: "Solutions", Color: "#5F5F5F" },  
+              { Title: "Gouvernance", Color: "#B0252A" },
+              { Title: "Sécurité", Color: "#2A1C6B" },   
+              { Title: "ALM", Color: "#1B0F52" },        
+              { Title: "Connecteurs", Color: "#54D3FE" },
+              { Title: "Modèles IA", Color: "#B311EC" }, 
+              { Title: "Architecture", Color: "#0F043C" },
+              { Title: "Best Practices", Color: "#29E299" },
+              { Title: "Accessibilité", Color: "#FA4DB2" }, 
+              { Title: "Performance", Color: "red" }  */   
+          ]
+      Selected:
+        PropertyKind: Output
+        DisplayName: Selected
+        Description: A custom property
+        DataType: Record
+      WithDyn:
+        PropertyKind: OutputFunction
+        DisplayName: WithDyn
+        Description: A custom property
+        DataType: Text
+        Parameters:
+          - Txt:
+              Description: A parameter
+              DataType: Text
+              Default: ="Text"
+          - Size:
+              Description: A parameter
+              DataType: Number
+              Default: =100
+    Properties:
+      ChildTabPriority: |-
+        =/*Steve BOURDIN 2026 - MOCA*/
+        true
+      Height: =comp_chip.Height_Dyn
+      Height_Dyn: =cont_chip.Height
+      OnReset: =Set(glb_choice , First(comp_chip.Items).Title);Set(glb_expand,true)
+      Selected: |-
+        ={Value : glb_choice}
+      WithDyn: |+
+        =With(
+            {
+                txt: Txt,
+                s: Size,
+                coef: If(Len(Txt)<5,1, 0.62)   // coefficient moyen largeur/hauteur d’un caractère
+            },
+            Max(40, Len(txt) * s * coef + 12)
+        )
+    Children:
+      - cont_chip:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Height: |-
+              =If(
+                  glb_expand = false,
+                  1.5*cont_chip1.Height + Self.PaddingBottom + Self.PaddingTop,
+                  With(
+                      {
+                          chips: ForAll(
+                              Filter(
+                                  [
+                                      cont_chip1,
+                                      cont_chip2,
+                                      cont_chip3,
+                                      cont_chip4,
+                                      cont_chip5,
+                                      cont_chip6,
+                                      cont_chip7,
+                                      cont_chip8,
+                                      cont_chip9,
+                                      cont_chip10,
+                                      cont_chip11,
+                                      cont_chip12,
+                                      cont_chip13,
+                                      cont_chip14,
+                                      cont_chip15,
+                                      cont_chip16,
+                                      cont_chip17,
+                                      cont_chip18,
+                                      cont_chip19,
+                                      cont_chip20
+                                  ],
+                                  Value.Visible = true
+                              ),
+                              {W: Value.Width}
+                          ),
+                          maxWidth: cont_chip.Width,
+                          gapX: cont_chip.LayoutGap,
+                          gapY: cont_chip.LayoutGap// ou un autre gap vertical si tu en as un
+                      },
+                      With(
+                          {
+                              lineCount: RoundUp(
+                                  (Sum(
+                                      chips,
+                                      W
+                                  ) + Max(
+                                      CountRows(chips) - 1,
+                                      0
+                                  ) * gapX) / maxWidth,
+                                  0
+                              )
+                          },
+                          lineCount * cont_chip1.Height + Max(
+                              lineCount - 1,
+                              0
+                          ) * gapY
+                      )
+                  ) + 10
+              )
+            LayoutDirection: =LayoutDirection.Horizontal
+            LayoutGap: =20
+            LayoutOverflowX: =LayoutOverflow.Scroll
+            LayoutWrap: =glb_expand=true
+            PaddingRight: =btn_expand.Width
+            PaddingTop: =If(glb_expand=false,btn_expand.Height,2)
+            Width: =Parent.Width
+          Children:
+            - cont_chip1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip1.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip1.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip1.Height*1.5
+                  LayoutMinHeight: =txt_chip1.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index1.Text)
+                  Width: =img_chip1.Width+Self.LayoutGap+txt_chip1.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip1:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip1.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip1.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index1.Text),"data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index1.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip1:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index1.Text), Index(comp_chip.Items, Value(txt_index1.Text)).Title)
+                        Width: |+
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index1:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="1"
+                        Visible: =false
+            - cont_chip2:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip2.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip2.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip2.Height*1.5
+                  LayoutMinHeight: =txt_chip2.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index2.Text)
+                  Width: =img_chip2.Width+Self.LayoutGap+txt_chip2.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip2:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip2.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip2.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index2.Text),"data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index2.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip2:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index2.Text), Index(comp_chip.Items, Value(txt_index2.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index2:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="2"
+                        Visible: =false
+            - cont_chip3:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip3.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip3.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip3.Height*1.5
+                  LayoutMinHeight: =txt_chip3.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index3.Text)
+                  Width: =img_chip3.Width+Self.LayoutGap+txt_chip3.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip3:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip3.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip3.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index3.Text),"data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index3.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip3:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index3.Text), Index(comp_chip.Items, Value(txt_index3.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index3:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="3"
+                        Visible: =false
+            - cont_chip4:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip4.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip4.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip4.Height*1.5
+                  LayoutMinHeight: =txt_chip4.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index4.Text)
+                  Width: =img_chip4.Width+Self.LayoutGap+txt_chip4.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip4:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip4.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip4.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index4.Text),"data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index4.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip4:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index4.Text), Index(comp_chip.Items, Value(txt_index4.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index4:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="4"
+                        Visible: =false
+            - cont_chip5:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip5.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip5.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip5.Height*1.5
+                  LayoutMinHeight: =txt_chip5.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index5.Text)
+                  Width: =img_chip5.Width+Self.LayoutGap+txt_chip5.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip5:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip5.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip5.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index5.Text),"data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index5.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip5:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index5.Text), Index(comp_chip.Items, Value(txt_index5.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index5:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="5"
+                        Visible: =false
+            - cont_chip6:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip6.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip6.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip6.Height*1.5
+                  LayoutMinHeight: =txt_chip6.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index6.Text)
+                  Width: =img_chip6.Width+Self.LayoutGap+txt_chip6.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip6:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip6.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip6.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index6.Text),"data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index6.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip6:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index6.Text), Index(comp_chip.Items, Value(txt_index6.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index6:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="6"
+                        Visible: =false
+            - cont_chip7:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip7.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip7.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip7.Height*1.5
+                  LayoutMinHeight: =txt_chip7.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index7.Text)
+                  Width: =img_chip7.Width+Self.LayoutGap+txt_chip7.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip7:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip7.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip7.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index7.Text),"data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index7.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip7:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index7.Text), Index(comp_chip.Items, Value(txt_index7.Text)).Title)
+                        Width: |
+                          =With(
+                              {
+                                  txt: Self.Text,
+                                  s: Self.Size,
+                                  coef: 0.62   // coefficient moyen largeur/hauteur d’un caractère
+                              },
+                              Max(40, Len(txt) * s * coef + 12)
+                          )
+                  - txt_index7:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="7"
+                        Visible: =false
+            - cont_chip8:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip8.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip8.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip8.Height*1.5
+                  LayoutMinHeight: =txt_chip8.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index8.Text)
+                  Width: =img_chip8.Width+Self.LayoutGap+txt_chip8.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip8:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip8.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip8.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index8.Text),"data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index8.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip8:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index8.Text), Index(comp_chip.Items, Value(txt_index8.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index8:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="8"
+                        Visible: =false
+            - cont_chip9:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip9.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip9.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip9.Height*1.5
+                  LayoutMinHeight: =txt_chip9.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index9.Text)
+                  Width: =img_chip9.Width+Self.LayoutGap+txt_chip9.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip9:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip9.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip9.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index9.Text),"data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index9.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip9:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index9.Text), Index(comp_chip.Items, Value(txt_index9.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index9:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="9"
+                        Visible: =false
+            - cont_chip10:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip10.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip10.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip10.Height*1.5
+                  LayoutMinHeight: =txt_chip10.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index10.Text)
+                  Width: =img_chip10.Width+Self.LayoutGap+txt_chip10.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip10:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip10.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip10.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index10.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index10.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip10:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index10.Text), Index(comp_chip.Items, Value(txt_index10.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index10:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="10"
+                        Visible: =false
+            - cont_chip11:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip11.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip11.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip11.Height*1.5
+                  LayoutMinHeight: =txt_chip11.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index11.Text)
+                  Width: =img_chip11.Width+Self.LayoutGap+txt_chip11.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip11:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip11.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip11.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index11.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index11.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip11:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index11.Text), Index(comp_chip.Items, Value(txt_index11.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index11:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="11"
+                        Visible: =false
+            - cont_chip12:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip12.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip12.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip12.Height*1.5
+                  LayoutMinHeight: =txt_chip12.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index12.Text)
+                  Width: =img_chip12.Width+Self.LayoutGap+txt_chip12.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip12:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip12.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip12.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index12.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index12.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip12:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index12.Text), Index(comp_chip.Items, Value(txt_index12.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index12:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="12"
+                        Visible: =false
+            - cont_chip13:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip13.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip13.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip13.Height*1.5
+                  LayoutMinHeight: =txt_chip13.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index13.Text)
+                  Width: =img_chip13.Width+Self.LayoutGap+txt_chip13.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip13:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip13.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip13.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index13.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index13.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip13:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index13.Text), Index(comp_chip.Items, Value(txt_index13.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index13:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="13"
+                        Visible: =false
+            - cont_chip14:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip14.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip14.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip14.Height*1.5
+                  LayoutMinHeight: =txt_chip14.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index14.Text)
+                  Width: =img_chip14.Width+Self.LayoutGap+txt_chip14.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip14:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip14.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip14.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index14.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index14.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip14:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index14.Text), Index(comp_chip.Items, Value(txt_index14.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index14:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="14"
+                        Visible: =false
+            - cont_chip15:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip15.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip15.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip15.Height*1.5
+                  LayoutMinHeight: =txt_chip15.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index15.Text)
+                  Width: =img_chip15.Width+Self.LayoutGap+txt_chip15.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip15:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip15.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip15.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index15.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index15.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip15:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index15.Text), Index(comp_chip.Items, Value(txt_index15.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index15:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="15"
+                        Visible: =false
+            - cont_chip16:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip16.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip16.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip16.Height*1.5
+                  LayoutMinHeight: =txt_chip16.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index16.Text)
+                  Width: =img_chip16.Width+Self.LayoutGap+txt_chip16.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip16:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip16.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip16.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index16.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index16.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip16:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index16.Text), Index(comp_chip.Items, Value(txt_index16.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index16:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="16"
+                        Visible: =false
+            - cont_chip17:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip17.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip17.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip17.Height*1.5
+                  LayoutMinHeight: =txt_chip17.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index17.Text)
+                  Width: =img_chip17.Width+Self.LayoutGap+txt_chip17.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip17:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip17.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip17.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index17.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index17.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip17:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index17.Text), Index(comp_chip.Items, Value(txt_index17.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index17:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="17"
+                        Visible: =false
+            - cont_chip18:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip18.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip18.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip18.Height*1.5
+                  LayoutMinHeight: =txt_chip18.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index18.Text)
+                  Width: =img_chip18.Width+Self.LayoutGap+txt_chip18.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip18:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip18.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip18.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index18.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index18.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip18:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index18.Text), Index(comp_chip.Items, Value(txt_index18.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index18:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="18"
+                        Visible: =false
+            - cont_chip19:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip19.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip19.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip19.Height*1.5
+                  LayoutMinHeight: =txt_chip19.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index19.Text)
+                  Width: =img_chip19.Width+Self.LayoutGap+txt_chip19.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip19:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip19.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip19.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index19.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index19.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip19:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index19.Text), Index(comp_chip.Items, Value(txt_index19.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index19:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="19"
+                        Visible: =false
+            - cont_chip20:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(231, 230, 238, 1)
+                  BorderThickness: =1
+                  DropShadow: =DropShadow.None
+                  Fill: =If(glb_choice=txt_chip20.Text,RGBA(14, 4, 58, 1),Color.White)
+                  FillPortions: =0
+                  Height: =txt_chip20.Height*1
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMaxHeight: =txt_chip20.Height*1.5
+                  LayoutMinHeight: =txt_chip20.Height*1.5
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =15
+                  PaddingRight: =15
+                  PaddingTop: =8
+                  RadiusBottomLeft: =30
+                  RadiusBottomRight: =30
+                  RadiusTopLeft: =30
+                  RadiusTopRight: =30
+                  Visible: =CountRows(comp_chip.Items)>=Value(txt_index20.Text)
+                  Width: =img_chip20.Width+Self.LayoutGap+txt_chip20.Width+Self.PaddingRight+Self.PaddingLeft
+                Children:
+                  - img_chip20:
+                      Control: Image@2.2.3
+                      Properties:
+                        AccessibleLabel: =txt_chip20.Text
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Height: =cont_chip20.Height/4
+                        Image: =If(CountRows(comp_chip.Items)>=Value(txt_index20.Text), "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='3' fill='"&Index(comp_chip.Items,Value(txt_index20.Text)).Color &"'></circle></svg>"))
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =Self.Height
+                  - txt_chip20:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Center
+                        AutoHeight: =true
+                        Color: =If(glb_choice=Self.Text,Color.White,RGBA(14, 4, 58, 1))
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Set(glb_choice , Self.Text)
+                        Text: =If(CountRows(comp_chip.Items)>=Value(txt_index20.Text), Index(comp_chip.Items, Value(txt_index20.Text)).Title)
+                        Width: |
+                          =comp_chip.WithDyn(Self.Text,Self.Size)
+                  - txt_index20:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="20"
+                        Visible: =false
+      - btn_expand:
+          Control: ModernButton@1.0.0
+          Properties:
+            AccessibleLabel: =If(glb_expand<>false,"Unexpand", "Expand")
+            Appearance: =ButtonAppearance.Transparent
+            Height: =cont_chip1.Height
+            Icon: =If(glb_expand=true,"ChevronUp", "ChevronDown")
+            Layout: =ButtonLayout.IconOnly
+            OnSelect: =Set(glb_expand,! glb_expand)
+            Visible: =comp_chip.HideExpand<>true
+            Width: =Self.Height
+            X: =cont_chip.Width-Self.Width
