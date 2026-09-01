@@ -2,7 +2,7 @@
 This repository contains community snippets that demonstrate different usage patterns for the Microsoft Power Platform.
 
 ## Copilot Studio Snippets
-![](./assets/CopilotStudio.Scalable.svg)<br/>
+<img src="./assets/CopilotStudio.Scalable.svg" width="72" alt="Copilot Studio" /><br/>
   
 The snippets for Copilot Studio can be found [here](copilot-studio)
 
