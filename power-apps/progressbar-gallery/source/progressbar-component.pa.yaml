@@ -10,13 +10,13 @@
         Control: Gallery
         Variant: BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0
         Properties:
-  OnSelect: |+
-        =Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);
-        Set(varStepToNavigate, ThisItem.StepNo); 
+          OnSelect: |+
+            =Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);
+            Set(varStepToNavigate, ThisItem.StepNo); 
 
-        UpdateIf(colSteps, StepNo = varCurrentStep,{IsCurrent: false});
-        UpdateIf(colSteps, StepNo = varStepToNavigate,{IsCurrent: true});
-        Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);
+            UpdateIf(colSteps, StepNo = varCurrentStep,{IsCurrent: false});
+            UpdateIf(colSteps, StepNo = varStepToNavigate,{IsCurrent: true});
+            Set(varCurrentStep, LookUp(colSteps, IsCurrent = true).StepNo);
 
           AccessibleLabel: ="Progress"
           Items: =ProgressBarModern.ProgressItems
