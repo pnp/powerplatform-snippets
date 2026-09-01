@@ -1,0 +1,305 @@
+Screens:
+  Screen Gallery Horizontal Scroll:
+    Properties:
+      OnVisible: |
+        =ClearCollect(
+            colDevices,
+            {EmployeeName: "Alice Martin", Department: "Engineering", DeviceType: "Laptop", Brand: "Dell", Model: "XPS 15", SerialNumber: "SN-001-DL", AssignedDate: Date(2023, 3, 15), WarrantyExpiry: Date(2026, 3, 15), Condition: "Good", Status: "Active", Location: "Floor 2 - Desk 4", OS: "Windows 11"},
+            {EmployeeName: "Alice Martin", Department: "Engineering", DeviceType: "Monitor", Brand: "LG", Model: "27UK850", SerialNumber: "SN-002-LG", AssignedDate: Date(2023, 3, 15), WarrantyExpiry: Date(2026, 3, 15), Condition: "Good", Status: "Active", Location: "Floor 2 - Desk 4", OS: "N/A"},
+            {EmployeeName: "Bob Chen", Department: "HR", DeviceType: "Laptop", Brand: "Lenovo", Model: "ThinkPad X1", SerialNumber: "SN-003-LV", AssignedDate: Date(2022, 7, 1), WarrantyExpiry: Date(2025, 7, 1), Condition: "Fair", Status: "Active", Location: "Floor 1 - Desk 12", OS: "Windows 11"},
+            {EmployeeName: "Bob Chen", Department: "HR", DeviceType: "Phone", Brand: "Apple", Model: "iPhone 14", SerialNumber: "SN-004-AP", AssignedDate: Date(2022, 7, 1), WarrantyExpiry: Date(2024, 7, 1), Condition: "Good", Status: "Active", Location: "Floor 1 - Desk 12", OS: "iOS 17"},
+            {EmployeeName: "Clara Diaz", Department: "Finance", DeviceType: "Laptop", Brand: "HP", Model: "EliteBook 840", SerialNumber: "SN-005-HP", AssignedDate: Date(2021, 11, 10), WarrantyExpiry: Date(2024, 11, 10), Condition: "Poor", Status: "In Repair", Location: "IT Storage", OS: "Windows 10"},
+            {EmployeeName: "Clara Diaz", Department: "Finance", DeviceType: "Keyboard", Brand: "Logitech", Model: "MX Keys", SerialNumber: "SN-006-LT", AssignedDate: Date(2021, 11, 10), WarrantyExpiry: Date(2023, 11, 10), Condition: "Fair", Status: "Active", Location: "Floor 1 - Desk 7", OS: "N/A"},
+            {EmployeeName: "David Smith", Department: "Engineering", DeviceType: "Laptop", Brand: "Apple", Model: "MacBook Pro 14", SerialNumber: "SN-007-AP", AssignedDate: Date(2023, 1, 20), WarrantyExpiry: Date(2026, 1, 20), Condition: "Good", Status: "Active", Location: "Floor 2 - Desk 9", OS: "macOS Sonoma"},
+            {EmployeeName: "David Smith", Department: "Engineering", DeviceType: "Monitor", Brand: "Dell", Model: "U2722D", SerialNumber: "SN-008-DL", AssignedDate: Date(2023, 1, 20), WarrantyExpiry: Date(2026, 1, 20), Condition: "Good", Status: "Active", Location: "Floor 2 - Desk 9", OS: "N/A"},
+            {EmployeeName: "David Smith", Department: "Engineering", DeviceType: "Mouse", Brand: "Logitech", Model: "MX Master 3", SerialNumber: "SN-009-LT", AssignedDate: Date(2023, 1, 20), WarrantyExpiry: Date(2025, 1, 20), Condition: "Good", Status: "Active", Location: "Floor 2 - Desk 9", OS: "N/A"},
+            {EmployeeName: "Eva Nguyen", Department: "Marketing", DeviceType: "Laptop", Brand: "Apple", Model: "MacBook Air M2", SerialNumber: "SN-010-AP", AssignedDate: Date(2023, 6, 5), WarrantyExpiry: Date(2026, 6, 5), Condition: "Good", Status: "Active", Location: "Floor 3 - Desk 2", OS: "macOS Ventura"},
+            {EmployeeName: "Eva Nguyen", Department: "Marketing", DeviceType: "Phone", Brand: "Samsung", Model: "Galaxy S23", SerialNumber: "SN-011-SM", AssignedDate: Date(2023, 6, 5), WarrantyExpiry: Date(2025, 6, 5), Condition: "Good", Status: "Active", Location: "Floor 3 - Desk 2", OS: "Android 13"},
+            {EmployeeName: "Frank Müller", Department: "IT", DeviceType: "Laptop", Brand: "Lenovo", Model: "ThinkPad T14s", SerialNumber: "SN-012-LV", AssignedDate: Date(2022, 4, 18), WarrantyExpiry: Date(2025, 4, 18), Condition: "Good", Status: "Active", Location: "Floor 1 - Desk 1", OS: "Windows 11"},
+            {EmployeeName: "Frank Müller", Department: "IT", DeviceType: "Headset", Brand: "Jabra", Model: "Evolve2 65", SerialNumber: "SN-013-JB", AssignedDate: Date(2022, 4, 18), WarrantyExpiry: Date(2024, 4, 18), Condition: "Good", Status: "Active", Location: "Floor 1 - Desk 1", OS: "N/A"},
+            {EmployeeName: "Grace Lee", Department: "Legal", DeviceType: "Laptop", Brand: "HP", Model: "ProBook 450", SerialNumber: "SN-014-HP", AssignedDate: Date(2021, 9, 22), WarrantyExpiry: Date(2024, 9, 22), Condition: "Fair", Status: "Active", Location: "Floor 4 - Desk 6", OS: "Windows 10"},
+            {EmployeeName: "Grace Lee", Department: "Legal", DeviceType: "Keyboard", Brand: "Microsoft", Model: "Ergonomic", SerialNumber: "SN-015-MS", AssignedDate: Date(2021, 9, 22), WarrantyExpiry: Date(2023, 9, 22), Condition: "Poor", Status: "Returned", Location: "IT Storage", OS: "N/A"},
+            {EmployeeName: "Henry Park", Department: "Sales", DeviceType: "Laptop", Brand: "Dell", Model: "Latitude 5530", SerialNumber: "SN-016-DL", AssignedDate: Date(2023, 2, 8), WarrantyExpiry: Date(2026, 2, 8), Condition: "Good", Status: "Active", Location: "Floor 3 - Desk 11", OS: "Windows 11"},
+            {EmployeeName: "Henry Park", Department: "Sales", DeviceType: "Phone", Brand: "Apple", Model: "iPhone 15", SerialNumber: "SN-017-AP", AssignedDate: Date(2023, 9, 1), WarrantyExpiry: Date(2025, 9, 1), Condition: "Good", Status: "Active", Location: "Floor 3 - Desk 11", OS: "iOS 17"},
+            {EmployeeName: "Isabelle Roy", Department: "Finance", DeviceType: "Laptop", Brand: "Lenovo", Model: "IdeaPad 5", SerialNumber: "SN-018-LV", AssignedDate: Date(2022, 12, 3), WarrantyExpiry: Date(2025, 12, 3), Condition: "Fair", Status: "In Repair", Location: "IT Storage", OS: "Windows 11"},
+            {EmployeeName: "Isabelle Roy", Department: "Finance", DeviceType: "Monitor", Brand: "Samsung", Model: "S27A600", SerialNumber: "SN-019-SM", AssignedDate: Date(2022, 12, 3), WarrantyExpiry: Date(2025, 12, 3), Condition: "Good", Status: "Active", Location: "Floor 1 - Desk 8", OS: "N/A"},
+            {EmployeeName: "James Turner", Department: "Engineering", DeviceType: "Laptop", Brand: "Apple", Model: "MacBook Pro 16", SerialNumber: "SN-020-AP", AssignedDate: Date(2024, 1, 10), WarrantyExpiry: Date(2027, 1, 10), Condition: "Good", Status: "Active", Location: "Floor 2 - Desk 15", OS: "macOS Sonoma"},
+            {EmployeeName: "Olivia Brown", Department: "Legal", DeviceType: "Laptop", Brand: "HP", Model: "EliteBook 840 G9", SerialNumber: "SN-030-HP", AssignedDate: Date(2024, 2, 19), WarrantyExpiry: Date(2027, 2, 19), Condition: "Good", Status: "Active", Location: "Floor 4 - Desk 1", OS: "Windows 11"}
+        );
+    Children:
+      - conWrapper:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Width: =Parent.Width
+          Children:
+            - conGalleryHeader:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =App.Theme.Colors.Lighter60
+                  FillPortions: =0
+                  Height: =40
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  Width: =Parent.Width
+                Children:
+                  - lblStatus:
+                      Control: Label@2.5.1
+                      Properties:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Status"
+                        Width: =ColumnWidth("Status")
+                        X: =ColumnX("Status") - sldGalleryColumns.Value
+                  - lblCondition:
+                      Control: Label@2.5.1
+                      Properties:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Condition"
+                        Width: =ColumnWidth("Condition")
+                        X: =ColumnX("Condition") - sldGalleryColumns.Value
+                  - lblWarrantyExpiry:
+                      Control: Label@2.5.1
+                      Properties:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Warranty Expiry"
+                        Width: =ColumnWidth("WarrantyExpiry")
+                        X: =ColumnX("WarrantyExpiry") - sldGalleryColumns.Value
+                  - lblAssignedDate:
+                      Control: Label@2.5.1
+                      Properties:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Assigned Date"
+                        Width: =ColumnWidth("AssignedDate")
+                        X: =ColumnX("AssignedDate") - sldGalleryColumns.Value
+                  - lblSerialNumber:
+                      Control: Label@2.5.1
+                      Properties:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Serial Number"
+                        Width: =ColumnWidth("SerialNumber")
+                        X: =ColumnX("SerialNumber") - sldGalleryColumns.Value
+                  - lblOS:
+                      Control: Label@2.5.1
+                      Properties:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="OS"
+                        Width: =ColumnWidth("OS")
+                        X: =ColumnX("OS") - sldGalleryColumns.Value
+                  - lblLocation:
+                      Control: Label@2.5.1
+                      Properties:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Location"
+                        Width: =ColumnWidth("Location")
+                        X: =ColumnX("Location") - sldGalleryColumns.Value
+                  - lblModel:
+                      Control: Label@2.5.1
+                      Properties:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Model"
+                        Width: =ColumnWidth("Model")
+                        X: =ColumnX("Model") - sldGalleryColumns.Value
+                  - lblBrand:
+                      Control: Label@2.5.1
+                      Properties:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Brand"
+                        Width: =ColumnWidth("Brand")
+                        X: =ColumnX("Brand") - sldGalleryColumns.Value
+                  - lblDeviceType:
+                      Control: Label@2.5.1
+                      Properties:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Device Type"
+                        Width: =ColumnWidth("DeviceType")
+                        X: =ColumnX("DeviceType") - sldGalleryColumns.Value
+                  - lblShadow:
+                      Control: Label@2.5.1
+                      Properties:
+                        Fill: =Parent.Fill
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: =""
+                        Width: =ColumnWidth("Shadow")
+                        X: =ColumnX("Shadow")
+                  - lblDepartment:
+                      Control: Label@2.5.1
+                      Properties:
+                        Fill: =Parent.Fill
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Department"
+                        Width: =ColumnWidth("Department")
+                        X: =ColumnX("Department")
+                  - lblEmployeeName:
+                      Control: Label@2.5.1
+                      Properties:
+                        Fill: =Parent.Fill
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Text: ="Employee Name"
+                        Width: =ColumnWidth("EmployeeName")
+                        X: =ColumnX("EmployeeName")
+            - galItems:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  FillPortions: =0
+                  Height: =Parent.Height - Parent.PaddingBottom -Parent.PaddingTop - conGalleryHeader.Height - conSlider.Height
+                  Items: =colDevices
+                  TemplateSize: =56
+                  Width: =Parent.Width
+                Children:
+                  - conGalleryRow:
+                      Control: GroupContainer@1.5.0
+                      Variant: ManualLayout
+                      Properties:
+                        BorderColor: =App.Theme.Colors.Lighter80
+                        BorderThickness: =1
+                        DropShadow: =DropShadow.None
+                        Height: =Parent.TemplateHeight
+                        Width: =Parent.Width
+                      Children:
+                        - lblStatusValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Height: =Parent.Height
+                              Text: =ThisItem.Status
+                              Width: =lblStatus.Width
+                              X: =lblStatus.X
+                        - lblConditionValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Height: =Parent.Height
+                              Text: =ThisItem.Condition
+                              Width: =lblCondition.Width
+                              X: =lblCondition.X
+                        - lblWarrantyExpiryValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Height: =Parent.Height
+                              Text: =ThisItem.WarrantyExpiry
+                              Width: =lblWarrantyExpiry.Width
+                              X: =lblWarrantyExpiry.X
+                        - lblAssignedDateValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Height: =Parent.Height
+                              Text: =ThisItem.AssignedDate
+                              Width: =lblAssignedDate.Width
+                              X: =lblAssignedDate.X
+                        - lblSerialNumberValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Height: =Parent.Height
+                              Text: =ThisItem.SerialNumber
+                              Width: =lblSerialNumber.Width
+                              X: =lblSerialNumber.X
+                        - lblOSValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Height: =Parent.Height
+                              Text: =ThisItem.OS
+                              Width: =lblOS.Width
+                              X: =lblOS.X
+                        - lblLocationValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Height: =Parent.Height
+                              Text: =ThisItem.Location
+                              Width: =lblLocation.Width
+                              X: =lblLocation.X
+                        - lblModelValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Height: =Parent.Height
+                              Text: =ThisItem.Model
+                              Width: =lblModel.Width
+                              X: =lblModel.X
+                        - lblBrandValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Height: =Parent.Height
+                              Text: =ThisItem.Brand
+                              Width: =lblBrand.Width
+                              X: =lblBrand.X
+                        - lblDeviceTypeValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Height: =Parent.Height
+                              Text: =ThisItem.DeviceType
+                              Width: =lblDeviceType.Width
+                              X: =lblDeviceType.X
+                        - htmShadow:
+                            Control: HtmlViewer@2.1.0
+                            Properties:
+                              Height: =Parent.Height
+                              HtmlText: |+
+                                ="<div style='width:" & Self.Width & "px;height:" & (Self.Height - 1) & "px;background:linear-gradient(to right, " & Mid(JSON(App.Theme.Colors.Lighter80), 2, 7) & ", transparent);'></div>"
+                              PaddingBottom: =0
+                              PaddingLeft: =0
+                              PaddingRight: =0
+                              PaddingTop: =0
+                              Width: =lblShadow.Width
+                              X: =lblShadow.X
+                        - lblDepartmentValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Fill: =App.Theme.Colors.Lighter80
+                              Height: =Parent.Height
+                              Text: =ThisItem.Department
+                              Width: =lblDepartment.Width
+                              X: =lblDepartment.X
+                        - lblEmployeeNameValue:
+                            Control: Label@2.5.1
+                            Properties:
+                              Fill: =App.Theme.Colors.Lighter80
+                              Height: =Parent.Height
+                              Text: =ThisItem.EmployeeName
+                              Width: =lblEmployeeName.Width
+                              X: =lblEmployeeName.X
+            - conSlider:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.End
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =18
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight - lblEmployeeName.Width - lblDepartment.Width
+                Children:
+                  - sldGalleryColumns:
+                      Control: Classic/Slider@2.1.0
+                      Properties:
+                        Default: =0
+                        FocusedBorderColor: =Color.Transparent
+                        HandleSize: =8
+                        Height: =16
+                        HoverBorderColor: =Color.Transparent
+                        Max: |
+                          =Sum(Filter(colColumnConfig, ColumnIdx > 20), Width) - (conWrapper.Width - ColumnWidth("EmployeeName") - ColumnWidth("Department"))
+                        RailThickness: =2
+                        ShowValue: =false
+                        Width: =Parent.Width

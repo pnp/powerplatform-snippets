@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-gallery-horizontal-scroll",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2026-09-01T00:00:00.000Z",
+    "updateDateTime": "2026-09-01T00:00:00.000Z",
+    "title": "Gallery with Horizontal Scroll",
+    "shortDescription": "A gallery with frozen columns and horizontal scroll to display wide tabular data.",
+    "longDescription": [
+      "A table-like gallery where the first two columns remain frozen while the user scrolls horizontally through additional columns. A gradient shadow visually separates the frozen columns from the scrollable area. Column widths and positions are driven by named formulas."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/blob/main/power-apps/gallery-horizontal-scroll/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/gallery-horizontal-scroll/assets/gallery-horizontal-scroll.png",
+        "alt": "Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Ateina",
+        "name": "Antanina Druzhkina",
+        "pictureUrl": "https://github.com/Ateina.png"
+      }
+    ]
+  }
+]
