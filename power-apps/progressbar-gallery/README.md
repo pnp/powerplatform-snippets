@@ -93,7 +93,6 @@ ClearCollect(colSteps, Table(
     Children:
     - icoError:
         Control: Classic/Icon
-        Variant: Error
         Properties:
           OnSelect: =Select(Parent)
           Tooltip: =
