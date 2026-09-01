@@ -1,17 +1,17 @@
 [
   {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
-    "name": "pnp-powerplatform-snippets-piano",
+    "name": "pnp-powerplatform-snippets-progress-step",
     "version": "1.0.0.0",
     "source": "pnp",
-    "creationDateTime": "2025-04-29T00:00:00.000Z",
-    "updateDateTime": "2025-04-29T00:00:00.000Z",
-    "title": "Piano",
-    "shortDescription": "With this snippet, you can display a piano within a PowerApps application and play music.",
+    "creationDateTime": "2026-09-01T00:00:00.000Z",
+    "updateDateTime": "2026-09-01T00:00:00.000Z",
+    "title": "Progress Step",
+    "shortDescription": "Visual component that displays the progression of a multi‑step process",
     "longDescription": [
-      "With this snippet, you can display a piano within a PowerApps application and play music."
+      "Visual component that displays the progression of a multi‑step process"
     ],
-    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/piano/",
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/progress-step/",
     "products": [
       "Power Platform",
       "Power Apps",
@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/piano/assets/piano.png",
+        "url": "https://raw.githubusercontent.com/SteveBourdin/powerplatform-snippets/f8ff3a921725e3e59a1f64bd9576713c8fcdde91/power-apps/progress-step/assets/progress-step.gif",
         "alt": "Preview PNG"
       }
     ],

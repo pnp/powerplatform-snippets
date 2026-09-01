@@ -1,0 +1,209 @@
+ComponentDefinitions:
+  ComponentStep:
+    DefinitionType: CanvasComponent
+    CustomProperties:
+      ActiveBarColor:
+        PropertyKind: Input
+        DisplayName: ActiveBarColor
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Color
+        Default: =RGBA(0,120,212,0.6)
+      ActiveStepColor:
+        PropertyKind: Input
+        DisplayName: ActiveStepColor
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Color
+        Default: =RGBA(0,120,212,1)
+      CompletedBarColor:
+        PropertyKind: Input
+        DisplayName: CompletedBarColor
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Color
+        Default: =RGBA(0,153,188,0.5)
+      CompletedStep:
+        PropertyKind: Input
+        DisplayName: CompletedStep
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Color
+        Default: =RGBA(0,153,188,1)
+      Default:
+        PropertyKind: Input
+        DisplayName: Default
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Number
+        Default: =3
+      InactiveBarColor:
+        PropertyKind: Input
+        DisplayName: InactiveBarColor
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Color
+        Default: =RGBA(180,180,180,0.4)
+      InactiveStepColor:
+        PropertyKind: Input
+        DisplayName: InactiveStepColor
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Color
+        Default: =RGBA(200,200,200,1)
+      Items:
+        PropertyKind: Input
+        DisplayName: Items
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Table
+        Default: |-
+          =Table(
+              { Title: "Order Received",        Position: 1 },
+              { Title: "Picking Items",         Position: 2 },
+              { Title: "Packing Items",         Position: 3 },
+              { Title: "Quality Check",         Position: 4 },
+              { Title: "Ready for Shipment",    Position: 5 }
+          )
+    Properties:
+      Height: =150
+    Children:
+      - cont_Step:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            DropShadow: =DropShadow.Regular
+            Fill: =RGBA(255, 255, 255, 0.9)
+            Height: =Parent.Height-10
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Width: =Parent.Width-10
+            X: =5
+            Y: =5
+          Children:
+            - gal_Step:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Height: =Parent.Height
+                  Items: =Sort(ComponentStep.Items,Position)
+                  TemplateSize: =Self.Width/(If(Self.AllItemsCount>0, Self.AllItemsCount,1))
+                  Width: =Parent.Width
+                Children:
+                  - cont_itemStep:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Height: =Parent.Height
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        Width: =Parent.TemplateWidth+2
+                      Children:
+                        - cont_barStep:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              Height: =Parent.Height/2
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutMaxHeight: =Parent.Height/2
+                              LayoutMaxWidth: =Parent.Width
+                              LayoutMinHeight: =Parent.Height/2
+                              LayoutMinWidth: =Parent.Width
+                              Width: =Parent.Width
+                              Y: =40
+                            Children:
+                              - ico_barLeft:
+                                  Control: Classic/Icon@2.5.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    Color: |-
+                                      =If(
+                                          ThisItem.Position = 1,
+                                          Color.White,
+                                          If(
+                                              ThisItem.Position < ComponentStep.Default,
+                                              ComponentStep.CompletedBarColor,
+                                              If(
+                                                  ThisItem.Position = ComponentStep.Default,
+                                                  ComponentStep.ActiveBarColor,
+                                                  ComponentStep.InactiveBarColor
+                                              )
+                                          )
+                                      )
+                                    Icon: =Icon.HorizontalLine
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    Width: =Parent.Width/3
+                              - ico_Step:
+                                  Control: Icon@0.0.7
+                                  Properties:
+                                    Height: =Self.Width
+                                    Icon: =If(ThisItem.Position<ComponentStep.Default, "CheckmarkCircle",If(ThisItem.Position=ComponentStep.Default, "ArrowSync",""))
+                                    IconColor: |-
+                                      =If(
+                                          ThisItem.Position < ComponentStep.Default,
+                                          ComponentStep.CompletedStep,
+                                          If(
+                                              ThisItem.Position = ComponentStep.Default,
+                                              ComponentStep.ActiveStepColor,
+                                              ComponentStep.InactiveStepColor
+                                          )
+                                      )
+                                    IconStyle: =If(ThisItem.Position<=ComponentStep.Default ,'Icon.IconStyle'.Filled,'Icon.IconStyle'.Outline)
+                                    LayoutMaxHeight: =Parent.Height
+                                    LayoutMinHeight: =Parent.Height
+                                    Width: =Parent.Width/3
+                                    X: =40
+                                    Y: =40
+                              - ico_rightStep:
+                                  Control: Classic/Icon@2.5.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    Color: |-
+                                      =If(
+                                          ThisItem.Position = Last(Sort(ComponentStep.Items,Position)).Position,
+                                          Color.White,
+                                          If(
+                                              ThisItem.Position < ComponentStep.Default,
+                                              ComponentStep.CompletedBarColor,
+                                              If(
+                                                  ThisItem.Position = ComponentStep.Default,
+                                                  ComponentStep.ActiveBarColor,
+                                                  ComponentStep.InactiveBarColor
+                                              )
+                                          )
+                                      )
+                                    Icon: =Icon.HorizontalLine
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    Width: =Parent.Width/3-1
+                        - txt_Step:
+                            Control: ModernText@1.0.0
+                            Properties:
+                              Align: =Align.Center
+                              Color: |-
+                                =If(
+                                    ThisItem.Position < ComponentStep.Default,
+                                    ComponentStep.CompletedStep,
+                                    If(
+                                        ThisItem.Position = ComponentStep.Default,
+                                        ComponentStep.ActiveStepColor,
+                                        ComponentStep.InactiveStepColor
+                                    )
+                                )
+                              Font: =Font.Arial
+                              FontWeight: =If(ThisItem.Position=ComponentStep.Default,FontWeight.Bold, FontWeight.Normal)
+                              LayoutMaxHeight: =32
+                              OnSelect: =
+                              Size: =11
+                              Text: =ThisItem.Title
+                              Width: =Parent.Width
+                              X: =40
+                              Y: =40
