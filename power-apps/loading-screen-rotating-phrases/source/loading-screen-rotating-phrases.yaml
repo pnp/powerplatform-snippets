@@ -1,0 +1,69 @@
+- conMain:
+    Control: GroupContainer@1.5.0
+    Variant: ManualLayout
+    Properties:
+      Fill: =RGBA(0, 60, 113, 1)
+      Height: =Parent.Height
+      Width: =Parent.Width
+    Children:
+      - lblLoadingPhrase:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+              =udfFadeWhiteInOut(
+                  tmrLoadingPhrase.Duration * 0.05,
+                  tmrLoadingPhrase.Duration * 0.1,
+                  tmrLoadingPhrase.Duration * 0.8,
+                  tmrLoadingPhrase.Duration * 0.9,
+                  tmrLoadingPhrase.Value
+              )
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Lighter
+            Height: =60
+            Size: =20
+            Text: =Upper(varLoadingPhrase)
+            Width: =Parent.Width
+            X: |-
+              =udfMoveX(
+                  tmrLoadingPhrase.Duration * 0.1,
+                  tmrLoadingPhrase.Duration * 0.8,
+                  tmrLoadingPhrase.Value,
+                  0,
+                  Parent.Width
+              )
+            Y: =imgLogo.Y + imgLogo.Height + 8
+      - imgLogo:
+          Control: Image@2.2.3
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =468
+            Image: ="data:image/svg+xml;utf8, " & EncodeUrl(nfLogo)
+            Width: =598
+            X: =(Parent.Width - Self.Width) / 2
+            Y: =80
+      - tmrLoadingPhrase:
+          Control: Timer@2.1.0
+          Properties:
+            AutoStart: =true
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =ColorFade(Self.BorderColor, 70%)
+            DisabledColor: =ColorFade(Self.Fill, 90%)
+            DisabledFill: =ColorFade(Self.Fill, 70%)
+            Duration: =4000
+            Fill: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnTimerStart: =Set(varLoadingPhrase, udfGetLoadingPhrase());
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Repeat: =true
+            Reset: =true
+            Visible: =false
+            X: =40
+            Y: =40

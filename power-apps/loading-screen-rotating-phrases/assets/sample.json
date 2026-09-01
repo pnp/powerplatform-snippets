@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-loading-screen-rotating-phrases",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2026-09-01T00:00:00.000Z",
+    "updateDateTime": "2026-09-01T00:00:00.000Z",
+    "title": "Loading Screen with Rotating Phrases",
+    "shortDescription": "A loading screen featuring the animated Power Platform logo and a rotating set of loading phrases with slide and fade animations.",
+    "longDescription": [
+      "A loading screen featuring the animated Power Platform logo and a rotating set of loading phrases. Phrases slide in and out with a smooth animation and fade effect, keeping users entertained while your app initialises."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/loading-screen-rotating-phrases/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/loading-screen-rotating-phrases/assets/loading-screen-rotating-phrases.gif",
+        "alt": "Preview GIF"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Ateina",
+        "name": "Antanina Druzhkina",
+        "pictureUrl": "https://github.com/Ateina.png"
+      }
+    ]
+  }
+]
