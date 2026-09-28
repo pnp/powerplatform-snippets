@@ -9,6 +9,8 @@ Every snippet `README.md` must end with the following tracker as its final line:
 
 Replace `{snippet-path}` with the repository-relative path to the snippet folder, using `/` separators and no leading or trailing slash. For example, use `power-apps/my-snippet` for a snippet stored in that folder.
 
+Every new snippet must also include `assets/sample.json` using the PnP samples metadata schema. Update its name, title, descriptions, products, thumbnail, authors, and canonical `main` branch URLs so they match the snippet and its repository-relative path.
+
 ## Copilot Studio Snippet
 For a snippet that uses Copilot Studio, use [this template](./copilot-studio-sample/).
 

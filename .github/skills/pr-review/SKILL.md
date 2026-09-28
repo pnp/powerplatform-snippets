@@ -25,8 +25,8 @@ report findings ready to post as review comments.
      matching the snippet folder's repository-relative path.
    - Sample folder name: all lowercase, no `sample`/`powerapp`/`powerapps` in the name, no periods/dots.
      Copilot Studio plugin action snippets use `-ac`/`-txt`/`-ai` suffixes as appropriate.
-   - If a `sample.json` (or similar asset metadata) is present, check `title`,
-     `shortDescription`/`longDescription`, and preview `url` match the actual sample —
+   - New samples include `assets/sample.json`. Check `name`, `title`,
+     `shortDescription`/`longDescription`, products, authors, and preview URLs match the actual sample and its repository-relative path —
      do NOT flag `creationDateTime`/`updateDateTime` values as an issue by
      themselves; those are expected to shift when a PR sits open a long time
      before merge, and are not a meaningful review signal.

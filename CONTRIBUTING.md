@@ -28,7 +28,7 @@ Whenever you are submitting any changes to the PnP repositories, please follow t
 
 When you are submitting a new sample, it has to follow up below guidelines
 
-* You will need to have a `README.md` file for your contribution, which is based on [the provided template](/templates/README.md) under the `samples` folder. Please copy this template to your project and update it accordingly. Your `README.md` must be named exactly `README.md` -- with capital letters -- as this is the information we use to make your sample public.
+* You will need to have a `README.md` file for your contribution. Choose the matching category from [the provided templates](/templates/README.md), copy that template folder into the relevant repository category, and update it accordingly. Your `README.md` must be named exactly `README.md` -- with capital letters -- as this is the information we use to make your sample public.
   * You will need to have a screenshot picture of your sample in action in the `README.md` file ("pics or it didn't happen"). The preview image must be located in the `/assets/` folder in the root of your solution.
 * End every snippet `README.md` with the following transparent tracking image as its final line:
 
@@ -37,6 +37,7 @@ When you are submitting a new sample, it has to follow up below guidelines
   ```
 
   Replace `{snippet-path}` with the repository-relative path to the snippet folder, using `/` separators and no leading or trailing slash. For example, a snippet in `power-apps/transmographier` must end with `<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/transmographier" />`.
+* Include `assets/sample.json` using the PnP samples metadata schema. Make its name, title, descriptions, products, thumbnail, authors, and canonical `main` branch URLs match the snippet and its repository-relative path.
 * If you find an existing sample which is similar to yours, please extend the existing one rather than submitting a new similar sample
   * For example, if you use Office Graph with React, please add a new web part to the existing solution, rather than introducing a completely new solution
   * When you update existing samples, please update also `README.md` file accordingly with information on provided changes and with your author details
@@ -57,7 +58,7 @@ Here's a high-level process for submitting new samples or updates to existing on
 3. Create a new branch from the `main` branch for your fork for the contribution
 4. Include your changes to your branch
 5. Commit your changes using descriptive commit message * These are used to track changes on the repositories for monthly communications
-6. Create a pull request in your own fork and target the `main` branch
+6. Create a pull request from your branch in your fork to the `main` branch of `pnp/powerplatform-snippets`
 7. Fill up the provided PR template with the requested details
 
 Before you submit your pull request consider the following guidelines:
@@ -141,6 +142,12 @@ If the snippet you wish to contribute is stored in your own GitHub repository, y
     ```shell
     git push origin main
     ```
+
+## Community calls and demos
+
+Weekly Copilot, Microsoft 365, and Power Platform community calls are listed at [https://aka.ms/community/calls](https://aka.ms/community/calls), and everyone is welcome.
+
+To share your learnings and input with the community, sign up for a demo at [https://aka.ms/community/request/demo](https://aka.ms/community/request/demo).
 
 ## Signing the CLA
 
