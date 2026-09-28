@@ -90,3 +90,5 @@ This playlist contains all the videos I’ve created on custom controls, with tu
 <br><br><br>
 
 <img src="https://telemetry.sharepointpnp.com/powerplatform-snippets/samples/progress-bar-card" aria-hidden="true" >
+
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/progress-bar-card" />

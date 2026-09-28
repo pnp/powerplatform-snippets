@@ -361,6 +361,6 @@ Copy and paste the YAML code below into your canvas screen (right-click → Past
 
 
 
-
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/activity-feed" />
 
 
