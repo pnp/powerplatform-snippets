@@ -72,3 +72,5 @@ ClearCollect(colSteps, Table(
 ## Code
 
 **[YAML-file](./source/progressbargallery.pa.yml)**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/progressbar-gallery" />

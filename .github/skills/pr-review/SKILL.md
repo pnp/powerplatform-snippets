@@ -20,12 +20,13 @@ report findings ready to post as review comments.
 3. Check the changed files against these rules from `CONTRIBUTING.md`:
    - One sample/change per PR — flag if unrelated samples or docs are mixed together.
    - New sample has a `README.md` (exact casing) based on `/templates/*/README.md`, with a screenshot referenced in `/assets/`.
-   - README contains the telemetry tracking `<img>` tag with `src` pointing to
-     `https://telemetry.sharepointpnp.com/powerplatform-snippets/samples/<folder-name>` matching the actual folder name.
+   - README ends with the telemetry tracking `<img>` tag with `src` pointing to
+     `https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/<repository-relative-snippet-path>`,
+     matching the snippet folder's repository-relative path.
    - Sample folder name: all lowercase, no `sample`/`powerapp`/`powerapps` in the name, no periods/dots.
      Copilot Studio plugin action snippets use `-ac`/`-txt`/`-ai` suffixes as appropriate.
-   - If a `sample.json` (or similar asset metadata) is present, check `title`,
-     `shortDescription`/`longDescription`, and preview `url` match the actual sample —
+   - New samples include `assets/sample.json`. Check `name`, `title`,
+     `shortDescription`/`longDescription`, products, authors, and preview URLs match the actual sample and its repository-relative path —
      do NOT flag `creationDateTime`/`updateDateTime` values as an issue by
      themselves; those are expected to shift when a PR sits open a long time
      before merge, and are not a meaningful review signal.

@@ -34,7 +34,7 @@ Add steps and images below to make the minimal path to awesome easy to understan
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <!---
-Replace X with the directory name of your snippet and uncomment this comment.
-
-<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-automate-desktop/X" aria-hidden="true" />
+Replace X with the directory name of your snippet. Keep the tracker below as the final line of this README.
 --->
+
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-automate-desktop/X" />
