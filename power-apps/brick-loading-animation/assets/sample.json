@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-brick-loading-animation",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2026-10-23T00:00:00.000Z",
+    "updateDateTime": "2026-10-23T00:00:00.000Z",
+    "title": "Brick Loading Animation",
+    "shortDescription": "A customizable timer-free brick loading animation for Power Apps canvas apps, with colored bricks and editable loading messages.",
+    "longDescription": [
+      "A customizable timer-free brick loading animation using inline SVG in a native Power Apps Image control. Colored bricks assemble above editable labels in a full-parent loading overlay, with no Timer, JavaScript, external assets, or connectors. The animation is indeterminate, and playback support varies by browser and Power Apps player."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/brick-loading-animation/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/aprildunnam/powerplatform-snippets/90fb7a4f798df86f4f1074737660885288694f7e/power-apps/brick-loading-animation/assets/thumbnail.png",
+        "alt": "Four colored bricks above the loading title Building something awesome and the message One brick at a time. Please wait."
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "aprildunnam",
+        "name": "April Dunnam",
+        "pictureUrl": "https://github.com/aprildunnam.png"
+      }
+    ]
+  }
+]
