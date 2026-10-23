@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-brick-club-responsive-header",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2026-10-23T00:00:00.000Z",
+    "updateDateTime": "2026-10-23T00:00:00.000Z",
+    "title": "Brick Club Responsive Header",
+    "shortDescription": "A responsive Power Apps navigation header with desktop buttons, a compact dropdown, and active-page highlighting.",
+    "longDescription": [
+      "An example of a responsive header for Power Apps canvas apps that adapts from navigation buttons on wider layouts to a compact dropdown on smaller screens. Customize the title, logo, subtitle, and navigation to match your app. Includes active-page highlighting and placeholder actions for connecting your own screens."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/brick-club-responsive-header/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/937326f93c7e5f547bbce962cb68c1755fc9e454/power-apps/brick-club-responsive-header/assets/thumbnail.png",
+        "alt": "Brick Club responsive header with desktop buttons and phone and tablet navigation dropdowns"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "aprildunnam",
+        "name": "April Dunnam",
+        "pictureUrl": "https://github.com/aprildunnam.png"
+      }
+    ]
+  }
+]

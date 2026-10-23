@@ -1,0 +1,338 @@
+# BRICK CLUB HEADER - refined visual design
+# Paste the WHOLE snippet. Replace the previous header rather than adding a copy.
+# Desktop >=960: four traditional navigation buttons.
+# Tablet/phone <960: navigation dropdown beside the brand. Open it to see all pages.
+# The header never moves navigation into a clipped second row.
+# Controls reserve space below the navigation and above the colored baseline.
+# Root Height = Min(104, Parent.Height). A fixed wrapper can remain short.
+# Recommended OUTER header height: 104. Minimum supported outer height: 64.
+# Set outer top/bottom padding to 0. Turn outer Flexible height OFF.
+# If using the screen's main vertical layout, keep this root Flexible height OFF.
+#
+# Navigation placeholders:
+# Desktop: replace Notify in each button OnSelect with Navigate(ActualScreen).
+# Tablet/phone: replace each Notify in drpBrickMobileNav.OnChange with Navigate(ActualScreen).
+# Keep the Set statements for highlighting. The variable is defined by these actions.
+# Reset the dropdown when entering a screen if revisiting the same option is needed:
+#   Reset(drpBrickMobileNav)
+# (Use the actual dropdown name if Studio renames it.)
+# The compact brand retains Brick Club at every supported width.
+# Edit lblBrickTitle.Text to change it. Subtitle appears on desktop only.
+# Visual revision: white canvas, quiet divider, borderless nav, soft amber selection,
+# neutral compact dropdown and consistent typography. Responsive behavior unchanged.
+# Supported width >=280px. Scale to fit should be off for genuine resizing.
+# Uses GroupContainer 1.5.0 and Classic controls. No AccessibleLabel property on buttons.
+# No external images, connectors or nonexistent screen references.
+# Validation: YAML parse + geometry checks only; not compiled in your Studio.
+# https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/controls/control-drop-down
+- conBrickHeader:
+    Control: GroupContainer@1.5.0
+    Variant: ManualLayout
+    Properties:
+      X: =0
+      Y: =0
+      Width: =Parent.Width
+      Height: =Min(104, Parent.Height)
+      Fill: =Color.White
+      DropShadow: =DropShadow.None
+      LayoutMinWidth: =0
+      LayoutMinHeight: =0
+      FillPortions: =0
+    Children:
+    - shpBrickBrand:
+        Control: Rectangle@2.3.0
+        Properties:
+          X: =12
+          Y: =Max(4, (Parent.Height - 12 - 32) / 2)
+          Width: =32
+          Height: =32
+          Fill: =ColorValue("#D93832")
+          BorderThickness: =0
+          TabIndex: =-1
+    - shpBrickStud1:
+        Control: Circle@2.3.0
+        Properties:
+          X: =18
+          Y: =Max(4, (Parent.Height - 12 - 32) / 2) + 6
+          Width: =8
+          Height: =8
+          Fill: =ColorValue("#F36B63")
+          BorderColor: =ColorValue("#B81F24")
+          BorderThickness: =0
+          TabIndex: =-1
+    - shpBrickStud2:
+        Control: Circle@2.3.0
+        Properties:
+          X: =32
+          Y: =Max(4, (Parent.Height - 12 - 32) / 2) + 6
+          Width: =8
+          Height: =8
+          Fill: =ColorValue("#F36B63")
+          BorderColor: =ColorValue("#B81F24")
+          BorderThickness: =0
+          TabIndex: =-1
+    - shpBrickStud3:
+        Control: Circle@2.3.0
+        Properties:
+          X: =18
+          Y: =Max(4, (Parent.Height - 12 - 32) / 2) + 20
+          Width: =8
+          Height: =8
+          Fill: =ColorValue("#F36B63")
+          BorderColor: =ColorValue("#B81F24")
+          BorderThickness: =0
+          TabIndex: =-1
+    - shpBrickStud4:
+        Control: Circle@2.3.0
+        Properties:
+          X: =32
+          Y: =Max(4, (Parent.Height - 12 - 32) / 2) + 20
+          Width: =8
+          Height: =8
+          Fill: =ColorValue("#F36B63")
+          BorderColor: =ColorValue("#B81F24")
+          BorderThickness: =0
+          TabIndex: =-1
+    - lblBrickTitle:
+        Control: Label@2.5.1
+        Properties:
+          X: =54
+          Y: =Max(4, (Parent.Height - 12 - If(Parent.Width >= 960, 48, 32)) / 2)
+          Width: =If(Parent.Width >= 960, 270, Max(80, Parent.Width - 238))
+          Height: =32
+          Text: ="Brick Club"
+          Color: =ColorValue("#1C2939")
+          Font: =Font.'Open Sans'
+          FontWeight: =FontWeight.Semibold
+          Size: =If(Parent.Width >= 960, 19, 12)
+          PaddingLeft: =0
+          PaddingRight: =0
+          Wrap: =false
+    - lblBrickSubtitle:
+        Control: Label@2.5.1
+        Properties:
+          X: =54
+          Y: =Max(4, (Parent.Height - 12 - 48) / 2) + 30
+          Width: =If(Parent.Width >= 960, 270, Max(0, Parent.Width - 98))
+          Height: =18
+          Text: ="A place for builders"
+          Color: =ColorValue("#697586")
+          Font: =Font.'Open Sans'
+          Size: =9
+          PaddingLeft: =0
+          PaddingRight: =0
+          Wrap: =false
+          Visible: =Parent.Width >= 960
+    - conBrickNavigation:
+        Control: GroupContainer@1.5.0
+        Variant: ManualLayout
+        Properties:
+          X: =Parent.Width - 580
+          Y: =Max(4, (Parent.Height - 12 - 40) / 2)
+          Width: =560
+          Height: =44
+          Fill: =RGBA(0, 0, 0, 0)
+          DropShadow: =DropShadow.None
+          LayoutMinWidth: =0
+          LayoutMinHeight: =0
+          FillPortions: =0
+          Visible: =Parent.Width >= 960
+        Children:
+        - btnBrickHome:
+            Control: Classic/Button@2.2.0
+            Properties:
+              X: =0 * (Parent.Width + 8) / 4
+              Y: =0
+              Width: =(Parent.Width - 24) / 4
+              Height: =40
+              Text: ="Clubhouse"
+              Font: =Font.'Open Sans'
+              FontWeight: =FontWeight.Semibold
+              Size: =11
+              Fill: =If(Coalesce(varBrickActivePage, "Home") = "Home", ColorValue("#FFF4CE"), Color.White)
+              Color: =ColorValue("#344054")
+              BorderColor: =If(Coalesce(varBrickActivePage, "Home") = "Home", ColorValue("#172437"), ColorValue("#D8DEE5"))
+              BorderThickness: =0
+              HoverFill: =ColorValue("#F3F5F7")
+              HoverColor: =ColorValue("#172437")
+              HoverBorderColor: =ColorValue("#172437")
+              PressedFill: =ColorValue("#FCE8A6")
+              PressedColor: =ColorValue("#172437")
+              PressedBorderColor: =ColorValue("#005DB5")
+              FocusedBorderColor: =ColorValue("#344054")
+              FocusedBorderThickness: =2
+              RadiusTopLeft: =8
+              RadiusTopRight: =8
+              RadiusBottomLeft: =8
+              RadiusBottomRight: =8
+              PaddingLeft: =6
+              PaddingRight: =6
+              TabIndex: =0
+              Tooltip: ="Open Clubhouse"
+              OnSelect: =Set(varBrickActivePage, "Home"); Notify("Replace this Notify with Navigate(scrHome, ScreenTransition.None)", NotificationType.Information)
+        - btnBrickChallenges:
+            Control: Classic/Button@2.2.0
+            Properties:
+              X: =1 * (Parent.Width + 8) / 4
+              Y: =0
+              Width: =(Parent.Width - 24) / 4
+              Height: =40
+              Text: ="Challenges"
+              Font: =Font.'Open Sans'
+              FontWeight: =FontWeight.Semibold
+              Size: =11
+              Fill: =If(Coalesce(varBrickActivePage, "Home") = "Challenges", ColorValue("#FFF4CE"), Color.White)
+              Color: =ColorValue("#344054")
+              BorderColor: =If(Coalesce(varBrickActivePage, "Home") = "Challenges", ColorValue("#172437"), ColorValue("#D8DEE5"))
+              BorderThickness: =0
+              HoverFill: =ColorValue("#F3F5F7")
+              HoverColor: =ColorValue("#172437")
+              HoverBorderColor: =ColorValue("#172437")
+              PressedFill: =ColorValue("#FCE8A6")
+              PressedColor: =ColorValue("#172437")
+              PressedBorderColor: =ColorValue("#005DB5")
+              FocusedBorderColor: =ColorValue("#344054")
+              FocusedBorderThickness: =2
+              RadiusTopLeft: =8
+              RadiusTopRight: =8
+              RadiusBottomLeft: =8
+              RadiusBottomRight: =8
+              PaddingLeft: =6
+              PaddingRight: =6
+              TabIndex: =0
+              Tooltip: ="Open Challenges"
+              OnSelect: =Set(varBrickActivePage, "Challenges"); Notify("Replace this Notify with Navigate(scrChallenges, ScreenTransition.None)", NotificationType.Information)
+        - btnBrickBuilds:
+            Control: Classic/Button@2.2.0
+            Properties:
+              X: =2 * (Parent.Width + 8) / 4
+              Y: =0
+              Width: =(Parent.Width - 24) / 4
+              Height: =40
+              Text: ="My Builds"
+              Font: =Font.'Open Sans'
+              FontWeight: =FontWeight.Semibold
+              Size: =11
+              Fill: =If(Coalesce(varBrickActivePage, "Home") = "Builds", ColorValue("#FFF4CE"), Color.White)
+              Color: =ColorValue("#344054")
+              BorderColor: =If(Coalesce(varBrickActivePage, "Home") = "Builds", ColorValue("#172437"), ColorValue("#D8DEE5"))
+              BorderThickness: =0
+              HoverFill: =ColorValue("#F3F5F7")
+              HoverColor: =ColorValue("#172437")
+              HoverBorderColor: =ColorValue("#172437")
+              PressedFill: =ColorValue("#FCE8A6")
+              PressedColor: =ColorValue("#172437")
+              PressedBorderColor: =ColorValue("#005DB5")
+              FocusedBorderColor: =ColorValue("#344054")
+              FocusedBorderThickness: =2
+              RadiusTopLeft: =8
+              RadiusTopRight: =8
+              RadiusBottomLeft: =8
+              RadiusBottomRight: =8
+              PaddingLeft: =6
+              PaddingRight: =6
+              TabIndex: =0
+              Tooltip: ="Open My Builds"
+              OnSelect: =Set(varBrickActivePage, "Builds"); Notify("Replace this Notify with Navigate(scrBuilds, ScreenTransition.None)", NotificationType.Information)
+        - btnBrickMembers:
+            Control: Classic/Button@2.2.0
+            Properties:
+              X: =3 * (Parent.Width + 8) / 4
+              Y: =0
+              Width: =(Parent.Width - 24) / 4
+              Height: =40
+              Text: ="Members"
+              Font: =Font.'Open Sans'
+              FontWeight: =FontWeight.Semibold
+              Size: =11
+              Fill: =If(Coalesce(varBrickActivePage, "Home") = "Members", ColorValue("#FFF4CE"), Color.White)
+              Color: =ColorValue("#344054")
+              BorderColor: =If(Coalesce(varBrickActivePage, "Home") = "Members", ColorValue("#172437"), ColorValue("#D8DEE5"))
+              BorderThickness: =0
+              HoverFill: =ColorValue("#F3F5F7")
+              HoverColor: =ColorValue("#172437")
+              HoverBorderColor: =ColorValue("#172437")
+              PressedFill: =ColorValue("#FCE8A6")
+              PressedColor: =ColorValue("#172437")
+              PressedBorderColor: =ColorValue("#005DB5")
+              FocusedBorderColor: =ColorValue("#344054")
+              FocusedBorderThickness: =2
+              RadiusTopLeft: =8
+              RadiusTopRight: =8
+              RadiusBottomLeft: =8
+              RadiusBottomRight: =8
+              PaddingLeft: =6
+              PaddingRight: =6
+              TabIndex: =0
+              Tooltip: ="Open Members"
+              OnSelect: =Set(varBrickActivePage, "Members"); Notify("Replace this Notify with Navigate(scrMembers, ScreenTransition.None)", NotificationType.Information)
+    - drpBrickMobileNav:
+        Control: Classic/DropDown@2.3.1
+        Properties:
+          X: =Parent.Width - Self.Width - 12
+          Y: =Max(4, (Parent.Height - 12 - 40) / 2)
+          Width: =Min(164, Parent.Width - 158)
+          Height: =40
+          Visible: =Parent.Width < 960
+          Items: =["Navigate...", "Clubhouse", "Challenges", "My Builds", "Members"]
+          Default: ="Navigate..."
+          Font: =Font.'Open Sans'
+          Size: =11
+          Color: =ColorValue("#344054")
+          Fill: =ColorValue("#F3F5F7")
+          BorderColor: =ColorValue("#D8DEE5")
+          BorderThickness: =0
+          ChevronBackground: =ColorValue("#F3F5F7")
+          ChevronFill: =ColorValue("#667085")
+          SelectionFill: =ColorValue("#FFF4CE")
+          SelectionColor: =ColorValue("#172437")
+          HoverFill: =ColorValue("#E9EDF2")
+          Tooltip: ="Navigate to a page"
+          OnChange: =Switch(Self.Selected.Value, "Clubhouse", Set(varBrickActivePage, "Home"); Notify("Replace with Navigate(YourHomeScreen, ScreenTransition.None)", NotificationType.Information), "Challenges", Set(varBrickActivePage, "Challenges"); Notify("Replace with Navigate(YourChallengesScreen, ScreenTransition.None)", NotificationType.Information), "My Builds", Set(varBrickActivePage, "Builds"); Notify("Replace with Navigate(YourBuildsScreen, ScreenTransition.None)", NotificationType.Information), "Members", Set(varBrickActivePage, "Members"); Notify("Replace with Navigate(YourMembersScreen, ScreenTransition.None)", NotificationType.Information))
+          PaddingLeft: =12
+          PaddingRight: =8
+          FocusedBorderColor: =ColorValue("#344054")
+          FocusedBorderThickness: =2
+    - shpBrickAccent1:
+        Control: Rectangle@2.3.0
+        Properties:
+          X: =0
+          Y: =Parent.Height - 1
+          Width: =Parent.Width
+          Height: =1
+          Fill: =ColorValue("#E8ECF0")
+          BorderThickness: =0
+          TabIndex: =-1
+    - shpBrickAccent2:
+        Control: Rectangle@2.3.0
+        Properties:
+          X: =1 * Parent.Width / 4
+          Y: =Parent.Height - 4
+          Width: =Parent.Width / 4
+          Height: =4
+          Fill: =ColorValue("#FFCE32")
+          BorderThickness: =0
+          TabIndex: =-1
+          Visible: =false
+    - shpBrickAccent3:
+        Control: Rectangle@2.3.0
+        Properties:
+          X: =2 * Parent.Width / 4
+          Y: =Parent.Height - 4
+          Width: =Parent.Width / 4
+          Height: =4
+          Fill: =ColorValue("#005DB5")
+          BorderThickness: =0
+          TabIndex: =-1
+          Visible: =false
+    - shpBrickAccent4:
+        Control: Rectangle@2.3.0
+        Properties:
+          X: =3 * Parent.Width / 4
+          Y: =Parent.Height - 4
+          Width: =Parent.Width / 4
+          Height: =4
+          Fill: =ColorValue("#188456")
+          BorderThickness: =0
+          TabIndex: =-1
+          Visible: =false
