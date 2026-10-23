@@ -1,0 +1,725 @@
+# BRICK CLUB - CLUBHOUSE WELCOME PAGE
+# Full-page Power Apps Studio Paste code snippet. Native text/buttons + inline SVG art.
+# No media uploads, external images, HTML, Power Apps timers, data sources, or fake statistics.
+# Motion: rocket hovers 6 SVG units over 4.5s; sparkles pulse gently over 3.8s.
+# Both effects run within imgClubhouseRocket SVG. Layout/text/buttons stay still.
+# Remove animateTransform and animate elements in the SVG for a static version.
+# SVG playback needs testing in the target browser and mobile player.
+#
+# INSTALL
+# 1. Create a blank screen first. Paste this whole file onto the SCREEN itself.
+#    Do not paste it into the old short header or one of the generated white cards.
+# 2. Disable Scale to fit. Root fills its parent. The root scrolls vertically.
+# 3. Preview desktop, tablet and phone. The three tiles stack below 760px content width.
+# 4. Replace navigation placeholders before making it your app's home screen.
+# 5. Once ready, use this screen's real identifier in App.StartScreen.
+#
+# NAVIGATION
+# Four buttons require wiring: hero CTA and each of the three tile buttons.
+# Replace Notify only with Navigate(YourActualScreen, ScreenTransition.None).
+# The Set statements use the same varHeaderActiveKey as the original Brick Club header.
+# There are no nonexistent screen references outside the placeholder message strings.
+#
+# CUSTOMIZE
+# Brand: lblClubhouseBrand.Text and lblClubhouseBrandSub.Text.
+# Hero: lblClubhouseHeroTitle / Body / Kicker Text.
+# Tile content: lblClubhouseTileTitle1-3 / Body1-3, button Text.
+# Palette: #FFD500 yellow, #0055BF blue, #D62828 red, #237841 green.
+# Matching SVG artwork uses the same fills. Replace both native and SVG color values.
+# Art is decorative. Page text and buttons remain native and editable.
+# User().FullName appears only in the desktop greeting. No member table is required.
+#
+# Existing table mappings: Challenges / Build Entries / Members.
+# Root scrolls rather than shrinking the content into a tiny phone viewport.
+# Minimum supported screen width: 320px. Very long replacement text needs a fit check.
+# Font syntax: Font.'Open Sans'. No AccessibleLabel on Classic/Button.
+# Responsive revision: wrapped labels use AutoHeight and following controls reference
+# actual label bottoms. Hero, tile, footer and scroll-canvas heights follow content.
+# YAML/SVG syntax and dependency layout checked; not compiled in your Studio.
+# Source: https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/build-responsive-apps
+
+- conClubhouseWelcome:
+    Control: GroupContainer@1.5.0
+    Variant: AutoLayout
+    Properties:
+      X: =0
+      Y: =0
+      Width: =Parent.Width
+      Height: =Parent.Height
+      Fill: =ColorValue("#F5F6F8")
+      DropShadow: =DropShadow.None
+      LayoutDirection: =LayoutDirection.Vertical
+      LayoutAlignItems: =LayoutAlignItems.Stretch
+      LayoutJustifyContent: =LayoutJustifyContent.Start
+      LayoutOverflowY: =LayoutOverflow.Scroll
+      LayoutOverflowX: =LayoutOverflow.Hide
+      PaddingLeft: =If(Self.Width < 600, 16, 32)
+      PaddingRight: =If(Self.Width < 600, 16, 32)
+      PaddingTop: =8
+      PaddingBottom: =8
+      LayoutMinWidth: =0
+      LayoutMinHeight: =0
+    Children:
+    - conClubhouseCanvas:
+        Control: GroupContainer@1.5.0
+        Variant: ManualLayout
+        Properties:
+          Fill: =RGBA(0,0,0,0)
+          DropShadow: =DropShadow.None
+          LayoutMinWidth: =0
+          LayoutMinHeight: =Self.Height
+          Width: =Max(0, Parent.Width - Parent.PaddingLeft - Parent.PaddingRight)
+          Height: =conClubhouseFooter.Y + conClubhouseFooter.Height + 24
+          FillPortions: =0
+        Children:
+        - conClubhouseBrand:
+            Control: GroupContainer@1.5.0
+            Variant: ManualLayout
+            Properties:
+              Fill: =RGBA(0,0,0,0)
+              DropShadow: =DropShadow.None
+              LayoutMinWidth: =0
+              LayoutMinHeight: =0
+              X: =0
+              Y: =0
+              Width: =Parent.Width
+              Height: =88
+            Children:
+            - imgClubhouseLogo:
+                Control: Image@2.2.3
+                Properties:
+                  Image: ="data:image/svg+xml;utf8," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect y='6' width='48' height='42' rx='6' fill='#D62828'/><path d='M0 39H48V42Q48 48 42 48H6Q0 48 0 42Z' fill='#000000' opacity='.13'/><g fill='#FFD500'><rect x='8' y='0' width='12' height='10' rx='3'/><rect x='28' y='0' width='12' height='10' rx='3'/></g></svg>")
+                  X: =0
+                  Y: =20
+                  Width: =42
+                  Height: =42
+                  ImagePosition: =ImagePosition.Fit
+                  AccessibleLabel: =""
+                  TabIndex: =-1
+            - lblClubhouseBrand:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="BRICK CLUB"
+                  X: =56
+                  Y: =22
+                  Width: =Max(0, Parent.Width - 70)
+                  Height: =28
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 350, 16, 18)
+                  Color: =ColorValue("#172437")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =false
+                  Wrap: =false
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseBrandSub:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="THE CLUBHOUSE"
+                  X: =57
+                  Y: =52
+                  Width: =Max(0, Parent.Width - 70)
+                  Height: =18
+                  Font: =Font.'Open Sans'
+                  Size: =9
+                  Color: =ColorValue("#667085")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =false
+                  Wrap: =false
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseGreeting:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Hello, " & User().FullName
+                  X: =Parent.Width - 350
+                  Y: =31
+                  Width: =350
+                  Height: =28
+                  Font: =Font.'Open Sans'
+                  Size: =11
+                  Color: =ColorValue("#667085")
+                  FontWeight: =FontWeight.Normal
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  Visible: =Parent.Width >= 900
+                  Align: =Align.Right
+                  Wrap: =false
+                  AutoHeight: =false
+                  VerticalAlign: =VerticalAlign.Top
+        - conClubhouseHero:
+            Control: GroupContainer@1.5.0
+            Variant: ManualLayout
+            Properties:
+              Fill: =ColorValue("#FFD500")
+              DropShadow: =DropShadow.None
+              LayoutMinWidth: =0
+              LayoutMinHeight: =0
+              X: =0
+              Y: =100
+              Width: =Parent.Width
+              Height: =If(Self.Width >= 900, Max(328, btnClubhouseExplore.Y + btnClubhouseExplore.Height + 28), imgClubhouseRocket.Y + imgClubhouseRocket.Height + 24)
+              RadiusTopLeft: =18
+              RadiusTopRight: =18
+              RadiusBottomLeft: =18
+              RadiusBottomRight: =18
+            Children:
+            - imgClubhouseStudPattern:
+                Control: Image@2.2.3
+                Properties:
+                  Image: ="data:image/svg+xml;utf8," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='500' viewBox='0 0 1200 500'><defs><pattern id='studs' width='44' height='44' patternUnits='userSpaceOnUse'><circle cx='22' cy='22' r='9' fill='#FFFFFF' opacity='.13'/><circle cx='22' cy='24' r='9' fill='none' stroke='#B68800' stroke-opacity='.10'/></pattern></defs><rect width='1200' height='500' fill='#FFD500'/><rect width='1200' height='500' fill='url(#studs)'/></svg>")
+                  X: =0
+                  Y: =0
+                  Width: =Parent.Width
+                  Height: =Parent.Height
+                  ImagePosition: =ImagePosition.Fill
+                  AccessibleLabel: =""
+                  TabIndex: =-1
+            - lblClubhouseHeroKicker:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="WELCOME TO YOUR NEXT BIG IDEA"
+                  X: =24
+                  Y: =26
+                  Width: =Parent.Width - 48
+                  Height: =22
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 350, 8, 9)
+                  Color: =ColorValue("#172437")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseHeroTitle:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Big ideas." & Char(10) & "Small bricks."
+                  X: =24
+                  Y: =lblClubhouseHeroKicker.Y + lblClubhouseHeroKicker.Height + 14
+                  Width: =If(Parent.Width >= 900, Parent.Width - 360, Parent.Width - 48)
+                  Height: =104
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 350, 24, If(Parent.Width < 450, 26, 32))
+                  Color: =ColorValue("#172437")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseHeroBody:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Find a challenge, share your creations, and build something awesome together."
+                  X: =26
+                  Y: =lblClubhouseHeroTitle.Y + lblClubhouseHeroTitle.Height + 12
+                  Width: =If(Parent.Width >= 900, Min(470, Parent.Width - 380), Parent.Width - 52)
+                  Height: =56
+                  Font: =Font.'Open Sans'
+                  Size: =12
+                  Color: =ColorValue("#172437")
+                  FontWeight: =FontWeight.Normal
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - btnClubhouseExplore:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  Text: ="Find a challenge"
+                  X: =24
+                  Y: =lblClubhouseHeroBody.Y + lblClubhouseHeroBody.Height + 18
+                  Width: =Min(208, Parent.Width - 48)
+                  Height: =46
+                  OnSelect: =Set(varHeaderActiveKey, "Challenges"); Notify("Replace this Notify with Navigate(YourChallengesScreen, ScreenTransition.None)", NotificationType.Information)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =FontWeight.Semibold
+                  Size: =12
+                  Fill: =ColorValue("#0055BF")
+                  Color: =ColorValue("#FFFFFF")
+                  BorderThickness: =0
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  HoverFill: =ColorFade(ColorValue("#0055BF"), -12%)
+                  HoverColor: =ColorValue("#FFFFFF")
+                  PressedFill: =ColorFade(ColorValue("#0055BF"), -22%)
+                  PressedColor: =ColorValue("#FFFFFF")
+                  FocusedBorderColor: =ColorValue("#172437")
+                  FocusedBorderThickness: =3
+                  TabIndex: =0
+            - imgClubhouseRocket:
+                Control: Image@2.2.3
+                Properties:
+                  Image: ="data:image/svg+xml;utf8," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 340'><ellipse cx='209' cy='305' rx='152' ry='17' fill='#172437' opacity='.10' /><g><animateTransform attributeName='transform' type='translate' values='0 0;0 -6;0 0' dur='4.5s' repeatCount='indefinite' calcMode='spline' keyTimes='0;0.5;1' keySplines='0.42 0 0.58 1;0.42 0 0.58 1' /><g transform='rotate(12 218 168)'><path d='M192 254H244L236 282H201Z' fill='#F59E0B' /><path d='M207 259H229L221 300L210 284Z' fill='#D62828' /><path d='M164 185H192V248H140V221H152V200H164Z' fill='#D62828' /><path d='M244 185H272V200H284V221H296V248H244Z' fill='#D62828' /><path d='M192 94H244V116H256V242H180V116H192Z' fill='#FFFFFF' /><path d='M192 94V76H204V58H216V42H228V58H240V76H244V94Z' fill='#D62828' /><rect x='180' y='191' width='76' height='34' fill='#0055BF' /><rect x='192' y='130' width='52' height='44' rx='7' fill='#172437' /><rect x='199' y='137' width='38' height='30' rx='4' fill='#6DD7FF' /><path d='M202 140H218L202 156Z' fill='#FFFFFF' opacity='.7' /><g fill='#FFFFFF' opacity='.35'><rect x='187' y='197' width='18' height='7' rx='2' /><rect x='217' y='197' width='18' height='7' rx='2' /></g><path d='M244 116H256V242H244Z' fill='#172437' opacity='.10' /><path d='M180 238H256V248H180Z' fill='#172437' /></g></g><g><rect x='42' y='281' width='95' height='28' rx='3' fill='#237841' /><rect x='55' y='274' width='20' height='9' rx='2' fill='#319D5E' /><rect x='94' y='274' width='20' height='9' rx='2' fill='#319D5E' /><rect x='277' y='269' width='80' height='40' rx='3' fill='#0055BF' /><rect x='289' y='261' width='18' height='10' rx='2' fill='#397CD2' /><rect x='326' y='261' width='18' height='10' rx='2' fill='#397CD2' /></g><g fill='#FFFFFF'><path d='M70 76L74 87L85 91L74 95L70 106L66 95L55 91L66 87Z' /><path d='M332 128L335 136L343 139L335 142L332 150L329 142L321 139L329 136Z' /><circle cx='303' cy='65' r='5' /><circle cx='108' cy='191' r='4' /><animate attributeName='opacity' values='0.6;1;0.6' dur='3.8s' repeatCount='indefinite' /></g></svg>")
+                  X: =If(Parent.Width >= 900, Parent.Width - 340, Parent.Width - 182)
+                  Y: =If(Parent.Width >= 900, 18, btnClubhouseExplore.Y + btnClubhouseExplore.Height + 16)
+                  Width: =If(Parent.Width >= 900, 320, 172)
+                  Height: =If(Parent.Width >= 900, 290, 146)
+                  ImagePosition: =ImagePosition.Fit
+                  AccessibleLabel: =""
+                  TabIndex: =-1
+            - lblClubhouseHeroSignature:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="LET’S BUILD."
+                  X: =24
+                  Y: =imgClubhouseRocket.Y + 48
+                  Width: =Max(60, Parent.Width - 214)
+                  Height: =52
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 350, 10, 12)
+                  Color: =ColorValue("#172437")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  Visible: =Parent.Width < 900
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+        - lblClubhouseSectionTitle:
+            Control: Label@2.5.1
+            Properties:
+              Text: ="Choose your next adventure"
+              X: =0
+              Y: =conClubhouseHero.Y + conClubhouseHero.Height + 30
+              Width: =Parent.Width
+              Height: =38
+              Font: =Font.'Open Sans'
+              Size: =If(Parent.Width < 600, 18, 21)
+              Color: =ColorValue("#172437")
+              FontWeight: =FontWeight.Bold
+              PaddingLeft: =0
+              PaddingRight: =0
+              PaddingTop: =2
+              PaddingBottom: =2
+              AutoHeight: =true
+              Wrap: =true
+              VerticalAlign: =VerticalAlign.Top
+        - lblClubhouseSectionSub:
+            Control: Label@2.5.1
+            Properties:
+              Text: ="Your challenges, creations, and crew. All in one place."
+              X: =0
+              Y: =lblClubhouseSectionTitle.Y + lblClubhouseSectionTitle.Height + 10
+              Width: =Parent.Width
+              Height: =44
+              Font: =Font.'Open Sans'
+              Size: =11
+              Color: =ColorValue("#667085")
+              FontWeight: =FontWeight.Normal
+              PaddingLeft: =0
+              PaddingRight: =0
+              PaddingTop: =2
+              PaddingBottom: =2
+              AutoHeight: =true
+              Wrap: =true
+              VerticalAlign: =VerticalAlign.Top
+        - conClubhouseTile1:
+            Control: GroupContainer@1.5.0
+            Variant: ManualLayout
+            Properties:
+              Fill: =ColorValue("#0055BF")
+              DropShadow: =DropShadow.None
+              LayoutMinWidth: =0
+              LayoutMinHeight: =0
+              X: =If(Parent.Width >= 760, 0 * ((Parent.Width - 32) / 3 + 16), 0)
+              Y: =lblClubhouseSectionSub.Y + lblClubhouseSectionSub.Height + 24
+              Width: =If(Parent.Width >= 760, (Parent.Width - 32) / 3, Parent.Width)
+              Height: =btnClubhouseTile1.Y + btnClubhouseTile1.Height + 22
+              RadiusTopLeft: =14
+              RadiusTopRight: =14
+              RadiusBottomLeft: =14
+              RadiusBottomRight: =14
+            Children:
+            - imgClubhouseTileBrick1:
+                Control: Image@2.2.3
+                Properties:
+                  Image: ="data:image/svg+xml;utf8," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><rect x='12' y='22' width='176' height='66' rx='6' fill='#0055BF'/><path d='M12 75H188V82Q188 88 182 88H18Q12 88 12 82Z' fill='#000000' opacity='.14'/><g fill='#FFFFFF' opacity='.22'><rect x='32' y='10' width='28' height='18' rx='5'/><rect x='86' y='10' width='28' height='18' rx='5'/><rect x='140' y='10' width='28' height='18' rx='5'/></g></svg>")
+                  X: =Parent.Width - 126
+                  Y: =12
+                  Width: =116
+                  Height: =58
+                  ImagePosition: =ImagePosition.Fit
+                  AccessibleLabel: =""
+                  TabIndex: =-1
+            - lblClubhouseTileKicker1:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="01 / DREAM IT"
+                  X: =20
+                  Y: =26
+                  Width: =Parent.Width - 150
+                  Height: =24
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 270, 8, 9)
+                  Color: =ColorValue("#FFFFFF")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseTileTitle1:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Challenges"
+                  X: =20
+                  Y: =82
+                  Width: =Parent.Width - 40
+                  Height: =36
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 270, 18, 21)
+                  Color: =ColorValue("#FFFFFF")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseTileBody1:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="A little inspiration. A new challenge. What will you build next?"
+                  X: =20
+                  Y: =lblClubhouseTileTitle1.Y + lblClubhouseTileTitle1.Height + 12
+                  Width: =Parent.Width - 40
+                  Height: =60
+                  Font: =Font.'Open Sans'
+                  Size: =11
+                  Color: =ColorValue("#FFFFFF")
+                  FontWeight: =FontWeight.Normal
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - btnClubhouseTile1:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  Text: ="Explore challenges"
+                  X: =20
+                  Y: =Max(214, lblClubhouseTileBody1.Y + lblClubhouseTileBody1.Height + 22)
+                  Width: =Parent.Width - 40
+                  Height: =44
+                  OnSelect: =Set(varHeaderActiveKey, "Challenges"); Notify("Replace this Notify with Navigate(YourChallengesScreen, ScreenTransition.None)", NotificationType.Information)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =FontWeight.Semibold
+                  Size: =If(Parent.Width < 270, 11, 12)
+                  Fill: =ColorValue("#FFFFFF")
+                  Color: =ColorValue("#0055BF")
+                  BorderThickness: =0
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  HoverFill: =ColorFade(ColorValue("#FFFFFF"), -12%)
+                  HoverColor: =ColorValue("#0055BF")
+                  PressedFill: =ColorFade(ColorValue("#FFFFFF"), -22%)
+                  PressedColor: =ColorValue("#0055BF")
+                  FocusedBorderColor: =ColorValue("#172437")
+                  FocusedBorderThickness: =3
+                  TabIndex: =0
+        - conClubhouseTile2:
+            Control: GroupContainer@1.5.0
+            Variant: ManualLayout
+            Properties:
+              Fill: =ColorValue("#D62828")
+              DropShadow: =DropShadow.None
+              LayoutMinWidth: =0
+              LayoutMinHeight: =0
+              X: =If(Parent.Width >= 760, 1 * ((Parent.Width - 32) / 3 + 16), 0)
+              Y: =If(Parent.Width >= 760, lblClubhouseSectionSub.Y + lblClubhouseSectionSub.Height + 24, conClubhouseTile1.Y + conClubhouseTile1.Height + 20)
+              Width: =If(Parent.Width >= 760, (Parent.Width - 32) / 3, Parent.Width)
+              Height: =btnClubhouseTile2.Y + btnClubhouseTile2.Height + 22
+              RadiusTopLeft: =14
+              RadiusTopRight: =14
+              RadiusBottomLeft: =14
+              RadiusBottomRight: =14
+            Children:
+            - imgClubhouseTileBrick2:
+                Control: Image@2.2.3
+                Properties:
+                  Image: ="data:image/svg+xml;utf8," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><rect x='12' y='22' width='176' height='66' rx='6' fill='#D62828'/><path d='M12 75H188V82Q188 88 182 88H18Q12 88 12 82Z' fill='#000000' opacity='.14'/><g fill='#FFFFFF' opacity='.22'><rect x='32' y='10' width='28' height='18' rx='5'/><rect x='86' y='10' width='28' height='18' rx='5'/><rect x='140' y='10' width='28' height='18' rx='5'/></g></svg>")
+                  X: =Parent.Width - 126
+                  Y: =12
+                  Width: =116
+                  Height: =58
+                  ImagePosition: =ImagePosition.Fit
+                  AccessibleLabel: =""
+                  TabIndex: =-1
+            - lblClubhouseTileKicker2:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="02 / BUILD IT"
+                  X: =20
+                  Y: =26
+                  Width: =Parent.Width - 150
+                  Height: =24
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 270, 8, 9)
+                  Color: =ColorValue("#FFFFFF")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseTileTitle2:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Build Entries"
+                  X: =20
+                  Y: =82
+                  Width: =Parent.Width - 40
+                  Height: =36
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 270, 18, 21)
+                  Color: =ColorValue("#FFFFFF")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseTileBody2:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Big builds deserve a spotlight. Keep your creations together."
+                  X: =20
+                  Y: =lblClubhouseTileTitle2.Y + lblClubhouseTileTitle2.Height + 12
+                  Width: =Parent.Width - 40
+                  Height: =60
+                  Font: =Font.'Open Sans'
+                  Size: =11
+                  Color: =ColorValue("#FFFFFF")
+                  FontWeight: =FontWeight.Normal
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - btnClubhouseTile2:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  Text: ="See your builds"
+                  X: =20
+                  Y: =Max(214, lblClubhouseTileBody2.Y + lblClubhouseTileBody2.Height + 22)
+                  Width: =Parent.Width - 40
+                  Height: =44
+                  OnSelect: =Set(varHeaderActiveKey, "Builds"); Notify("Replace this Notify with Navigate(YourBuildEntriesScreen, ScreenTransition.None)", NotificationType.Information)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =FontWeight.Semibold
+                  Size: =If(Parent.Width < 270, 11, 12)
+                  Fill: =ColorValue("#FFFFFF")
+                  Color: =ColorValue("#D62828")
+                  BorderThickness: =0
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  HoverFill: =ColorFade(ColorValue("#FFFFFF"), -12%)
+                  HoverColor: =ColorValue("#D62828")
+                  PressedFill: =ColorFade(ColorValue("#FFFFFF"), -22%)
+                  PressedColor: =ColorValue("#D62828")
+                  FocusedBorderColor: =ColorValue("#172437")
+                  FocusedBorderThickness: =3
+                  TabIndex: =0
+        - conClubhouseTile3:
+            Control: GroupContainer@1.5.0
+            Variant: ManualLayout
+            Properties:
+              Fill: =ColorValue("#237841")
+              DropShadow: =DropShadow.None
+              LayoutMinWidth: =0
+              LayoutMinHeight: =0
+              X: =If(Parent.Width >= 760, 2 * ((Parent.Width - 32) / 3 + 16), 0)
+              Y: =If(Parent.Width >= 760, lblClubhouseSectionSub.Y + lblClubhouseSectionSub.Height + 24, conClubhouseTile2.Y + conClubhouseTile2.Height + 20)
+              Width: =If(Parent.Width >= 760, (Parent.Width - 32) / 3, Parent.Width)
+              Height: =btnClubhouseTile3.Y + btnClubhouseTile3.Height + 22
+              RadiusTopLeft: =14
+              RadiusTopRight: =14
+              RadiusBottomLeft: =14
+              RadiusBottomRight: =14
+            Children:
+            - imgClubhouseTileBrick3:
+                Control: Image@2.2.3
+                Properties:
+                  Image: ="data:image/svg+xml;utf8," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><rect x='12' y='22' width='176' height='66' rx='6' fill='#237841'/><path d='M12 75H188V82Q188 88 182 88H18Q12 88 12 82Z' fill='#000000' opacity='.14'/><g fill='#FFFFFF' opacity='.22'><rect x='32' y='10' width='28' height='18' rx='5'/><rect x='86' y='10' width='28' height='18' rx='5'/><rect x='140' y='10' width='28' height='18' rx='5'/></g></svg>")
+                  X: =Parent.Width - 126
+                  Y: =12
+                  Width: =116
+                  Height: =58
+                  ImagePosition: =ImagePosition.Fit
+                  AccessibleLabel: =""
+                  TabIndex: =-1
+            - lblClubhouseTileKicker3:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="03 / SHARE IT"
+                  X: =20
+                  Y: =26
+                  Width: =Parent.Width - 150
+                  Height: =24
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 270, 8, 9)
+                  Color: =ColorValue("#FFFFFF")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseTileTitle3:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Members"
+                  X: =20
+                  Y: =82
+                  Width: =Parent.Width - 40
+                  Height: =36
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 270, 18, 21)
+                  Color: =ColorValue("#FFFFFF")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseTileBody3:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Meet the people behind the bricks. Find your building crew."
+                  X: =20
+                  Y: =lblClubhouseTileTitle3.Y + lblClubhouseTileTitle3.Height + 12
+                  Width: =Parent.Width - 40
+                  Height: =60
+                  Font: =Font.'Open Sans'
+                  Size: =11
+                  Color: =ColorValue("#FFFFFF")
+                  FontWeight: =FontWeight.Normal
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - btnClubhouseTile3:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  Text: ="Meet the builders"
+                  X: =20
+                  Y: =Max(214, lblClubhouseTileBody3.Y + lblClubhouseTileBody3.Height + 22)
+                  Width: =Parent.Width - 40
+                  Height: =44
+                  OnSelect: =Set(varHeaderActiveKey, "Members"); Notify("Replace this Notify with Navigate(YourMembersScreen, ScreenTransition.None)", NotificationType.Information)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =FontWeight.Semibold
+                  Size: =If(Parent.Width < 270, 11, 12)
+                  Fill: =ColorValue("#FFFFFF")
+                  Color: =ColorValue("#237841")
+                  BorderThickness: =0
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  HoverFill: =ColorFade(ColorValue("#FFFFFF"), -12%)
+                  HoverColor: =ColorValue("#237841")
+                  PressedFill: =ColorFade(ColorValue("#FFFFFF"), -22%)
+                  PressedColor: =ColorValue("#237841")
+                  FocusedBorderColor: =ColorValue("#172437")
+                  FocusedBorderThickness: =3
+                  TabIndex: =0
+        - conClubhouseFooter:
+            Control: GroupContainer@1.5.0
+            Variant: ManualLayout
+            Properties:
+              Fill: =ColorValue("#172437")
+              DropShadow: =DropShadow.None
+              LayoutMinWidth: =0
+              LayoutMinHeight: =0
+              X: =0
+              Y: =Max(conClubhouseTile1.Y + conClubhouseTile1.Height, conClubhouseTile2.Y + conClubhouseTile2.Height, conClubhouseTile3.Y + conClubhouseTile3.Height) + 28
+              Width: =Parent.Width
+              Height: =lblClubhouseFooterSub.Y + lblClubhouseFooterSub.Height + 22
+              RadiusTopLeft: =14
+              RadiusTopRight: =14
+              RadiusBottomLeft: =14
+              RadiusBottomRight: =14
+            Children:
+            - lblClubhouseFooterTitle:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Every great build starts with one brick."
+                  X: =20
+                  Y: =20
+                  Width: =Parent.Width - 40
+                  Height: =54
+                  Font: =Font.'Open Sans'
+                  Size: =If(Parent.Width < 350, 14, 16)
+                  Color: =ColorValue("#FFD500")
+                  FontWeight: =FontWeight.Bold
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top
+            - lblClubhouseFooterSub:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Make this one yours."
+                  X: =20
+                  Y: =lblClubhouseFooterTitle.Y + lblClubhouseFooterTitle.Height + 12
+                  Width: =Parent.Width - 40
+                  Height: =20
+                  Font: =Font.'Open Sans'
+                  Size: =10
+                  Color: =ColorValue("#FFFFFF")
+                  FontWeight: =FontWeight.Normal
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =2
+                  PaddingBottom: =2
+                  AutoHeight: =true
+                  Wrap: =true
+                  VerticalAlign: =VerticalAlign.Top

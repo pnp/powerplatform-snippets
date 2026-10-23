@@ -1,0 +1,49 @@
+[
+  {
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-powerplatform-snippets-clubhouse-welcome-screen",
+    "version": "1.0.0.0",
+    "source": "pnp",
+    "creationDateTime": "2026-10-23T00:00:00.000Z",
+    "updateDateTime": "2026-10-23T00:00:00.000Z",
+    "title": "Clubhouse Welcome Screen",
+    "shortDescription": "A customizable welcome and landing screen for Power Apps canvas apps, with a hero, editable content, and three navigation cards.",
+    "longDescription": [
+      "A customizable welcome and landing screen example with a brand header, signed-in-user greeting, hero call to action, three navigation cards, and a footer. Native labels and classic buttons keep content editable, while inline SVG provides decorative artwork with optional motion. The layout scrolls and adapts to available width, and notification placeholders can be replaced with navigation to your app's screens. No external assets or data sources are required by the supplied snippet."
+    ],
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/clubhouse-welcome-screen/",
+    "products": [
+      "Power Platform",
+      "Power Apps",
+      "powerplatform-snippets",
+      "power-apps-snippets"
+    ],
+    "tags": [],
+    "categories": [],
+    "metadata": [
+      {
+        "key": "Product",
+        "value": "Power Apps"
+      },
+      {
+        "key": "Type",
+        "value": "Snippet"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/aprildunnam/powerplatform-snippets/cc9ea68301739d23299eb3f37c93306b7bebfce0/power-apps/clubhouse-welcome-screen/assets/thumbnail.png",
+        "alt": "Welcome screen with a yellow rocket hero, three colored navigation cards, a brand header, and a dark footer."
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "aprildunnam",
+        "name": "April Dunnam",
+        "pictureUrl": "https://github.com/aprildunnam.png"
+      }
+    ]
+  }
+]
