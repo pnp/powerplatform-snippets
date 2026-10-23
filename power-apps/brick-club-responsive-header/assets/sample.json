@@ -9,7 +9,7 @@
     "title": "Brick Club Responsive Header",
     "shortDescription": "A responsive Power Apps navigation header with desktop buttons, a compact dropdown, and active-page highlighting.",
     "longDescription": [
-      "A responsive navigation header for Power Apps canvas apps that displays four navigation buttons at widths of 960 pixels and above and a compact dropdown below 960 pixels. Includes a shape-based brick icon, active-page highlighting, and notification placeholders for connecting your own screens. Uses native shapes and classic controls with no external images or connectors."
+      "An example of a responsive header for Power Apps canvas apps that adapts from navigation buttons on wider layouts to a compact dropdown on smaller screens. Customize the title, logo, subtitle, and navigation to match your app. Includes active-page highlighting and placeholder actions for connecting your own screens."
     ],
     "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/brick-club-responsive-header/",
     "products": [
