@@ -34,7 +34,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/main/power-apps/brick-club-responsive-header/assets/thumbnail.png",
+        "url": "https://raw.githubusercontent.com/pnp/powerplatform-snippets/937326f93c7e5f547bbce962cb68c1755fc9e454/power-apps/brick-club-responsive-header/assets/thumbnail.png",
         "alt": "Brick Club responsive header with desktop buttons and phone and tablet navigation dropdowns"
       }
     ],
