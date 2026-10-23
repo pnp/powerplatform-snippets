@@ -1,0 +1,110 @@
+# TIMER-FREE BRICK LOADING ANIMATION
+# Paste into a screen with Power Apps Studio Paste code.
+# Animation lives in inline SVG (animate + animateTransform) inside an Image control.
+# No Power Apps Timer, JavaScript, external URLs or uploaded media.
+# The image uses a data URI and EncodeUrl. XML attributes use single quotes.
+#
+# Root Visible=true for demonstration. Bind Visible to your loading flag in your app.
+# Root fills its parent. Paste outside short header containers. Bring to front.
+# Intended parent minimum size: 280 x 360. Press Preview to check the actual player.
+# This is indeterminate animation; it does not track work or signal completion.
+#
+# CUSTOMIZATION
+# Text: lblBrickLoaderTitle.Text and lblBrickLoaderMessage.Text.
+# Colors: replace matching SVG fill values in the Image formula.
+# Cycle speed: replace each dur='3.2s' consistently.
+#
+# SVG animation playback depends on the browser/player rendering environment.
+# Test desktop browser, tablet and phone player before presenting or publishing.
+# Media-format support alone does not guarantee every SVG animation feature.
+# This variant's YAML and SVG XML parse; not compiled or player-tested here.
+#
+# References
+# https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/controls/control-image
+# https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/add-images-pictures-audio-video
+
+
+# The loader continuously animates while visible. No motion toggle or preference variable.
+
+- conBrickLoader:
+    Control: GroupContainer@1.5.0
+    Variant: ManualLayout
+    Properties:
+      X: =0
+      Y: =0
+      Width: =Parent.Width
+      Height: =Parent.Height
+      Fill: =Color.White
+      Visible: =true
+      LayoutMinWidth: =0
+      LayoutMinHeight: =0
+      DropShadow: =DropShadow.None
+    Children:
+    - conBrickLoaderContent:
+        Control: GroupContainer@1.5.0
+        Variant: ManualLayout
+        Properties:
+          X: =(Parent.Width - Self.Width) / 2
+          Y: =Max(0, (Parent.Height - Self.Height) / 2)
+          Width: =Min(440, Max(0, Parent.Width - 32))
+          Height: =272
+          Fill: =RGBA(0, 0, 0, 0)
+          DropShadow: =DropShadow.None
+          LayoutMinWidth: =0
+          LayoutMinHeight: =0
+        Children:
+        - conBrickLoaderStage:
+            Control: GroupContainer@1.5.0
+            Variant: ManualLayout
+            Properties:
+              X: =(Parent.Width - Self.Width) / 2
+              Y: =0
+              Width: =Min(280, Parent.Width)
+              Height: =176
+              Fill: =RGBA(0, 0, 0, 0)
+              DropShadow: =DropShadow.None
+              LayoutMinWidth: =0
+              LayoutMinHeight: =0
+            Children:
+            - imgBrickLoaderAnimation:
+                Control: Image@2.2.3
+                Properties:
+                  X: =0
+                  Y: =0
+                  Width: =Parent.Width
+                  Height: =Parent.Height
+                  Image: ="data:image/svg+xml;utf8," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='280' height='176' viewBox='0 0 280 176'><rect x='16' y='158' width='248' height='3' rx='1.5' fill='#E7EBF0'/><g transform='translate(24 108)'><g><animateTransform attributeName='transform' type='translate' values='0 -52;0 -52;0 0;0 0' keyTimes='0;0.040;0.160;1' dur='3.2s' repeatCount='indefinite' calcMode='spline' keySplines='0 0 1 1;0.2 0.8 0.3 1;0 0 1 1'/><animate attributeName='opacity' values='0;0;1;1' keyTimes='0;0.040;0.042;1' dur='3.2s' repeatCount='indefinite'/><rect x='0' y='8' width='108' height='36' rx='3' fill='#D62828'/><path d='M0 38H108V41Q108 44 105 44H3Q0 44 0 41Z' fill='#000000' opacity='.12'/><rect x='19' y='0' width='16' height='10' rx='2' fill='#D62828'/><rect x='19' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/><rect x='46' y='0' width='16' height='10' rx='2' fill='#D62828'/><rect x='46' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/><rect x='73' y='0' width='16' height='10' rx='2' fill='#D62828'/><rect x='73' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/></g></g><g transform='translate(140 108)'><g><animateTransform attributeName='transform' type='translate' values='0 -52;0 -52;0 0;0 0' keyTimes='0;0.180;0.300;1' dur='3.2s' repeatCount='indefinite' calcMode='spline' keySplines='0 0 1 1;0.2 0.8 0.3 1;0 0 1 1'/><animate attributeName='opacity' values='0;0;1;1' keyTimes='0;0.180;0.182;1' dur='3.2s' repeatCount='indefinite'/><rect x='0' y='8' width='108' height='36' rx='3' fill='#0055BF'/><path d='M0 38H108V41Q108 44 105 44H3Q0 44 0 41Z' fill='#000000' opacity='.12'/><rect x='19' y='0' width='16' height='10' rx='2' fill='#0055BF'/><rect x='19' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/><rect x='46' y='0' width='16' height='10' rx='2' fill='#0055BF'/><rect x='46' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/><rect x='73' y='0' width='16' height='10' rx='2' fill='#0055BF'/><rect x='73' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/></g></g><g transform='translate(24 64)'><g><animateTransform attributeName='transform' type='translate' values='0 -52;0 -52;0 0;0 0' keyTimes='0;0.320;0.440;1' dur='3.2s' repeatCount='indefinite' calcMode='spline' keySplines='0 0 1 1;0.2 0.8 0.3 1;0 0 1 1'/><animate attributeName='opacity' values='0;0;1;1' keyTimes='0;0.320;0.322;1' dur='3.2s' repeatCount='indefinite'/><rect x='0' y='8' width='108' height='36' rx='3' fill='#FFD500'/><path d='M0 38H108V41Q108 44 105 44H3Q0 44 0 41Z' fill='#000000' opacity='.12'/><rect x='19' y='0' width='16' height='10' rx='2' fill='#FFD500'/><rect x='19' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/><rect x='46' y='0' width='16' height='10' rx='2' fill='#FFD500'/><rect x='46' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/><rect x='73' y='0' width='16' height='10' rx='2' fill='#FFD500'/><rect x='73' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/></g></g><g transform='translate(140 64)'><g><animateTransform attributeName='transform' type='translate' values='0 -52;0 -52;0 0;0 0' keyTimes='0;0.460;0.580;1' dur='3.2s' repeatCount='indefinite' calcMode='spline' keySplines='0 0 1 1;0.2 0.8 0.3 1;0 0 1 1'/><animate attributeName='opacity' values='0;0;1;1' keyTimes='0;0.460;0.462;1' dur='3.2s' repeatCount='indefinite'/><rect x='0' y='8' width='108' height='36' rx='3' fill='#237841'/><path d='M0 38H108V41Q108 44 105 44H3Q0 44 0 41Z' fill='#000000' opacity='.12'/><rect x='19' y='0' width='16' height='10' rx='2' fill='#237841'/><rect x='19' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/><rect x='46' y='0' width='16' height='10' rx='2' fill='#237841'/><rect x='46' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/><rect x='73' y='0' width='16' height='10' rx='2' fill='#237841'/><rect x='73' y='0' width='16' height='3' rx='1.5' fill='#FFFFFF' opacity='.22'/></g></g></svg>")
+                  ImagePosition: =ImagePosition.Fit
+                  AccessibleLabel: =""
+                  TabIndex: =-1
+        - lblBrickLoaderTitle:
+            Control: Label@2.5.1
+            Properties:
+              X: =0
+              Y: =192
+              Width: =Parent.Width
+              Height: =34
+              Text: ="Building something awesome"
+              Font: =Font.'Open Sans'
+              FontWeight: =FontWeight.Semibold
+              Size: =If(Parent.Width < 340, 14, 17)
+              Color: =ColorValue("#172437")
+              Align: =Align.Center
+              PaddingLeft: =0
+              PaddingRight: =0
+              Wrap: =false
+        - lblBrickLoaderMessage:
+            Control: Label@2.5.1
+            Properties:
+              X: =0
+              Y: =232
+              Width: =Parent.Width
+              Height: =30
+              Text: ="One brick at a time. Please wait."
+              Font: =Font.'Open Sans'
+              Size: =11
+              Color: =ColorValue("#667085")
+              Align: =Align.Center
+              PaddingLeft: =0
+              PaddingRight: =0
+              Wrap: =false
