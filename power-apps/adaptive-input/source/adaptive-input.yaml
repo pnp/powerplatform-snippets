@@ -1,0 +1,928 @@
+ComponentDefinitions:
+  comp_input:
+    DefinitionType: CanvasComponent
+    CustomProperties:
+      AvaibleType:
+        PropertyKind: OutputFunction
+        DisplayName: AvaibleType
+        Description: A custom property
+        DataType: Record
+      BorderColor:
+        PropertyKind: Input
+        DisplayName: BorderColor
+        Description: A custom property
+        DataType: Color
+        Default: =RGBA(231, 230, 238, 1)
+      BorderColorFile:
+        PropertyKind: Input
+        DisplayName: BorderColorFile
+        Description: A custom property
+        DataType: Color
+        Default: =RGBA(207, 203, 230, 1)
+      Color:
+        PropertyKind: Input
+        DisplayName: Color
+        Description: A custom property
+        DataType: Color
+        Default: =RGBA(15, 4, 60, 1)
+      ColorDescription:
+        PropertyKind: Input
+        DisplayName: ColorDescription
+        Description: A custom property
+        DataType: Color
+        Default: =RGBA(144, 140, 167, 1)
+      ColorRed:
+        PropertyKind: Input
+        DisplayName: ColorRed
+        Description: A custom property
+        DataType: Color
+        Default: =RGBA(211, 46, 51, 1)
+      CopyText:
+        PropertyKind: Input
+        DisplayName: CopyText
+        Description: A custom property
+        DataType: Text
+        Default: ="Copy"
+      Default:
+        PropertyKind: Input
+        DisplayName: Default
+        Description: A custom property
+        DataType: Text
+        Default: =""
+      DisplayMode:
+        PropertyKind: Input
+        DisplayName: DisplayMode
+        Description: A custom property
+        DataType: Text
+        Default: =DisplayMode.View
+      FillCopy:
+        PropertyKind: Input
+        DisplayName: FillCopy
+        Description: A custom property
+        DataType: Color
+        Default: =RGBA(68, 68, 68, 1)
+      FillFile:
+        PropertyKind: Input
+        DisplayName: FillFile
+        Description: A custom property
+        DataType: Color
+        Default: =RGBA(249, 248, 253, 1)
+      FillInput:
+        PropertyKind: Input
+        DisplayName: FillInput
+        Description: A custom property
+        DataType: Color
+        Default: =RGBA(247, 247, 251, 1)
+      FillSelected:
+        PropertyKind: Input
+        DisplayName: FillSelected
+        Description: A custom property
+        DataType: Color
+        Default: =RGBA(250, 249, 254, 1)
+      Height_Dyn:
+        PropertyKind: Output
+        DisplayName: Height_Dyn
+        Description: A custom property
+        DataType: Number
+      InputType:
+        PropertyKind: Input
+        DisplayName: InputType
+        Description: A custom property
+        DataType: Text
+        Default: =comp_input.AvaibleType().Choice
+      Items:
+        PropertyKind: Input
+        DisplayName: Items
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Table
+        Default: |-
+          =[
+              {
+                  Name: "PowerApps Canvas",
+                  Value: "data:image/svg+xml;utf8, " & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='3' y='3' width='18' height='18' rx='2' stroke='white' stroke-width='2' fill='none'></rect><path d='M3 9h18' stroke='white' stroke-width='2' fill='none'></path></svg>"),
+                  Color: "purple",
+                  Description : "Composants UI réutilisables"
+              },
+              {
+                  Name: "Power Automate",
+                  Value: "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M13 2L3 14h7l-1 8 10-12h-7z' stroke='white' stroke-width='2' fill='none'></path></svg>"),
+                  Color: "#00CCCC",
+                  Description : "Modèles de flux (Approbation, ...)"
+              },
+              {
+                  Name: "Image",
+                  Value: "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><!-- Cadre --><rect x='3' y='3' width='18' height='18' rx='2' stroke='white' stroke-width='2' fill='none'></rect><!-- Montagne --><path d='M6 17l4-5 3 4 3-3 4 4' stroke='white' stroke-width='2' fill='none'></path><!-- Soleil --><circle cx='9' cy='8' r='2' stroke='white' stroke-width='2' fill='none'></circle></svg>"),
+                  Color: "green",
+                  Description : "Format SVG (icônes, menu, ....)"
+              },
+              {
+                  Name: "Composant HTML",
+                  Value: "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><!-- Cadre --><rect x='3' y='3' width='18' height='18' rx='2' stroke='white' stroke-width='2' fill='none'></rect><!-- Chevrons < > --><path d='M9 9L6 12L9 15' stroke='white' stroke-width='2' fill='none'></path><path d='M15 9L18 12L15 15' stroke='white' stroke-width='2' fill='none'></path><!-- Slash / --><path d='M11 8L13 16' stroke='white' stroke-width='2' fill='none'></path></svg>"),
+                  Color: "red",
+                  Description : "Templates pour mail, document, ..."
+              },
+              {
+                  Name: "Autre",
+                  Value: "data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><!-- Cercle --><circle cx='12' cy='12' r='9' stroke='white' stroke-width='2' fill='none'></circle><!-- Point d'exclamation --><path d='M12 6v8' stroke='white' stroke-width='2' fill='none'></path><circle cx='12' cy='17' r='1.5' fill='white'></circle></svg>"),
+                  Color: "#FF00AA",
+                  Description : "Autres composants non catégorisables"
+              }
+          ]
+      ItemsValue:
+        PropertyKind: Output
+        DisplayName: ItemsValue
+        Description: A custom property
+        DataType: Table
+      Mandatory:
+        PropertyKind: Input
+        DisplayName: Mandatory
+        Description: A custom property
+        DataType: Boolean
+        Default: =true
+      OnChange:
+        PropertyKind: Event
+        DisplayName: OnChange
+        Description: A custom property
+        ReturnType: None
+        Default: =
+      OnCopy:
+        PropertyKind: Event
+        DisplayName: OnCopy
+        Description: A custom property
+        ReturnType: None
+        Default: =Copy(Val)
+        Parameters:
+          - Val:
+              Description: A parameter
+              DataType: Text
+              Default: ="Text"
+      PhotoExtDescription:
+        PropertyKind: Input
+        DisplayName: PhotoExtDescription
+        Description: A custom property
+        DataType: Text
+        Default: |-
+          ="Only #FIRST# or #LAST# file types are allowed."
+      PhotoExtension:
+        PropertyKind: Input
+        DisplayName: PhotoExtension
+        Description: A custom property
+        DataType: Table
+        Default: =["PNG","JPG","JPEG","BMP","PNG","SVG","GIF"]
+      PhotoTitle:
+        PropertyKind: Input
+        DisplayName: PhotoTitle
+        Description: A custom property
+        DataType: Text
+        Default: ="Drag an image or browse"
+      PlaceHolder:
+        PropertyKind: Input
+        DisplayName: PlaceHolder
+        Description: A custom property
+        DataType: Text
+        Default: |-
+          ="Ex : DatePicker"
+      RequiredOk:
+        PropertyKind: Output
+        DisplayName: RequiredOk
+        Description: A custom property
+        DataType: Boolean
+      Reset:
+        PropertyKind: Input
+        DisplayName: Reset
+        Description: A custom property
+        RaiseOnReset: true
+        DataType: Boolean
+        Default: =true
+      Selected:
+        PropertyKind: Output
+        DisplayName: Selected
+        Description: A custom property
+        DataType: Record
+      ShowCopy:
+        PropertyKind: Input
+        DisplayName: ShowCopy
+        Description: A custom property
+        DataType: Boolean
+        Default: =false
+      Size:
+        PropertyKind: Input
+        DisplayName: Size
+        Description: A custom property
+        DataType: Number
+        Default: '=13 '
+      SizeTitle:
+        PropertyKind: Input
+        DisplayName: SizeTitle
+        Description: A custom property
+        DataType: Number
+        Default: =11
+      Title:
+        PropertyKind: Input
+        DisplayName: Title
+        Description: A custom property
+        DataType: Text
+        Default: ="Nom du composant"
+      Value:
+        PropertyKind: Output
+        DisplayName: Value
+        Description: A custom property
+        DataType: Text
+      WrapCount:
+        PropertyKind: OutputFunction
+        DisplayName: WrapCount
+        Description: A custom property
+        DataType: Number
+    Properties:
+      AvaibleType: |-
+        ={Input : "Input",Comment : "Comment",Choice : "Choice",Code : "Code",Photo : "Photo"}//Steve BOURDIN MOCA - sbourdin@moca-conseil.fr
+      Height: =comp_input.Height_Dyn
+      Height_Dyn: =cont_input.Height
+      ItemsValue: =colPhotos
+      OnReset: |-
+        =ClearCollect(
+            colPhotos,
+            comp_input.Items
+        );
+        Reset(inp_input);
+        Reset(inp_comment);
+        Reset(gal_input)
+      RequiredOk: |-
+        =Self.Visible = false || Self.Mandatory = false || Switch(
+            Self.InputType,
+            Self.AvaibleType().Photo,
+            CountRows(colPhotos) > 0,
+            Len(Self.Value) > 0
+        )
+      Selected: |-
+        =Switch(
+            comp_input.InputType,
+            comp_input.AvaibleType().Photo,
+            gal_photo_mini.Selected
+        )
+      Value: |-
+        =Switch(
+            comp_input.InputType,
+            comp_input.AvaibleType().Input,
+            inp_input.Text,
+            comp_input.AvaibleType().Comment,
+            inp_comment.Text,
+            comp_input.AvaibleType().Choice,
+            gal_input.Selected.Name,
+            comp_input.AvaibleType().Code,
+            inp_comment.Text
+        )
+      WrapCount: =RoundDown(gal_input.Width/150,0)
+    Children:
+      - cont_input:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =If(comp_input.InputType=comp_input.AvaibleType().Code,Color.Black,RGBA(0,0,0,0))
+            Height: |-
+              =If(
+                  cont_input_title.Visible = true,
+                  cont_input_title.Height + Self.LayoutGap
+              ) + If(
+                  inp_input.Visible = true,
+                  inp_input.Height,
+                  0
+              ) + If(
+                  inp_comment.Visible = true,
+                  inp_comment.Height,
+                  0
+              ) + If(
+                  gal_input.Visible = true,
+                  gal_input.Height,
+                  0
+              ) + Self.PaddingBottom + Self.PaddingTop + If(
+                  cont_photo.Visible = true,
+                  cont_photo.Height + Self.LayoutGap
+              )
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            PaddingBottom: =If(comp_input.InputType=comp_input.AvaibleType().Code,10,0)
+            PaddingLeft: =If(comp_input.InputType=comp_input.AvaibleType().Code,10,0)
+            PaddingRight: =If(comp_input.InputType=comp_input.AvaibleType().Code,10,0)
+            PaddingTop: =If(comp_input.InputType=comp_input.AvaibleType().Code,10,0)
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =Parent.Width
+          Children:
+            - cont_input_title:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Height: =txt_input_title.Height
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutMaxHeight: =txt_input_title.Height
+                  LayoutMinHeight: =txt_input_title.Height
+                  LayoutMinWidth: =16
+                  PaddingRight: =10
+                  Visible: =Len(comp_input.Title)>0
+                Children:
+                  - txt_title_mandatory:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        AutoHeight: =true
+                        Color: =RGBA(211, 46, 51, 1)
+                        FontWeight: =FontWeight.Bold
+                        Height: =1
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="*"
+                        Visible: =comp_input.Mandatory
+                        Width: =12
+                  - txt_input_title:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        AutoHeight: =true
+                        Color: '=If(comp_input.InputType=comp_input.AvaibleType().Code,Color.White,comp_input.Color) '
+                        FillPortions: =1
+                        FontWeight: =FontWeight.Bold
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =
+                        OnSelect: =
+                        Size: =comp_input.SizeTitle
+                        Text: =comp_input.Title
+                        Width: =1
+                  - btn_copy:
+                      Control: ModernButton@1.0.0
+                      Properties:
+                        BasePaletteColor: =comp_input.FillCopy
+                        Height: =Parent.Height
+                        Icon: ="Copy"
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =comp_input.OnCopy(comp_input.Value)
+                        Text: =comp_input.CopyText
+                        Visible: =comp_input.ShowCopy|| comp_input.InputType=comp_input.AvaibleType().Code
+            - inp_input:
+                Control: ModernTextInput@1.1.2
+                Properties:
+                  BorderColor: =comp_input.BorderColor
+                  BorderThickness: =1
+                  Default: =comp_input.Default
+                  DisplayMode: =comp_input.DisplayMode
+                  Fill: =comp_input.FillInput
+                  Height: =45
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  OnChange: =comp_input.OnChange()
+                  PaddingBottom: =11
+                  PaddingLeft: =13
+                  PaddingRight: =13
+                  PaddingTop: =11
+                  Placeholder: =comp_input.PlaceHolder
+                  RadiusBottomLeft: =10
+                  RadiusBottomRight: =10
+                  RadiusTopLeft: =10
+                  RadiusTopRight: =10
+                  Size: =comp_input.Size
+                  Visible: =comp_input.InputType = comp_input.AvaibleType().Input
+                  Width: =Parent.Width
+            - inp_comment:
+                Control: ModernTextInput@1.1.2
+                Properties:
+                  BasePaletteColor: =Self.Fill
+                  BorderColor: =comp_input.BorderColor
+                  BorderThickness: =If(comp_input.InputType=comp_input.AvaibleType().Code,0,1)
+                  Color: =If(comp_input.InputType=comp_input.AvaibleType().Code,Color.White)
+                  Default: =comp_input.Default
+                  DisplayMode: =If(comp_input.InputType=comp_input.AvaibleType().Code &&  comp_input.DisplayMode=DisplayMode.View,DisplayMode.Disabled,  comp_input.DisplayMode)
+                  Fill: '=If(comp_input.InputType=comp_input.AvaibleType().Code,Color.Black,comp_input.FillInput) '
+                  Font: =If(comp_input.InputType=comp_input.AvaibleType().Code,Font.'Courier New', "")
+                  Height: =Min(Max(60,txt_comment_height_dyn.Height+30),300)
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  OnChange: =comp_input.OnChange()
+                  PaddingBottom: =11
+                  PaddingLeft: =13
+                  PaddingRight: =13
+                  PaddingTop: =11
+                  Placeholder: =comp_input.PlaceHolder
+                  RadiusBottomLeft: =10
+                  RadiusBottomRight: =10
+                  RadiusTopLeft: =10
+                  RadiusTopRight: =10
+                  Size: =comp_input.Size
+                  Type: =TextInputType.Multiline
+                  Visible: =comp_input.InputType in [comp_input.AvaibleType().Comment,comp_input.AvaibleType().Code]
+                  Width: =Parent.Width-5
+            - txt_comment_height_dyn:
+                Control: ModernText@1.0.0
+                Properties:
+                  AutoHeight: =true
+                  Height: =1
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  Text: =inp_comment.Text
+                  Visible: =inp_comment.Visible
+                  Width: =inp_comment.Width
+            - gal_input:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Default: =LookUp(comp_input.Items,Name = comp_input.Default)
+                  DisplayMode: =comp_input.DisplayMode
+                  FillPortions: =0
+                  Height: |-
+                    =RoundUp(
+                        Self.AllItemsCount / If(
+                            comp_input.WrapCount() = 0 || IsBlank(comp_input.WrapCount()),
+                            1,
+                            comp_input.WrapCount()
+                        ),
+                        0
+                    ) * (Self.TemplateHeight + 2 * Self.TemplatePadding)
+                  Items: =comp_input.Items
+                  LayoutMaxHeight: =Mod(Self.AllItemsCount,2)*(Self.TemplateHeight+Self.TemplatePadding)
+                  LayoutMinHeight: =Mod(Self.AllItemsCount,2)*(Self.TemplateHeight+Self.TemplatePadding)
+                  LayoutMinWidth: =16
+                  TemplatePadding: =20
+                  TemplateSize: =150
+                  Visible: =comp_input.InputType=comp_input.AvaibleType().Choice
+                  WrapCount: =comp_input.WrapCount()
+                Children:
+                  - cont_gal_input:
+                      Control: GroupContainer@1.5.0
+                      Variant: ManualLayout
+                      Properties:
+                        BorderColor: =comp_input.BorderColor
+                        BorderThickness: =1.5
+                        DropShadow: =DropShadow.None
+                        Height: =Parent.TemplateHeight
+                        RadiusBottomLeft: =11
+                        RadiusBottomRight: =11
+                        RadiusTopLeft: =11
+                        RadiusTopRight: =11
+                        Width: =Parent.TemplateWidth
+                      Children:
+                        - cont_gal_input_vert:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              Fill: =If(gal_input.Selected.Name = ThisItem.Name,comp_input.FillSelected,RGBA(0, 0, 0, 0))
+                              Height: =Parent.Height
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =5
+                              LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                              PaddingBottom: =8
+                              PaddingLeft: =8
+                              PaddingRight: =8
+                              PaddingTop: =8
+                              Width: =Parent.Width
+                            Children:
+                              - cont_choice_header:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    FillPortions: =0
+                                    Height: =cont_gal_input_vert.Height/3
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    PaddingBottom: =8
+                                    PaddingLeft: =8
+                                    PaddingRight: =8
+                                    PaddingTop: =8
+                                  Children:
+                                    - cont_header_img:
+                                        Control: GroupContainer@1.5.0
+                                        Variant: ManualLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          Fill: =ColorValue(ThisItem.Color)
+                                          FillPortions: =0
+                                          Height: =Parent.Height
+                                          LayoutMaxHeight: =cont_choice_header.Width/2.5
+                                          LayoutMinHeight: =cont_choice_header.Width/10
+                                          LayoutMinWidth: =16
+                                          RadiusBottomLeft: =8
+                                          RadiusBottomRight: =8
+                                          RadiusTopLeft: =8
+                                          RadiusTopRight: =8
+                                          Width: =Self.Height
+                                        Children:
+                                          - img_choice:
+                                              Control: Image@2.2.3
+                                              Properties:
+                                                BorderColor: =RGBA(0, 18, 107, 1)
+                                                Height: =Parent.Height
+                                                Image: =ThisItem.Value
+                                                PaddingBottom: =8
+                                                PaddingLeft: =8
+                                                PaddingRight: =8
+                                                PaddingTop: =8
+                                                Width: =Parent.Width
+                                    - cont_choice_check:
+                                        Control: GroupContainer@1.5.0
+                                        Variant: ManualLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          LayoutMinHeight: =16
+                                          LayoutMinWidth: =16
+                                        Children:
+                                          - ico_choice_check:
+                                              Control: ModernIcon@1.1.1
+                                              Properties:
+                                                Icon: ="CheckmarkCircle"
+                                                IconColor: =comp_input.Color
+                                                IconStyle: =IconStyle.Filled
+                                                Visible: =gal_input.Selected.Name = ThisItem.Name
+                                                Width: =Self.Height
+                                                X: =Parent.Width-Self.Width
+                              - txt_title_choice:
+                                  Control: ModernText@1.0.0
+                                  Properties:
+                                    Align: =Align.Center
+                                    AutoHeight: =true
+                                    Color: =comp_input.Color
+                                    FillPortions: =1
+                                    FontWeight: =FontWeight.Bold
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    Size: =comp_input.Size
+                                    Text: =ThisItem.Name
+                                    Width: =Parent.Width-Parent.PaddingTop-Parent.PaddingLeft
+                              - txt_description_choice:
+                                  Control: ModernText@1.0.0
+                                  Properties:
+                                    Align: =Align.Center
+                                    AutoHeight: =true
+                                    Color: =comp_input.ColorDescription
+                                    FontWeight: =FontWeight.Bold
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    Size: =comp_input.SizeTitle
+                                    Text: =ThisItem.Description
+                                    Visible: =Len(Self.Text)>0
+                                    Width: =Parent.Width-Parent.PaddingTop-Parent.PaddingLeft
+                        - btn_choice_select:
+                            Control: ModernButton@1.0.0
+                            Properties:
+                              Appearance: =ButtonAppearance.Transparent
+                              BasePaletteColor: =RGBA(0,0,0,0)
+                              Height: =Parent.Height
+                              IconStyle: =IconStyle.Filled
+                              OnSelect: =If(comp_input.DisplayMode = DisplayMode.Edit, comp_input.OnChange())
+                              Text: =""
+                              Width: =Parent.Width
+            - cont_photo:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Height: |-
+                    =If(
+                        cont_photo_drag.Visible = true,
+                        cont_photo_drag.Height + Self.LayoutGap,
+                        0
+                    ) + Self.PaddingBottom + Self.PaddingTop + If(
+                        gal_photo_mini.Visible = true,
+                        gal_photo_mini.Height,
+                        0
+                    ) + If(
+                        cont_visu_photo.Visible = true,
+                        cont_visu_photo.Height + Self.LayoutGap
+                    )
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =20
+                  LayoutMaxHeight: |-
+                    =If(
+                        cont_photo_drag.Visible = true,
+                        cont_photo_drag.Height + Self.LayoutGap,
+                        0
+                    ) + Self.PaddingBottom + Self.PaddingTop + If(
+                        gal_photo_mini.Visible = true,
+                        gal_photo_mini.Height,
+                        0
+                    ) + If(
+                        cont_visu_photo.Visible = true,
+                        cont_visu_photo.Height + Self.LayoutGap
+                    )
+                  LayoutMinHeight: |-
+                    =If(
+                        cont_photo_drag.Visible = true,
+                        cont_photo_drag.Height + Self.LayoutGap,
+                        0
+                    ) + Self.PaddingBottom + Self.PaddingTop + If(
+                        gal_photo_mini.Visible = true,
+                        gal_photo_mini.Height,
+                        0
+                    ) + If(
+                        cont_visu_photo.Visible = true,
+                        cont_visu_photo.Height + Self.LayoutGap
+                    )
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  Visible: =comp_input.InputType=comp_input.AvaibleType().Photo
+                  Width: =Parent.Width
+                  X: =40
+                  Y: =40
+                Children:
+                  - cont_photo_drag:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        BorderColor: =comp_input.BorderColorFile
+                        BorderStyle: =BorderStyle.Dashed
+                        BorderThickness: =2
+                        Fill: =comp_input.FillFile
+                        FillPortions: =0
+                        Height: =Self.PaddingBottom+Self.PaddingTop+cont_drag_img.Height+cont_drag_title.Height+Self.LayoutGap+txt_description_photo.Height+Self.LayoutGap
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =30
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =26
+                        PaddingLeft: =26
+                        PaddingRight: =26
+                        PaddingTop: =26
+                        RadiusBottomLeft: =12
+                        RadiusBottomRight: =12
+                        RadiusTopLeft: =12
+                        RadiusTopRight: =12
+                        Visible: =comp_input.DisplayMode=DisplayMode.Edit
+                      Children:
+                        - cont_drag_img:
+                            Control: GroupContainer@1.5.0
+                            Variant: ManualLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              BorderColor: =comp_input.BorderColor
+                              BorderThickness: =1
+                              DropShadow: =DropShadow.None
+                              Fill: =Color.White
+                              FillPortions: =0
+                              Height: =60
+                              LayoutMaxWidth: =60
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =60
+                              RadiusBottomLeft: =12
+                              RadiusBottomRight: =12
+                              RadiusTopLeft: =12
+                              RadiusTopRight: =12
+                              Width: =60
+                            Children:
+                              - img_drag:
+                                  Control: Image@2.2.3
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    Height: =Parent.Height
+                                    Image: ="data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='3' y='3' width='18' height='18' rx='2' stroke='#d32e33' stroke-width='2' fill='none'></rect><circle cx='8.5' cy='8.5' r='1.5' stroke='#d32e33' stroke-width='2' fill='none'></circle><path d='M21 15l-5-5L5 21' stroke='#d32e33' stroke-width='2' fill='none'></path></svg>")
+                                    PaddingBottom: =12
+                                    PaddingLeft: =12
+                                    PaddingRight: =12
+                                    PaddingTop: =12
+                                    Width: =Parent.Width
+                        - cont_drag_title:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              Height: =txt_title_left.Height
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              PaddingBottom: =8
+                              PaddingLeft: =(Len(comp_input.PhotoTitle)*  Self.Width/5)/30
+                              PaddingRight: =8
+                              PaddingTop: =8
+                            Children:
+                              - txt_title_left:
+                                  Control: ModernText@1.0.0
+                                  Properties:
+                                    Align: =Align.Right
+                                    Color: =comp_input.Color
+                                    FillPortions: =1
+                                    FontWeight: =FontWeight.Bold
+                                    Height: '=40  '
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    Text: |-
+                                      =With({varSplitChaine : Split(  comp_input.PhotoTitle," ")}, Concat( FirstN(varSplitChaine,CountRows(varSplitChaine)-1),Value," "))
+                              - txt_title_right:
+                                  Control: ModernText@1.0.0
+                                  Properties:
+                                    Color: =comp_input.ColorRed
+                                    FillPortions: =1
+                                    FontWeight: =FontWeight.Bold
+                                    Height: '=40  '
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    PaddingLeft: =0
+                                    Text: =Last(Split(comp_input.PhotoTitle," ")).Value
+                        - txt_description_photo:
+                            Control: ModernText@1.0.0
+                            Properties:
+                              Align: =Align.Center
+                              AutoHeight: =true
+                              Color: =comp_input.ColorDescription
+                              FontWeight: =FontWeight.Semibold
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |
+                                =With(
+                                    {
+                                        varFirst: Concat(
+                                            FirstN(
+                                                comp_input.PhotoExtension,
+                                                CountRows(comp_input.PhotoExtension) - 1
+                                            ),
+                                            Value,
+                                            ", "
+                                        ),
+                                        varLast: Last(comp_input.PhotoExtension).Value
+                                    },
+                                    Substitute(
+                                        Substitute(
+                                            comp_input.PhotoExtDescription,
+                                            "#FIRST#",
+                                            varFirst
+                                        ),
+                                        "#LAST#",
+                                        varLast
+                                    )
+                                )
+                              Width: =Parent.Width
+                  - cont_visu_photo:
+                      Control: GroupContainer@1.5.0
+                      Variant: ManualLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =Self.Width
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Visible: =gal_photo_mini.Visible=true
+                      Children:
+                        - img_photo:
+                            Control: Image@2.2.3
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Fill: =ColorValue(gal_photo_mini.Selected.Color)
+                              Height: =Parent.Height
+                              Image: =gal_photo_mini.Selected.Value
+                              PaddingBottom: =20
+                              PaddingLeft: =20
+                              PaddingRight: =20
+                              PaddingTop: =20
+                              RadiusBottomLeft: =14
+                              RadiusBottomRight: =14
+                              RadiusTopLeft: =14
+                              RadiusTopRight: =14
+                              Tooltip: =gal_photo_mini.Selected.Name&" "&gal_photo_mini.Selected.Description
+                              Width: =Parent.Width
+                  - gal_photo_mini:
+                      Control: Gallery@2.15.0
+                      Variant: BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Fill: =comp_input.FillSelected
+                        FillPortions: =0
+                        FocusedBorderThickness: =0
+                        Height: =cont_photo_drag.Height/2
+                        Items: =colPhotos
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        ShowNavigation: =true
+                        ShowScrollbar: =false
+                        TemplateSize: =Self.Height
+                        Visible: =Self.AllItemsCount>0
+                      Children:
+                        - img_gal_photo:
+                            Control: Image@2.2.3
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Fill: =ColorValue(ThisItem.'data-ADB4D7A662F548B49FAC2B986E348A1BColor')
+                              Height: =Parent.TemplateHeight*3/4
+                              Image: =ThisItem.Value
+                              ImagePosition: =ImagePosition.Fill
+                              OnSelect: =Set(varPhotoActive , ThisItem)
+                              PaddingBottom: =20
+                              PaddingLeft: =20
+                              PaddingRight: =20
+                              PaddingTop: =20
+                              RadiusBottomLeft: =14
+                              RadiusBottomRight: =14
+                              RadiusTopLeft: =14
+                              RadiusTopRight: =14
+                              Tooltip: =ThisItem.Name
+                              Width: =Parent.TemplateWidth*3/4
+                              X: =(Parent.TemplateWidth-Self.Width)/2
+                              Y: =(Parent.TemplateHeight-Self.Height)/2
+                        - btn_del_photo:
+                            Control: ModernButton@1.0.0
+                            Properties:
+                              BasePaletteColor: =comp_input.ColorRed
+                              Icon: ="Delete"
+                              Layout: =ButtonLayout.IconOnly
+                              OnSelect: =Remove(colPhotos,ThisItem)
+                              RadiusBottomLeft: =12
+                              RadiusBottomRight: =12
+                              RadiusTopLeft: =12
+                              RadiusTopRight: =12
+                              Tooltip: ="Supprimer l'image"
+                              Visible: =comp_input.DisplayMode=DisplayMode.Edit
+                              Width: =Self.Height
+                              X: =Parent.TemplateWidth-Self.Width
+      - att_pj:
+          Control: Attachments@2.3.0
+          Properties:
+            AddAttachmentColor: =RGBA(0,0,0,0)
+            AddAttachmentText: ="Ajouter un fichier"
+            AddedItemColor: =RGBA(0,0,0,0)
+            BorderColor: =RGBA(0,0,0,0)
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(0,0,0,0)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(0,0,0,0)
+            DisabledFill: =RGBA(0,0,0,0)
+            DropTargetBackgroundColor: =RGBA(0,0,0,0)
+            DropTargetBorderColor: =RGBA(0,0,0,0)
+            DropTargetBorderStyle: =BorderStyle.None
+            DropTargetBorderThickness: =0
+            DropTargetTextColor: =RGBA(0,0,0,0)
+            Fill: =RGBA(0,0,0,0)
+            FocusedBorderColor: =RGBA(0,0,0,0)
+            FocusedBorderThickness: =0
+            Font: =Font.'Segoe UI'
+            Height: =cont_photo_drag.Height
+            HoverBorderColor: =RGBA(0,0,0,0)
+            HoverColor: =RGBA(0,0,0,0)
+            HoverFill: =RGBA(0,0,0,0)
+            ItemColor: =RGBA(0,0,0,0)
+            ItemDisabledColor: =RGBA(0,0,0,0)
+            ItemDisabledFill: =RGBA(0,0,0,0)
+            ItemErrorColor: =Color.Red
+            ItemErrorFill: =RGBA(0,0,0,0)
+            ItemFill: =RGBA(0,0,0,0)
+            ItemHoverColor: =RGBA(0,0,0,0)
+            ItemHoverFill: =RGBA(0,0,0,0)
+            ItemPressedColor: =RGBA(0,0,0,0)
+            ItemPressedFill: =RGBA(0,0,0,0)
+            ItemSpacing: =12
+            Items.Name: =DisplayName
+            Items.Value: =DisplayName
+            MaxAttachments: =5
+            MaxAttachmentsColor: =RGBA(0,0,0,0)
+            NoAttachmentsColor: =RGBA(0,0,0,0)
+            OnAddFile: |-
+              =ForAll(Self.Attachments As pj,
+
+              If(
+                  Upper(
+                      Last(
+                          Split(
+                              pj.Name,
+                              "."
+                          )
+                      ).Value
+                  ) in Upper(comp_input.PhotoExtension),
+                  Collect(
+                      colPhotos,
+                      pj
+                  ),
+                  Notify(
+                      "Type de fichier non compatible : " & Last(
+                          Split(
+                              pj.Name,
+                              "."
+                          )
+                      ).Value,
+                      NotificationType.Error
+                  )
+              ));Reset(Self)
+            PaddingBottom: =5
+            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+            PaddingRight: =5
+            PaddingTop: =5
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(0, 120, 212, 1)
+            Size: =28
+            Tooltip: ="Attachments"
+            Visible: =comp_input.InputType=comp_input.AvaibleType().Photo
+            Width: =Parent.Width
+            X: =cont_input.PaddingLeft
+            Y: =cont_input_title.Height+cont_input.LayoutGap+cont_input.PaddingTop+cont_photo.PaddingTop
