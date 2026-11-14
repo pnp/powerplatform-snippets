@@ -1,0 +1,148 @@
+---
+import { ArrowUpRight, GitFork, Menu, Moon, Sun } from '@lucide/astro';
+import { brandPath, sitePath } from '../lib/catalog';
+import { visitorStatsUrl } from '../../scripts/gallery-model.mjs';
+import { communityLinks } from '../lib/community';
+import GallerySwitcher from '../components/GallerySwitcher.astro';
+import '../styles/global.css';
+
+interface Props { title?: string; description?: string; image?: string; }
+const {
+  title = 'Power Platform snippet gallery',
+  description = 'Discover reusable Power Platform snippets, UI patterns, Power Fx techniques, and agent topics. Start small, make it yours, and share what you learn.',
+  image = 'generated/brand/portrait-4-800.webp',
+} = Astro.props;
+const pageTitle = title === 'Power Platform snippet gallery' ? title : `${title} | Power Platform snippet gallery`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const navigation = [
+  ['Snippets', '/'], ['Getting started', '/getting-started/'], ['Contributors', '/contributors/'],
+  ['Contributing', '/contributing/'], ["What's new", '/whats-new/'],
+];
+const current = (href: string) => href === '/'
+  ? Astro.url.pathname === sitePath('/') || Astro.url.pathname.startsWith(sitePath('/snippets/'))
+  : Astro.url.pathname.startsWith(sitePath(href));
+const backgrounds = [
+  `--mesh-light: url("${brandPath('mesh-light-magenta.webp')}")`,
+  `--mesh-dark: url("${brandPath('mesh-dark-magenta.webp')}")`,
+  `--mesh-blue: url("${brandPath('mesh-light-blue.webp')}")`,
+  `--mesh-blue-dark: url("${brandPath('mesh-dark-blue.webp')}")`,
+  `--ribbon-blue: url("${brandPath('ribbon-blue.webp')}")`,
+  `--ribbon-magenta: url("${brandPath('ribbon-magenta.webp')}")`,
+].join(';');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#faf8fd" id="theme-color" />
+    <script is:inline>
+      (() => {
+        document.documentElement.classList.add('js-enabled');
+        let theme = 'light';
+        try {
+          const stored = localStorage.getItem('power-platform-snippets-theme');
+          if (stored === 'light' || stored === 'dark') theme = stored;
+        } catch (error) {
+          console.warn('Theme preferences are unavailable in this browser.', error);
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <title>{pageTitle}</title>
+    <link rel="icon" type="image/svg+xml" href={brandPath('PowerPlatform_scalable.svg')} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(sitePath(image), Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body style={backgrounds}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="product-spectrum" aria-hidden="true"></div>
+      <div class="header-inner container">
+        <a class="brand" href={sitePath('/')}>
+          <img src={brandPath('PowerPlatform_scalable.svg')} alt="" width="42" height="42" />
+          <span><strong>Power Platform</strong> <span>snippet gallery</span></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href={communityLinks.home}>Community <ArrowUpRight size={12} aria-hidden="true" /></a>
+          {navigation.map(([label, href]) => <a href={sitePath(href)} aria-current={current(href) ? 'page' : undefined}>{label}</a>)}
+        </nav>
+        <div class="header-actions">
+          <a class="github-link" href="https://github.com/pnp/powerplatform-snippets" aria-label="Power Platform snippets on GitHub"><GitFork size={19} /><span>GitHub</span></a>
+          <button class="theme-toggle js-only" id="theme-toggle" role="switch" aria-checked="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+            <Sun class="sun-icon" size={18} /><Moon class="moon-icon" size={18} />
+          </button>
+          <details class="mobile-menu">
+            <summary aria-label="Open navigation"><Menu size={23} /></summary>
+            <nav aria-label="Mobile navigation">
+              <a href={communityLinks.home}>Community <ArrowUpRight size={12} aria-hidden="true" /></a>
+              {navigation.map(([label, href]) => <a href={sitePath(href)} aria-current={current(href) ? 'page' : undefined}>{label}</a>)}
+              <a href="https://github.com/pnp/powerplatform-snippets">GitHub</a>
+            </nav>
+          </details>
+        </div>
+      </div>
+    </header>
+    <GallerySwitcher current="snippets" />
+    <main id="main-content"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <div>
+          <a class="footer-brand" href={communityLinks.home}>Microsoft 365 &amp; Power Platform Community <ArrowUpRight size={17} /></a>
+          <p>Built by the community. Shared with everyone.</p>
+          <span class="footer-motto">Sharing is caring.</span>
+        </div>
+        <nav aria-label="Footer navigation">
+          <a href={communityLinks.forums}>Community forums</a>
+          <a href={communityLinks.calls}>Community calls</a>
+          <a href={sitePath('/contributing/')}>Contribute a snippet</a>
+          <a href={communityLinks.sharingIsCaring}>Sharing is Caring sessions</a>
+          <a href={communityLinks.recordings}>Community recordings</a>
+          <a href={communityLinks.powerPlatformVideos}>Power Platform videos</a>
+          <a href={sitePath('/catalog.json')}>Catalog JSON</a>
+          <a href="https://pnp.github.io/powerplatform-samples/">Power Platform samples</a>
+          <a href="https://github.com/pnp/powerplatform-snippets/issues/new/choose">Report an issue</a>
+          <a href="https://opensource.microsoft.com/codeofconduct/">Code of conduct</a>
+          <a href="https://github.com/pnp/powerplatform-snippets/blob/main/LICENSE">MIT license</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom"><span>Community snippets, provided as is. Check each snippet's requirements before use.</span><a href="https://learn.microsoft.com/power-platform/">Power Platform documentation <ArrowUpRight size={14} /></a></div>
+    </footer>
+    {import.meta.env.PROD && <img data-visitor-stats data-src={visitorStatsUrl(Astro.url.pathname)} width="1" height="1" alt="" aria-hidden="true" class="visitor-pixel" />}
+    <script>
+      const root = document.documentElement;
+      const toggle = document.querySelector<HTMLButtonElement>('#theme-toggle');
+      const themeColor = document.querySelector<HTMLMetaElement>('#theme-color');
+      function applyTheme(theme: 'light' | 'dark') {
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+        const dark = theme === 'dark';
+        toggle?.setAttribute('aria-checked', String(dark));
+        toggle?.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
+        if (toggle) toggle.title = `Switch to ${dark ? 'light' : 'dark'} mode`;
+        if (themeColor) themeColor.content = dark ? '#181322' : '#faf8fd';
+      }
+      applyTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
+      toggle?.addEventListener('click', () => {
+        const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        applyTheme(theme);
+        try {
+          localStorage.setItem('power-platform-snippets-theme', theme);
+        } catch (error) {
+          console.warn('Your theme selection could not be saved.', error);
+        }
+      });
+      const pixel = document.querySelector<HTMLImageElement>('img[data-visitor-stats]');
+      if (pixel?.dataset.src && !['localhost', '127.0.0.1', '[::1]', '::1'].includes(window.location.hostname)) {
+        pixel.src = pixel.dataset.src;
+      }
+    </script>
+  </body>
+</html>

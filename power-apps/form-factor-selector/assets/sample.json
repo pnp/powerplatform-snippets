@@ -11,7 +11,7 @@
     "longDescription": [
       "Allows you to change the form factor in edit mode, helping you to design responsive applications. 5 formats are present : smartphone & tablet, landscape & portrait for both plus laptop. You can customize or add your own formats"
     ],
-    "url": "https://github.com/DavidZoon/powerplatform-snippets/blob/main/power-apps/form-factor-selector/",
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/form-factor-selector/",
     "products": [
       "Power Platform",
       "Power Apps",

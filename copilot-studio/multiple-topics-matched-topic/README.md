@@ -44,4 +44,4 @@ Multiple Topics Matched (Topic) | [Henry Jammes](https://github.com/HenryJammes)
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/multiple-topics-matched" aria-hidden="true" />
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/copilot-studio/multiple-topics-matched-topic" aria-hidden="true" />

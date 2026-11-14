@@ -97,7 +97,7 @@ Collect(
 
 ```
 
-![Create collection](./assets/create-collection.gif)
+![Create collection](./assets/create-collection.png)
 
 Don't forget to run OnStart, so that the collection will be created
 

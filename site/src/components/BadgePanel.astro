@@ -1,0 +1,22 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import { brandPath, sitePath } from '../lib/catalog';
+import { communityLinks } from '../lib/community';
+interface Props { compact?: boolean; actionHref?: string; actionLabel?: string; }
+const {
+  compact = false,
+  actionHref = sitePath('/contributing/'),
+  actionLabel = 'Become a contributor',
+} = Astro.props;
+---
+<section class:list={['badge-panel', { 'badge-panel--compact': compact }]} aria-labelledby="badge-heading">
+  <img src={brandPath('badge-contributor.webp')} alt="Microsoft 365 and Power Platform Community contributor badge, 2026" width="220" height="220" loading="lazy" />
+  <div>
+    <p class="eyebrow">Your ideas can help someone build their next big thing</p>
+    <h2 id="badge-heading">Share a little. Make a difference.</h2>
+    <p>A small snippet can save someone hours. Share your patterns, help another maker, and build something better together.</p>
+    <p class="badge-caption">The community contributor badge celebrates people who share their knowledge.</p>
+    <p class="badge-caption">Sharing is caring. New to contributing? Our <a href={communityLinks.sharingIsCaring}>Sharing is Caring sessions</a> help you take the first step.</p>
+    <div class="action-row"><a class="button button--primary" href={actionHref}>{actionLabel} <ArrowRight size={17} /></a><a class="text-link" href="https://aka.ms/community/recognition">About community recognition <ArrowRight size={16} /></a></div>
+  </div>
+</section>

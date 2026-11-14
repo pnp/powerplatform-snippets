@@ -149,6 +149,14 @@ Weekly Copilot, Microsoft 365, and Power Platform community calls are listed at 
 
 To share your learnings and input with the community, sign up for a demo at [https://aka.ms/community/request/demo](https://aka.ms/community/request/demo).
 
+## Gallery validation and first-time contributors
+
+The [snippet gallery](https://pnp.github.io/powerplatform-snippets/) reads every snippet's metadata and README. Follow the [local site guide](./site/README.md) to validate trackers, metadata, types, previews, and built links before submitting a contribution. Missing or invalid content fails generation instead of silently disappearing from the gallery.
+
+New to GitHub or pull requests? Join a [Sharing is Caring session](https://pnp.github.io/sharing-is-caring/) for hands-on guidance. The [community contributor badge](./assets/badge-contributor.png) celebrates knowledge sharing; see [community recognition](https://aka.ms/community/recognition) for guidance.
+
+For complete apps, automations, agents, and solutions, explore the companion [Power Platform sample gallery](https://pnp.github.io/powerplatform-samples/).
+
 ## Signing the CLA
 
 Before we can accept your pull requests you will be asked to sign electronically Contributor License Agreement (CLA), which is a pre-requisite for any contributions all PnP repositories. This will be one-time process, so for any future contributions you will not be asked to re-sign anything. After the CLA has been signed, our PnP core team members will have a look at your submission for a final verification of the submission. Please do not delete your development branch until the submission has been closed.

@@ -61,7 +61,7 @@ This snippet connects to a SharePoint list which will need to be configured befo
 1. Save the **topic**
 1. Test out the **topic** by using the **Test copilot** section and send `What are the available devices?`
 1. Select the device type from the multiple choice list
-  ![View of choice selection](./assets/devicetype.png)
+  ![View of choice selection](./assets/deviceType.png)
 
 1. When you get a list of devices, you're **done**!
 
