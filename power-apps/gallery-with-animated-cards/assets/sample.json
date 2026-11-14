@@ -11,7 +11,7 @@
     "longDescription": [
       "Be careful, however, the visuals are less attractive on a gallery template that is too stretched in height or width. The card is responsive; it will adapt to the gallery template format. The colors also change with the modern theme of your application."
     ],
-    "url": "https://github.com/DavidZoon/powerplatform-snippets/blob/main/power-apps/gallery-with-animated-cards/",
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/gallery-with-animated-cards/",
     "products": [
       "Power Platform",
       "Power Apps",

@@ -11,7 +11,7 @@
     "longDescription": [
       "A table-like gallery where the first two columns remain frozen while the user scrolls horizontally through additional columns. A gradient shadow visually separates the frozen columns from the scrollable area. Column widths and positions are driven by named formulas."
     ],
-    "url": "https://github.com/pnp/powerplatform-snippets/blob/main/power-apps/gallery-horizontal-scroll/",
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/gallery-horizontal-scroll/",
     "products": [
       "Power Platform",
       "Power Apps",

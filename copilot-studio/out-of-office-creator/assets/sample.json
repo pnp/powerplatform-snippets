@@ -11,7 +11,7 @@
     "longDescription": [
       "Out of Office Creator is an AI-powered agent for Microsoft Teams and Microsoft 365 Copilot that helps users generate and set Out of Office automatic replies in Outlook through a simple, guided flow. The agent prompts users for the necessary information, such as start and end dates, message content, and any exceptions, and then generates the appropriate Out of Office settings. This streamlines the process of setting up Out of Office replies, ensuring that users can easily manage their availability while away from work."
     ],
-    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/power-apps/out-of-office-creator/",
+    "url": "https://github.com/pnp/powerplatform-snippets/tree/main/copilot-studio/out-of-office-creator/",
     "products": [
       "Power Platform",
       "Copilot Studio",

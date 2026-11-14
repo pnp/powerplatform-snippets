@@ -12,7 +12,7 @@ Each day unlocks a new insight—ranging from clever design hacks and productivi
 Bring joy, knowledge, and innovation together in one engaging component. With the PowerApps Advent Calendar, every day is a chance to learn something new and celebrate the power of low‑code!
 
 
-![power-christmass](./assets/power-christmass.gif)
+![Power Christmas](./assets/power-christmas.gif)
 
 
 ## Authors
@@ -36,4 +36,4 @@ Steve Bourdin | [GitHub](https://github.com/SteveBourdin) ([LinkedIn](https://ww
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/power-christmass" aria-hidden="true" />
+<img src="https://m365-visitor-stats.azurewebsites.net/powerplatform-snippets/power-apps/power-christmas" aria-hidden="true" />
