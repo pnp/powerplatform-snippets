@@ -11,7 +11,8 @@
     "dev": "npm run generate && astro dev --host 127.0.0.1",
     "start": "npm run dev",
     "check": "npm run generate && astro check",
-    "build": "npm run generate && astro build",
+    "build": "npm run generate && astro build && node scripts/deployment.mjs mark",
+    "deployment:verify": "node scripts/deployment.mjs verify",
     "preview": "astro preview --host 127.0.0.1",
     "test": "vitest run",
     "test:e2e": "playwright test"

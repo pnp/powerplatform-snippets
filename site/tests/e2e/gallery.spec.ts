@@ -87,7 +87,7 @@ test('all nested detail routes and previews build, with one exact snippet tracke
     expect((await request.get(`./snippets/${sample.slug}/`)).ok(), sample.slug).toBe(true);
     expect((await request.get(`./${sample.preview.src640}`)).ok(), sample.preview.src640).toBe(true);
   }
-  for (const route of ['getting-started/', 'contributors/', 'contributing/', 'community/', 'whats-new/', '404.html', 'robots.txt', 'sitemap-index.xml', 'samples.json']) {
+  for (const route of ['getting-started/', 'contributors/', 'contributing/', 'community/', 'whats-new/', '404.html', 'robots.txt', 'sitemap-index.xml', 'samples.json', 'deployment.json']) {
     expect((await request.get(`./${route}`)).ok(), route).toBe(true);
   }
   const sample = catalog.samples[0];

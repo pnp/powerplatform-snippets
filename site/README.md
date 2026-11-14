@@ -64,4 +64,6 @@ The website removes this image from rendered documentation and emits one page-le
 
 The [validation workflow](../.github/workflows/validate-gallery.yml) checks pull requests without write or deployment credentials. The [deployment workflow](../.github/workflows/deploy-gallery.yml) builds relevant `main` changes and supports manual dispatch. Only its deployment job has Pages/OIDC write permissions.
 
+Each build writes `deployment.json` with its revision and snippet count. After publication, the workflow runs `npm run deployment:verify` to check the live commit, complete catalogs, key pages, every snippet route and primary preview, and product logos. Set `SITE_URL` and `EXPECTED_COMMIT_SHA` to verify a specific deployment manually.
+
 Set the repository's Pages build source to **GitHub Actions**. A local build does not publish the site: commit and push the revision, then inspect the deployment workflow before assuming the gallery is live.
